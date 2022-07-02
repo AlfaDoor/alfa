@@ -1,0 +1,91 @@
+<odoo>
+
+        <record id="hr_leave_allocation_form" model="ir.ui.view">
+            <field name="name">Leave allocation</field>
+            <field name="model">hr.leave.allocation</field>
+            <field name="arch" type="xml">
+                <form string="Leave allocation">
+                    <header>
+                        <button string="Validate" name="action_validate" type="object" states="confirm" groups="hr_holidays.group_hr_holidays_user" class="oe_highlight"/>
+                        <button string="Reset" name="action_reset" type="object" states="validate" groups="hr_holidays.group_hr_holidays_user"/>
+                        <field name="state" widget="statusbar" statusbar_visible="confirm,validate"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="employee_id"/>
+                                <field name="holiday_status_id"/>
+                                <field name="contract_id"  />
+                                <field name="join_date"/>
+                                <field name="annual_leave_policy"/>
+                                <field name="nationality_type"/>
+                                <field name="branch_id"/>
+                                <field name="department_id" readonly="1"/>
+                                <field name="job_id"/>
+                                <field name="country_id"/>
+                                <field name="gender"/>
+                                <field name="holiday_status_type"/>
+                            </group>
+                            <group>
+                                <field name="request_reason"/>
+                                <field name="number_of_days"/>
+                                <field name="allocation_date"/>
+                                <field name="is_init"/>
+                                <field name="system_created"/>
+                                <field name="approved_by"/>
+                                <field name="leave_automatic_allocation"/>
+                                <field name="by_eos" readonly="1"/>
+                            </group>
+                        </group>
+                        <separator string="Notes"/>
+                        <field name="notes"/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="hr_leave_allocation_tree" model="ir.ui.view">
+            <field name="name">Leave allocation</field>
+            <field name="model">hr.leave.allocation</field>
+            <field name="arch" type="xml">
+                <tree string="Leave allocation">
+                    <field name="name"/>
+                    <field name="holiday_status_id"/>
+                    <field name="employee_id"/>
+                    <field name="number_of_days"/>
+                    <field name="number_of_days_display" invisible="1"/>
+                        <field name="state" />
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="hr_leave_allocation_action" model="ir.actions.act_window">
+            <field name="name">Leaves Allocation</field>
+            <field name="res_model">hr.leave.allocation</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="leave_request_form"/>
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('saudi_hr_leaves.hr_leave_allocation_tree')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('saudi_hr_leaves.hr_leave_allocation_form')})]"/>
+            <field name="context">{}</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create a new leave allocation.
+                </p>
+            </field>
+        </record>
+
+        <menuitem
+        id="hr_holidays.menu_open_allocation"
+        name="Leave Allocations"
+        parent="saudi_hr_leaves.leaves_config_menu"
+        action="hr_leave_allocation_action"
+        sequence="6"/>
+
+        <menuitem id="hr_holidays.menu_hr_holidays_approvals" name="Managers"
+                  groups="base.group_no_one" parent="hr_holidays.menu_hr_holidays_root" sequence="5"/>
+</odoo>

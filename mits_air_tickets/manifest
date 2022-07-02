@@ -1,0 +1,39 @@
+# -*- coding: utf-8 -*-
+{
+    'name': "Mits Air Tickets",
+
+    'summary': """
+        Mits Air Tickets""",
+
+    'description': """
+        Mits Air Tickets
+    """,
+
+    'author': "OserGroup",
+    'website': "http://www.osergroup.com",
+
+    # Categories can be used to filter modules in modules listing
+    # Check https://github.com/odoo/odoo/blob/master/openerp/addons/base/module/module_data.xml
+    # for the full list
+    'category': 'Saudi HR',
+    'version': '0.1',
+
+    # any module necessary for this one to work correctly
+    'depends': [
+        'hr_holidays',
+        'saudi_hr_employee',
+        'saudi_hr_contract',
+        'saudi_hr_leaves',
+        'saudi_hr_gosi',
+    ],
+
+    # always loaded
+    'data': [
+        'security/security.xml',
+        'security/ir.model.access.csv',
+        'views/views.xml',
+        'views/templates.xml',
+        'views/tickets_sequence.xml',
+        'wizard/batch_generate_requests.xml',
+    ],
+}

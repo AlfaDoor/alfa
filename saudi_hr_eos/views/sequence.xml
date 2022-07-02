@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data >
+        <record id="seq_eos_reason" model="ir.sequence">
+            <field name="name">eos reason</field>
+            <field name="code">eos.reason</field>
+            <field name="prefix">EOSR</field>
+            <field name="padding">5</field>
+        </record>
+        <record id="seq_eos_motivation" model="ir.sequence">
+            <field name="name">eos motivation</field>
+            <field name="code">eos.motivation</field>
+            <field name="prefix">EOSM</field>
+            <field name="padding">5</field>
+        </record>
+        <record id="seq_employee_eos" model="ir.sequence">
+            <field name="name">employee eos</field>
+            <field name="code">employee.eos</field>
+            <field name="prefix">EOS</field>
+            <field name="padding">5</field>
+        </record>
+    </data>
+</odoo>

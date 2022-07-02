@@ -1,0 +1,428 @@
+<odoo>
+    <data>
+        <!--Deduction / Violation category-->
+        <record model="ir.ui.view" id="deduction_violation_category_form">
+            <field name="name">deduction.violation.category form</field>
+            <field name="model">deduction.violation.category</field>
+            <field name="arch" type="xml">
+                <form string="Violation category">
+                    <header>
+                        <button name="confirm" string="Confirm" states="new" type="object" class="oe_highlight" groups="hr.group_hr_manager"/>
+                        <button name="set_new" string="Set To New" states="confirmed" type="object" class="oe_highlight" groups="hr.group_hr_manager"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <h1>
+                            <field name="name" required="1" placeholder="Arabic name"/>-
+                            <field name="english_name" placeholder="English name"/>
+                        </h1>
+                        <group groups="hr.group_hr_user">
+                            <field name="code" readonly="1"/>
+                            <field name="used_for_absence" attrs="{'readonly':[['state','=','confirmed']]}" />
+                            <label for="reset_each"/>
+                            <div>
+                                <field name="reset_each" class="oe_inline" attrs="{'readonly':[['state','=','confirmed']]}"  /> In Months
+                            </div>
+                        </group>
+                        <notebook groups="hr.group_hr_user">
+                            <page string="Sub types">
+                                <group>
+                                    <field name="sub_type_ids" nolabel="1" readonly="1"/>
+                                </group>
+                            </page>
+                            <page string="Notes">
+                                <group string="Notes">
+                                    <field name="note" nolabel="1"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="deduction_violation_category_tree">
+            <field name="name">deduction.violation.category form</field>
+            <field name="model">deduction.violation.category</field>
+            <field name="arch" type="xml">
+                <tree string="Violation category">
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="english_name"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="deduction_violation_category_action" model="ir.actions.act_window">
+            <field name="name">Violation category</field>
+            <field name="res_model">deduction.violation.category</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{ }</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Click to define a new Violation category.</p>
+            </field>
+        </record>
+        <menuitem id="deduction_violation_category_menu" name="Violation category" parent="deduction_violation_config_menu"
+                  action="deduction_violation_category_action" sequence="10"/>
+
+
+
+        <!--Deduction / Violation type-->
+        <record model="ir.ui.view" id="deduction_violation_type_form">
+            <field name="name">deduction.violation.type form</field>
+            <field name="model">deduction.violation.type</field>
+            <field name="arch" type="xml">
+                <form string="Violation type">
+                    <header>
+                        <button string="Confirm" name="confirm" type="object" states="new" class="oe_highlight" groups="hr.group_hr_manager"/>
+                        <button string="Set to new" name="reset" type="object" states="confirmed"
+                                confirm="Are You sure that you want to set this Deduction / Violation type to new" groups="hr.group_hr_manager"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <h2>
+                            <field name="name" required="1" placeholder="Violation / deduction Arabic Description"
+                                   attrs="{'readonly':[['state','=','confirmed']]}"/>-
+                            <field name="english_name" placeholder="Violation / deduction English Description"
+                                   attrs="{'readonly':[['state','=','confirmed']]}"/>
+                        </h2>
+                        <group groups="hr.group_hr_user">
+                            <group>
+                                <field name="code" readonly="1"/>
+                                <field name="model_name" invisible="1"/>
+                                <field name="deduction_categ_id" required="1" options="{'no_create':True}" domain="[['state','=','confirmed']]"
+                                       attrs="{'readonly':[['state','=','confirmed']]}"/>
+                                <field name="used_for_absence"  />
+                                <label for="reset_each"/>
+                                <div>
+                                    <field name="reset_each" class="oe_inline"  /> In Months
+                                </div>
+                                <field name="deduction_based_on" required="1" attrs="{'readonly':[['state','=','confirmed']]}"/>
+                            </group>
+                            <group>
+                                <h3 style="border: 1px #a24689 solid;border-radius: 5px;padding: 10px;">
+                                    <br/>
+                                    <br/>النسبة المحسومة هي نسبة من الأجر اليومي
+                                    <br/>
+                                    Deductions will be calculated based on daily salary
+                                </h3>
+                            </group>
+                            <group string="First time (  أول مرة  )">
+                                <field name="deduction_type1" required="1" attrs="{'readonly':[['state','=','confirmed']]}"/>
+                                <field name="template1_id"
+                                       attrs="{'invisible':[['deduction_type1','!=','letter']],'required':[['deduction_type1','=','letter']],'readonly':[['state','=','confirmed']]}"
+                                       options="{'no_create':True}"/>
+                                <label for="deduction_percentage1" attrs="{'invisible':[['deduction_type1','not in',['deduction','deduction_action']]]}"/>
+                                <div attrs="{'invisible':[['deduction_type1','not in',['deduction','deduction_action']]]}">
+                                    <field name="deduction_percentage1" attrs="{'invisible':[['deduction_type1','not in',['deduction','deduction_action']]],
+                                'readonly':[['state','=','confirmed']],'required':[['deduction_type1','=',['deduction','deduction_action']]]}"
+                                           class="oe_inline"/>
+                                    %
+                                </div>
+                                <field name="other_action1" attrs="{'invisible':[['deduction_type1','!=','deduction_action']],'readonly':[['state','=','confirmed']],
+                                    'required':[['deduction_type1','=','deduction_action']]}"/>
+                                <field name="other_action_desc1"
+                                       attrs="{'invisible':[['other_action1','!=','other']],'required':[['other_action1','=','other']],'readonly':[['state','=','confirmed']]}"/>
+                            </group>
+                            <group string="Second time (  ثاني مرة  )">
+                                <field name="deduction_type2" required="1" attrs="{'readonly':[['state','=','confirmed']]}"/>
+                                <field name="template2_id"
+                                       attrs="{'invisible':[['deduction_type2','!=','letter']],'required':[['deduction_type2','=','letter']],'readonly':[['state','=','confirmed']]}"
+                                       options="{'no_create':True}"/>
+                                <label for="deduction_percentage2" attrs="{'invisible':[['deduction_type2','not in',['deduction','deduction_action']]]}"/>
+                                <div attrs="{'invisible':[['deduction_type2','not in',['deduction','deduction_action']]]}">
+                                    <field name="deduction_percentage2" attrs="{'invisible':[['deduction_type2','not in',['deduction','deduction_action']]],
+                                'readonly':[['state','=','confirmed']],'required':[['deduction_type2','=',['deduction','deduction_action']]]}"
+                                           class="oe_inline"/>
+                                    %
+                                </div>
+                                <field name="other_action2" attrs="{'invisible':[['deduction_type2','!=','deduction_action']],'readonly':[['state','=','confirmed']],
+                                    'required':[['deduction_type2','=','deduction_action']]}"/>
+                                <field name="other_action_desc2"
+                                       attrs="{'invisible':[['other_action2','!=','other']],'required':[['other_action2','=','other']],'readonly':[['state','=','confirmed']]}"/>
+                            </group>
+                            <group string="Third time (  ثالث مرة  )">
+                                <field name="deduction_type3" required="1" attrs="{'readonly':[['state','=','confirmed']]}"/>
+                                <field name="template3_id" options="{'no_create':True}"
+                                       attrs="{'invisible':[['deduction_type3','!=','letter']],'required':[['deduction_type3','=','letter']],'readonly':[['state','=','confirmed']]}"/>
+
+                                <label for="deduction_percentage3" attrs="{'invisible':[['deduction_type3','not in',['deduction','deduction_action']]]}"/>
+                                <div attrs="{'invisible':[['deduction_type3','not in',['deduction','deduction_action']]]}">
+                                    <field name="deduction_percentage3" attrs="{'invisible':[['deduction_type3','not in',['deduction','deduction_action']]],
+                                'readonly':[['state','=','confirmed']],'required':[['deduction_type3','=',['deduction','deduction_action']]]}"
+                                           class="oe_inline"/>
+                                    %
+                                </div>
+                                <field name="other_action3" attrs="{'invisible':[['deduction_type3','!=','deduction_action']],
+                                    'required':[['deduction_type3','=','deduction_action']]}"/>
+                                <field name="other_action_desc3"
+                                       attrs="{'invisible':[['other_action3','!=','other']],'required':[['other_action3','=','other']],'readonly':[['state','=','confirmed']]}"/>
+                            </group>
+                            <group string="Forth time (  رابع مرة  )">
+                                <field name="deduction_type4" required="1" attrs="{'readonly':[['state','=','confirmed']]}"/>
+                                <field name="template4_id"
+                                       attrs="{'invisible':[['deduction_type4','!=','letter']],'required':[['deduction_type4','=','letter']],'readonly':[['state','=','confirmed']]}"
+                                       options="{'no_create':True}"/>
+                                <label for="deduction_percentage4" attrs="{'invisible':[['deduction_type4','not in',['deduction','deduction_action']]]}"/>
+                                <div attrs="{'invisible':[['deduction_type4','not in',['deduction','deduction_action']]]}">
+                                <field name="deduction_percentage4" attrs="{'invisible':[['deduction_type4','not in',['deduction','deduction_action']]],'readonly':[['state','=','confirmed']],
+                                    'required':[['deduction_type4','=',['deduction','deduction_action']]]}" class="oe_inline"/>
+                                %</div>
+                                <field name="other_action4" attrs="{'invisible':[['deduction_type4','!=','deduction_action']],'readonly':[['state','=','confirmed']],
+                                    'required':[['deduction_type4','=','deduction_action']]}"/>
+                                <field name="other_action_desc4"
+                                       attrs="{'invisible':[['other_action4','!=','other']],'required':[['other_action4','=','other']],'readonly':[['state','=','confirmed']]}"/>
+                            </group>
+                            <group>
+                                <field name="create_uid" readonly="1"/>
+                                <field name="confirm_uid" readonly="1"/>
+                            </group>
+                        </group>
+                        <notebook  groups="hr.group_hr_user">
+                            <page string="Attachments">
+                                <group string="Attachments">
+                                    <field name="attachment_ids" nolabel="1" attrs="{'readonly':[['state','=','confirmed']]}">
+                                        <tree editable="bottom">
+                                            <field name="name" required="1"/>
+                                            <field name="file" required="1"/>
+                                            <field name="note"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Notes">
+                                <group string="Notes">
+                                    <field name="note" nolabel="1" attrs="{'readonly':[['state','=','confirmed']]}"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="deduction_violation_type_tree">
+            <field name="name">deduction.violation.type tree</field>
+            <field name="model">deduction.violation.type</field>
+            <field name="arch" type="xml">
+                <tree string="Violation type">
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="english_name"/>
+                    <field name="deduction_categ_id"/>
+                    <field name="deduction_based_on"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="deduction_violation_type_action" model="ir.actions.act_window">
+            <field name="name">Violation type</field>
+            <field name="res_model">deduction.violation.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Click to define a new Violation type.</p>
+            </field>
+        </record>
+        <menuitem id="deduction_violation_type_menu" name="Violation type" parent="deduction_violation_config_menu"
+                  action="deduction_violation_type_action" sequence="5"/>
+        <!--Employee deductions - violations-->
+        <record model="ir.ui.view" id="employee_deductions_violations_form">
+            <field name="name">employee.deductions.violations form</field>
+            <field name="model">employee.deductions.violations</field>
+            <field name="arch" type="xml">
+                <form string="Employee deductions - violations">
+                    <header>
+                        <button string="Review" name="review" type="object" states="new" class="oe_highlight"
+                                confirm="Are you sure that you reviewed the date." groups="saudi_hr_employee.group_deduction_review,hr.group_hr_manager"/>
+                        <button string="Confirm" name="confirm" type="object" states="reviewed" class="oe_highlight"
+                                confirm="Are you sure that you want to Confirm this deduction" groups="saudi_hr_employee.group_deduction_confirm,hr.group_hr_manager"/>
+                        <button string="Refuse" name="refuse" type="object" states="new,reviewed" class="oe_highlight" groups="saudi_hr_employee.group_deduction_refuse,hr.group_hr_manager"/>
+                        <button string="Set To Draft" name="set_draft" type="object" states="reviewed,refused" class="oe_highlight" groups="saudi_hr_employee.group_deduction_review,saudi_hr_employee.group_deduction_reverse,saudi_hr_employee.group_deduction_refuse,saudi_hr_employee.group_deduction_confirm,hr.group_hr_manager"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="code" readonly="1" groups="hr.group_hr_user"/>
+                                <field name="desc" required="1" attrs="{'readonly':[('state','in',['confirmed','refused'])]}"/>
+                                <field name="employee_id" required="1" options="{'no_create':True}" attrs="{'readonly':[['state','in',['confirmed','refused']]]}" readonly="context.get('popup', False)"/>
+                                <field name="sponsor" string='Sponsor ID' groups="hr.group_hr_user"/>
+                                <field name="supervisor" string='Supervisor' groups="hr.group_hr_user"/>
+                                <field name="emp_status" string='Employee Status' groups="hr.group_hr_user"/>
+                                <field name="contract_id" options="{'no_create':True}" readonly="1" groups="hr.group_hr_user"/>
+                                <field name="branch_id"  readonly="1" groups="hr.group_hr_user"/>
+                                <field name="department_id" options="{'no_create':True}" readonly="1" groups="hr.group_hr_user"/>
+                                <field name="adjusted_date" readonly="1" groups="hr.group_hr_user"/>
+                                <field name="deduction_date" required="1" attrs="{'readonly':[['state','in',['confirmed','refused']]]}" />
+                                <field name="issue_date" required="1" attrs="{'readonly':[['state','in',['confirmed','refused']]]}" />
+                                <field name="create_date" readonly="1"  string="Creation Date" widget="date"/>
+                                <field name="deduction_reason" attrs="{'readonly':[['state','in',['confirmed','refused']]]}" required="1"/>
+                                <field name="previous_violations" readonly="1" attrs="{'invisible':[['deduction_reason','!=','violation']]}"/>
+                                <field name="violation_type_id" domain="[['state','in',['confirmed','refused']]]" options="{'no_create':True}"
+                                       attrs="{'invisible':[['deduction_reason','!=','violation']], 'required':[['deduction_reason','=','violation']],
+                                       'readonly':[['state','in',['confirmed','refused']]]}"/>
+                                <field name="decision" required="1" attrs="{'readonly':[['state','in',['confirmed','refused']]]}"/>
+                                <field name="template_id" attrs="{'invisible':[['decision','!=','letter']],'required':[['decision','=','letter']],
+                                    'readonly':[['state','in',['confirmed','refused']]]}" options="{'no_create':True}"/>
+                            </group>
+                            <group>
+                                <label for="deduction_type" string="Deduction type" attrs="{'invisible':[('decision','in',['verbal','letter'])]}"/>
+                                <div attrs="{'invisible':[('decision','in',['verbal','letter'])]}">
+                                    <field name="deduction_type" class="oe_inline" attrs="{'readonly':[['deduction_reason','=','violation'],['state','in',['confirmed','refused']]],'required':[('decision','not in',['verbal','letter'])]}"/>
+                                    <span attrs="{'invisible':[['deduction_type','!=','percentage']]}" class="oe_inline">&#160; %</span>
+                                    <field name="percentage_type" class="oe_inline" attrs="{'invisible':[('deduction_type','!=','percentage')],
+                                        'required':[('deduction_type','=','percentage')]}"/>
+                                </div>
+                                <label for="deduction_percentage" attrs="{'invisible':['|',['decision','not in',['deduction','deduction_action']],
+                                                                            ['deduction_type','!=','percentage']]}"/>
+                                <div attrs="{'invisible':['|',['decision','not in',['deduction','deduction_action']], ['deduction_type','!=','percentage']]}">
+                                    <field name="deduction_percentage" class="oe_inline"/>%
+                                </div>
+                                <field name="other_action" attrs="{'invisible':[['decision','!=','deduction_action']],'readonly':[['state','in',['confirmed','refused']]],
+                                    'required':[['decision','=','deduction_action']]}"/>
+                                <field name="action_desc" attrs="{'invisible':[['other_action','!=','other']],'readonly':[['state','in',['confirmed','refused']]],
+                                    'required':[['other_action','=','other']]}"/>
+                                <field name="deduction_violation_category_id" attrs="{'invisible':[['deduction_reason','!=','violation']]}" readonly="1" groups="hr.group_hr_user"/>
+                                <field name="deduction_based_on" attrs="{'readonly':[['deduction_reason','=','violation'],['state','in',['confirmed','refused']]],
+                                               'invisible':['|',('deduction_type','!=','percentage'),('decision','in',['verbal','letter'])],'required':[['deduction_type','=','percentage']]}"/>
+                                <label for="deduction_value" string="Deduction Value" attrs="{'invisible':[('decision','in',['verbal','letter'])]}"/>
+                                <div attrs="{'invisible':[('decision','in',['verbal','letter'])]}">
+                                    <field name="deduction_value" class="oe_inline" attrs="{'readonly':[['state','in',['confirmed','refused']]],'required':[('decision','not in',['verbal','letter'])]}"/>
+                                    <span attrs="{'invisible':[['deduction_type','!=','percentage']]}" class="oe_inline">&#160; %</span>
+                                </div>
+                                <field name="minus_deduction" groups="base.group_no_one"/>
+                                <field name="amount" readonly="1" attrs="{'readonly':[['state','in',['confirmed','refused']]],'invisible':[('decision','in',['verbal','letter'])]}"/>
+                                <field name="paid_amount" readonly="1" />
+                                <field name="remaining_amount" readonly="1" />
+                                <field name="auto_deduction" readonly="1" groups="hr.group_hr_user"/>
+                                <field name="early_return_from_leave" readonly="1" groups="hr.group_hr_user"/>
+                                <field name="late_return_from_leave" readonly="1" groups="hr.group_hr_user"/>
+                                <field name="reversed_reward" readonly="1" attrs="{'invisible':[['reversed_reward','=',False]]}"/>
+                                <field name="employee_reward" readonly="1" attrs="{'invisible':[['employee_reward','=',False]]}"/>
+                                <field name="absence_record" readonly="1"/>
+                                <field name="absence_deduction_amount" readonly="1"/>
+                                <field name="total" readonly="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Attachments">
+                                <group string="Attachments">
+                                    <field name="attachment_ids" nolabel="1" attrs="{'readonly':[['state','in',['confirmed','refused']]]}">
+                                        <tree editable="bottom">
+                                            <field name="name" required="1"/>
+                                            <field name="file" required="1"/>
+                                            <field name="note"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Note">
+                                <group string="Notes">
+                                    <field name="note" nolabel="1" attrs="{'readonly':[['state','in',['confirmed','refused']]]}"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="employee_deductions_violations_tree">
+            <field name="name">deduction.violation.type tree</field>
+            <field name="model">employee.deductions.violations</field>
+            <field name="arch" type="xml">
+                <tree string="Employee deductions - violations">
+                    <field name="code"/>
+                    <field name="desc"/>
+                    <field name="employee_id"/>
+                    <field name="contract_id"/>
+                    <field name="department_id"/>
+                    <field name="deduction_date"/>
+                    <field name="month" groups="base.group_no_one"/>
+                    <field name="deduction_reason"/>
+                    <field name="violation_type_id"/>
+                    <field name="decision"/>
+                    <field name="deduction_violation_category_id"/>
+                    <field name="deduction_based_on"/>
+                    <field name="deduction_type"/>
+                    <field name="deduction_value"/>
+                    <field name="amount"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="confirm_other_action_form">
+            <field name="name">confirm.other.action form</field>
+            <field name="model">confirm.other.action</field>
+            <field name="arch" type="xml">
+                <form string="Attention">
+                    <sheet>
+                        <group>
+                            <p>
+                                Attention !!
+                                <br/>
+                                Your system could not understand the action which you wrote (
+                                <field name="action" readonly="1"/>
+                                ), So you must do it manually.
+                            </p>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="confirm" type="object" string="Accept"/>
+                        or
+                        <button string="Decline" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="employee_deductions_violations_search" model="ir.ui.view">
+            <field name="name">deduction.violation search</field>
+            <field name="model">employee.deductions.violations</field>
+            <field name="arch" type="xml">
+                <search string="Employee Deductions - Violations">
+                    <field name="employee_id"/>
+                    <field name="amount"/>
+                    <field name="state"/>
+                    <field name="desc"/>
+                    <group string="Group By...">
+                        <filter name="employee_id" string="Employee" context="{'group_by': 'employee_id'}"/>
+                        <filter name="sponsor" string="Sponsor ID" context="{'group_by': 'sponsor'}"/>
+                        <filter name="supervisor" string="Supervisor" context="{'group_by': 'supervisor'}"/>
+                        <filter name="emp_status" string="Employee Status" context="{'group_by': 'emp_status'}"/>
+                        <filter string="Branch" name="branch_id" context="{'group_by':'branch_id'}"/>
+                        <filter name="department_id" string="Department" context="{'group_by': 'department_id'}"/>
+                        <filter name="month" string="Month" context="{'group_by': 'month'}"/>
+                        <filter name="deduction_reason" string="Deduction reason" context="{'group_by': 'deduction_reason'}"/>
+                        <filter name="violation_type_id" string="violation type" context="{'group_by': 'violation_type_id'}"/>
+                        <filter name="state" string="Status" context="{'group_by': 'state'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record id="employee_deductions_violations_action" model="ir.actions.act_window">
+            <field name="name">Employee deductions - violations</field>
+            <field name="res_model">employee.deductions.violations</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{ }</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Click to define a new Employee deductions - violations.</p>
+            </field>
+        </record>
+        <menuitem id="employee_deductions_violations_menu" name="Employee deductions - violations" parent="deductions_menu"
+                  action="employee_deductions_violations_action" sequence="1"/>
+
+    </data>
+</odoo>

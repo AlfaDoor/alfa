@@ -1,0 +1,115 @@
+<odoo>
+    <data>
+
+        <!-- Overwrite Analytic account Tree view-->
+        <record model="ir.ui.view" id="view_account_analytic_account_list_inherit">
+            <field name="name">analytic.template.tree</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="analytic.view_account_analytic_account_list"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="replace">
+                    <tree string="Analytic Accounts" decoration-success="type == 'view'" default_order="final_code">
+                        <field name="final_code"/>
+                        <field name="name"/>
+                        <field name="arabic_name"/>
+                        <field name="type"/>
+                        <field name="partner_id"/>
+                        <field name="account_type"/>
+                        <!--<field name="debit"/>-->
+                        <!--<field name="credit"/>-->
+                        <!--<field name="balance"/>-->
+                    </tree>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Overwrite Analytic account Search view-->
+        <record model="ir.ui.view" id="view_account_analytic_account_search_inherit">
+            <field name="name">analytic.template.search</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="analytic.view_account_analytic_account_search"/>
+            <field name="arch" type="xml">
+                <field name="name" position="replace">
+                    <field name="name" filter_domain="['|', ('name','ilike',self), ('final_code','ilike',self)]" string="Analytic Account"/>
+                </field>
+            </field>
+        </record>
+        <!-- Overwrite Analytic account Form view-->
+        <record model="ir.ui.view" id="view_account_analytic_account_form_inherit">
+            <field name="name">analytic.analytic.account.form</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="analytic.view_account_analytic_account_form"/>
+            <field name="arch" type="xml">
+                <form position="replace">
+                    <form string="Analytic Account">
+                        <header>
+                            <button name="get_ledger" string="View ledger" type="object"/>
+                        </header>
+                        <sheet string="Analytic Account">
+                            <div class="oe_button_box" name="button_box">
+                                <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                                    <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
+                                </button>
+                                <button class="oe_stat_button" type="action" name="%(analytic.account_analytic_line_action)d" icon="fa-usd"
+                                        string="Cost/Revenue"
+                                        widget="statinfo"/>
+                            </div>
+                            <div class="oe_title">
+                                <label for="name" string="Name"/>
+                                <h1>
+                                    <field name="name" class="oe_inline" placeholder="English name"/>
+                                    -
+                                    <field name="arabic_name" required="1" class="oe_inline" placeholder="Arabic name"/>
+                                </h1>
+                            </div>
+                            <div name="project"/>
+                            <group name="main">
+                                <group>
+                                    <field name="type" required="1"/>
+                                    <field name="partner_id" options="{'no_create':True}"/>
+                                    <label for="parent_id" string="What's the main account"/>
+                                    <div>
+                                        <field name="parent_id" class="oe_inline" domain="[('type','=','view'),('id','!=',id)]"
+                                               context="{'view':True}" options="{'no_create':True}"/>
+                                        -
+                                        <field name="code_main" class="oe_inline" readonly="1"/>
+                                    </div>
+                                    <field name="code"/>
+                                    <field name="final_code"/>
+                                </group>
+                                <group>
+                                    <field name="company_id" options="{'no_create':True}"/>
+                                    <field name="currency_id" options="{'no_create':True}"/>
+                                    <field name="account_type" required="1"/>
+                                    <field name="distribute_percentage"/>
+                                </group>
+                            </group>
+                            <notebook>
+                            </notebook>
+                        </sheet>
+                        <div class="oe_chatter">
+                            <field name="message_follower_ids" widget="mail_followers"/>
+                            <field name="message_ids" widget="mail_thread"/>
+                        </div>
+                        <div class="oe_chatter">
+                            <field name="message_follower_ids" widget="mail_followers"/>
+                            <field name="message_ids" widget="mail_thread"/>
+                        </div>
+                    </form>
+                </form>
+
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_account_move_line_pivot_inherit">
+            <field name="name">account.move.line.pivot inherit</field>
+            <field name="model">account.move.line</field>
+            <field name="inherit_id" ref="account_account.view_account_move_line_pivot"/>
+            <field name="arch" type="xml">
+                <field name="account_id" position="after">
+                    <field name="parent_analytic_account_id" type="col"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

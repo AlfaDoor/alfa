@@ -1,0 +1,22 @@
+<odoo>
+    <data>
+        <template id="report_manufacturing_custom" inherit_id="mrp.report_mrporder">
+            <xpath expr="//div/div[3]" postion="after">
+                <div class="col-3">
+                    <strong>Quantity Consumed:</strong><br/>
+                    <span t-field="o.produced_quantity"/>
+                    <span t-field="o.product_uom_id.name" groups="uom.group_uom"/>
+                </div>
+                <div class="col-3">
+                    <strong>Quantity Remaining:</strong><br/>
+                    <span t-field="o.remain_quantity"/>
+                    <span t-field="o.product_uom_id.name" groups="uom.group_uom"/>
+                </div>
+                <div class="col-3">
+                    <strong>Machine Number:</strong><br/>
+                    <span t-field="o.machine_number"/>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>

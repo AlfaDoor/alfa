@@ -1,0 +1,17 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="view_move_form_inherit">
+            <field name="name"> account.move.form</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form" />
+            <field name="arch" type="xml">
+                <field name="analytic_account_id" position="attributes">
+                    <attribute name="options">{'no_create': True}</attribute>
+                    <attribute name="string">Cost center</attribute>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</odoo>

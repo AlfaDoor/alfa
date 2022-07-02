@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_generate_transaction_wizard" model="ir.ui.view">
+        <field name="name">generate.transaction.wizard</field>
+        <field name="model">generate.transaction.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Post Amortization Lines">
+                <group>
+                    <group>
+                        <field name="account_date"/>
+                        <field name="expense_nature"/>
+<!--                        <field name="journal_id" options="{'no_create_edit':True, 'no_create':True}"/>  -->
+                        <field name="group_journal_entries"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="action_generate_entries" string="Generate Entries" type="object"
+                        class="btn-primary"/>
+                    or
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_generate_transaction_wizard" model="ir.actions.act_window">
+        <field name="name">Post Amortization Lines</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">generate.transaction.wizard</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_generate_transaction_wizard" name="Generate Expense Transaction Entries"
+              parent="account.menu_finance_entries_generate_entries"
+              action="action_generate_transaction_wizard" sequence="112"/>
+</odoo>

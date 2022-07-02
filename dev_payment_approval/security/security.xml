@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (C) 2015 DevIntelle Consulting Service Pvt.Ltd (<http://www.devintellecs.com>).
+
+For Module Support : devintelle@gmail.com  or Skype : devintelle
+ -->
+<odoo>
+    <record model="ir.module.category" id="module_category_payment_approvaks">
+        <field name="name">Payment Approvals</field>
+    </record>
+    
+    <record id="double_verification_payment_right" model="res.groups">
+        <field name="name">Payment Second Approval</field>
+        <field name="category_id" ref="dev_payment_approval.module_category_payment_approvaks"/>
+    </record>
+    
+    <record id="triple_verification_payment_right" model="res.groups">
+        <field name="name">Payment Third Approval</field>
+        <field name="category_id" ref="dev_payment_approval.module_category_payment_approvaks"/>
+    </record>
+</odoo>

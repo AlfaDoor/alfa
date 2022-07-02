@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_fisical_year_accountant,fiscal_year Accountant,model_fiscal_year,account.group_account_user,1,0,0,0
+access_fisical_year_adviser,fiscal_year Adviser,model_fiscal_year,account.group_account_manager,1,1,1,1
+
+access_periods_accountant,periods Accountant,model_periods,account.group_account_user,1,0,0,0
+access_periods_adviser,periods Adviser,model_periods,account.group_account_manager,1,1,1,1

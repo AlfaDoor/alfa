@@ -1,0 +1,698 @@
+<odoo>
+    <data>
+        <menuitem name="Loans / Deductions / Rewards"
+                  id="base.menu_loans_root"
+                  icon="fa-shopping-cart"
+                  web_icon="hr_loans,static/description/icon.png"
+                  sequence="80"/>
+        <menuitem id="menu_loans_config" name="Configuration" groups="hr.group_hr_user" parent="base.menu_loans_root" sequence="50"/>
+        <menuitem id="menu_loans_general_root" name="General Settings" groups="hr.group_hr_user" parent="menu_loans_config" sequence="0"/>
+        <menuitem id="menu_loans_config_salary_root" name="Loans &amp; salary in advance configuration" groups="hr.group_hr_user" parent="menu_loans_config" sequence="0"/>
+
+        <record id="action_hr_loans_advances" model="ir.actions.act_window">
+            <field name="name">Loans / Advances</field>
+            <field name="res_model">hr_loans.loan_advance</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{ }</field>
+        </record>
+
+        <menuitem id="menu_hr_loans_advances" name="Loans And Advances Types" groups="hr.group_hr_user" parent="menu_loans_config_salary_root" sequence="1"
+                  action="action_hr_loans_advances"/>
+
+
+        <record id="hr_loans_advances_form" model="ir.ui.view">
+            <field name="name">hr.loans.advances.form</field>
+            <field name="model">hr_loans.loan_advance</field>
+            <field name="arch" type="xml">
+                <form string="Loans and Advances">
+                    <header>
+                        <button name="action_confirm" string="Confirm" type="object" class="oe_highlight" groups="hr.group_hr_manager"
+                                attrs="{'invisible': ['|',('create_date', '=', False),('state', '!=', 'New')]}"/>
+                        <button name="action_set_new" states="Confirmed" string="Set To New" type="object" class="oe_highlight" groups="hr.group_hr_manager"/>
+                        <field name="state" widget="statusbar" readonly="1"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="name" attrs="{'readonly':[('state', '=', 'Confirmed')]}"/>
+                            <field name="type" attrs="{'readonly':[('state', '=', 'Confirmed')]}" invisible="1"/>
+                            <field name="maximum_amount" attrs="{'readonly':['|' ,('state', '=', 'Confirmed'),('type', '=', 'Salary In Advance')]}" groups="hr.group_hr_user"/>
+                            <field name="amount" attrs="{'invisible':[('maximum_amount', '!=', 'Fixed Amount')],'readonly':[('state', '=', 'Confirmed')]}" groups="hr.group_hr_user"/>
+                            <field name="number_of_months" attrs="{'invisible':[('maximum_amount', 'not in', ['Based On Basic Salary','Based On Total Salary'])],'readonly':['|',('state', '=', 'Confirmed'),('type', '=', 'Salary In Advance')]}" groups="hr.group_hr_user"/>
+                            <field name="gm_exceeds" attrs="{'invisible':[('type', '!=', 'Loan')],'readonly':[('state', '=', 'Confirmed')]}" groups="hr.group_hr_user"/>
+                            <field name="default_installment_number" attrs="{'invisible':[('type','!=','loan')]}"/>
+                            <field name="is_installment" invisible="1" groups="hr.group_hr_user"/>
+                        </group>
+                        <notebook groups="hr.group_hr_user">
+                            <page string="Notes">
+                                <field name="notes" attrs="{'readonly':[('state', '=', 'Confirmed')]}"/>
+                                <field name="create_date" invisible="1"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="hr_loans_advances_tree" model="ir.ui.view">
+            <field name="name">hr.loans.advances.tree</field>
+            <field name="model">hr_loans.loan_advance</field>
+            <field name="arch" type="xml">
+                <tree string="Loans and Advances">
+                    <field name="name"/>
+                    <field name="type"/>
+                    <field name="maximum_amount"/>
+                    <field name="amount"/>
+                    <field name="number_of_months"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+
+        <record id="action_hr_loans_advances_requests" model="ir.actions.act_window">
+            <field name="name">Loans / Advances Requests</field>
+            <field name="res_model">loan.advance.request</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{ }</field>
+        </record>
+
+        <menuitem id="menu_loans_request_root" name="Loans &amp; salary in advance"
+                  parent="base.menu_loans_root" sequence="1" />
+
+        <menuitem id="menu_loans_request" name="Loans and advances request"
+                  parent="menu_loans_request_root" sequence="1" action="action_hr_loans_advances_requests"/>
+
+        <record id="hr_loans_advances_request_form" model="ir.ui.view">
+            <field name="name">hr.loans.advances.request.form</field>
+            <field name="model">loan.advance.request</field>
+            <field name="arch" type="xml">
+                <form string="Loans and Advances Request">
+                    <header>
+                        <button name="action_officer_approve" string="Payroll Officer Approval" type="object" class="oe_highlight" groups="hr.group_hr_manager,saudi_hr_employee.group_loan_officer_approve"
+                                attrs="{'invisible': ['|',('create_date', '=', False),('state', '!=', 'New')]}"
+                                confirm="Are you sure that you want to approve this loan / salary in advance?"/>
+                        <button name="action_hr_approve" string="Hr Manager Approve" type="object" class="oe_highlight" groups="hr.group_hr_manager,saudi_hr_employee.group_loan_hr_manager_approve"
+                                attrs="{'invisible': ['|',('create_date', '=', False),('state', '!=', 'Payroll Officer Approval')]}"
+                                confirm="Are you sure that you want to approve this loan / salary in advance?"/>
+                        <button name="action_financial_approve" string="Financial  Manager Approve" type="object" class="oe_highlight"
+                                groups="account.group_account_manager,saudi_hr_employee.group_loan_financial_approve" states="HR Manager Approve"
+                                confirm="Are you sure that you want to approve this loan / salary in advance?"/>
+                        <button name="action_gm_approve" string="CEO / GM approval" type="object" class="oe_highlight" groups="basic_hr.group_hr_ceo,saudi_hr_employee.group_loan_ceo_approval"
+                                states="Financial Manager Approve" confirm="Are you sure that you want to approve this loan / salary in advance?"/>
+                        <button name="action_refuse" states="GM Approve" string="Reverse loans – salary in advance" type="object"
+                                class="oe_highlight" groups="hr.group_hr_manager,account.group_account_manager,saudi_hr_employee.group_loan_reverse"
+                                confirm="Are you sure that you want to reverse this loan / salary in advance."/>
+                        <button name="action_refuse_confirm" states="New,Payroll Officer Approval,HR Manager Approve,Financial Manager Approve" string="Refuse" type="object"
+                                class="oe_highlight" groups="hr.group_hr_manager,account.group_account_manager,saudi_hr_employee.group_loan_refuse"
+                                confirm="Are you sure that you want to refuse this loan / salary in advance."/>
+                        <field name="state" widget="statusbar" readonly="1"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                                <field name="employee_id" required="1" options="{'no_create': True}" attrs="{'readonly':[('state', '!=', 'New')]}"/>
+                                <field name="branch_id" groups="hr.group_hr_user" readonly="1"/>
+                                <field name="department_id" groups="hr.group_hr_user" readonly="1"/>
+                                <field name="country_id" readonly="1" groups="hr.group_hr_user"/>
+                                <field name="gender" readonly="1" groups="hr.group_hr_user"/>
+                                <field name="job_id" groups="hr.group_hr_user" readonly="1"/>
+                                <field name="contract_id" groups="hr.group_hr_user" readonly="1"/>
+                                <label for="contract_start" string="Duration" groups="hr.group_hr_user"/>
+                                <div groups="hr.group_hr_user">
+                                    <field name="contract_start" class="oe_inline" readonly="1"/>
+                                    -
+                                    <field name="contract_end" class="oe_inline" readonly="1"/>
+                                </div>
+                                <field name="paid_amount" attrs="{'readonly':[('state', '!=', 'New')]}" groups="base.group_no_one"/>
+                                <field name="requested_by"/>
+                                <field name="linked_air_ticket_id" readonly="1" groups="hr.group_hr_user"/>
+                                <field name="another_loan_before_pay" attrs="{'readonly':[('state', '=', 'Loan Fully Paid')]}" groups="hr.group_hr_manager" />
+                            </group>
+                            <group>
+                                <field name="reason" attrs="{'readonly':[('state', '!=', 'New')]}"/>
+                                <field name="type" invisible="1" attrs="{'readonly':[('state', '!=', 'New')]}" required="1"/>
+                                <field name="loan_type" options="{'no_create': True}" attrs="{'readonly':[('state', '!=', 'New')],'invisible':[('type', '=', False)]}"
+                                        domain="[('state', '=', 'Confirmed'),('type', '=', type)]" required = "1"/>
+                                <field name="date" attrs="{'readonly':[('state', '!=', 'New')]}"/>
+                                <field name="create_date" string="creation date" readonly="1" groups="hr.group_hr_user"/>
+<label for="loan_date_from" string="Loan Period"/>
+                     <div>
+                           <field name="loan_date_from" attrs="{'readonly':[('state','!=','New')]}" class="oe_inline"/> - <field name="loan_date_to" class="oe_inline" attrs="{'readonly':[('state','!=','New')]}"/>
+                     </div>
+                                <field name="loan_amount" attrs="{'readonly':['|',('type', '=', 'Salary In Advance'),('state', '!=', 'New')]}"/>
+                                <field name="hr_manager_approval" attrs="{'readonly':['|',('type', '=', 'Salary In Advance'),('state', '!=', 'Payroll Officer Approval')]}" groups="hr.group_hr_user,saudi_hr_employee.group_loan_financial_approve"/>
+                                <field name="financial_manager_approval"
+                                       attrs="{'readonly':['|',('type', '=', 'Salary In Advance'),('state', '!=', 'HR Manager Approve')]}" groups="hr.group_hr_user,saudi_hr_employee.group_loan_financial_approve"/>
+                                <field name="general_manager_approval"
+                                       attrs="{'readonly':['|',('type', '=', 'Salary In Advance'),('state', '!=', 'Financial Manager Approve')]}" groups="hr.group_hr_user,saudi_hr_employee.group_loan_financial_approve"/>
+                                <field name="month" readonly="1" attrs="{'invisible':[('type', '!=', 'Salary In Advance')]}"/>
+                                <field name="year" readonly="1" attrs="{'invisible':[('type', '!=', 'Salary In Advance')]}"/>
+                                <field name="payslip_id" readonly="1" attrs="{'invisible':[('type', '!=', 'Salary In Advance')]}"/>
+                                <field name="reversed_reward" readonly="1" attrs="{'invisible':[('reversed_reward', '=', False)]}"/>
+
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Installments" groups="saudi_hr_employee.group_loan_officer_approve,saudi_hr_employee.group_loan_hr_manager_approve,saudi_hr_employee.group_loan_financial_approve,saudi_hr_employee.group_loan_ceo_approval">
+                                <group>
+                                    <group>
+                                        <field name="expected_payment"/>
+                                    </group>
+                                    <group>
+                                        <field name="is_installment" invisible="1" />
+                                        <field name="installment_number" attrs="{'invisible':['|' ,('type', '!=', 'Loan'),('is_installment', '=', False)]}"/>
+                                        <field name="installment_start_month" attrs="{'invisible':['|' ,('type', '!=', 'Loan'),('is_installment', '=', False)]}"/>
+                                        <field name="installment_start_year" attrs="{'invisible':['|' ,('type', '!=', 'Loan'),('is_installment', '=', False)]}"/>
+                                    </group>
+                                </group>
+                                <group string="Installments Details" attrs="{'invisible':['|' ,('type', '!=', 'Loan'),('is_installment', '=', False)]}">
+                                    <button name="generate_installment"  string="Auto Generate Installments" type="object" class="oe_highlight" attrs="{'invisible':[('state', 'in', ['GM Approve','Refused'])]}"/>
+                                </group>
+                                <group attrs="{'invisible':['|' ,('type', '!=', 'Loan'),('is_installment', '=', False)]}">
+                                    <field name="installment_ids" nolabel="1" attrs="{'readonly':[('state', '=', 'GM Approve')]}" >
+                                        <tree editable="bottom" >
+                                            <field name="month" attrs="{'readonly':['|' ,('paid', '!=', 0)]}" />
+                                            <field name="year" attrs="{'readonly':['|' ,('paid', '!=', 0)]}" />
+                                            <field name="deduction_date" readonly="1" />
+                                            <field name="monthly_installment" attrs="{'readonly':['|' ,('paid', '!=', 0)]}" />
+                                            <field name="paid" readonly="1" />
+                                            <field name="remaining" readonly="1" />
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Notes">
+                                <field name="notes" attrs="{'readonly':[('state', '!=', 'New')]}"/>
+                            </page>
+                            <page string="Attachments">
+                                <group>
+                                    <field name="attachment_ids" nolabel="1" >
+                                        <tree editable="bottom">
+                                            <field name="name" required="1" />
+                                            <field name="file_name" invisible="1" />
+                                            <field name="file" required="1" filename="file_name"/>
+                                            <field name="note"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="hr_loans_advances_request_tree" model="ir.ui.view">
+            <field name="name">hr.loans.advances.request.tree</field>
+            <field name="model">loan.advance.request</field>
+            <field name="arch" type="xml">
+                <tree string="Loans and Advances Request">
+                    <field name="date"/>
+                    <field name="create_date" widget="date" string="Creation Date"/>
+                    <field name="employee_id"/>
+                    <field name="loan_type"/>
+                    <field name="loan_amount"/>
+                    <field name="hr_manager_approval"/>
+                    <field name="financial_manager_approval"/>
+                    <field name="general_manager_approval"/>
+                    <field name="requested_by"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="loan_view_employee_form" model="ir.ui.view">
+            <field name="name">hr.employee.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="priority" eval="11"/>
+            <field name="arch" type="xml">
+                <div name="button_box" position="inside">
+                    <button class="oe_inline oe_stat_button" name="action_loans" type="object" icon="fa-calender" >
+                        <field string="Loans / advances" name="loans_count" widget="statinfo"/>
+                    </button>
+                    <button class="oe_inline oe_stat_button" name="open_deductions" type="object" icon="fa-ticket">
+                        <field string="Deductions" name="deductions_count" widget="statinfo"/>
+                    </button>
+                    <button class="oe_inline oe_stat_button" name="open_rewards" type="object" icon="fa-ticket">
+                        <field string="Rewards" name="rewards_count" widget="statinfo"/>
+                    </button>
+                    <button type="object" name="open_absence_report" icon="fa-arrow-left" class="oe_inline oe_stat_button" >
+                        <field string="Absence Report" name="count_absence" widget="statinfo"/>
+                    </button>
+                </div>
+                <field name="user_id" position="after">
+                    <field name="request_loan" groups="hr.group_hr_user"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="hr_contract_form_loans" model="ir.ui.view">
+            <field name="name">hr.contract.form.loans</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="saudi_hr_contract.hr_contract_form_inherit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page name="loans" string="Loans">
+                        <field name="loans"/>
+                        <group class="oe_subtotal_footer oe_right">
+                            <field name="total_loans" class="oe_subtotal_footer_separator"/>
+                        </group>
+                        <field name="paid_amounts">
+                            <tree string="Paid Amounts">
+                                <field name="ref"/>
+                                <field name="payment_date"/>
+                                <field name="paid_amount"/>
+                                <field name="notes"/>
+                            </tree>
+                        </field>
+                        <group class="oe_subtotal_footer oe_right">
+                            <field name="loans_total_paid_amount" class="oe_subtotal_footer_separator"/>
+                        </group>
+                        <group col="3">
+                            <group>
+                                <field name="total_loans_copy"/>
+                            </group>
+                            <group>
+                                <field name="total_paid_amount_copy"/>
+                            </group>
+                            <group>
+                                <field name="remaining_amount"/>
+                            </group>
+                        </group>
+                    </page>
+                    <page string="Deductions - violations">
+                        <group string="Deductions - violations">
+                            <field name="deduction_violation_ids" nolabel="1" readonly="1">
+                                <tree string="Employee deductions - violations">
+                                    <field name="code"/>
+                                    <field name="desc"/>
+                                    <field name="deduction_date"/>
+                                    <field name="month" groups="base.group_no_one"/>
+                                    <field name="deduction_reason"/>
+                                    <field name="violation_type_id"/>
+                                    <field name="decision"/>
+                                    <field name="deduction_violation_category_id"/>
+                                    <field name="deduction_based_on"/>
+                                    <field name="deduction_type"/>
+                                    <field name="deduction_value"/>
+                                    <field name="amount"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field>
+                            <group class="oe_subtotal_footer oe_right">
+                                <field name="total_deduction_amount" class="oe_subtotal_footer_separator"/>
+                            </group>
+                        </group>
+                        <group string="Paid amounts">
+                            <field name="paid_amount_ids" nolabel="1" readonly="1">
+                                <tree>
+                                    <field name="reference_id"/>
+                                    <field name="date"/>
+                                    <field name="amount"/>
+                                    <field name="note"/>
+                                </tree>
+                            </field>
+                            <group class="oe_subtotal_footer oe_right">
+                                <field name="total_paid_amount" class="oe_subtotal_footer_separator"/>
+                            </group>
+                        </group>
+                        <group col="3">
+                            <group>
+                                <field name="total_deduction_amount_"/>
+                            </group>
+                            <group>
+                                <field name="total_paid_amount_"/>
+                            </group>
+                            <group>
+                                <field name="remaining"/>
+                            </group>
+                        </group>
+                    </page>
+                    <page string="Employee Rewards">
+                        <group string="Employee Rewards">
+                            <field name="employee_reward_ids" nolabel="1" readonly="1"/>
+                            <group class="oe_subtotal_footer oe_right">
+                                <field name="total_rewards" class="oe_subtotal_footer_separator"/>
+                            </group>
+                        </group>
+                        <group string="Paid amounts">
+                            <field name="reward_paid_amount_ids" nolabel="1" readonly="1">
+                                <tree>
+                                    <field name="reference_id"/>
+                                    <field name="date"/>
+                                    <field name="amount"/>
+                                    <field name="note"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group class="oe_subtotal_footer oe_right">
+                            <field name="reward_total_paid_amount" class="oe_subtotal_footer_separator"/>
+                        </group>
+                        <group col="3">
+                            <group>
+                                <field name="total_rewards_copy"/>
+                            </group>
+                            <group>
+                                <field name="reward_total_paid_amount_copy"/>
+                            </group>
+                            <group>
+                                <field name="remaining_rewards"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_hr_payslip_run_loans_form" model="ir.ui.view">
+            <field name="name">hr.payslip.run.loans.form</field>
+            <field name="model">hr.payslip.run</field>
+            <field name="inherit_id" ref="saudi_hr_payroll.hr_payslip_run_form_inherit"/>
+            <field name="arch" type="xml">
+                <page name="payslips" position="after">
+                    <page name="reviewed_payslips" string="Payslips To review">
+                        <group col="3">
+                            <div style="font-weight:bold;">
+                                Dear Payroll team,<br />
+                                We found that the following payslips contains loans or Violations or Rewards or absence deduction, kindly review them one by one before approve this Payslip batches.
+                            </div>
+                        </group>
+                        <group>
+                            <label for="reviewed_payslip_ids" string="Payslips which contains Loans / Violations / Rewards"/>
+                        </group>
+                        <group>
+                            <div>
+                                <field name="reviewed_payslip_ids" attrs="{'readonly':[('state', '=', 'done')]}">
+                                    <tree  editable="bottom" delete="false" create="false">
+                                        <field name="number" readonly="1"/>
+                                        <field name="employee_id" readonly="1"/>
+                                        <field name="employee_english_name" readonly="1"/>
+                                        <field name="loans_data_reviewed" string="Reviewed" />
+                                        <field name="remaining_loans"  readonly="1"/>
+                                        <field name="deduct_this_month" />
+                                        <field name="remaining_deduction"  readonly="1"/>
+                                        <field name="deduct_this_month_" />
+                                        <field name="remove_from_employee" string="Remove this month" />
+                                        <field name="rewards_remaining"  readonly="1"/>
+                                        <field name="reward_pay_this_month" />
+                                        <field name="reward_remove_amount" string="Remove this month" />
+                                        <field name="total_absence" readonly="1"/>
+                                        <field name="absence_eduction_remove" string="Remove this amount"/>
+                                        <button string="View Details" name="open_payslip" type='object'/>
+                                        <field name="state" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </div>
+                        </group>
+                        <group>
+                            <field name="payslip_reviewed" attrs="{'readonly':[('state', 'in', ['done','cancel'])]}"/>
+                        </group>
+                    </page>
+                </page>
+            </field>
+        </record>
+
+        <record id="view_hr_payslip_loans_form" model="ir.ui.view">
+            <field name="name">hr.payslip.loans.form</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="saudi_hr_payroll.view_hr_payslip_inherit_form"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after" >
+                    <field name="salary_advance_id" readonly="1"/>
+                </field>
+                <xpath expr="//div[@name='button_box']" position="inside">
+                    <button type="object" name="open_absence_report" icon="fa-arrow-left" class="oe_inline oe_stat_button" >
+                        <field string="Absence Report" name="count_absence" widget="statinfo"/>
+                    </button>
+                </xpath>
+                <page name="other_payments" position="replace">
+                    <page name="other_payments" string="Other Payments / Deductions">
+                        <group string="Loans / Deductions - Violations / Rewards">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Type</th>
+                                        <th>Total</th>
+                                        <th>Previously paid</th>
+                                        <th>Remaining</th>
+                                        <th>Deduct / Pay this month</th>
+                                        <th>Fixed Amount</th>
+                                        <th>Remove This Amount</th>
+                                        <th>Next Month Balance</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>Loans</th>
+                                        <td>
+                                            <field name="total_loans" attrs="{'invisible':[('state', '!=', 'done')]}"/>
+                                            <field name="current_total_loans" attrs="{'invisible':[('state', 'not in', ['draft','Reviewed','Final Reviewed'])]}"/>
+                                        </td>
+                                        <td>
+                                            <field name="total_paid_amount" attrs="{'invisible':[('state', '!=', 'done')]}"/>
+                                            <field name="current_total_paid_amount" attrs="{'invisible':[('state', 'not in', ['draft','Reviewed','Final Reviewed'])]}"/>
+                                        </td>
+                                        <td>
+                                            <field name="remaining_amount" attrs="{'invisible':[('state', '!=', 'done')]}"/>
+                                            <field name="current_remaining_amount" attrs="{'invisible':[('state','not in', ['draft','Reviewed','Final Reviewed'])]}"/>
+                                        </td>
+                                        <td>
+                                            <field name="deduct_this_month" attrs="{'readonly':['|',('current_remaining_amount', '=', 0),('state', '!=', 'draft')]}"/>
+                                        </td>
+                                        <td>
+                                            <field name="loan_fixed_amount" attrs="{'readonly':[('state','in',['cancel','done'])]}"/>
+                                        </td>
+                                        <td>N/A</td>
+                                        <td>
+                                            <field name="loan_next_month_balance" attrs="{'invisible':[('state', 'not in', ['draft','Reviewed','Final Reviewed'])]}" />
+                                            <field name="loan_next_month_balance_history" readonly="1" attrs="{'invisible':[('state', '!=', 'done')]}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Deductions</th>
+                                        <td>
+                                            <field name="total_deduction" attrs="{'invisible':[('state', 'not in', ['draft','Reviewed','Final Reviewed'])]}" />
+                                            <field name="total_deduction_" readonly="1" attrs="{'invisible':[('state', '!=', 'done')]}" />
+                                        </td>
+                                        <td>
+                                            <field name="total_paid" attrs="{'invisible':[('state', 'not in', ['draft','Reviewed','Final Reviewed'])]}" />
+                                            <field name="total_paid_" readonly="1" attrs="{'invisible':[('state', '!=', 'done')]}" />
+                                        </td>
+                                        <td>
+                                            <field name="remaining" readonly="1" attrs="{'invisible':[('state', 'not in', ['draft','Reviewed','Final Reviewed'])]}"/>
+                                            <field name="remaining_" readonly="1" attrs="{'invisible':[('state', '!=', 'done')]}"/>
+                                        </td>
+                                        <td><field name="deduct_this_month_" attrs="{'readonly':['|',['state','=','done'],['remaining','=',0]]}"/></td>
+                                        <td>
+                                            <field name="deduction_fixed_amount" attrs="{'readonly':[('state','in',['cancel','done'])]}"/>
+                                        </td>
+                                        <td>
+                                            <field name="remove_from_employee" attrs="{'readonly':['|',['state','=','done'],['remaining','=',0]]}"/>
+                                        </td>
+                                        <td>
+                                            <field name="next_month_balance_history" readonly="1" attrs="{'invisible':[('state', '!=', 'done')]}"/>
+                                            <field name="next_month_balance" attrs="{'invisible':[('state', 'not in', ['draft','Reviewed','Final Reviewed'])]}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Rewards</th>
+                                        <td>
+                                            <field name="total_rewards" readonly="1" attrs="{'invisible':[('state', 'not in', ['draft','Reviewed','Final Reviewed'])]}"/>
+                                            <field name="total_rewards_" readonly="1" attrs="{'invisible':[('state', '!=', 'done')]}"/>
+                                        </td>
+                                        <td>
+                                            <field name="total_reward_paid" readonly="1" attrs="{'invisible':[('state', 'not in', ['draft','Reviewed','Final Reviewed'])]}"/>
+                                            <field name="total_reward_paid_" readonly="1" attrs="{'invisible':[('state', '!=', 'done')]}" />
+                                        </td>
+                                        <td>
+                                            <field name="remaining_rewards" readonly="1" attrs="{'invisible':[('state', 'not in', ['draft','Reviewed','Final Reviewed'])]}"/>
+                                            <field name="remaining_rewards_" readonly="1" attrs="{'invisible':[('state', '!=', 'done')]}" />
+                                        </td>
+                                        <td>
+                                            <field name="reward_pay_this_month" attrs="{'readonly':['|',['state','in',['Final Reviewed','done']],['remaining_rewards','=',0]]}"/>
+                                        </td>
+                                        <td>
+                                            <field name="reward_fixed_amount" attrs="{'readonly':[('state','in',['cancel','done'])]}"/>
+                                        </td>
+                                        <td>
+                                            <field name="reward_remove_amount" attrs="{'readonly':['|',['state','in',['Final Reviewed','done']],['remaining_rewards','=',0]]}"/>
+                                        </td>
+                                        <td>
+                                            <field name="reward_next_balance" readonly="1" attrs="{'invisible':[('state', 'not in', ['draft','Reviewed','Final Reviewed'])]}"/>
+                                            <field name="reward_next_balance_history" readonly="1" attrs="{'invisible':[('state', '!=', 'done')]}"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </group>
+                        <group string="Absence deduction report" col="1">
+                            <group col="3">
+                                <div style="font-weight:bold;">
+                                    Dear Payroll team,<br />
+                                    In this Window, your system read employee absence data automatically from ( Employee Absence report) the data appears here for review and you can edit any record. it will affect automatically on the absence timesheet which has been created before. If you confirmed this payslip, data will be read only and you will not be able to change it.
+                                </div>
+                            </group>
+                            <group>
+                                <div>
+                                    <field name="absence_ids" attrs="{'readonly':[('state','in',['done','cancel'])]}">
+                                        <tree string="Employees Absence Report"  editable="bottom" delete="false" create="false">
+                                            <field name="absence_days"  sum="Total Days" attrs="{'readonly':[('payslip_id','!=',False)]}" />
+                                            <field name="absence_hours" sum="Total Hours" attrs="{'readonly':[('payslip_id','!=',False)]}" />
+                                            <field name="absence_minutes" sum="Total Minutes" attrs="{'readonly':[('payslip_id','!=',False)]}" />
+                                            <field name="deduction_amount" sum="Total Amount" />
+                                            <field name="absence_date" readonly="1"/>
+                                            <field name="month"  readonly="1"/>
+                                            <field name="year"  readonly="1"/>
+                                            <field name="note" readonly="1" />
+                                            <field name="payslip_id" readonly="1"/>
+                                        </tree>
+                                    </field>
+                                </div>
+                            </group>
+                             <group col="3">
+                                <group>
+                                    <field name="total_absence" readonly="1"/>
+                                </group>
+                                <group>
+                                    <field name="absence_eduction_remove" attrs="{'readonly':[('state','in',['done','cancel'])]}" />
+                                </group>
+                                <group>
+                                    <field name="net_absence_deduction" readonly="1"/>
+                                </group>
+                            </group>
+                        </group>
+                        <group col="3">
+                            <group>
+                                <field name="negative_salary" groups="saudi_hr_employee.group_payslip_confirm"/>
+                            </group>
+                            <group>
+                                <field name="loans_data_reviewed" attrs="{'readonly':['|','&amp;','&amp;',
+                                ('current_remaining_amount', '=', 0),
+                                ('remaining_rewards', '=', 0),
+                                ('remaining', '=', 0),
+                                ('state', 'not in', ['draft','Reviewed','Final Reviewed'])]}"/>
+                            </group>
+                        </group>
+                    </page>
+                </page>
+            </field>
+        </record>
+
+        <!-- /////////////////////////// absence /////////////////////////////////////////////////-->
+
+        <record id="action_employee_absence_line" model="ir.actions.act_window">
+            <field name="name">Employee Absence Report</field>
+            <field name="res_model">employee.absence.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{ }</field>
+        </record>
+
+        <menuitem id="deduction_violation_config_menu" name="Deduction / violation settings" parent="menu_loans_config" sequence="90"/>
+        <menuitem id="deductions_menu" name="Deductions" parent="base.menu_loans_root" sequence="10"/>
+
+        <menuitem id="menu_employee_absence_line" name="Employees absence Report" groups="hr.group_hr_user" parent="deductions_menu" sequence="3"
+                  action="action_employee_absence_line"/>
+
+
+        <record id="employee_absence_line_form" model="ir.ui.view">
+            <field name="name">employee.absence.line.form</field>
+            <field name="model">employee.absence.line</field>
+            <field name="arch" type="xml">
+                <form string="Employee Absence Report">
+                    <header>
+                        <button name="create_violation" string="Create Violation" type="object" class="oe_highlight" groups="hr.group_hr_manager"
+                                attrs="{'invisible': ['|','|',('auto_created_violation', '!=', False),('no_create_violation', '=', True),('state', '!=', 'Confirmed')]}" />
+                        <button name="action_review" string="Review" type="object" class="oe_highlight" groups="saudi_hr_employee.group_absence_report_review,hr.group_hr_manager" states="New" />
+                        <button name="action_confirm" string="Confirm" type="object" class="oe_highlight" groups="saudi_hr_employee.group_absence_report_confirm,hr.group_hr_manager" states="Reviewed"
+                                confirm="Dear HR manager. Are you sure that you want to confirm this absence deduction? If there is any violation related to this absence, your system will automatically confirm it. You can not reverse this absence and the it’s violation once you confirmed it, However, you can create a reward to reverse this absence deduction."/>
+                        <button name="action_set_draft" string="Set To Draft" type="object" class="oe_highlight" groups="saudi_hr_employee.group_absence_report_confirm,saudi_hr_employee.group_absence_report_reverse,saudi_hr_employee.group_absence_report_refuse,saudi_hr_employee.group_absence_report_review,hr.group_hr_manager" states="Reviewed" />
+                        <button name="action_refuse" string="Refuse" type="object" class="oe_highlight" groups="saudi_hr_employee.group_absence_report_refuse,hr.group_hr_manager" states="New,Reviewed" />
+                        <field name="state" widget="statusbar" readonly="1"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="employee_id" required="1" options="{'no_create': True}" attrs="{'readonly':['|',('payslip_id','!=',False),('state','in',['Reviewed','Confirmed'])]}"/>
+                                <field name="employee_english_name" readonly="1"/>
+                                <field name="absence_days" attrs="{'readonly':['|',('payslip_id','!=',False),('state','=','Confirmed')]}" />
+                                <field name="absence_hours" attrs="{'readonly':['|',('payslip_id','!=',False),('state','=','Confirmed')]}" />
+                                <field name="absence_minutes" attrs="{'readonly':['|',('payslip_id','!=',False),('state','=','Confirmed')]}" />
+                                <field name="deduction_amount" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="absence_date" required="1" attrs="{'readonly':['|',('payslip_id','!=',False),('state','=','Confirmed')]}"/>
+                                <field name="month" required="1"  readonly="1" />
+                                <field name="year" required="1"  readonly="1" />
+                                <field name="patch_id" readonly="1" />
+                                <field name="payslip_id" readonly="1" />
+                                <field name="leave_reconciliation_id" readonly="1" groups="hr.group_hr_user"/>
+                                <field name="note" attrs="{'readonly':['|',('payslip_id','!=',False),('state','=','Confirmed')]}" />
+                                <field name="violation_type" options="{'no_create': True}" attrs="{'readonly':[('state','=','Confirmed')]}" />
+                                <field name="auto_created_violation" readonly="1" />
+                                <field name="violation_status" readonly="1" attrs="{'invisible':[('violation_type','=',False)]}" />
+                                <field name="previous_violations" readonly="1" attrs="{'invisible':[('violation_type','=',False)]}" />
+                                <field name="violation_amount" readonly="1" attrs="{'invisible':[('violation_type','=',False)]}" />
+                                <field name="total" readonly="1" />
+                                <field name="no_create_violation" attrs="{'readonly':[('state','=','Confirmed')]}" />
+                            </group>
+                        </group>
+                        <group groups="hr.group_hr_user">
+                            <field name="country_id"  readonly="1"/>
+                            <field name="branch_id"  readonly="1"/>
+                            <field name="department_id"  readonly="1"/>
+                            <field name="job_id" readonly="1"/>
+                            <field name="gender" readonly="1"/>
+                            <field name="marital"  readonly="1"/>
+                            <field name="paid"  readonly="1"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="employee_absence_line_tree" model="ir.ui.view">
+            <field name="name">employee.absence.line.tree</field>
+            <field name="model">employee.absence.line</field>
+            <field name="arch" type="xml">
+                <tree string="Employees Absence Report">
+                    <field name="employee_id" />
+                    <field name="employee_english_name" />
+                     <field name="absence_date" />
+                    <field name="month"  />
+                    <field name="year"  />
+                    <field name="absence_days" />
+                    <field name="absence_hours" />
+                    <field name="absence_minutes" />
+                    <field name="deduction_amount"  />
+                    <field name="note"  />
+                    <field name="no_create_violation"  />
+                    <field name="violation_amount"  />
+                    <field name="violation_status"  />
+                    <field name="payslip_id" />
+                    <field name="state" />
+                </tree>
+            </field>
+        </record>
+
+
+
+
+
+    </data>
+</odoo>

@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+
+        <record model="ir.rule" id="employee_rules">
+            <field name="name">Manager see his employees </field>
+            <field name="model_id" ref="hr.model_hr_employee"></field>
+            <field name="groups" eval="[(4,ref('base.group_user'))]"></field>
+            <field name="domain_force">[('department_id.id', 'child_of', user.env['hr.department'].search([('manager_id','in', user.employee_ids.ids)]).ids), ('department_id.manager_id.id','!=', False)]</field>
+            <field eval="1" name="perm_write"></field>
+            <field eval="1" name="perm_read"></field>
+            <field eval="0" name="perm_unlink"></field>
+            <field eval="1" name="perm_create"></field>
+        </record>
+    </data>
+</odoo>

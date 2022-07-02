@@ -1,0 +1,26 @@
+<odoo>
+    <data>
+        <record id="view_manufacturing_inherit" model="ir.ui.view">
+            <field name="name">manufacturing.view.req</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='product_id']" position="after">
+                        <field name="has_requisition" invisible="1"/>
+                     	<field name="need_requisition" invisible="1"/>
+                </xpath>
+                <xpath expr="//sheet/div/button[1]" position="before">
+                    <div class="oe_button_box">
+                        <button class="oe_stat_button" name="requisition_view" attrs="{'invisible':[('has_requisition','=',False)]}"
+								type="object" icon="fa-level-up">
+								<field string="Requisition" name="requisition_count" widget="statinfo" />
+							</button>
+						</div>
+                </xpath>
+                <xpath expr="//button[@name='action_toggle_is_locked']" position="after">
+                    <button name="create_requisition" type="object" class="oe_highlight" string="Create Requisition" attrs="{'invisible':['|',('has_requisition','=',True),('need_requisition','=',False)]}" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

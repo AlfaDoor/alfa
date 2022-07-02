@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_hr_company_policy,all hr.company.policy,model_hr_company_policy,,1,1,1,1
+access_employee_relative,all employee.relative,model_employee_relative,,1,1,1,1
+access_effective_notice_employee,effective.notice.user,model_effective_notice,base.group_user,1,0,1,0
+access_effective_notice_officer,effective.notice.user,model_effective_notice,hr.group_hr_user,1,1,1,1
+access_employee_department_history_all,employee_department_history,model_employee_department_history,,1,1,1,1
+view_employee_status,employee.status,model_employee_status,hr.group_hr_manager,1,1,1,1
+view_employee_status,employee.status,model_employee_status,base.group_user,1,1,1,1
+view_hr_sponsors,hr.sponsors,model_hr_sponsors,hr.group_hr_manager,1,1,1,1
+view_hr_sponsors,hr.sponsors,model_hr_sponsors,base.group_user,1,1,1,1
+

@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_hr_payslip_run_attaches,all hr.payslip.run.attaches,model_hr_payslip_run_attaches,,1,1,1,
+access_wizard_payslip_review,all hr.payslip.run.attaches,model_wizard_payslip_review,,1,1,1,
+access_wizard_payslip_final_review,all wizard.payslip.final.review,model_wizard_payslip_final_review,,1,1,1,
+access_wizard_payslip_confirm,all wizard.payslip.confirm,model_wizard_payslip_confirm,,1,1,1,
+access_wizard_payslip_draft,all wizard.payslip.draft,model_wizard_payslip_draft,,1,1,1,
+access_wizard_payslip_cancel,all wizard.payslip.cancel,model_wizard_payslip_cancel,,1,1,1,

@@ -1,0 +1,46 @@
+<odoo>
+    <data>
+        <!-- ==================  hr.employee ======================================-->
+        <record model="ir.rule" id="request_service_user_rule">
+            <field name="name">Request Service: User </field>
+            <field name="model_id" ref="model_service_request"></field>
+            <field name="groups" eval="[(4,ref('base.group_user'))]"></field>
+            <field name="domain_force">[('employee_id.user_id', '=', user.id)]</field>
+            <field eval="0" name="perm_write"></field>
+            <field eval="1" name="perm_read"></field>
+            <field eval="0" name="perm_unlink"></field>
+            <field eval="0" name="perm_create"></field>
+        </record>
+        <record model="ir.rule" id="request_service_direct_manager_rule">
+            <field name="name">Request Service: Direct Manager </field>
+            <field name="model_id" ref="model_service_request"></field>
+            <field name="groups" eval="[(4,ref('saudi_hr_employee.group_hr_direct_manager'))]"></field>
+            <field name="domain_force">[('employee_id.id', 'child_of', user.employee_ids.ids)]</field>
+            <field eval="0" name="perm_write"></field>
+            <field eval="1" name="perm_read"></field>
+            <field eval="0" name="perm_unlink"></field>
+            <field eval="0" name="perm_create"></field>
+        </record>
+        <record model="ir.rule" id="request_service_department_manager_rule">
+            <field name="name">Request Service: Department Manager </field>
+            <field name="model_id" ref="model_service_request"></field>
+            <field name="groups" eval="[(4,ref('saudi_hr_employee.group_hr_department_manager'))]"></field>
+            <field name="domain_force">[('department_id', 'child_of', user.employee_ids[0].department_id.id)]</field>
+            <field eval="0" name="perm_write"></field>
+            <field eval="1" name="perm_read"></field>
+            <field eval="0" name="perm_unlink"></field>
+            <field eval="0" name="perm_create"></field>
+        </record>
+        <record model="ir.rule" id="request_service_hr_officer_rule">
+            <field name="name">Request Service: officer </field>
+            <field name="model_id" ref="model_service_request"></field>
+            <field name="groups" eval="[(4,ref('hr.group_hr_user'))]"></field>
+            <field name="domain_force">[]</field>
+            <field eval="1" name="perm_write"></field>
+            <field eval="1" name="perm_read"></field>
+            <field eval="0" name="perm_unlink"></field>
+            <field eval="1" name="perm_create"></field>
+        </record>
+
+    </data>
+</odoo>

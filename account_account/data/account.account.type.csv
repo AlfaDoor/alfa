@@ -1,0 +1,58 @@
+id,name,arabic_name,include_initial_balance,code,note,location,type,debit_credit
+account_type_cash_and_banks  ,Cash and banks  ,نقديه أو بنوك,1,1,,current_asset,liquidity,debit
+account_type_Receivables,Receivables,الذمم والمدينون,1,2,,current_asset,receivable,debit
+account_type_Warehouse,Warehouse  ,مخازن ومستودعات,1,3,,current_asset,other,debit
+account_type_prepaid_expenses,Prepaid expenses  ,مصروفات مدفوعه مقدما,1,4,,current_asset,other,debit
+account_type_short_term_investments,Short term investments,استثمارات قصيرة الأجل,1,5,,current_asset,other,debit
+account.data_account_type_current_assets,Other currents assets  ,أصول متداوله أخرى,1,6,,current_asset,other,debit
+account_type_short_term_loans_others,Short term loans to others  ,قروض قصيرة الأجل للغير,1,7,,current_asset,other,debit
+account_type_nonfinancial_custody_shortterm,Non-Financial custody ( short term ),عهد غير ماليه قصيرة الاجل,1,8,,current_asset,other,debit
+account_type_FinancialCustody,Financial Custody ( short term),عهد ماليه قصيرة الاجل,1,9,,current_asset,receivable,debit
+account_type_longTermInvestments,Long Term Investments  ,استثمارات طويلة الاجل,1,30,,non_current_asset,other,debit
+account_type_Land,Land,أراضى,1,31,,non_current_asset,other,debit
+account_type_Buildings,Buildings  ,مبانى,1,32,,non_current_asset,other,debit
+account_type_Cars,Cars,سيارات,1,33,,non_current_asset,other,debit
+account_type_Machines,Machines,معدات,1,34,,non_current_asset,other,debit
+account_type_Computers_devices,Computers & It devices  ,كمبيوتر واجهزة تقنيه,1,35,,non_current_asset,other,debit
+account_type_Furniture,Furniture,اثاث وديكورات,1,36,,non_current_asset,other,debit
+account_type_OtherFixedAssets,Other fixed assets,اصول ثابته اخرى,1,37,,non_current_asset,other,debit
+account_type_IntangibleAssets,Intangible assets,اصول غير ملموسه,1,38,,non_current_asset,other,debit
+account_type_LongTermReceivables,Long term receivables,ذمم ومدينون طويلة الاجل,1,39,,non_current_asset,receivable,debit
+account_type_LongTermLoansOthers,Long Term Loans To others,قروض طويلة الاجل طرف الغير,1,40,,non_current_asset,other,debit
+account_type_LongTermPrepaidExpenses,Long term prepaid expenses,مصروفات مدفوعه مقدما طويلة الاجل,1,41,,non_current_asset,other,debit
+account_type_FixedAssetAccumulatedDepreciation,Fixed asset accumulated depreciation,مجمع اهلاك الاصول الثابته,1,50,,non_current_asset,other,credit
+account_type_AccountsPayable,Accounts Payable  ,مدفوعات الموردين,1,60,,current_liabilities,payable,credit
+account_type_Wagespayable,Wages payable,أجور مستحقة الدفع,1,61,,current_liabilities,payable,credit
+account_type_Unearnedrevenues,Unearned revenues ( cash in advance,أرباح غير محققه ( كاش مقدم ),1,62,,current_liabilities,other,credit
+account_type_Current_maturity_long_term_debits,Current maturity of long term debits,استحقاقات الفتره الحاليه من الديون طويله الاجل,1,63,,current_liabilities,other,credit
+account_type_Other_current_liabilities,Other current liabilities  ,التزامات متداوله اخرى,1,64,,current_liabilities,other,credit
+account_type_Short_term_allowances,Short-term allowances,مخصصات قصيرة الاجل,1,65,,current_liabilities,other,credit
+account_type_Warranty_allowances,Warranty allowances  ,مخصصات الضمان,1,66,,current_liabilities,other,credit
+account_type_Long_term_Accounts_payable,Long term Accounts payable,حسابات دفع طويلة الاجل,1,81,,non_current_liabilities,payable,credit
+account_type_EOCLiabilities,EOC Liabilities,مستحقات نهاية الخدمه,1,84,,non_current_liabilities,other,credit
+account_type_Long_term_loans,Long term loans,قروض طويلة الاجل,1,82,,non_current_liabilities,other,credit
+account_type_Other_non_current_liabilities,Other non-current liabilities,التزامات اخرى طويلة الأجل,1,83,,non_current_liabilities,other,credit
+account_type_capital,capital,رأس المال,1,100,,equity,other,credit
+account_type_Partners_withdrawals,Partners withdrawals,مسحوبات الشركاء,1,101,,equity,other,credit
+account.data_unaffected_earnings,Current year earnings,ارباح السنه,1,102,,equity,other,credit
+account_type_Direct_income,Direct income,ايرادات مباشرة,0,120,,income,other,credit
+account_type_Other_income,Other income,ايرادات اخرى,0,121,,income,other,credit
+account_type_Discounts_from_suppliers,Discounts from suppliers,خصومات من الموردين,0,122,,income,other,credit
+account_type_Gains_from_asset_disposal,Gains from asset disposal,إيرادات بيع أصول ثابته,0,123,,income,other,credit
+account_type_OtherGains,Other Gains,إيرادات أخرى,0,124,,income,other,credit
+account_type_Cost_of_goods_sold,Cost of goods sold  ,تكلفة البضاعه المباعه,0,140,,expense,other,debit
+account_type_Sales_discount_and_allowances,Sales discount and allowances,خصومات إلى العملاء,0,141,,expense,other,debit
+account_type_Sales_salaries_and_commission,Sales salaries and commission,رواتب وعمولات رجال البيع,0,142,,expense,other,debit
+account_type_marketing_expenses,marketing expenses,مصروفات تسويقية,0,143,,expense,other,debit
+account_type_Travel_expenses,Travel expenses,مصروفات السفر والتنقلات,0,144,,expense,other,debit
+account_type_Advertising_expenses,Advertising expenses,مصاريف الاعلانات,0,145,,expense,other,debit
+account_type_salaries_and_allowances,salaries and allowances,رواتب وبدلات,0,146,,expense,other,debit
+account_type_Depreciation_Expenses,Depreciation Expenses,مصروفات الاهلاك,0,147,,expense,other,debit
+account_type_Office_supply_expenses,Office supply expenses,مصروفات مكتبيه,0,148,,expense,other,debit
+account_type_MiscellaneousExpenses,Miscellaneous Expenses,مصاريف نثريه,0,149,,expense,other,debit
+account_type_Other_operational_expenses,Other operational expenses,مصروفات تشغيلية اخرى,0,150,,expense,other,debit
+account_type_Losses_from_asset_disposal,Losses from asset disposal,خسائر بيع أصول ثابته,0,151,,expense,other,debit
+account_type_OtherLosses,Other Losses,خسائر أخرى,0,152,,expense,other,debit
+account_type_Temporary_account,Temporary account  ,حساب مؤقت / وسيط,0,1000,,temp,temp,temp
+account_type_Main_account,Main account,حساب رئيسى,0,9999,,temp,view,temp
+account_type_lc,L.G / L.C,"خطابات ضمان وإعتمادات مستنديه","1","110",,"current_asset","other","debit"

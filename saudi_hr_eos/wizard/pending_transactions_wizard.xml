@@ -1,0 +1,79 @@
+<odoo>
+    <data>
+        <record	id="pending_transactions_wizard" model="ir.ui.view">
+            <field	name="name">pending_transactions_wizard</field>
+            <field	name="model">pending.transactions.wizard</field>
+            <field	name="arch"	type="xml">
+                <form>
+                    <group>
+                        <div>
+                            Dear HR manager,
+                            Your system found the following pending transactions.Kindly review these transactions.
+                        </div>
+                    </group>
+                    <group>
+                        <div>
+                            <field	name="line_ids" readonly="1" >
+                                <tree>
+                                    <field	name="name"  />
+                                    <field	name="count"  />
+                                    <field	name="model" invisible="1" />
+                                    <field name="domain" invisible="1"/>
+                                    <button name="open_pending" type="object" string="View Pending Transaction"/>
+                                </tree>
+                            </field>
+                        </div>
+                    </group>
+                    <group>
+                        <div>
+                            It is just to notify you about the pending transactions, your system will cancel these transaction with ( EOS Final approval ).
+                        </div>
+                    </group>
+                    <footer>
+                        <button name="apply" type="object" string="Continue"/>
+                        <button	special="cancel" string="Cancel"/>
+                    </footer>
+                 </form>
+            </field>
+        </record>
+
+        <record	id="pending_transactions_wizard_final" model="ir.ui.view">
+            <field	name="name">pending_transactions_wizard</field>
+            <field	name="model">pending.transactions.wizard</field>
+            <field	name="arch"	type="xml">
+                <form>
+                    <group>
+                        <div>
+                            Dear HR manager, <br />
+                            Your system found the following pending transactions. before final approving EOS, your system will Auto cancel / Refuse all pending transactions.
+                        </div>
+                    </group>
+                    <group>
+                        <div>
+                            <field	name="line_ids" readonly="1" >
+                                <tree>
+                                    <field	name="name"  />
+                                    <field	name="count"  />
+                                    <field	name="model" invisible="1" />
+                                    <field name="domain" invisible="1"/>
+                                    <button name="open_pending" type="object" string="View Pending Transaction"/>
+                                </tree>
+                            </field>
+                        </div>
+                    </group>
+                    <group>
+                        <div>
+                            Kindly confirm that you want to Final approve Employee End Of Services and cancel all pending transactions if any, Your system will auto archive Employee profile, contract, Dependencies, ….etc.
+                        </div>
+                    </group>
+                    <footer>
+                        <button name="apply_final" type="object" string="Approve EOS and cancel all pending transactions (if any)"/>
+                        <button	special="cancel" string="Decline"/>
+                    </footer>
+                 </form>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

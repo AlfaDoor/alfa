@@ -1,0 +1,14 @@
+    1.version 12.0.0.1
+    a. Changed the data calculation in pdf and xls on this columns   Beginning,Internal,Sales,Adjustment,Received 
+    b. Multiple rows for products : solved and made it as group .
+
+    2.version 12.0.0.2
+
+    a.changes in col : beginning
+
+
+   3.'version': '12.0.0.5',
+
+    a. changed full method get_line and get_data in pdf and xls report .
+    b. sale qty : counts only delivered qty .
+

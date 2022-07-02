@@ -1,0 +1,116 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="view_view_form_inherit">
+            <field name="name">ir.ui.view form.inherit</field>
+            <field name="model">ir.ui.view</field>
+            <field name="inherit_id" ref="base.view_view_form"/>
+            <field name="arch" type="xml">
+                <field name="model" position="after">
+                    <field name="model_id" readonly="0"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_model_fields_form_inherit">
+            <field name="name">ir.model.fields form.inherit</field>
+            <field name="model">ir.model.fields</field>
+            <field name="inherit_id" ref="base.view_model_fields_form"/>
+            <field name="arch" type="xml">
+                <field name="relation" position="after">
+                    <field name="model_id_"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_model_form_inherit">
+            <field name="name">ir.model form.inherit</field>
+            <field name="model">ir.model</field>
+            <field name="inherit_id" ref="base.view_model_form"/>
+            <field name="arch" type="xml">
+                <field name="relation" position="after">
+                    <field name="model_id_"/>
+                </field>
+                <field name="field_id" position="attributes">
+                    <attribute name="context">{'special_name':True,'manual':True}</attribute>
+                </field>
+                <xpath expr="//tree" position="inside">
+                    <field name="model_id_" readonly="1" context="{'special_name':True}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="edit_menu_access_inherit">
+            <field name="name">ir.ui.menu form.inherit</field>
+            <field name="model">ir.ui.menu</field>
+            <field name="inherit_id" ref="base.edit_menu_access"/>
+            <field name="arch" type="xml">
+                <field name="action" position="after">
+                    <field name="external_id" attrs="{'invisible':[('external_id','=',False)]}"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_groups_form_form">
+            <field name="name">res.groups.form</field>
+            <field name="model">res.groups</field>
+            <field name="inherit_id" ref="base.view_groups_form"/>
+            <field name="arch" type="xml">
+                <field name="share" position="after">
+                    <field name="external_id"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ir_access_view_form">
+            <field name="name">ir.model.access form</field>
+            <field name="model">ir.model.access</field>
+            <field name="inherit_id" ref="base.ir_access_view_form"/>
+            <field name="arch" type="xml">
+                <field name="active" position="after">
+                    <field name="external_id"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_window_action_form_inherit">
+            <field name="name">ir.actions.windows.form</field>
+            <field name="model">ir.actions.act_window</field>
+            <field name="inherit_id" ref="base.view_window_action_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Menus">
+                        <group string="Menus">
+                            <field name="menu_ids" nolabel="1"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="base.action_res_groups" model="ir.actions.act_window">
+            <field name="context">{'search_default_group_by_category_id': True,'search_default_no_share': 1}</field>
+        </record>
+
+        <record id="custom_functions" model="ir.ui.view">
+            <field name="name">res.config.settings</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <div id="business_documents" position="before">
+                    <div groups="base.group_no_one">
+                        <h2>Run special functions</h2>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane">
+                                    <field name="code" style="width:700px"/>
+                                    <button string="Run function" name="run_function" type="object"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+          <record model="ir.ui.view" id="view_account_payment_form_inherit_sit">
+            <field name="name">account.payment inherit</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='communication']" position="after">
+                    <field name="analytical_account" string="Analytical Account"/>
+                    <field name="analytical_tag" string="Analytical Tag" widget="many2many_tags"/>
+                    <field name="bank_fees_id" invisible="1"/>
+                    <field name="have_bank_fees" string="Bank Fees" invisible="1"/>
+                </xpath>
+                 <xpath expr="//div[@name='button_box']" position="inside">
+                    <button class="oe_stat_button" name="button_bank_entries" string="Bank Fee Entries" attrs="{'invisible':['|',('bank_fees_id','=',False),('have_bank_fees','=','nf')]}" type="object" icon="fa-bars"/>
+                </xpath>
+            </field>
+        </record>
+
+         <record model="ir.ui.view" id="view_account_payment_form_inherit">
+            <field name="name">account.payment inherit</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="payment.view_account_payment_form_inherit_payment"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//header" position="inside">
+                        <button name="create_bank_je" class="oe_highlight" attrs="{'invisible':['|',('has_bank_payment','=',False),('have_bank_fees','=','nf')]}" string="Post Bank Fees" type="object"/>
+                </xpath>
+                <xpath expr="//field[@name='payment_transaction_id']" position="after">
+                    <field name="have_bank_fees" string="Bank Fees" attrs="{'invisible':[('partner_type','=','customer')]}"/>
+                    <field name="has_bank_payment" invisible="1" />
+                    <field name="bank_fees" attrs="{'invisible':[('have_bank_fees','=','nf')],'required':[('have_bank_fees','=','wf')]}"/>
+                    <field name="bank_fees_account" string="Fees Account" attrs="{'invisible':[('have_bank_fees','=','nf')],'required':[('have_bank_fees','=','wf')]}"/>
+                    <field name="vat_fees" attrs="{'invisible':[('have_bank_fees','=','nf')],'required':[('have_bank_fees','=','wf')]}"/>
+                    <field name="vat_fees_account" string="VAT Account" attrs="{'invisible':[('have_bank_fees','=','nf')],'required':[('have_bank_fees','=','wf')]}"/>
+                </xpath>
+            </field>
+        </record>
+
+         <record model="ir.ui.view" id="view_account_payment_form_inherit_ga">
+            <field name="name">account.payment inherit.1</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_invoice_form"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//field[@name='communication']" position="after">
+                    <field name="analytical_account" string="Analytical Account"/>
+                    <field name="analytical_tag" string="Analytical Tag" widget="many2many_tags"/>
+                </xpath>
+                <xpath expr="//field[@name='journal_id']" position="after">
+                    <field name="have_bank_fees" string="Bank Fees" />
+                    <field name="bank_fees" attrs="{'invisible':[('have_bank_fees','=','nf')],'required':[('have_bank_fees','=','wf')]}"/>
+                    <field name="bank_fees_account" string="Fees Account" attrs="{'invisible':[('have_bank_fees','=','nf')],'required':[('have_bank_fees','=','wf')]}"/>
+                    <field name="vat_fees" attrs="{'invisible':[('have_bank_fees','=','nf')],'required':[('have_bank_fees','=','wf')]}"/>
+                    <field name="vat_fees_account" string="VAT Account" attrs="{'invisible':[('have_bank_fees','=','nf')],'required':[('have_bank_fees','=','wf')]}"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

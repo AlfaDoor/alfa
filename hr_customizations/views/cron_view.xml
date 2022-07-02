@@ -1,0 +1,59 @@
+<odoo>
+	<data>
+		<record id="leave_duration_view_sit" model="ir.cron">
+			<field name="name">Leave Status</field>
+			<field name="interval_number">1</field>
+			<field name="interval_type">days</field>
+			<field name="numbercall">-1</field>
+			<field name="doall" eval="False" />
+			<field name="model_id" ref="model_hr_leave"/>
+			<field name="code">model.update_employee_status()</field>
+			<field name="state">code</field>
+		</record>
+		
+	<!--			<record id="mail_remainder_view_sit" model="ir.cron">
+			<field name="name">HR Mail Reminder</field>
+			<field name="interval_number">7</field>
+			<field name="interval_type">days</field>
+			<field name="numbercall">-1</field>
+			<field name="doall" eval="False" />
+			<field name="model_id" ref="model_hr_employee"/>
+			<field name="code">model.check_mail_expiry_dates()</field>
+			<field name="state">code</field>
+		</record>
+		
+		<record id="mail_remainder_subscription_view_sit" model="ir.cron">
+			<field name="name">Subscription Remainder</field>
+			<field name="interval_number">7</field>
+			<field name="interval_type">days</field>
+			<field name="numbercall">-1</field>
+			<field name="doall" eval="False" />
+			<field name="model_id" ref="model_sale_subscription"/>
+			<field name="code">model.check_subscription()</field>
+			<field name="state">code</field>
+		</record>
+
+		<record id="mail_remainder_contract_view_sit" model="ir.cron">
+			<field name="name">Trial Period Expiry(Contract)</field>
+			<field name="interval_number">1</field>
+			<field name="interval_type">days</field>
+			<field name="numbercall">-1</field>
+			<field name="doall" eval="False" />
+			<field name="model_id" ref="model_hr_contract"/>
+			<field name="code">model.check_contract_date()</field>
+			<field name="state">code</field>
+		</record>
+
+		<record id="mail_remainder_contract_expiry_sit" model="ir.cron">
+			<field name="name">Contract Expiry</field>
+			<field name="interval_number">7</field>
+			<field name="interval_type">days</field>
+			<field name="numbercall">-1</field>
+			<field name="doall" eval="False" />
+			<field name="model_id" ref="model_hr_contract"/>
+			<field name="code">model.check_contract_expiry()</field>
+			<field name="state">code</field>
+		</record>
+	-->
+	</data>
+</odoo>

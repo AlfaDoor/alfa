@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- QWeb Reports -->
+        <report
+            id="uae_vat_return"
+            model="uae.vat.return"
+            string="VAT Report"
+            report_type="qweb-pdf"
+            name="sit_saudi_vat.report_uae_vat_return"
+            file="sit_saudi_vat.report_uae_vat_return"
+        />
+
+        <!-- <report
+            id="new_uae_vat_return"
+            model="uae.vat.return"
+            string="Saudi VAT Report"
+            report_type="qweb-pdf"
+            name="sit_saudi_vat.report_new_uae_vat_return"
+            file="sit_saudi_vat.report_new_uae_vat_return"
+        /> -->
+
+        <report
+            id="uae_vat_return_format"
+            model="uae.vat.return"
+            string="Saudi VAT Return"
+            report_type="qweb-html"
+            name="sit_saudi_vat.report_uae_vat_return_format"
+            file="sit_saudi_vat.report_uae_vat_return_format"
+        />
+
+         <!-- QWeb Reports -->
+        <report
+            id="uae_vat_return_new"
+            model="uae.vat.return"
+            string="Saudi VAT Return Report"
+            report_type="qweb-pdf"
+            name="sit_saudi_vat.report_vat_customizations_uae_vat_return"
+            file="sit_saudi_vat.report_vat_customizations_uae_vat_return"
+        />
+
+    </data>
+</odoo>

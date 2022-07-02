@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="recalc_working_days_view" model="ir.ui.view">
+            <field name="name">Re-Calc working days</field>
+            <field name="model">validate.working.days</field>
+            <field name="arch" type="xml">
+                <form string="RE-Calculate days">
+                    <group>
+                        <span class="o_form_label">All selected Working days will be Re-calculated</span>
+                    </group>
+                    <footer>
+                        <button name="calc_days" string="CALCULATE NOW" type="object" class="btn-primary"/>
+                        <button name="rest_action_days" string="Reset working days" type="object" class="btn-primary"/>
+                        <button special="cancel" string="Cancel" class="btn-secondary"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_account_unreconcile" model="ir.actions.act_window">
+            <field name="name">RE-Calculate days</field>
+            <field name="res_model">validate.working.days</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="overtime_late.recalc_working_days_view"/>
+            <field name="target">new</field>
+            <field name="binding_model_id" ref="overtime_late.model_working_days" />
+        </record>
+
+<!--        <record id="action_recalc_days" model="ir.actions.act_window">-->
+<!--            <field name="name"></field>-->
+<!--            <field name="type">ir.actions.act_window</field>-->
+<!--            <field name="res_model"></field>-->
+<!--            <field name="view_type">form</field>-->
+<!--            <field name="view_mode">form</field>-->
+<!--            <field name="view_id" ref=""/>-->
+<!--            <field name="context">{}</field>-->
+<!--            <field name="target">new</field>-->
+<!--        </record>-->
+
+<!--        <record model="ir.values" id="calc_days_values">-->
+<!--            <field name="model_id" ref="overtime_late.model_working_days"/>-->
+<!--            <field name="name">Re-Calc working days</field>-->
+<!--            <field name="key2">client_action_multi</field>-->
+<!--            <field name="value" eval="'ir.actions.act_window,' + str(ref('action_recalc_days'))"/>-->
+<!--            <field name="key">action</field>-->
+<!--            <field name="model"></field>-->
+<!--        </record>-->
+
+    </data>
+</odoo>

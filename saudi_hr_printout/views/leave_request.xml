@@ -1,0 +1,571 @@
+<odoo>
+    <data>
+        <record id="paperformat_leave_request" model="report.paperformat">
+            <field name="name">Leave Request</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">35</field>
+            <field name="margin_bottom">23</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">30</field>
+            <field name="dpi">90</field>
+        </record>
+        <report
+            id="report_leave_request"
+            model="hr.leave"
+            string="Leave Request"
+            name="saudi_hr_printout.report_leave_request_temp"
+            file="report_leave_request"
+            report_type="qweb-pdf"
+            paperformat="paperformat_leave_request"
+                />
+
+        <template id="report_leave_request_temp">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="saudi_hr_printout.reconciliation_layout">
+                        <div class="page">
+                            <style>
+                                .table{
+                                    font-family:FreeSerif;
+                                    font-size:13px;
+                                }
+                                .table_cell{
+                                    border:.5px solid black !important;
+                                    text-align: center;
+                                }
+                                .table_cell_right{
+                                    border:1px solid black !important;
+                                    text-align: right;
+                                    padding-right: 3px !important;
+                                }
+                                .table_cell_left{
+                                    border:1px solid black !important;
+                                    text-align: left;
+                                    padding-left: 3px !important;
+                                }
+                                .gray{
+                                    background-color: #bdd6ee;
+                                }
+                                .rtl{
+                                    direction:rtl;
+                                }
+                                .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+                                    padding: 2px;
+                                }
+                            </style>
+
+                            <h4 t-if="o.state !='validate'" class=" text-center">
+                                Not approved Annual Leave Request
+                            </h4>
+
+                            <table class="table " style="margin-bottom:0;width:100%">
+                                <tbody >
+                                    <tr>
+                                        <td colspan="6" class="table_cell gray" style="font-weight:blod;">
+                                            Request Annual leave
+                                            طلب أجازة سنوية
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell " >
+                                            Employee Name
+                                        </td>
+                                        <td class="table_cell" colspan="2">
+                                            <span t-field="o.employee_id.employee_english_name"/>
+                                        </td>
+                                        <td class="table_cell" colspan="2">
+                                            <span t-field="o.employee_id.name"/>
+                                        </td>
+                                        <td class="table_cell rtl">
+                                            اسم الموظف
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell " >
+                                            Department
+                                        </td>
+                                        <td class="table_cell" >
+                                            <span t-field="o.employee_id.department_id.name"/>
+                                        </td>
+                                        <td class="table_cell  rtl">
+                                            الادارة
+                                        </td>
+                                        <td class="table_cell " >
+                                            Position
+                                        </td>
+                                        <td class="table_cell" >
+                                            <span t-field="o.employee_id.job_id.name"/>
+                                        </td>
+                                        <td class="table_cell  rtl">
+                                            الوظيفة
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell " >
+                                            Branch
+                                        </td>
+                                        <td class="table_cell" >
+                                            <span t-field="o.employee_id.branch_id.name"/>
+                                        </td>
+                                        <td class="table_cell  rtl">
+                                            الفرع
+                                        </td>
+                                        <td class="table_cell " >
+                                            EMP No
+                                        </td>
+                                        <td class="table_cell" >
+                                            <span t-field="o.employee_id.employee_number"/>
+                                        </td>
+                                        <td class="table_cell  rtl">
+                                            رقم الموظف
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell " >
+                                            Leave Type
+                                        </td>
+                                        <td class="table_cell" >
+                                            <span t-field="o.holiday_status_id.name"/>
+                                        </td>
+                                        <td class="table_cell  rtl">
+                                            نوع الاجازة
+                                        </td>
+                                        <td class="table_cell " >
+                                            Req Date
+                                        </td>
+                                        <td class="table_cell" >
+                                            <span t-field="o.create_date" t-field-options='{"format": "d/M/y"}'/>
+                                        </td>
+                                        <td class="table_cell  rtl">
+                                            تاريخ الطلب
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell_left " colspan="3" >
+                                            <b style="padding:0 5px">Leave start on:</b>
+                                            <span t-field="o.date_from" t-field-options='{"format": "d/M/y"}'/>
+                                        </td>
+                                        <td class="table_cell_right rtl" colspan="3" >
+                                            <b style="padding:0 5px">
+                                                تاريخ بداية الاجازة:
+                                            </b>
+                                            <span t-field="o.date_from" t-field-options='{"format": "d/M/y"}'/>
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell_left " colspan="3" >
+                                            <b style="padding:0 5px">Leave end on:</b>
+                                            <span t-field="o.date_to" t-field-options='{"format": "d/M/y"}'/>
+                                        </td>
+                                        <td class="table_cell_right rtl" colspan="3" >
+                                            <b style="padding:0 5px">
+                                                تاريخ نهاية الاجازة:
+                                            </b>
+                                            <span t-field="o.date_to" t-field-options='{"format": "d/M/y"}'/>
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell_left " colspan="3" >
+                                            <b style="padding:0 5px">In Advance Vacation Salary:</b>
+                                            <span t-field="o.reconciliation_method" />
+                                        </td>
+                                        <td class="table_cell_right rtl" colspan="3" >
+                                            <b style="padding:0 5px">
+                                                راتب الاجازة مقدما:
+                                            </b>
+                                            <span t-if="o.reconciliation_method =='Stop payslip during leave and use leave reconciliation'" >
+                                                نعم
+                                            </span>
+                                            <span t-if="o.reconciliation_method =='Continue payslip during leave ( no need for leave reconciliation)'" >
+                                                لا
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell_left " colspan="3" >
+                                            <b style="padding:0 5px">No Of Days:</b>
+                                            <span t-field="o.number_of_days" />
+                                        </td>
+                                        <td class="table_cell_right rtl" colspan="3" >
+                                            <b style="padding:0 5px">
+                                                عدد الايام :
+                                            </b>
+                                            <span t-field="o.number_of_days" />
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell_left " colspan="3" >
+                                            <b style="padding:0 5px">Work Resumes on: </b>
+                                            <span t-field="o.expected_working_day" t-field-options='{"format": "d/M/y"}'/>
+                                        </td>
+                                        <td class="table_cell_right rtl" colspan="3" >
+                                            <b style="padding:0 5px">
+                                                تاريخ المباشرة :
+                                            </b>
+                                             <span t-field="o.expected_working_day" t-field-options='{"format": "d/M/y"}'/>
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell_left " colspan="3" >
+                                            <b style="padding:0 5px">Leave Address:</b>
+                                            <span t-field="o.leave_address" />
+                                        </td>
+                                        <td class="table_cell_right rtl" colspan="3" >
+                                            <b style="padding:0 5px">
+                                                العنوان أثناء الاجازة:
+                                            </b>
+                                            <span t-field="o.leave_address" />
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell_left " colspan="3" >
+                                            <b style="padding:0 5px">Telephone No:</b>
+                                            <span t-field="o.leave_phone" />
+                                        </td>
+                                        <td class="table_cell_right rtl" colspan="3" >
+                                            <b style="padding:0 5px">
+                                                رقم الهاتف:
+                                            </b>
+                                            <span t-field="o.leave_phone" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table " style="margin-bottom:0;">
+                                <tbody >
+                                    <tr>
+                                        <td class="table_cell gray" colspan="2" style="width:50%;">
+                                            Request exit/re-entry visa
+                                            طلب تاشيرة خروج و عودة
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            Destination
+                                            محطة الوصول
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            Tickets Request
+                                            طلب التذاكر
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell " colspan="2">
+                                            .
+                                        </td>
+                                        <td class="table_cell" >
+                                            <t t-if="o.create_air_ticket_request =='yes'" >
+                                                <span t-field="o.employee_id.city_id.name" />
+                                            </t>
+                                        </td>
+                                        <td class="table_cell" >
+                                            <t t-if="o.create_air_ticket_request =='no'" class=" text-center">
+                                                No /
+                                                لا
+                                            </t>
+                                            <t t-if="o.create_air_ticket_request =='yes'" class=" text-center">
+                                                Yes /
+                                                نعم
+                                            </t>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell " colspan="2">
+                                            - I fully Know and understand that if I do not resume to work immediately on the day following the last day of my leave “end date’’ specified above, I will be
+                                            considered absent from work and I might be subjected to Labor Law article (80).<br/>
+                                            - I know that my work Contract will  be deemed suspended for the Unpaid Leave as per Labor law.<br/>
+                                            Any change or  modify on the data written above the Leave request will be considered invalid
+                                        </td>
+                                        <td class="table_cell rtl" colspan="2">
+                                            - أعلم تماما, بأنني إن لم أستأنف مباشرة عملي في اليوم التالي لآخر يوم من موعد  نهاية إجازتي (المحدده اعلاه) فسأعتبر متغيباً عن العمل وقد أخضع للمادة (80) من قانون العمل .
+<br/>
+                                            - أعلم بأنه سيتم توقيف عقد عملي بشكل مؤقت عن مدة المغادارات غير المدفعوة الأجر أو ما يعمل معاملتها حسب قانون العمل.
+                                            <br/>
+    أي تغير أو تعديل بالبيانات أعلاه سوف يعتبر طلب الإجازة لاغيا.
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell gray" >
+                                            Signature
+                                            التوقيع
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            Replacement Employee
+                                            الموظف البديل
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            Signature
+                                            التوقيع
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            Name
+                                            الاسم
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell " >
+                                            .
+                                        </td>
+                                        <td class="table_cell " >
+<!--                                            <span t-field="o.alternative_employee.employee_english_name"/><br/>-->
+<!--                                            <span t-field="o.alternative_employee.name"/>-->
+                                        </td>
+                                        <td class="table_cell" >
+                                            .
+                                        </td>
+                                        <td class="table_cell" >
+                                            <span t-field="o.employee_id.employee_english_name"/><br/>
+                                            <span t-field="o.employee_id.name"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell gray" colspan="2">
+                                            Direct Manager / Department Manager / Section Head
+                                        </td>
+                                        <td class="table_cell gray" colspan="2">
+                                            الرئيس المباشر/ مدير الإدارة / رئيس القسم
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell gray" colspan="2">
+                                            DISAPPROVED
+                                            <span t-if="o.state =='Refused'">
+                                                ( ✔ )
+                                            </span>
+                                            <span t-if="o.state !='Refused'">
+                                                (  )
+                                            </span>
+                                            غير موافق
+                                        </td>
+                                        <td class="table_cell gray" colspan="2">
+                                            APPROVED
+                                            <span t-if="o.state =='validate'">
+                                                ( ✔ )
+                                            </span>
+                                            <span t-if="o.state !='validate'">
+                                                (  )
+                                            </span>
+                                            موافق
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell gray" >
+                                            Date
+                                            التاريخ
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            Signature
+                                            التوقيع
+                                        </td>
+                                        <td class="table_cell gray" colspan="2">
+                                            Name
+                                            الاسم
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell " >
+                                            <span t-if="o.state =='Refused'">
+                                                <span t-esc="o.refused_date" />
+                                            </span>
+                                            <span t-if="o.state =='validate'">
+                                                <span t-esc="o.department_approved_date" />
+                                            </span>
+                                        </td>
+                                        <td class="table_cell " >
+                                            .
+                                        </td>
+                                        <td class="table_cell" colspan="2">
+                                            <span t-if="o.state =='Refused'">
+                                                <span t-if="o.refused_by and o.refused_by.employee_ids"  >
+                                                    <span t-esc="o.refused_by.employee_ids[0].employee_english_name" />  /
+                                                    <span t-esc="o.refused_by.employee_ids[0].name" />
+                                                </span>
+                                            </span>
+                                            <span t-if="o.state =='validate'">
+                                                <span t-if="o.department_approved_by and o.department_approved_by.employee_ids"  >
+                                                    <span t-esc="o.department_approved_by.employee_ids[0].employee_english_name" />  /
+                                                    <span t-esc="o.department_approved_by.employee_ids[0].name" />
+                                                </span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table " >
+                                <tbody >
+                                    <tr>
+                                        <td class="table_cell gray" colspan="2" >
+                                            For HR Department Use
+                                        </td>
+                                        <td class="table_cell gray" colspan="2">
+                                            لإستخدام الموارد البشرية
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell_left gray" style="width:40%">
+                                            Accumulated Vacation Days up to date : <span t-esc="o.report_holiday_till_date" />
+                                        </td>
+                                        <td class="table_cell " style="width:10%">
+                                            <span t-esc="o.report_holiday_till_balance" />
+                                        </td>
+                                        <td class="table_cell_right gray rtl" >
+                                            الإجازة حتى تاريخ :
+                                            <span t-esc="o.report_holiday_till_date" />
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            REMARKS:
+                                            ملاحظات
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell_left gray" >
+                                            Requested Vacation Days :
+                                        </td>
+                                        <td class="table_cell " >
+                                            <span t-esc="o.number_of_days" /> <span style="font-size: 8px;" t-esc="o.days_label" />
+                                        </td>
+                                        <td class="table_cell_right gray rtl" >
+                                            عدد الايام المطلوبة:
+                                        </td>
+                                        <td class="table_cell gray" >
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell_left gray" >
+                                            Paid Days :
+                                        </td>
+                                        <td class="table_cell " >
+                                            <span t-esc="o.number_of_days" /> <span style="font-size: 8px;" t-esc="o.days_label" />
+                                        </td>
+                                        <td class="table_cell_right gray rtl" >
+                                            عدد أيام الاجازة مدفوعة الراتب:
+                                        </td>
+                                        <td class="table_cell gray" >
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell_left gray" >
+                                            Unpaid Days :
+                                        </td>
+                                        <td class="table_cell " >
+                                            0.0
+                                        </td>
+                                        <td class="table_cell_right gray rtl" >
+                                            عدد أيام الاجازة غير مدفوعة الراتب:
+                                        </td>
+                                        <td class="table_cell gray" >
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell_left gray" >
+                                            Total Remaning Days :
+                                        </td>
+                                        <td class="table_cell " >
+                                            <span t-esc="o.report_holiday_till_balance - o.number_of_days" />
+                                        </td>
+                                        <td class="table_cell_right gray rtl" >
+                                            عدد الايام المتبقية:
+                                        </td>
+                                        <td class="table_cell gray" >
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table " >
+                                <tbody >
+                                    <tr>
+                                        <td class="table_cell gray" colspan="3" >
+                                            HR Specialist
+                                            أخصائى الموارد البشرية
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell gray" >
+                                            Date
+                                            التاريخ
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            Signature
+                                            التوقيع
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            Name
+                                            الاسم
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell " >
+                                            <span t-if="not o.report_employee_is_manager">
+                                                <span t-esc="o.hr_approved_date" />
+                                            </span>
+                                        </td>
+                                        <td class="table_cell " >
+                                            .
+                                        </td>
+                                        <td class="table_cell" >
+                                            <span t-if="not o.report_employee_is_manager">
+                                                <span t-if="o.hr_approved_by and o.hr_approved_by.employee_ids"  >
+                                                    <span t-esc="o.hr_approved_by.employee_ids[0].employee_english_name" /><br/>  /
+                                                    <span t-esc="o.hr_approved_by.employee_ids[0].name" />
+                                                </span>
+                                            </span>
+                                        </td>
+                                    </tr>
+
+                                     <tr>
+                                        <td class="table_cell gray" colspan="3" >
+                                            <span style="width:40%">Approvals (For Managerial Positions)  HR Manager</span>
+                                            <span style="width:40%">
+                                                موافقة مدير الموارد البشرية (للوظائف القيادية فقط)
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell gray" >
+                                            Date
+                                            التاريخ
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            Signature
+                                            التوقيع
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            Name
+                                            الاسم
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell " >
+                                            <span t-if="o.report_employee_is_manager">
+                                                <span t-esc="o.hr_approved_date" />
+                                            </span>
+                                        </td>
+                                        <td class="table_cell " >
+                                            .
+                                        </td>
+                                        <td class="table_cell" >
+                                            <span t-if="o.report_employee_is_manager">
+                                                <span t-if="o.hr_approved_by and o.hr_approved_by.employee_ids"  >
+                                                    <span t-esc="o.hr_approved_by.employee_ids[0].employee_english_name" /><br/>  /
+                                                    <span t-esc="o.hr_approved_by.employee_ids[0].name" />
+                                                </span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

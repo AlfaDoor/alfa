@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem id="hr_menu_contract_root" parent="hr.menu_hr_root" name="Contracts" sequence="3" groups="hr.group_hr_manager"/>
+            <!--Contract Form view-->
+        <record id="hr_contract_form_inherit" model="ir.ui.view">
+            <field name="name">hr.contract.form</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+            <field name="arch" type="xml">
+                <form position="inside">
+                    <group>
+                        <field name="approved_record" invisible="1" />
+                    </group>
+                </form>
+                <sheet position="attributes">
+                    <attribute name="attrs">{'invisible': [('approved_record', '=', False)]}</attribute>
+                </sheet>
+                <field name="name" position="attributes">
+                    <attribute name="attrs">{'readonly': [('state', 'in', ['closed'])]}</attribute>
+                </field>
+                <field name="state" position="replace">
+                    <field name="state" widget="statusbar"/>
+                </field>
+                <field name="state" position="before">
+                    <button name="hr_approve" type="object" class="oe_highlight"  string="HR Manager Approval" attrs="{'invisible': [('hr_approval', '=', True)]}"  groups="saudi_hr_employee.group_hr_contract_hr_approval"
+                            confirm="Are you sure that you want to approve this contract ? It is highly recommended to attach copy from contract."/>
+                    <button name="end_trial_period_approve" type="object" class="oe_highlight"  string="End of trial period. Approve contract"
+                           attrs="{'invisible': ['|',('hr_approval', '!=', True),('end_trial_period_approved', '=', True)]}"   groups="saudi_hr_employee.group_hr_contract_trail_approval" />
+                </field>
+                <field name="employee_id" position="replace">
+                    <field name="employee_id" on_change="onchange_employee_id(employee_id)" required="1" options="{'no_create': True}"/>
+                    <field name="nationality"/>
+                    <field name="nationality_type"/>
+                    <field name="employee_eng_name" readonly="1"/>
+                    <field name="employee_number" readonly="1"/>
+                    <field name="branch_id" readonly="1"/>
+                </field>
+                <field name="type_id" position="attributes">
+                    <attribute name="attrs">{'readonly': [('state', 'in', ['closed'])]}</attribute>
+                    <attribute name="options">{&quot;no_open&quot;: True, &quot;no_create&quot;: True}</attribute>
+                </field>
+                <field name="type_id" position="after">
+                    <field name="hr_approval" readonly="1"/>
+                    <field name="end_trial_period_approved" readonly="1" attrs="{'invisible': [('hr_approval', '!=', True)]}" groups="hr.group_hr_user"/>
+                    <field name="active" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                    <field name="print_config_id"/>
+                </field>
+                <field name="job_id" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </field>
+                <field name="job_id" position="after">
+                    <field name="marital" required="1" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                </field>
+                <field name="department_id" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </field>
+                <field name="notes" position="replace"/>
+                <xpath expr="//notebook" position="replace">
+                    <notebook name="contract">
+                        <page name="salary_allowance" string="Salary and Allowances">
+                            <group>
+                                <group string="During Trial Period">
+                                    <field name="trial_wage" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                                    <label for="trial_house_allowance_type"/>
+                                    <div name="trial_house_allowance">
+                                        <field name="trial_house_allowance_type" class="oe_inline" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                                        -
+                                        <field name="trial_house_allowance" class="oe_inline" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                                        -
+                                        <field name="trial_house_allowance_amount" class="oe_inline"/>
+                                    </div>
+                                    <label for="trial_transportation_allowance_type"/>
+                                    <div name="trial_transportation_allowance">
+                                        <field name="trial_transportation_allowance_type" class="oe_inline" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                                        -
+                                        <field name="trial_transportation_allowance" class="oe_inline" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                                        -
+                                        <field name="trial_transportation_allowance_amount" class="oe_inline"/>
+                                    </div>
+                                    <label for="trial_phone_allowance_type"/>
+                                    <div name="trial_phone_allowance">
+                                        <field name="trial_phone_allowance_type" class="oe_inline" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                                        -
+                                        <field name="trial_phone_allowance" class="oe_inline" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                                        -
+                                        <field name="trial_phone_allowance_amount" class="oe_inline"/>
+                                    </div>
+                                    <label for="trial_food_allowance_type"/>
+                                    <div name="trial_food_allowance">
+                                        <field name="trial_food_allowance_type" class="oe_inline" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                                        -
+                                        <field name="trial_food_allowance" class="oe_inline" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                                        -
+                                        <field name="trial_food_allowance_amount" class="oe_inline"/>
+                                    </div>
+                                    <field name="trial_insurance" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                                    <field name="trial_commission" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                                    <field name="trial_other_allowance" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                                    <field name="trial_other_allowance_name" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                                    <field name="trial_total"/>
+                                </group>
+                                <group string="After Trial Period">
+                                    <field name="basic_salary" string="Basic Salary" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                                    <field name="wage" invisible="1"/>
+                                    <label for="house_allowance_type"/>
+                                    <div name="house_allowance">
+                                        <field name="house_allowance_type" class="oe_inline" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                                        -
+                                        <field name="house_allowance" class="oe_inline" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                                        -
+                                        <field name="house_allowance_amount" class="oe_inline"/>
+                                    </div>
+                                    <label for="transportation_allowance_type"/>
+                                    <div name="transportation_allowance">
+                                        <field name="transportation_allowance_type" class="oe_inline" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                                        -
+                                        <field name="transportation_allowance" class="oe_inline" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                                        -
+                                        <field name="transportation_allowance_amount" class="oe_inline"/>
+                                    </div>
+                                    <label for="phone_allowance_type"/>
+                                    <div name="phone_allowance">
+                                        <field name="phone_allowance_type" class="oe_inline" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                                        -
+                                        <field name="phone_allowance" class="oe_inline" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                                        -
+                                        <field name="phone_allowance_amount" class="oe_inline"/>
+                                    </div>
+                                    <label for="food_allowance_type"/>
+                                    <div name="food_allowance">
+                                        <field name="food_allowance_type" class="oe_inline" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                                        -
+                                        <field name="food_allowance" class="oe_inline" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                                        -
+                                        <field name="food_allowance_amount" class="oe_inline"/>
+                                    </div>
+                                    <field name="insurance" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                                    <field name="commission" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                                    <field name="other_allowance" attrs="{'readonly': [ '|',('state', 'in', ['closed'])]}"/>
+                                    <field name="other_allowance_name" attrs="{'readonly': ['|',('state', 'in', ['closed'])]}"/>
+                                    <field name="total"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group string="Other Information" name="other_information">
+                                    <field name="struct_id" />
+                                    <!--<field name="working_hours" options="{ &quot;no_create&quot;: True}"/>-->
+                                    <!--<field name="schedule_pay"/>-->
+                                    <field name="resource_calendar_id"/>
+                                    <field name="first_effective_notice" options="{'no_create': True}"
+                                           attrs="{'readonly': [('state', 'in', ['closed'])]}"
+                                           domain="[('employee_id', '=',employee_id),('state', '!=', 'Refused'),('type', '=', 'New Employee')]"/>
+                                    <field name="start_work" attrs="{'readonly': [('state', 'in', ['closed'])]}"
+                                           required="1"/>
+                                    <field name="contract_date" required="1"/>
+                                    <field name="job_name_ar" required="1"/>
+                                    <field name="job_name_en" required="1"/>
+                                </group>
+                                <group string="Contract Duration">
+                                    <field name="duration_type" attrs="{'readonly': [('state', 'in', ['closed'])]}" required="1"/>
+                                    <label for="duration_months"/>
+                                    <div>
+                                        <field name="duration_months" attrs="{'invisible': [('duration_type', '!=', 'Limited Time Contract')],
+                                        'readonly': [('state', 'in', ['closed'])]}"/> Months
+                                    </div>
+                                    <field name="total_contract_duration"
+                                           attrs="{'invisible': ['|',('active', '=', False),('duration_type','!=','Limited Time Contract')]}"/>
+                                    <field name="total_contract_remaining"
+                                           attrs="{'invisible': ['|',('active', '=', False),('duration_type','!=','Limited Time Contract')]}"/>
+                                    <field name="last_active_duration" attrs="{'invisible': [('active', '=', True)]}"/>
+                                    <label for="trial_date_start" string="Trial Period Duration"/>
+                                    <div>
+                                        <field name="trial_date_start" required="1" class="oe_inline" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                                        -
+                                        <field name="trial_duration" class="oe_inline" attrs="{'readonly': [('state', 'in', ['closed'])]}"/> In Days
+                                        -
+                                        <field name="trial_date_end" class="oe_inline" readonly="1"/>
+                                    </div>
+                                    <label for="date_start" string="Contract Duration"/>
+                                    <div>
+                                        <field name="date_start" class="oe_inline" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                                        -
+                                        <field name="date_end" class="oe_inline" attrs="{'invisible': ['|',('active', '=', False),('duration_type','!=','Limited Time Contract')]}"/>
+                                    </div>
+                                    <field name="advantages" string="Other Advantages" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="work_schedule" string="Other">
+<!--                                <group string="Working schedule">-->
+<!--                                    <field name="attendance_ids" nolabel="1"-->
+<!--                                           attrs="{'readonly': [('state', 'in', ['closed'])]}">-->
+<!--                                        <tree editable="bottom">-->
+<!--                                            <field name="name"/>-->
+<!--                                            <field name="dayofweek"/>-->
+<!--                                            <field name="hour_from"/>-->
+<!--                                            <field name="hour_to"/>-->
+<!--                                            <field name="date_from"/>-->
+<!--                                            <field name="date_to"/>-->
+<!--                                        </tree>-->
+<!--                                    </field>-->
+<!--                                </group>-->
+                            <group name="visa" >
+                                <field name="visa_no"/>
+                                <field name="permit_no"/>
+                                <field name="visa_expire"/>
+                            </group>
+                            <group string="Contract versions">
+                                <field name="current_version" readonly="1" />
+                            </group>
+                        </page>
+                        <!--<page name="accounting" string="Accounting">-->
+                            <!--<group>-->
+                                <!--<group>-->
+                                    <!--<field name="analytic_account_id" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>-->
+                                <!--</group>-->
+                                <!--<group>-->
+                                    <!--<field name="journal_id" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>-->
+                                <!--</group>-->
+                            <!--</group>-->
+                        <!--</page>-->
+                        <page name="note" string="Notes">
+                            <field name="notes" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                        </page>
+                    </notebook>
+
+                </xpath>
+            </field>
+        </record>
+        <!--Contract Tree view-->
+        <record id="hr_contract_view_tree_inherit" model="ir.ui.view">
+            <field name="name">hr.contract.tree inherit</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="replace">
+                    <tree string="Contracts" decoration-bf="message_needaction == True">
+                        <field name="employee_number"/>
+                        <field name="employee_eng_name"/>
+                        <field name="employee_id"/>
+                        <!--<field name="adjusted_date" string="Hiring date"/>-->
+                        <field name="date_start" groups="hr.group_hr_manager"/>
+                        <field name="date_end" groups="hr.group_hr_manager"/>
+                        <field name="basic_salary" groups="hr.group_hr_manager"/>
+                        <field name="house_allowance_amount" groups="hr.group_hr_manager"/>
+                        <field name="transportation_allowance_amount" groups="hr.group_hr_manager"/>
+                        <field name="phone_allowance_amount" groups="hr.group_hr_manager" />
+                        <field name="food_allowance_amount" groups="hr.group_hr_manager" />
+                        <field name="other_allowance" groups="hr.group_hr_manager"/>
+                        <field name="total" groups="hr.group_hr_manager"/>
+                        <field name="state"/>
+                        <field name="wage" invisible="1"/>
+                        <field name="message_needaction" invisible="1"/>
+                    </tree>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="hr_contract_view_search_inherit" model="ir.ui.view">
+            <field name="name">hr.contract.view.search.inherit</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_search"/>
+            <field name="arch" type="xml">
+                <field name="state" position="after">
+                    <field name="active"/>
+                    <filter string="Active" name="active" domain="[('active', '=', True)]"/>
+                    <filter string="Inactive Contracts" name="inactive" domain="[('active', '=', False)]"/>
+                    <filter string="New contracts" name="new" domain="[('state', '=', 'draft')]"/>
+                    <filter string="Running contracts" name="running" domain="[('state', '=', 'open')]"/>
+                    <filter string="to renew contracts" name="to_renew" domain="[('state', '=', 'pending')]"/>
+                    <filter string="expired contracts" name="expired" domain="[('state', '=', 'close')]"/>
+                    <filter string="Waiting HR Approval" name="not_approved" domain="[('hr_approval', '=', False)]"/>
+                    <filter string="Waiting for End of trial period approval" name="waiting_trial_approval" domain="[('end_trial_period_approved', '=', False),('state', '!=', 'closed')]"/>
+                </field>
+                <xpath expr="//group" position="inside">
+                    <filter string="Branch" name="branch_id" domain="[]" context="{'group_by':'branch_id'}"/>
+                    <filter string="Active" name="active" domain="[]" context="{'group_by': 'active'}"/>
+                    <filter string="Nationality" name="nationality" domain="[]" context="{'group_by': 'nationality'}"/>
+                    <filter string="Single / Married" name="single_marital" domain="[]" context="{'group_by': 'marital'}"/>
+                    <filter string="Basic salary" name="basic_salary" domain="[]" context="{'group_by': 'basic_salary'}"/>
+                    <filter string="Total salary" name="total_salary" domain="[]" context="{'group_by': 'total'}"/>
+                    <filter string="Contract duration" name="contract_duration" domain="[]" context="{'group_by': 'duration_months'}"/>
+                    <filter string="Duration Type" name="duration_type" domain="[]" context="{'group_by': 'duration_type'}"/>
+                    <filter string="Renewal type" name="renwal_type" domain="[]" context="{'group_by': 'renewal_type'}"/>
+                    <filter string="Status" name="status" domain="[]" context="{'group_by': 'state'}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="action_hr_contract" model="ir.actions.act_window">
+            <field name="name">Contracts</field>
+            <field name="res_model">hr.contract</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{'search_default_current':1, 'search_default_active': 1,'from_view':True}</field>
+            <field name="search_view_id" ref="hr_contract.hr_contract_view_search"/>
+        </record>
+        <record id="action_contract_inactive" model="ir.actions.act_window">
+            <field name="name">Archived Contracts</field>
+            <field name="res_model">hr.contract</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+            <field name="domain">[('active','=',False)]</field>
+        </record>
+
+        <menuitem id="menu_contract_inactive" name="Archived Contracts" groups="saudi_hr_employee.group_hr_contract_create"
+                  parent="saudi_hr_contract.hr_menu_contract_root" sequence="3" action="action_contract_inactive"/>
+
+        <!--/////////////////////////////  Pivot and Graph ////////////////////////////////////////-->
+        <record id="hr_contract.action_hr_contract" model="ir.actions.act_window">
+            <field name="view_mode">tree,form,kanban,pivot,graph</field>
+            <field name="context">{'search_default_current':1, 'from_view':True}</field>
+            <field name="domain">[('approved_record','=',True)]</field>
+        </record>
+
+        <record id="contract_pivot" model="ir.ui.view">
+             <field name="name">hr.contract.pivot</field>
+             <field name="model">hr.contract</field>
+             <field name="arch" type="xml">
+                 <pivot string="Contracts">
+                 </pivot>
+             </field>
+        </record>
+
+        <record id="contract_graph" model="ir.ui.view">
+             <field name="name">hr.contract.graph</field>
+             <field name="model">hr.contract</field>
+             <field name="arch" type="xml">
+                 <graph string="Contracts">
+                     <field name="department_id" />
+                 </graph>
+             </field>
+        </record>
+        <!--//////////////////////////////////////////////////////////////////////////////////////-->
+        <record model="ir.ui.menu" id="hr_contract.hr_menu_contract">
+            <field name="sequence" eval="3"/>
+            <field name="parent_id" ref="saudi_hr_contract.hr_menu_contract_root"/>
+        </record>
+
+
+        <record id="hr_contract_payroll_form_inherit" model="ir.ui.view">
+            <field name="name">hr_contract_payroll_form_inherit</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_payroll.hr_contract_form_inherit"/>
+            <field name="arch" type="xml">
+                <field name="schedule_pay" position="attributes">
+                    <attribute name="groups">base.group_no_one</attribute>
+                    <attribute name="attrs">{'readonly': [('state', 'in', ['closed'])]}</attribute>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.cron" id="contract_update_state">
+            <field name="name">update contract status (Expired ,To Renew ,etc)</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="model" eval="'hr.contract'"/>
+            <field name="model_id" ref="hr_contract.model_hr_contract"/>
+            <field name="state" eval="'code'"/>
+            <field name="function" eval="'update_state'"/>
+            <field name="args" eval="'()'" />
+        </record>
+
+
+
+
+        <record id="view_employee_form" model="ir.ui.view">
+            <field name="name">hr.employee.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr_contract.hr_hr_employee_view_form2"/>
+            <field name="arch" type="xml">
+                <button name="%(hr_contract.act_hr_employee_2_hr_contract)d" position="replace">
+                    <button name="%(hr_contract.act_hr_employee_2_hr_contract)d" class="oe_stat_button"
+                            icon="fa-book" type="action">
+                            <field name="contracts_count" widget="statinfo" string="Contracts"/>
+                        </button>
+                </button>
+            </field>
+        </record>
+
+    </data>
+</odoo>

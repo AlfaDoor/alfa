@@ -1,0 +1,79 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="vendor_inherited_form_view">
+            <field name="name">vendor.form.view.1</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='vendor_bill_id']" position="after">
+                    <field name="assign_custody" string="Assign Custody" required="1" />
+                </xpath>
+            </field>
+        </record>
+
+         <record model="ir.ui.view" id="vendor_search_view_sit">
+            <field name="name">bill.search.view</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='group_by_partner_id']" position="after">
+                    <filter name="custody" string="Assign Custody" context="{'group_by':'assign_custody'}"/>
+                </xpath>
+            </field>
+        </record>
+
+         <record model="ir.ui.view" id="vendor_list_view_sit">
+            <field name="name">bill.list.view</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='reference']" position="attributes">
+                    <attribute name="string">Vendor Reference</attribute>
+                </xpath>
+                <xpath expr="//field[@name='amount_untaxed']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='amount_tax']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                 <xpath expr="//field[@name='reference']" position="after">
+                     <field name="tax_id" />
+                    <field name="amount_untaxed" string="Untaxed Amount"/>
+                     <field name="amount_tax" string="Vat Amount"/>
+                </xpath>
+                 <xpath expr="//field[@name='amount_total_signed']" position="attributes">
+                    <attribute name="string">Total(Invoice Currency)</attribute>
+                </xpath>
+            </field>
+        </record>
+
+         <record model="ir.ui.view" id="sale_view_sit">
+            <field name="name">sale.view</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="driver_name" />
+                    <field name="vehicle" />
+                </xpath>
+            </field>
+         </record>
+
+        <record model="ir.ui.view" id="company_view_sit">
+            <field name="name">company.view</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='phone']" position="after">
+                    <field name="fax" />
+                    <field name="po_box" />
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="company_tag" string="Company Tag"/>
+                </xpath>
+            </field>
+         </record>
+
+
+    </data>
+</odoo>

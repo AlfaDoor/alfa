@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<!--Report wizard-->
+
+		<record id="view_request_reject_1" model="ir.ui.view">
+			<field name="name">request.view.reject</field>
+			<field name="model">request.reject</field>
+			<field name="arch" type="xml">
+				<form string="Reject Reason">
+					<field name="reason_for_rejection" />
+					<footer>
+						<button name="submit_reason" type="object" string="Submit"
+							class="oe_highlight" />
+						<button string="Cancel" class="oe_link" special="cancel"/>
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<!-- Action for rejection of contract -->
+
+		<record id="wizard_reject_reason"
+			model="ir.actions.act_window">
+			<field name="name">Reject Reason</field>
+			<field name="res_model">request.reject</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+
+		<!--Report wizard-->
+		<record id="view_request_reject_2" model="ir.ui.view">
+			<field name="name">request.purchase.view.reject</field>
+			<field name="model">request.purchase.reason</field>
+			<field name="arch" type="xml">
+				<form string="Reject Reason">
+					<field name="reason_for_rejection" />
+					<footer>
+						<button name="submit_reason" type="object" string="Submit"
+							class="oe_highlight" />
+						<button string="Cancel" class="oe_link" special="cancel"/>
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<!-- Action for rejection of contract -->
+		<record id="wizard_request_reject_reason"
+			model="ir.actions.act_window">
+			<field name="name">Reject Reason</field>
+			<field name="res_model">request.purchase.reason</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+
+	</data>
+</odoo>

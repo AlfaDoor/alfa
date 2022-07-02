@@ -1,0 +1,87 @@
+<odoo>
+	<data>
+
+		<!-- Wizard form open when change department -->
+
+		<record id="deprtment_chng_view_ga" model="ir.ui.view">
+			<field name="name">department.change.view</field>
+			<field name="model">department.new</field>
+			<field name="arch" type="xml">
+				<form>
+					<group>
+
+						<field name="new_department" string="New Department"
+							options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}" />
+
+					</group>
+					<footer>
+						<button name="change_department" type="object" string="Change"
+							class="oe_highlight" />
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<!-- Action for Change Department -->
+
+		<record id="change_depetment_act"
+			model="ir.actions.act_window">
+			<field name="name">Change Department</field>
+			<field name="res_model">department.new</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+
+     <!--Report wizard-->
+
+<!--
+		<record id="view_wiz_payslip_report" model="ir.ui.view">
+			<field name="name">requisition.report.view</field>
+			<field name="model">payslips.report</field>
+			<field name="arch" type="xml">
+				<form>
+					<group>
+						<p>Please select the dates.
+						</p>
+					<group>
+						<label for="date_from" string="Date From"/>
+                    <div>
+                        <field name="date_from" required='1' class="oe_inline"/> - <field name="date_to" required='1' class="oe_inline"/>
+                    </div>
+					</group>
+					
+					</group>
+					<footer>
+						<button name="get_employee_non_payslips" type="object" string="Print"
+							class="oe_highlight" />
+                                       <button string="Cancel" class="oe_link" special="cancel"/>
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		&lt;!&ndash; Action for rejection of contract &ndash;&gt;
+
+		<record id="action_report_wizard_payslips"
+			model="ir.actions.act_window">
+			<field name="name">Payslip Report</field>
+			<field name="res_model">payslips.report</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+
+		  <report
+            id="report_payslip_sit"
+            string="Payslip Report"
+            model="payslips.report"
+            report_type="qweb-pdf"
+            file="hr_customizations.payslip_report_template"
+            name="hr_customizations.payslip_report_template"
+            menu="False"
+        />
+-->
+
+	</data>
+</odoo>

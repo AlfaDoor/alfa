@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2013-2017 Savoir-faire Linux (<http://www.savoirfairelinux.com>)
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <data>
+        
+        <record id="res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.account</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="40"/>
+            <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <div id="eu_service" position="after">
+                    <div class="col-12 col-lg-6 o_setting_box" title="Select this if you need reconciliation vat method." groups="account.group_account_user">
+                        <div class="o_setting_left_pane">
+                            <field name="vat_status"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="vat_status"/>
+                            <div class="text-muted">
+                                Allow to configure vat method
+                            </div>
+                            <div class="content-group" attrs="{'invisible': [('vat_status', '=', False)]}">
+                                <div class="row mt16">
+                                    <label for="vat_method" class="col-lg-3 o_light_label"/>
+                                    <field name="vat_method" widget='radio' options="{'horizontal': true}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </field>
+        </record>
+
+        <record id="view_account_form_inherit" model="ir.ui.view">
+            <field name="name">account.account.form.inherit</field>
+            <field name="model">account.account</field>
+            <field name="priority" eval="40"/>
+            <field name="inherit_id" ref="account.view_account_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='deprecated']" position="after">
+                    <field name="vat_account" groups="account.group_account_user"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="view_uae_vat_return_form_inherit" model="ir.ui.view">
+            <field name="name">uae.vat.return.form.inherit</field>
+            <field name="model">uae.vat.return</field>
+            <field name="priority" eval="40"/>
+            <field name="inherit_id" ref="bahrain_vat.view_uae_vat_return_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//header/button[@name='tax_adjustment']" position="after">
+                    <button name="tax_calculate_remaining" type="object" states="validate,paid,filed" string="Check Remaining Vat" class="oe_highlight"/>
+                </xpath>
+
+                <xpath expr="//field[@name='journal_id']" position="before">
+                    <field name="vat_payment" groups="account.group_account_user"/>
+                </xpath>
+
+                <xpath expr="//sheet/group[1]" position="inside">
+                    <label for="vat_company_logo"/>
+                    <div>
+                        <field name="vat_company_logo" required="1" class="oe_inline"/>
+                    </div>
+                    <label for="month_type"/>
+                    <div>
+                        <field name="month_type" required="1" class="oe_inline"/>
+                    </div>
+
+                    <label for="month_quarter" attrs="{'invisible': [('month_type', '!=', 'quarter')]}"/>
+                    <div>
+                        <field name="month_quarter" class="oe_inline" attrs="{'invisible': [('month_type', '!=', 'quarter')], 'required': [('month_type', '=', 'quarter')]}"/>
+                    </div>
+
+                </xpath>
+
+                <xpath expr="//notebook/page[3]" position="after">
+                    <page string="Report Details" >
+                        <group>
+                            <group>
+                                <field name="vat_report_14"/>
+                                <field name="vat_report_15"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+
+            </field>
+        </record>
+        
+
+        <record id="view_uae_vat_return_account_form_inherit" model="ir.ui.view">
+            <field name="name">account.move.form.form.inherit</field>
+            <field name="model">account.move</field>
+            <field name="priority" eval="40"/>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="before">
+                    <field name="vat_return_record" groups="account.group_account_user" attrs="{'invisible':[('vat_status','=',False)]}"/>
+                    <br/>
+                </xpath>
+                <xpath expr="//field[@name='reverse_entry_id']" position="after">
+                    <field name="vat_status" groups="account.group_account_user" attrs="{'invisible':True}"/>
+                    <field name="vat_return_id" groups="account.group_account_user" attrs="{'invisible': [('vat_status', '=', False)]}"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <!-- <record model="ir.rule" id="account_move_no_edit_in_posted_state">
+            <field name="name">No Edit Or Delete in posted state</field>
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="groups" eval="[(4, ref('bid.group_workers'))]"/>
+            <field eval="0" name="perm_unlink"/>
+            <field eval="0" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="0" name="perm_create"/>
+            <field name="domain_force">[('state','=','awaiting_approval')]</field>
+            <field name="domain_force">['&amp;',('vat_return', '=', True),('vat_return_id.state','in',['validate','paid','filed'])]</field>
+        </record>
+
+ -->
+        <record id="invoice_supplier_form_inherit" model="ir.ui.view">
+            <field name="name">account.invoice.supplier.form.vat</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                
+                <xpath expr="//sheet/div" position="before">
+                    <h1><field name="vat_status" attrs="{'invisible': True}" />
+                    <field name="vat_return_record" style="color:Red;" attrs="{'invisible': [('vat_status', '=', False)]}"/>
+                    </h1><br/>
+                </xpath>
+
+            </field>
+        </record>
+
+        <record id="invoice_supplier_form_inherit1" model="ir.ui.view">
+            <field name="name">account.invoice.supplier.form.vat</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                
+                <xpath expr="//field[@name='number']" position="before">
+                    <field name="vat_status" attrs="{'invisible': True}" />
+                    <!-- attrs="{'invisible': [('vat_status', '=', False)]}"/> -->
+                    <field name="vat_return_record" style="color:Red;" attrs="{'invisible': [('vat_status', '=', False)]}"/>
+                    <br/>
+                </xpath>
+
+            </field>
+        </record>
+
+    </data>
+</odoo>

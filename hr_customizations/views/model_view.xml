@@ -1,0 +1,211 @@
+<odoo>
+    <data>
+        <record id="view_employee_form_sit" model="ir.ui.view">
+            <field name="name">hr.employee.form.sit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+        <button name="%(change_depetment_act)d" type="action" class="oe_highlight" string="Change Departmet"
+                            context="{'button_toggle':True}" groups="hr_customizations.department_allow_group" />
+                </xpath>
+ <!--             <xpath expr="//page[@name='hr_settings']/group/group/field[@name='user_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//page[@name='hr_settings']/group/group/field[@name='user_id']" position="after">
+                    <field name="responsible_emp" string="Responsible User" options="{'no_quick_create': True, 'no_create_edit' : True}"/>
+                    <field name="overtime_allow" string="Eligible for Overtime" />
+                </xpath>
+-->
+            </field>
+        </record>
+
+        <record id="view_leave_form_sit" model="ir.ui.view">
+            <field name="name">hr.leave.form.1</field>
+            <field name="model">hr.leave</field>
+            <field name="inherit_id" ref="saudi_hr_leaves.leave_request_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Gurantee">
+                        <field name="gurantees_ids">
+                            <tree editable="bottom">
+                                <field name="employees" string="Employee"/>
+                                <field name="amount" string="Amount"/>
+                                <field name="is_deduction" string="Is Deduction ?"/>
+                                <field name="loan_type" string="Loan type" attrs="{'invisible':[('is_deduction','=',False)]}" />
+                                <button name='make_deduction' type="object" class="btn-primary" string="Deduction" attrs="{'invisible':[('is_deduction','=',False)]}"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+        <record id="inherit_hr_contract_search_ga" model="ir.ui.view">
+			<field name="model">hr.contract</field>
+			<field name="inherit_id" ref="hr_contract.hr_contract_view_search" />
+			<field name="arch" type="xml">
+				<xpath expr="//filter[@name='to_renew']" position="before">
+					<filter name="end_date" string="End Date" help="Filter by End date" />
+				</xpath>
+			</field>
+		</record>
+                <!--  <menuitem id="menu_payroll_report_par"
+			name="Reporting" parent="hr_payroll.menu_hr_payroll_root" groups='basic_hr.group_hr_ceo' />
+                 <menuitem id="menu_payroll_report_child"
+			name="Payslip Report" parent="hr_customizations.menu_payroll_report_par" sequence='50'
+			action="action_report_wizard_payslips" />-->
+			
+           <record id="view_eos_emp_form_sit_one" model="ir.ui.view">
+            <field name="name">eos.employee.view.form.sit</field>
+            <field name="model">employee.eos</field>
+            <field name="inherit_id" ref="saudi_hr_eos.eos_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='employee_id']" position="after">
+                    <field name="is_payment" invisible="1" />
+                </xpath>
+                <xpath expr="//header" position="inside">
+                    <button name="action_create_payment" type="object" class="oe_highlight" attrs="{'invisible' : [('is_payment','=',True)]}" string="Create Payment" groups="account.group_account_manager,basic_hr.group_hr_ceo"/>
+                </xpath>
+                <xpath expr="//sheet/group[1]" position="before">
+                        <div class="oe_button_box" name="button_box">
+            <button name="action_payment_view" type="object" class="oe_stat_button" icon="fa-tasks" attrs="{'invisible':[('is_payment', '=', False)]}" string="Payment"/>
+                        </div>
+                </xpath>
+                <xpath expr="//notebook" position="inside">
+                    <page string="EOS Calculation Formula">
+                        <h3 style="border: 1px #a24689 solid;border-radius: 5px;padding: 10px;">
+                            <br/>
+                            <strong>Calculation Formula for EOSB Amount:</strong><br/><br/>
+
+                            <strong>First Condition for EOSB Amount:</strong><br/>
+
+                            <strong>If Service Duration less than 5 years:</strong><br/>
+	EOSB Amount == (No.of Years * Total Salary) / 2<br/><br/>
+
+                            <strong>If Service Duration > 5 years:</strong><br/>
+	Amount for first 5 years == (5 * Total Salary) / 2<br/>
+	No.of years after 5 == No.of Years - 5<br/>
+	Amount after 5 years == (No.of years after 5)*(Total Salary)<br/>
+	Total EOSB Amount == Amount for first 5 years + Amount after 5 years<br/><br/>
+
+                            <strong>Conditions for Resignation:</strong><br/>
+
+                            <strong>If Service Duration less than 2 years:</strong><br/>
+	EOS Amount == Nothing<br/><br/>
+
+                            <strong>If Service Duration less than equal to 5 years:</strong><br/>
+	EOS Amount == EOSB Amount(calculated above) / 3<br/><br/>
+
+                            <strong>If Service Duration less than equal to 10 years:</strong><br/>
+	EOS Amount == (EOSB Amount(calculated above) * 2) / 3<br/><br/>
+
+                            <strong>If Service Duration greater than 10 years:</strong><br/>
+	EOS Amount == EOSB Amount(calculated above)
+                        </h3>
+                    </page>
+                </xpath>
+            </field>
+              </record>
+    <!--  <record id="view_payslip_inherit_sit_two" model="ir.ui.view">
+            <field name="name">payslip.employee.view.form.sit</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="saudi_hr_payroll.view_hr_payslip_inherit_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='trial_days_payslip']" position="after">
+                    <field name="no_of_hours_legal" widget="float_time" string="Total Legal Working Hours"/>
+                    <field name="no_of_hours_work" widget="float_time" string="Total Worked Hours(month)"/>
+                </xpath>
+
+            </field>
+        </record>-->
+        <!-- Inherit View -->
+ <!--       <record model="ir.ui.view" id="view_hr_payslip_inherit_form_inherit">
+            <field name="name">hr.payslip inherit</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="saudi_hr_payroll.view_hr_payslip_inherit_form"/>
+            <field name="arch" type="xml">
+                <field name="days_in_payslip" position="after">
+                    &lt;!&ndash;<field name="overtime_h" widget='float_time'/>&ndash;&gt;
+                    <field name="no_of_work_days_n" string="Total Legal Working Days"/>
+                    <field name="no_of_work_days_att_n" string="Total Worked Days in Attendance"/>
+
+                     <label for="no_of_hours_legal_n"/>
+                    <div>
+                        <field name="no_of_hours_legal_n" widget="float_time" string="Total Legal Working Hours"/>
+                       &#160;&#160;-&#160;&#160;
+                        <field name="working_h"/>
+
+                    </div>
+                    <field name="no_of_hours_work_n" widget="float_time" string="Total Worked Hours(month)"/>
+                     <field name="total_absent_days_n" string="Total Absence days"/>
+                    <field name="total_absent_hours_n" widget="float_time" string="Total Absence hours"/>
+
+                       <label for="no_of_overtime_hours_n"/>
+                    <div>
+                        <field name="no_of_overtime_hours_n" widget='float_time' string="Number of Overtime hours"/>
+                        =
+                        <field name="amount_overtime_hours_n"/>
+                        SAR
+                    </div>
+                     <label for="no_of_delay_hours_n"/>
+                    <div>
+                        <field name="no_of_delay_hours_n" widget='float_time' string="Number of Delay hours"/>
+                        =
+                        <field name="amount_delay_hours_n"/>
+                        SAR
+                    </div>
+                    <label for="absence_excuse"/>
+                    <div>
+                        <field name="absence_excuse"/>
+                        =
+                        <field name="absence_excuse_amount"/>
+                        SAR
+                    </div>
+                    <label for="absence_no_excuse"/>
+                    <div>
+                        <field name="absence_no_excuse"/>
+                        =
+                        <field name="absence_no_excuse_amount"/>
+                        SAR
+                    </div>
+
+
+             &lt;!&ndash;       <label for="delay"/>
+                    <div>
+                        <field name="delay" widget='float_time'/>
+                        =
+                        <field name="delay_amount"/>
+                        SAR
+                    </div>&ndash;&gt;
+                    <button name="open_att_sheet" string="Open report" type="object" class="oe_highlight"/>
+                    <div/>
+                </field>
+                <field name="rule_gross" position="before">
+                    <field name="rule_overtime" attrs="{'readonly':[('state', 'in', ['Final Reviewed','done'])]}"/>
+                </field>
+                <field name="rule_gross" position="after">
+                    <field name="rule_absence" attrs="{'readonly':[('state', 'in', ['Final Reviewed','done'])]}"/>
+                </field>
+            </field>
+        </record>
+		  <record id="view_contract_inh_form_sit" model="ir.ui.view">
+            <field name="name">contract.hr.form.1</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="saudi_hr_contract.hr_contract_form_inherit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='first_effective_notice']" position="before">
+                    <field name="manual_working_hours" />
+                    <field name="working_hours_per_day" attrs="{'invisible':[('manual_working_hours','=',False)],'required':[('manual_working_hours','=',True)]}" widget="float_time"/>
+                    <label for="wh_effective_from" attrs="{'invisible':[('manual_working_hours','=',False)]}"/>
+                                    <div attrs="{'invisible':[('manual_working_hours','=',False)]}">
+                                        <field name="wh_effective_from" class="oe_inline" attrs="{'invisible':[('manual_working_hours','=',False)],'required':[('manual_working_hours','=',True)]}"/>
+                                        &#160;&#160;=&#160;&#160;
+                                        <field name="wh_effective_to" class="oe_inline" attrs="{'invisible':[('manual_working_hours','=',False)],'required':[('manual_working_hours','=',True)]}"/>
+                                    </div>
+                </xpath>
+            </field>
+           </record>
+
+-->
+    </data>
+</odoo>

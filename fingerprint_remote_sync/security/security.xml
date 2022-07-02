@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!--  Group category  -->
+        <record id="module_category_fingerprint" model="ir.module.category">
+            <field name="name">Fingerprint</field>
+            <field name="sequence">11</field>
+            <field name="description">Helps you manage Fingerprints (ADD, Edit, delete,...</field>
+        </record>
+        <!-- Security group -->
+        <record id="group_fingerprint" model="res.groups">
+            <field name="name">Fingerprint configuration</field>
+            <field name="category_id" ref="fingerprint_remote_sync.module_category_fingerprint"/>
+        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+
+    </data>
+</odoo>

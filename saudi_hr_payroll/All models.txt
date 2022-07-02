@@ -1,0 +1,8 @@
+hr.payslip.run
+hr.payslip.run.attaches
+hr.payslip
+wizard.payslip.review
+wizard.payslip.final.review
+wizard.payslip.confirm
+wizard.payslip.draft
+wizard.payslip.cancel

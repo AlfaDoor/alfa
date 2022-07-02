@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+        <!--Inherit Account Setting View   -->
+        <record model="ir.ui.view" id="view_account_config_settings_inherit">
+            <field name="name">account settings inherit</field>
+            <field name="model">account.config.settings</field>
+            <field name="inherit_id" ref="account.view_account_config_settings"/>
+            <field name="arch" type="xml">
+                 <group name="bank_cash" position="after">
+                      <separator string="Invoices and payments numbering control"/>
+                     <group name="numbering_control">
+                         <field name="default_sale_inv_seq"/>
+                         <field name="default_purchase_inv_seq"/>
+                         <field name="default_sale_refund_seq"/>
+                         <field name="default_purchase_refund_seq"/>
+                         <field name="default_payment_in_seq"/>
+                         <field name="default_payment_out_seq"/>
+                         <field name="default_payment_int_seq"/>
+                     </group>
+                 </group>
+            </field>
+        </record>
+
+    </data>
+</odoo>

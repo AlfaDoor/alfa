@@ -1,0 +1,542 @@
+<odoo>
+    <data noupdate="1">
+
+        <record id="category_export_import" model="ir.module.category">
+            <field name="name">Export / Import</field>
+            <field name="sequence">20</field>
+        </record>
+
+        <record id="group_can_export" model="res.groups">
+            <field name="name">Can Export</field>
+            <field name="category_id" ref="category_export_import"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+
+        <record id="group_can_import" model="res.groups">
+            <field name="name">Can Import</field>
+            <field name="category_id" ref="category_export_import"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+
+        <record id="group_hr_direct_manager" model="res.groups">
+            <field name="name">Direct Manager</field>
+            <field name="category_id" ref="base.module_category_human_resources"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+            <field name="implied_ids" eval="[(4,ref('base.group_user'))]"/>
+        </record>
+
+
+        <record id="group_hr_department_manager" model="res.groups">
+            <field name="name">Department Manager</field>
+            <field name="category_id" ref="base.module_category_human_resources"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+            <field name="implied_ids" eval="[(4,ref('base.group_user')),(4,ref('saudi_hr_employee.group_hr_direct_manager'))]"/>
+        </record>
+
+        <record id="hr.group_hr_user" model="res.groups">
+            <field name="implied_ids" eval="[(4, ref('base.group_user')),(4,ref('saudi_hr_employee.group_hr_department_manager'))]"/>
+        </record>
+
+
+
+        <!--Employee Data Groups-->
+        <record id="category_employee_data" model="ir.module.category">
+            <field name="name">Employee Data</field>
+            <field name="sequence">10</field>
+        </record>
+        <record id="group_employee_create" model="res.groups">
+            <field name="name">Create / Edit  employee</field>
+            <field name="category_id" ref="category_employee_data"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+            <field name="implied_ids" eval="[(4,ref('base.group_user'))]"/>
+        </record>
+        <record id="group_employee_confirm_data" model="res.groups">
+            <field name="name">Confirm Employee Data</field>
+            <field name="category_id" ref="category_employee_data"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+            <field name="implied_ids" eval="[(4,ref('base.group_user'))]"/>
+        </record>
+        <record id="group_employee_lock_data" model="res.groups">
+            <field name="name">Lock employee data</field>
+            <field name="category_id" ref="category_employee_data"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+            <field name="implied_ids" eval="[(4,ref('base.group_user'))]"/>
+        </record>
+        <record id="group_employee_unlock_data" model="res.groups">
+            <field name="name">Unlock Employee Data</field>
+            <field name="category_id" ref="category_employee_data"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+            <field name="implied_ids" eval="[(4,ref('base.group_user'))]"/>
+        </record>
+        <record id="group_employee_archive" model="res.groups">
+            <field name="name">Archive Employee</field>
+            <field name="category_id" ref="category_employee_data"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+            <field name="implied_ids" eval="[(4,ref('base.group_user'))]"/>
+        </record>
+        <record id="group_employee_relative_create" model="res.groups">
+            <field name="name">Create / Edit Employee Relatives</field>
+            <field name="category_id" ref="category_employee_data"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+            <field name="implied_ids" eval="[(4,ref('base.group_user'))]"/>
+        </record>
+
+
+        <!--Payslip Workflow Groups-->
+        <record id="category_payslip_Workflow" model="ir.module.category">
+            <field name="name">Payslip Approvals</field>
+            <field name="sequence">11</field>
+        </record>
+        <record id="group_payslip_confirm" model="res.groups">
+            <field name="name">Confirm</field>
+            <field name="category_id" ref="category_payslip_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_payslip_review" model="res.groups">
+            <field name="name">Review</field>
+            <field name="category_id" ref="category_payslip_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_payslip_final_review" model="res.groups">
+            <field name="name">Final Review</field>
+            <field name="category_id" ref="category_payslip_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_payslip_refund" model="res.groups">
+            <field name="name">Refund</field>
+            <field name="category_id" ref="category_payslip_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_payslip_compute_sheet" model="res.groups">
+            <field name="name">Compute Sheet</field>
+            <field name="category_id" ref="category_payslip_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_payslip_set_draft" model="res.groups">
+            <field name="name">Set To Draft</field>
+            <field name="category_id" ref="category_payslip_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_payslip_cancel" model="res.groups">
+            <field name="name">Cancel Payslip</field>
+            <field name="category_id" ref="category_payslip_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_payslip_create" model="res.groups">
+            <field name="name">Create Payslip</field>
+            <field name="category_id" ref="category_payslip_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+
+
+        <!--Payslip Batch Workflow Groups-->
+        <record id="category_payslip_batch_Workflow" model="ir.module.category">
+            <field name="name">Payslip Batch Approvals</field>
+            <field name="sequence">12</field>
+        </record>
+        <record id="group_payslip_batch_confirm" model="res.groups">
+            <field name="name">Confirm</field>
+            <field name="category_id" ref="category_payslip_batch_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_payslip_batch_review" model="res.groups">
+            <field name="name">Review</field>
+            <field name="category_id" ref="category_payslip_batch_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_payslip_batch_final_review" model="res.groups">
+            <field name="name">Final Review</field>
+            <field name="category_id" ref="category_payslip_batch_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_payslip_batch_set_draft" model="res.groups">
+            <field name="name">Set To Draft</field>
+            <field name="category_id" ref="category_payslip_batch_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_payslip_batch_cancel" model="res.groups">
+            <field name="name">Cancel</field>
+            <field name="category_id" ref="category_payslip_batch_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_payslip_batch_generate" model="res.groups">
+            <field name="name">Generate Payslips</field>
+            <field name="category_id" ref="category_payslip_batch_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_payslip_batch_create" model="res.groups">
+            <field name="name">Create Payslip Batch</field>
+            <field name="category_id" ref="category_payslip_batch_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+            <field name="implied_ids" eval="[(4,ref('saudi_hr_employee.group_payslip_create'))]"/>
+        </record>
+
+         <!--Leave reconciliation Workflow Groups-->
+        <record id="category_reconciliation_Workflow" model="ir.module.category">
+            <field name="name">Leave Reconciliation Approvals</field>
+            <field name="sequence">13</field>
+        </record>
+        <record id="group_reconciliation_confirm" model="res.groups">
+            <field name="name">Confirm</field>
+            <field name="category_id" ref="category_reconciliation_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_reconciliation_review" model="res.groups">
+            <field name="name">Review</field>
+            <field name="category_id" ref="category_reconciliation_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_reconciliation_approve" model="res.groups">
+            <field name="name">Approve</field>
+            <field name="category_id" ref="category_reconciliation_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_reconciliation_set_draft" model="res.groups">
+            <field name="name">Set To Draft</field>
+            <field name="category_id" ref="category_reconciliation_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_reconciliation_refuse" model="res.groups">
+            <field name="name">Refuse</field>
+            <field name="category_id" ref="category_reconciliation_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+
+         <!--Air Ticket Request Workflow Groups-->
+        <record id="category_air_ticket_Workflow" model="ir.module.category">
+            <field name="name">Air Ticket Request Approvals</field>
+            <field name="sequence">14</field>
+        </record>
+        <record id="group_air_ticket_see" model="res.groups">
+            <field name="name">See air ticket request Screen</field>
+            <!--<field name="visible">False</field>-->
+            <field name="category_id" ref="category_air_ticket_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_air_ticket_refuse" model="res.groups">
+            <field name="name">Refuse air ticket requests</field>
+            <field name="category_id" ref="category_air_ticket_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+            <field name="implied_ids" eval="[(4,ref('saudi_hr_employee.group_air_ticket_see'))]"/>
+        </record>
+        <record id="group_air_ticket_review" model="res.groups">
+            <field name="name">Review Air ticket requests</field>
+            <field name="category_id" ref="category_air_ticket_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+            <field name="implied_ids" eval="[(4,ref('saudi_hr_employee.group_air_ticket_see'))]"/>
+        </record>
+        <record id="group_air_ticket_approve" model="res.groups">
+            <field name="name">Approve air ticket requests</field>
+            <field name="category_id" ref="category_air_ticket_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+            <field name="implied_ids" eval="[(4,ref('saudi_hr_employee.group_air_ticket_see'))]"/>
+        </record>
+        <record id="group_air_ticket_set_draft" model="res.groups">
+            <field name="name">air ticket request set to new</field>
+            <field name="category_id" ref="category_air_ticket_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+            <field name="implied_ids" eval="[(4,ref('saudi_hr_employee.group_air_ticket_see'))]"/>
+        </record>
+        <record id="group_air_ticket_cash_allowance_create" model="res.groups">
+            <field name="name">Create Air ticket cash allowance</field>
+            <field name="category_id" ref="category_air_ticket_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+            <field name="implied_ids" eval="[(4,ref('saudi_hr_employee.group_air_ticket_see'))]"/>
+        </record>
+
+         <!--reward Workflow Groups-->
+        <record id="category_reward_Workflow" model="ir.module.category">
+            <field name="name">Employee Rewards</field>
+            <field name="sequence">18</field>
+        </record>
+        <record id="group_reward_create" model="res.groups">
+            <field name="name">Create Employee Rewards</field>
+            <field name="category_id" ref="category_reward_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_reward_review" model="res.groups">
+            <field name="name">Review Employee Rewards</field>
+            <field name="category_id" ref="category_reward_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_reward_confirm" model="res.groups">
+            <field name="name">Confirm Employee Rewards</field>
+            <field name="category_id" ref="category_reward_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <!--<record id="group_reward_refuse" model="res.groups">-->
+            <!--<field name="name">Refuse Employee Rewards</field>-->
+            <!--<field name="category_id" ref="category_reward_Workflow"/>-->
+            <!--<field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>-->
+        <!--</record>-->
+        <record id="group_reward_reverse" model="res.groups">
+            <field name="name">Reverse Employee Rewards</field>
+            <field name="category_id" ref="category_reward_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+
+
+
+        <!--absence report Workflow Groups-->
+        <record id="category_absence_report_Workflow" model="ir.module.category">
+            <field name="name">Employee absence report</field>
+            <field name="sequence">17</field>
+        </record>
+        <record id="group_absence_report_create" model="res.groups">
+            <field name="name">Create Employee absence report</field>
+            <field name="category_id" ref="category_absence_report_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_absence_report_review" model="res.groups">
+            <field name="name">Review Employee absence report</field>
+            <field name="category_id" ref="category_absence_report_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_absence_report_confirm" model="res.groups">
+            <field name="name">Confirm Employee absence report</field>
+            <field name="category_id" ref="category_absence_report_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_absence_report_refuse" model="res.groups">
+            <field name="name">Refuse Employee absence report</field>
+            <field name="category_id" ref="category_absence_report_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_absence_report_reverse" model="res.groups">
+            <field name="name">Reverse Employee absence report</field>
+            <field name="category_id" ref="category_absence_report_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+
+
+        <!--deduction Workflow Groups-->
+        <record id="category_deduction_Workflow" model="ir.module.category">
+            <field name="name">Employee Deductions – violations</field>
+            <field name="sequence">16</field>
+        </record>
+        <record id="group_deduction_create" model="res.groups">
+            <field name="name">Create Deductions – violations</field>
+            <field name="category_id" ref="category_deduction_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_deduction_review" model="res.groups">
+            <field name="name">Review Deductions – violations</field>
+            <field name="category_id" ref="category_deduction_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_deduction_confirm" model="res.groups">
+            <field name="name">Confirm deduction – violations</field>
+            <field name="category_id" ref="category_deduction_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_deduction_refuse" model="res.groups">
+            <field name="name">Refuse deductions – violations</field>
+            <field name="category_id" ref="category_deduction_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_deduction_reverse" model="res.groups">
+            <field name="name">Reverse deductions – violations</field>
+            <field name="category_id" ref="category_deduction_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+
+
+
+        <!--Payslip Workflow Groups-->
+        <record id="category_loan_Workflow" model="ir.module.category">
+            <field name="name">Loan Request Approvals</field>
+            <field name="sequence">15</field>
+        </record>
+        <record id="group_loan_refuse" model="res.groups">
+            <field name="name">Refuse</field>
+            <field name="category_id" ref="category_loan_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_loan_reverse" model="res.groups">
+            <field name="name">Reverse loans – salary in advance</field>
+            <field name="category_id" ref="category_loan_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+
+        <record id="group_loan_set_draft" model="res.groups">
+            <field name="name">Set To Draft</field>
+            <field name="category_id" ref="category_loan_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_loan_officer_approve" model="res.groups">
+            <field name="name">Payroll officer approval</field>
+            <field name="category_id" ref="category_loan_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_loan_hr_manager_approve" model="res.groups">
+            <field name="name">HR manager approval</field>
+            <field name="category_id" ref="category_loan_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_loan_financial_approve" model="res.groups">
+            <field name="name">Financial Manager Approval</field>
+            <field name="category_id" ref="category_loan_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_loan_ceo_approval" model="res.groups">
+            <field name="name">CEO / GM approval</field>
+            <field name="category_id" ref="category_loan_Workflow"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+
+
+        <!-- Effictive Notice Groups -->
+        <record id="category_effective_notice" model="ir.module.category">
+            <field name="name">Effective notices / Return from leave</field>
+            <field name="sequence">16</field>
+        </record>
+        <record id="group_effective_bypass_department_approvals" model="res.groups">
+            <field name="name">Bypass Department manager approval</field>
+            <field name="category_id" ref="category_effective_notice"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_effective_hr_approvals" model="res.groups">
+            <field name="name">Effective Notice HR Department Approval</field>
+            <field name="category_id" ref="category_effective_notice"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+
+        <!-- Contract Groups -->
+        <record id="category_contract" model="ir.module.category">
+            <field name="name">Contracts</field>
+            <field name="sequence">17</field>
+        </record>
+        <record id="group_hr_contract_create" model="res.groups">
+            <field name="name">Create contracts</field>
+            <field name="category_id" ref="category_contract"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_hr_contract_lock" model="res.groups">
+            <field name="name">Lock contracts</field>
+            <field name="category_id" ref="category_contract"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+            <field name="implied_ids" eval="[(4,ref('saudi_hr_employee.group_hr_contract_create'))]"/>
+        </record>
+        <record id="group_hr_contract_unlock" model="res.groups">
+            <field name="name">Unlock contracts</field>
+            <field name="category_id" ref="category_contract"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+            <field name="implied_ids" eval="[(4,ref('saudi_hr_employee.group_hr_contract_create'))]"/>
+        </record>
+        <record id="group_hr_contract_hr_approval" model="res.groups">
+            <field name="name">Contract HR Approval</field>
+            <field name="category_id" ref="category_contract"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+            <field name="implied_ids" eval="[(4,ref('saudi_hr_employee.group_hr_contract_create'))]"/>
+        </record>
+        <record id="group_hr_contract_trail_approval" model="res.groups">
+            <field name="name">Contract End Of Trial Period Approval</field>
+            <field name="category_id" ref="category_contract"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+            <field name="implied_ids" eval="[(4,ref('saudi_hr_employee.group_hr_contract_create'))]"/>
+        </record>
+
+
+        <!-- Contract Groups -->
+        <record id="category_eos" model="ir.module.category">
+            <field name="name">End of service approvals</field>
+            <field name="sequence">18</field>
+        </record>
+        <record id="group_eos_create" model="res.groups">
+            <field name="name">EOS Create</field>
+            <field name="category_id" ref="category_eos"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_eos_review" model="res.groups">
+            <field name="name">EOS Review</field>
+            <field name="category_id" ref="category_eos"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_eos_confirm" model="res.groups">
+            <field name="name">EOS Confirm</field>
+            <field name="category_id" ref="category_eos"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_eos_approve" model="res.groups">
+            <field name="name">EOS Approve</field>
+            <field name="category_id" ref="category_eos"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_eos_final_approve" model="res.groups">
+            <field name="name">EOS Final Approve</field>
+            <field name="category_id" ref="category_eos"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_eos_set_new" model="res.groups">
+            <field name="name">EOS Set to new</field>
+            <field name="category_id" ref="category_eos"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_eos_cancel" model="res.groups">
+            <field name="name">EOS Refuse / cancel</field>
+            <field name="category_id" ref="category_eos"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_eos_delete" model="res.groups">
+            <field name="name">EOS Delete</field>
+            <field name="category_id" ref="category_eos"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+
+        <!-- Leaves Groups -->
+        <record id="category_leaves" model="ir.module.category">
+            <field name="name">Leaves Request approvals</field>
+            <field name="sequence">12</field>
+        </record>
+        <record id="group_leave_bypass_direct_manager" model="res.groups">
+            <field name="name">Leave Request bypass Direct manager approval</field>
+            <field name="category_id" ref="category_leaves"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_leave_bypass_department_manager" model="res.groups">
+            <field name="name">Leave Request bypass Department manager approval</field>
+            <field name="category_id" ref="category_leaves"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_leave_hr_approval" model="res.groups">
+            <field name="name">Leave Request HR department approval</field>
+            <field name="category_id" ref="category_leaves"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_leave_hr_approval_for_managers" model="res.groups">
+            <field name="name">Leave request HR department approval for managers</field>
+            <field name="category_id" ref="category_leaves"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_leave_set_draft" model="res.groups">
+            <field name="name">Leave request Set To draft</field>
+            <field name="category_id" ref="category_leaves"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_leave_refuse" model="res.groups">
+            <field name="name">Leave request Refuse</field>
+            <field name="category_id" ref="category_leaves"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_leave_Bypass_alternative_approval" model="res.groups">
+            <field name="name">Leave Request Bypass Alternative Employee Approval</field>
+            <field name="category_id" ref="category_leaves"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+        <record id="group_leave_extend" model="res.groups">
+            <field name="name">Leave Extend</field>
+            <field name="category_id" ref="category_leaves"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+           <record model="ir.module.category" id="emp_department_sit">
+			<field name="name">Department Change</field>
+			<field name="description">Allow to change the department of employee</field>
+			<field name="sequence">65</field>
+		</record>
+		<record id="department_allow_group" model="res.groups">
+			<field name="name">Change Employees Department</field>
+			<field name="category_id" ref="saudi_hr_employee.emp_department_sit" />
+		</record>
+
+    </data>
+</odoo>

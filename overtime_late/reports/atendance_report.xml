@@ -1,0 +1,144 @@
+<odoo>
+    <data>
+
+        <report
+                id="attendance_report"
+                model="attendance.report"
+                string="attendance report"
+                report_type="qweb-pdf"
+                name="overtime_late.report_attendance"
+                file="overtime_late.report_attendance"/>
+
+        <template id="report_attendance">
+            <t t-call="web.html_container">
+                <t t-call="web.internal_layout">
+                    <div class="page" style="direction: rtl">
+                        <style>
+                            .border-table td{
+                            border: 1px solid black;
+                            }
+                            table{
+                                text-align: center;
+                            }
+                            table td{
+                                padding:4px
+                            }
+                            thead td{
+                                background-color: #2891de;
+                            }
+                            .weekend{
+                                background-color: #dedede;
+                                color: #717171;
+                            }
+                            .totals{
+                                background-color: #2891de;
+                            }
+                        </style>
+
+                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 70px; float:left" />
+                        <table class="border-table" style="width:100%; margin-top:10px">
+                            <tr>
+                                <td style="background-color: #2891de">تقرير الحضور والانصراف للفترة</td>
+                                <td>من  <br/><span t-esc="date_from"/> </td>
+                                <td>إلى<br/> <span t-esc="date_to"/></td>
+                                <td>To<br/><span t-esc="date_from"/></td>
+                                <td>From<br/><span t-esc="date_to"/></td>
+                                <td style="background-color: #2891de">Attendance Report</td>
+                            </tr>
+                        </table>
+
+                        <t t-foreach="report_data" t-as="emp">
+                            <table style="width:100%; margin-top:30px" class="border-table">
+                                <thead>
+                                    <tr>
+                                        <td>رقم الموظف <br/>Employee ID</td>
+                                        <td>اسم الموظف <br/>Employee Name</td>
+                                        <td>التاريخ <br/> Date</td>
+                                        <td>ساعة الدخول <br/> Time In</td>
+                                        <td>ساعة الخروج <br/>Time Out</td>
+                                        <td>عدد ساعات العمل <br/>Total working Hours</td>
+                                        <td>عدد ساعات التاخير <br/>Delay Hours</td>
+                                        <td>غياب هذا اليوم <br/>Absent Day</td>
+                                        <td>خروج مبكر <br/>Early Leaving</td>
+                                        <td>مبلغ الخصم <br/>Deduction Amount</td>
+                                        <td> الاستثناء <br/>Exceptions</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="report_data[emp]['lines']" t-as="o">
+                                        <tr t-att-class="o.is_weekend and 'weekend' or ''">
+                                            <td><span t-field="o.employee_id.employee_number"/></td>
+                                            <td><span t-field="o.employee_id.name"/></td>
+                                            <td><span t-field="o.date"/></td>
+                                            <td><span t-field="o.enter_date"/></td>
+                                            <td><span t-field="o.exit_date"/></td>
+                                            <td><span t-field="o.total_working_minutes_"/></td>
+                                            <td><span t-field="o.morning_delay_"/></td>
+                                            <td><span t-esc="o.absence and '✔' or 'X'"/></td>
+                                            <td><span t-field="o.exit_delay_"/></td>
+                                            <td><span t-esc="0"/></td>
+                                            <td> <span t-esc="o.in_leave and 'إجازة' or ''"/> </td>
+                                        </tr>
+                                    </t>
+                                    <tr class="totals">
+                                        <td rowspan="2" colspan="2"> الاجمالي</td>
+                                        <td colspan="2">عدد مرات التأخير</td>
+                                        <td colspan="2"><span t-esc="report_data[emp]['delay_count']"/> </td>
+                                        <td colspan="3">ﻹجمالي ساعات الدوام</td>
+                                        <td colspan="2"><span t-esc="to_minute(report_data[emp]['total_working'])"/> </td>
+                                    </tr>
+                                    <tr class="totals">
+                                        <td colspan="2">ﻹجمالي ساعات التأخير</td>
+                                        <td colspan="2"><span t-esc="to_minute(report_data[emp]['total_delay'])"/> </td>
+                                        <td colspan="3">عدد مرات الغياب</td>
+                                        <td colspan="2"><span t-esc="report_data[emp]['absence_count']"/> </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p style="page-break-after:always;"/>
+                        </t>
+                    </div>
+                    </t>
+                </t>
+        </template>
+
+
+        <record model="ir.ui.view" id="attendance_report_form">
+            <field name="name">attendance.report form</field>
+            <field name="model">attendance.report</field>
+            <field name="arch" type="xml">
+                <form string="Attendance report">
+                        <group>
+                            <group>
+                                <field name="date_from" required="1"/>
+                            </group>
+                            <group>
+                                <field name="date_to" required="1"/>
+                            </group>
+                        </group>
+                    <group>
+                        <field name="employee_ids" widget="many2many_tags"/>
+                        <field name="department_ids" widget="many2many_tags"/>
+                        <field name="branch_ids" widget="many2many_tags"/>
+                    </group>
+                    <footer>
+                        <button name="print_report" string="Print" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_attendance_report" model="ir.actions.act_window">
+            <field name="name">Attendance report</field>
+            <field name="res_model">attendance.report</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        <menuitem id="attendance_report_menu" name="Attendance report"
+                  parent="menu_hr_attendance_report_main" sequence="20"
+                  action="action_attendance_report"/>
+    </data>
+</odoo>

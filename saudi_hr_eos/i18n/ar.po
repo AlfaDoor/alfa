@@ -1,0 +1,1130 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* hr_eos
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.e-20151006\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-12-28 09:06+0000\n"
+"PO-Revision-Date: 2017-12-28 12:51+0300\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: ar_SY\n"
+"X-Generator: Poedit 2.0.5\n"
+
+#. module: hr_eos
+#: code:addons/hr_eos/models/models.py:844
+#, python-format
+msgid "%s years , %s Months , %s Days"
+msgstr "%s سنوات , %s أشهر , %s أيام"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_absence_deduction
+msgid "Absence Deduction"
+msgstr "خصومات الغياب"
+
+#. module: hr_eos
+#: code:addons/hr_eos/models/models.py:746
+#, python-format
+msgid "Absence Deduction Can not be minus"
+msgstr "مبلغ خصومات الغياب لا يمكن أن يكون رقما سالبا"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_message_needaction
+#: model:ir.model.fields,field_description:hr_eos.field_eos_motivation_message_needaction
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_message_needaction
+msgid "Action Needed"
+msgstr "الإجراء المطلوب"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_active
+msgid "Active"
+msgstr "نشط"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_actual_last_working_day
+msgid "Actual Last Working Day"
+msgstr "أخر يوم عمل فعلى"
+
+#. module: hr_eos
+#: model:ir.ui.view,arch_db:hr_eos.eos_view_search
+msgid "Actual last working day"
+msgstr "أخر يوم عمل فعلى"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_actual_last_working_day_confirmed
+msgid "Actual last working day confirmed"
+msgstr "تم تأكيد أخر يوم عمل"
+
+#. module: hr_eos
+#: model:ir.ui.view,arch_db:hr_eos.eos_view_search
+msgid "Age"
+msgstr "العمر"
+
+#. module: hr_eos
+#: model:ir.model,name:hr_eos.model_air_ticket_balance_allocation
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_air_ticket_allocation
+msgid "Air ticket balance allocation"
+msgstr "توزيع رصيد تذاكر الطيران"
+
+#. module: hr_eos
+#: model:ir.model.fields,help:hr_eos.field_employee_eos_air_ticket_one_way
+msgid ""
+"Air ticket price one way * (number of relatives + the employee ) * Employee annual air ticket balance \n"
+" example \n"
+" if  air ticket price one way = 500 , employee relatives = 2, Employee annual air ticket balance = 1 ticket >>> so Total air ticket value one way = ( 500 * (2+1) * 1 ) = 1500"
+msgstr ""
+"سعر تذكرة تذاكر الطيران ذهاب فقط * ( عدد المرافقين والتابعين + الموظف ) * ( رصيد الموظف من تذاكر الطيران السنويه )\n"
+"مثلا\n"
+"اذا كانت سعر تذكرة الطيران ذهاب فقط = 500 و عدد التابعين = 2 ورصيد الموظف من تذاكر الطيران السنوية = 1 .. بالتالى سيكون إجمالى استحقاق الموظف لتذاكر الطيران تساوى ( 500 * ( 2+1) *1) تساوى 1500"
+
+#. module: hr_eos
+#: selection:eos.reason,final_exit:0
+msgid "Always create a final exit ticket"
+msgstr "دائما قم بإنشاء تذكرة طيران للخروج النهائي"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_payment_deduction_amount
+msgid "Amount ( Positive - Negative )"
+msgstr "المبلغ ( موجب أو سالب)"
+
+#. module: hr_eos
+#: selection:eos.reason,annual_air_ticket_balance:0
+msgid "Annual air tickets will be paid if the employee entitled to full ticket"
+msgstr "سيتم سداد تذاكر الطيران فقط إذا كان الموظف يستحق تذكره كامله"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_leaves_count
+msgid "Annual leave balance"
+msgstr "رصيد الأجازات السنوية"
+
+#. module: hr_eos
+#: model:ir.ui.view,arch_db:hr_eos.eos_form
+msgid "Approve & Calculate EOS"
+msgstr "الموافقه & حساب المستحقات"
+
+#. module: hr_eos
+#: selection:employee.eos,state:0
+msgid "Approved"
+msgstr "تمت الموافقه"
+
+#. module: hr_eos
+#: model:ir.ui.view,arch_db:hr_eos.eos_form
+msgid "Are you sure that you want to final approve this EOS Request, your system will search for any pending transactions ( if any )."
+msgstr ""
+"برجاء الإنتباه !!\n"
+"هل أنت متأكد من رغبتك في الموافقه على طلب إنهاء الخدمات الحالى؟. إذا قمتم بالموافقه سيقوم النظام بالبحث عن جميع المعاملات المعلقه والتي تخص نفس الموظف. ( لن يقوم النظام بإتخاذ أي إجراءات في المرحله الحاليه من الموفقات). ما زالت هناك خطوه أخيره قبل الإعتماد النهائي لإنهاء خدمات الموظف."
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_attachment_ids
+#: model:ir.ui.view,arch_db:hr_eos.eos_reason_form
+msgid "Attachments"
+msgstr "المُرفقات"
+
+#. module: hr_eos
+#: code:addons/hr_eos/models/models.py:430
+#, python-format
+msgid ""
+"Attention !! \n"
+" You are about to approve EOS for employee ( %s ) "
+msgstr ""
+"برجاء إنتباه\n"
+"أنت على وشك إنهاء خدمات الموظف ( %s ). \n"
+"لا تقلق .. يمكنك التراجع حتى بعد تأكيد استقاله الموظف .. مازالت هناك خطوه أخيره بعد أن تقوم بالموافقه الأن"
+
+#. module: hr_eos
+#: selection:eos.reason,calc_based_on:0
+msgid "Basic + House + Transportation"
+msgstr "الأساسى + بدل السكن + بدل المواصلات"
+
+#. module: hr_eos
+#: selection:eos.reason,calc_based_on:0
+msgid "Basic + House + Transportation + Phone"
+msgstr "الأساسى + بدل السكن + بدل المواصلات + بدل الإتصالات"
+
+#. module: hr_eos
+#: selection:eos.reason,calc_based_on:0
+msgid "Basic + House allowance"
+msgstr "الأساسى + بدل السكن"
+
+#. module: hr_eos
+#: selection:eos.reason,calc_based_on:0
+msgid "Basic Salary"
+msgstr "الراتب الأساسى"
+
+#. module: hr_eos
+#: model:ir.ui.view,arch_db:hr_eos.eos_view_search
+msgid "Branch"
+msgstr "الفرع"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_calc_based_on
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_calc_based_on
+msgid "Calculation Based On"
+msgstr "الحسابات بناءً على"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_code
+#: model:ir.model.fields,field_description:hr_eos.field_eos_motivation_code
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_code
+msgid "Code"
+msgstr "الكود"
+
+#. module: hr_eos
+#: model:ir.ui.view,arch_db:hr_eos.eos_form
+#: model:ir.ui.view,arch_db:hr_eos.eos_motivation_form
+#: model:ir.ui.view,arch_db:hr_eos.eos_reason_form
+msgid "Confirm"
+msgstr "تأكيد"
+
+#. module: hr_eos
+#: selection:employee.eos,state:0 selection:eos.motivation,state:0
+#: selection:eos.reason,state:0
+msgid "Confirmed"
+msgstr "تم التأكيد"
+
+#. module: hr_eos
+#: model:ir.ui.view,arch_db:hr_eos.pending_transactions_wizard
+msgid "Continue"
+msgstr "إستمرار"
+
+#. module: hr_eos
+#: model:ir.model,name:hr_eos.model_hr_contract
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_contract_id
+msgid "Contract"
+msgstr "العقد"
+
+#. module: hr_eos
+#: model:ir.ui.view,arch_db:hr_eos.hr_employee_form_eos2
+msgid "Contract Data"
+msgstr "بيانات العقد"
+
+#. module: hr_eos
+#: model:ir.model,name:hr_eos.model_res_country
+msgid "Country"
+msgstr "الدولة"
+
+#. module: hr_eos
+#: selection:employee.eos,final_exit_request:0
+msgid "Create Final exit ticket"
+msgstr "إنشاء تذكرة مع الخروج النهائى"
+
+#. module: hr_eos
+#: selection:eos.reason,final_exit:0
+msgid "Create a final exit ticket if the employee did not have annual air ticket balance"
+msgstr "قم بإنشاء تذكرة طيران في حالة الخروج النهائي في حالة إذا لم يكن للموظف أي استحقاقات من تذاكر الطيران السنوية"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_create_uid
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_payment_deduction_create_uid
+#: model:ir.model.fields,field_description:hr_eos.field_eos_motivation_create_uid
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_attachment_create_uid
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_create_uid
+#: model:ir.model.fields,field_description:hr_eos.field_pending_transactions_wizard_create_uid
+#: model:ir.model.fields,field_description:hr_eos.field_pending_transactions_wizard_line_create_uid
+msgid "Created by"
+msgstr "أنشئ بواسطة"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_create_date
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_payment_deduction_create_date
+#: model:ir.model.fields,field_description:hr_eos.field_eos_motivation_create_date
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_attachment_create_date
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_create_date
+#: model:ir.model.fields,field_description:hr_eos.field_pending_transactions_wizard_create_date
+#: model:ir.model.fields,field_description:hr_eos.field_pending_transactions_wizard_line_create_date
+msgid "Created on"
+msgstr "أنشئ في"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_current_age
+msgid "Current Age"
+msgstr "العمر الحالى"
+
+#. module: hr_eos
+#: model:ir.model.fields,help:hr_eos.field_employee_eos_message_last_post
+#: model:ir.model.fields,help:hr_eos.field_eos_motivation_message_last_post
+#: model:ir.model.fields,help:hr_eos.field_eos_reason_message_last_post
+msgid "Date of the last message posted on the record."
+msgstr "تاريخ آخر رسالة في هذا السجل."
+
+#. module: hr_eos
+#: model:ir.ui.view,arch_db:hr_eos.eos_form
+#: model:ir.ui.view,arch_db:hr_eos.hr_contract_form_eos
+#: model:ir.ui.view,arch_db:hr_eos.hr_employee_form_eos
+#: model:ir.ui.view,arch_db:hr_eos.view_res_country_custom
+msgid "Days"
+msgstr "أيام"
+
+#. module: hr_eos
+#: model:ir.ui.view,arch_db:hr_eos.pending_transactions_wizard
+msgid ""
+"Dear HR manager,\n"
+"                            Your system found the following pending transactions.Kindly review these transactions."
+msgstr ""
+"السادة / قسم الموارد البشريه.\n"
+"من خلال الشاشة التاليه. سيقوم النظام بالبحث عن المعاملات المعلقه والتي تخص نفس الموظف الذى تتم إنهاء خدماته الأن. فضلا قم بمراجعة تلك المعاملات المعلقه ( ان وجدت )."
+
+#. module: hr_eos
+#: model:ir.ui.view,arch_db:hr_eos.pending_transactions_wizard
+msgid "Decline"
+msgstr "رفض"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_department_id
+#: model:ir.ui.view,arch_db:hr_eos.eos_view_search
+msgid "Department"
+msgstr "الإداره"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_payment_deduction_name
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_attachment_name
+msgid "Description"
+msgstr "الوصف"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_display_name
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_payment_deduction_display_name
+#: model:ir.model.fields,field_description:hr_eos.field_eos_motivation_display_name
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_attachment_display_name
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_display_name
+#: model:ir.model.fields,field_description:hr_eos.field_pending_transactions_wizard_display_name
+#: model:ir.model.fields,field_description:hr_eos.field_pending_transactions_wizard_line_display_name
+msgid "Display Name"
+msgstr "طريقة العرض"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_pending_transactions_wizard_line_domain
+msgid "Domain"
+msgstr "النطاق"
+
+#. module: hr_eos
+#: selection:employee.eos,final_exit_request:0
+msgid "Don't create final exit ticket"
+msgstr "لا تقم بإنشاء تذكرة طيران في الخروج النهائى"
+
+#. module: hr_eos
+#: model:ir.actions.act_window,name:hr_eos.action_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_payment_deduction_eos_id
+#: model:ir.model.fields,field_description:hr_eos.field_hr_employee_eos
+#: model:ir.ui.menu,name:hr_eos.menu_eos_root
+#: model:ir.ui.view,arch_db:hr_eos.eos_form
+#: model:ir.ui.view,arch_db:hr_eos.eos_graph
+#: model:ir.ui.view,arch_db:hr_eos.eos_pivot
+#: model:ir.ui.view,arch_db:hr_eos.eos_tree
+#: model:ir.ui.view,arch_db:hr_eos.eos_view_search
+msgid "EOS"
+msgstr "نهاية الخدمه"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_amount
+#: model:ir.model.fields,field_description:hr_eos.field_hr_employee_eos_amount
+msgid "EOS Amount"
+msgstr "مبلغ مكافأة نهاية الخدمه"
+
+#. module: hr_eos
+#: model:ir.ui.view,arch_db:hr_eos.eos_form
+msgid "EOS Calculation"
+msgstr "حساب مكافئة نهاية الخدمه"
+
+#. module: hr_eos
+#: model:ir.ui.menu,name:hr_eos.menu_config_eos
+msgid "EOS Configuration"
+msgstr "إعدادات مكافأة نهاية الخدمه"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_hr_employee_eos_date
+msgid "EOS Date"
+msgstr "تاريخ إنهاء الخدمات"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_details
+msgid "EOS Details"
+msgstr "تفاصيل نهاية الخدمه"
+
+#. module: hr_eos
+#: model:ir.actions.act_window,name:hr_eos.action_eos_motivation
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_motivation_ids
+#: model:ir.ui.menu,name:hr_eos.menu_eos_motivation
+#: model:ir.ui.view,arch_db:hr_eos.eos_motivation_form
+#: model:ir.ui.view,arch_db:hr_eos.eos_motivation_tree
+msgid "EOS Motivation"
+msgstr "دوافع ترك العمل"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_eos_notice_period
+#: model:ir.model.fields,field_description:hr_eos.field_hr_contract_eos_notice_period
+#: model:ir.model.fields,field_description:hr_eos.field_res_country_eos_notice_period
+#: model:ir.ui.view,arch_db:hr_eos.eos_view_search
+msgid "EOS Notice period"
+msgstr "فترة الإشعار"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_payslip_amount
+msgid "EOS Payslip Amount"
+msgstr "راتب الموظف حتى أخر يوم عمل"
+
+#. module: hr_eos
+#: model:ir.actions.act_window,name:hr_eos.action_eos_reason
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_reason_id
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_attachment_eos_reason_id
+#: model:ir.model.fields,field_description:hr_eos.field_hr_employee_eos_reason
+#: model:ir.ui.menu,name:hr_eos.menu_eos_reason
+#: model:ir.ui.view,arch_db:hr_eos.eos_reason_form
+#: model:ir.ui.view,arch_db:hr_eos.eos_reason_tree
+#: model:ir.ui.view,arch_db:hr_eos.eos_view_search
+msgid "EOS Reason"
+msgstr "أسباب نهاية الخدمه"
+
+#. module: hr_eos
+#: model:ir.model,name:hr_eos.model_eos_reason_attachment
+msgid "EOS Reason Attaches"
+msgstr "المرفقات"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_name
+msgid "EOS Reason Description In Arabic"
+msgstr "أسباب نهاية الخدمه بالعربية"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_english_name
+msgid "EOS Reason Description In English"
+msgstr "أسباب نهاية الخدمه بالإنجليزية"
+
+#. module: hr_eos
+#: model:ir.model,name:hr_eos.model_employee_eos
+msgid "EOS Record"
+msgstr "سجلات نهاية الخدمه"
+
+#. module: hr_eos
+#: model:ir.model,name:hr_eos.model_employee_eos_payment_deduction
+msgid "EOS Record Payment Deduction"
+msgstr "EOS Record Payment Deduction"
+
+#. module: hr_eos
+#: model:ir.ui.view,arch_db:hr_eos.eos_reason_form
+msgid "EOS details"
+msgstr "تفاصيل مكافأة نهاية الخدمه"
+
+#. module: hr_eos
+#: model:ir.model,name:hr_eos.model_eos_motivation
+#: model:ir.model,name:hr_eos.model_eos_reason
+msgid "Email Thread"
+msgstr "المحادثة البريدية"
+
+#. module: hr_eos
+#: model:ir.model,name:hr_eos.model_hr_employee
+msgid "Employee"
+msgstr "الموظف"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_employee_id
+msgid "Employee Arabic name"
+msgstr "إسم الموظف باللغه العربيه"
+
+#. module: hr_eos
+#: code:addons/hr_eos/models/models.py:138
+#: code:addons/hr_eos/models/models.py:238
+#: model:ir.ui.view,arch_db:hr_eos.eos_reason_form
+#, python-format
+msgid "Employee EOS"
+msgstr "مكافأة نهاية الخدمه"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_air_ticket_balance_allocation_eos_id
+#: model:ir.model.fields,field_description:hr_eos.field_hr_holidays_eos_id
+msgid "Employee EOS request"
+msgstr "طلب إنهاء الخدمات"
+
+#. module: hr_eos
+#: model:ir.ui.menu,name:hr_eos.menu_eos
+msgid "Employee End Of Services"
+msgstr "طلب إنهاء الخدمات"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_employee_english_name
+msgid "Employee English Name"
+msgstr "إسم الموظف باللغه الإنجليزيه"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_final_exit
+msgid "Employee Final Exit"
+msgstr "خروج نهائى"
+
+#. module: hr_eos
+#: model:ir.ui.view,arch_db:hr_eos.eos_form
+msgid "Employee Personal information"
+msgstr "البيانات الشخصيه للموظف"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_annual_air_ticket_balance
+msgid "Employee annual air ticket balance"
+msgstr "رصيد التذاكر السنوية"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_eos_ids
+#: model:ir.ui.view,arch_db:hr_eos.eos_reason_form
+msgid "Employee end of services"
+msgstr "طلب إنهاء الخدمات"
+
+#. module: hr_eos
+#: model:ir.ui.view,arch_db:hr_eos.hr_employee_form_eos2
+msgid "End Of Services"
+msgstr "إنهاء الخدمات"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_hr_employee_eos_motivation
+msgid "End Of Services Motivation"
+msgstr "دوافع إنهاء الخدمات"
+
+#. module: hr_eos
+#: model:ir.ui.view,arch_db:hr_eos.hr_contract_form_eos
+msgid "End of services"
+msgstr "إنهاء الخدمات"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_eos_motivation_name
+msgid "End of services Motivation in arabic"
+msgstr "وصف دافع ترك العمل بالعربيه"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_eos_motivation_english_name
+msgid "End of services Motivation in english"
+msgstr "وصف دافع ترك العمل بالانجليزية"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_exclude_unpaid
+msgid "Exclude Unpaid leave from EOS calculation"
+msgstr "إستبعاد الأجازات الغير مدفوعه من فترة العمل"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_expected_last_working_day
+msgid "Expected last working day"
+msgstr "أخر يوم عمل متوقع"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_attachment_file
+msgid "File"
+msgstr "الملف"
+
+#. module: hr_eos
+#: selection:employee.eos,state:0
+msgid "Final Approved"
+msgstr "تمت الموافقه النهائية"
+
+#. module: hr_eos
+#: selection:employee.eos,final_exit:0
+msgid "Final Exit"
+msgstr "خروج نهائى"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_final_exit_request
+msgid "Final exit air ticket request"
+msgstr "طلب تذكرة خروج نهائى"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_first_hiring_date
+msgid "First Hiring Date"
+msgstr "تاريخ أول مباشرة عمل"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_message_follower_ids
+#: model:ir.model.fields,field_description:hr_eos.field_eos_motivation_message_follower_ids
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_message_follower_ids
+msgid "Followers"
+msgstr "المتابعون"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_message_channel_ids
+#: model:ir.model.fields,field_description:hr_eos.field_eos_motivation_message_channel_ids
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_message_channel_ids
+msgid "Followers (Channels)"
+msgstr "المتابعون ( القنوات )"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_message_partner_ids
+#: model:ir.model.fields,field_description:hr_eos.field_eos_motivation_message_partner_ids
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_message_partner_ids
+msgid "Followers (Partners)"
+msgstr "المتابعون ( الأفراد )"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_reason_final_exit
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_final_exit
+msgid "For non-saudis, final exit ticket"
+msgstr "لغير السعوديين؛ تذكرة طيران مع الخروج النهائى"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_gender
+#: model:ir.ui.view,arch_db:hr_eos.eos_view_search
+msgid "Gender"
+msgstr "الجنس"
+
+#. module: hr_eos
+#: model:ir.ui.view,arch_db:hr_eos.eos_view_search
+msgid "Group By"
+msgstr "تجميع حسب"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_id
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_payment_deduction_id
+#: model:ir.model.fields,field_description:hr_eos.field_eos_motivation_id
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_attachment_id
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_id
+#: model:ir.model.fields,field_description:hr_eos.field_pending_transactions_wizard_id
+#: model:ir.model.fields,field_description:hr_eos.field_pending_transactions_wizard_line_id
+msgid "ID"
+msgstr "الكود"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_trial_0
+msgid "IF EOS during trial period, EOS = 0"
+msgstr "خلال فترة التجربه. لا يستحق مكافأة نهاية خدمه"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_annual_air_ticket_balance
+msgid "If The Employee Have Annual Air Ticket Balance"
+msgstr "إذا كان الموظف لديه رصيد لتذاكر الطيران السنويه"
+
+#. module: hr_eos
+#: model:ir.model.fields,help:hr_eos.field_employee_eos_message_unread
+#: model:ir.model.fields,help:hr_eos.field_eos_motivation_message_unread
+#: model:ir.model.fields,help:hr_eos.field_eos_reason_message_unread
+msgid "If checked new messages require your attention."
+msgstr "إذا حددته، ستتطلب الرسائل الجديدة انتباهك."
+
+#. module: hr_eos
+#: model:ir.model.fields,help:hr_eos.field_employee_eos_message_needaction
+#: model:ir.model.fields,help:hr_eos.field_eos_motivation_message_needaction
+#: model:ir.model.fields,help:hr_eos.field_eos_reason_message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "اذا تم وضع علامة صح. يعنى ذلك ان تلك الرساله مهمه وتحتاج إلى مراجعه."
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_iqama_expiry_date
+msgid "Iqama Expiry Date"
+msgstr "تاريخ انتهاء الإقامه"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_identification_id
+msgid "Iqama Number"
+msgstr "رقم الإقامه"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_message_is_follower
+#: model:ir.model.fields,field_description:hr_eos.field_eos_motivation_message_is_follower
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_message_is_follower
+msgid "Is Follower"
+msgstr "هو متابع"
+
+#. module: hr_eos
+#: model:ir.ui.view,arch_db:hr_eos.pending_transactions_wizard
+msgid "It is just to notify you about the pending transactions, your system will cancel these transaction with ( EOS Final approval )."
+msgstr "من خلال هذه الشاشه. نحن نقوم بتجهيز المعاملات المعلقه في النظام والتي تخص نفس الموظف . برجاء إتخاذ الإجراء المناسب في تلك المعاملات. أو سيقوم النظام بإلغاؤها جميعا مع الخطوه التاليه من الموفقات ( الموافقه النهائيه على إنهاء خدمات الموظف)"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_job_id
+#: model:ir.ui.view,arch_db:hr_eos.eos_view_search
+msgid "Job"
+msgstr "الوظيفه"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_law_calc
+msgid "Labor law calculator"
+msgstr "مكتب العمل - احتساب نهاية الخدمه"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_message_last_post
+#: model:ir.model.fields,field_description:hr_eos.field_eos_motivation_message_last_post
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_message_last_post
+msgid "Last Message Date"
+msgstr "تاريخ آخر رسالة"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos___last_update
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_payment_deduction___last_update
+#: model:ir.model.fields,field_description:hr_eos.field_eos_motivation___last_update
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason___last_update
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_attachment___last_update
+#: model:ir.model.fields,field_description:hr_eos.field_pending_transactions_wizard___last_update
+#: model:ir.model.fields,field_description:hr_eos.field_pending_transactions_wizard_line___last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_last_payslip
+msgid "Last Payslip"
+msgstr "أخر مسير رواتب"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_last_payslip_date
+msgid "Last Payslip Date"
+msgstr "أخر تاريخ مسير رواتب"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_payment_deduction_write_uid
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_write_uid
+#: model:ir.model.fields,field_description:hr_eos.field_eos_motivation_write_uid
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_attachment_write_uid
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_write_uid
+#: model:ir.model.fields,field_description:hr_eos.field_pending_transactions_wizard_line_write_uid
+#: model:ir.model.fields,field_description:hr_eos.field_pending_transactions_wizard_write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_payment_deduction_write_date
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_write_date
+#: model:ir.model.fields,field_description:hr_eos.field_eos_motivation_write_date
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_attachment_write_date
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_write_date
+#: model:ir.model.fields,field_description:hr_eos.field_pending_transactions_wizard_line_write_date
+#: model:ir.model.fields,field_description:hr_eos.field_pending_transactions_wizard_write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: hr_eos
+#: model:ir.model,name:hr_eos.model_hr_holidays
+msgid "Leave"
+msgstr "الأجازة"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_leave_allocation
+msgid "Leave Allocation"
+msgstr "توزيع رصيد الأجازات"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_leave_balance_cash
+msgid "Leave balance in cash"
+msgstr "المبلغ النقدى لرصيد الأجازات"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_marital
+msgid "Marital Status"
+msgstr "الحالة الاجتماعية"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_labor_row
+msgid "Matching with labor law"
+msgstr "المطابقه مع مكتب العمل"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_message_ids
+#: model:ir.model.fields,field_description:hr_eos.field_eos_motivation_message_ids
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_message_ids
+msgid "Messages"
+msgstr "الرسائل"
+
+#. module: hr_eos
+#: model:ir.model.fields,help:hr_eos.field_employee_eos_message_ids
+#: model:ir.model.fields,help:hr_eos.field_eos_motivation_message_ids
+#: model:ir.model.fields,help:hr_eos.field_eos_reason_message_ids
+msgid "Messages and communication history"
+msgstr "الرسائل و سجل التواصل"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_pending_transactions_wizard_line_model
+msgid "Model"
+msgstr "النموذج"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_net_eos_amount
+msgid "NET End of services amount"
+msgstr "صافى مستحقات نهاية الخدمه للموظف"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_country_id
+#: model:ir.ui.view,arch_db:hr_eos.eos_view_search
+msgid "Nationality"
+msgstr "الجنسيه"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_nationality_type
+msgid "Nationality type"
+msgstr "نوع الجنسيه"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_hr_employee_net_years
+msgid "Net Years"
+msgstr "صافى عدد السنوات"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_net_years
+#: model:ir.ui.view,arch_db:hr_eos.eos_view_search
+msgid "Net years"
+msgstr "صافى عدد السنوات"
+
+#. module: hr_eos
+#: selection:employee.eos,state:0 selection:eos.motivation,state:0
+#: selection:eos.reason,state:0
+msgid "New"
+msgstr "جديد"
+
+#. module: hr_eos
+#: selection:eos.reason,final_exit:0
+msgid "No air tickets for final exit"
+msgstr "لا يتم صرف أي تذاكر طيران مع إنهاء الخدمات"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_no_delete
+msgid "Not allowed To Delete"
+msgstr "لا يسمح بحذف هذا النوع"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_payment_deduction_note
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_attachment_note
+msgid "Notes"
+msgstr "الملاحظات"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_notice_period_deduction
+msgid "Notice Period Deduction"
+msgstr "خصومات الاختلاف عن فترة الإشعار"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_notice_period_difference
+msgid "Notice period difference"
+msgstr "الاختلاف عن فترة الاشعار"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_message_needaction_counter
+#: model:ir.model.fields,field_description:hr_eos.field_eos_motivation_message_needaction_counter
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_message_needaction_counter
+msgid "Number of Actions"
+msgstr "عدد الإجراءات"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_number_of_relatives
+#: model:ir.ui.view,arch_db:hr_eos.eos_view_search
+msgid "Number of Relatives"
+msgstr "عدد المرافقين والتابعيين"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_eos_motivation_count_employees
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_count_employees
+msgid "Number of employees"
+msgstr "عدد الموظفين"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_eos_motivation_count_eos
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_count_eos
+msgid "Number of eos"
+msgstr "عدد مرات إنهاء الخدمات"
+
+#. module: hr_eos
+#: model:ir.model.fields,help:hr_eos.field_employee_eos_message_needaction_counter
+#: model:ir.model.fields,help:hr_eos.field_eos_motivation_message_needaction_counter
+#: model:ir.model.fields,help:hr_eos.field_eos_reason_message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "عدد الرسائل التي تحتاج إلى إجراءات"
+
+#. module: hr_eos
+#: model:ir.model.fields,help:hr_eos.field_employee_eos_message_unread_counter
+#: model:ir.model.fields,help:hr_eos.field_eos_motivation_message_unread_counter
+#: model:ir.model.fields,help:hr_eos.field_eos_reason_message_unread_counter
+msgid "Number of unread messages"
+msgstr "عدد الرسائل الغير مقروؤه"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_old_unreconciled_leaves
+msgid "Old leave requests not fully reconciled"
+msgstr "أجازات سابقه لم يتم تسويتها"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_notes
+#: model:ir.ui.view,arch_db:hr_eos.eos_reason_form
+msgid "Other Notes"
+msgstr "ملاحظات أخرى"
+
+#. module: hr_eos
+#: model:ir.ui.view,arch_db:hr_eos.eos_form
+msgid "Other Payment / Deductions"
+msgstr "إضافات - خصومات أخرى"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_payment_ids
+msgid "Other payment / Deductions"
+msgstr "إضافات - خصومات أخرى"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_other_payment
+msgid "Other payment / deduction"
+msgstr "إضافات - خصومات أخرى"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_passport_expiry_date
+msgid "Passport Expiry Date"
+msgstr "تاريخ انتهاء جواز السفر"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_pending_transactions_wizard_line_count
+msgid "Pending Transaction"
+msgstr "معاملات قيد الانتظار"
+
+#. module: hr_eos
+#: code:addons/hr_eos/models/models.py:409
+#, python-format
+msgid "Pending Transactions"
+msgstr "معاملات قيد الإنتظار"
+
+#. module: hr_eos
+#: code:addons/hr_eos/wizard/pending_transactions_wizard.py:42
+#, python-format
+msgid "Pending Transactions For %s"
+msgstr "المعاملات قيد الانتظار لـــ %s"
+
+#. module: hr_eos
+#: model:ir.ui.view,arch_db:hr_eos.eos_form
+msgid "Re-Calculate EOS"
+msgstr "إعادة حساب مستحقات نهاية الخدمه"
+
+#. module: hr_eos
+#: selection:employee.eos,state:0
+msgid "Refused - Cancelled"
+msgstr "تم الرفض أو الإلغاء"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_relatives_air_ticket
+msgid "Relatives Air Ticket"
+msgstr "تذاكر التابعين والمرافقين"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_religion
+msgid "Religion"
+msgstr "الديــــانـــة"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_remaining_deduction
+msgid "Remaining Violations and deductions"
+msgstr "مخالفات وخصومات غير مسدده"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_remaining_loan_amount
+msgid "Remaining loan amount"
+msgstr "سلف غير مسدده"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_request_date
+msgid "Request Date"
+msgstr "تاريخ طلب انهاء الخدمات"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_resignation
+msgid "Resignation"
+msgstr "إستقاله"
+
+#. module: hr_eos
+#: code:addons/hr_eos/models/models.py:151
+#: code:addons/hr_eos/models/models.py:251
+#: model:ir.ui.view,arch_db:hr_eos.eos_reason_form
+#, python-format
+msgid "Resigned Employees"
+msgstr "موظفين تم انهاء خدماتهم"
+
+#. module: hr_eos
+#: model:ir.ui.view,arch_db:hr_eos.eos_form
+msgid "Review"
+msgstr "مراجعة البيانات"
+
+#. module: hr_eos
+#: selection:employee.eos,state:0
+msgid "Reviewed"
+msgstr "تمت المراجعه"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_rewards
+msgid "Rewards"
+msgstr "مكافأت غير مدفوعه"
+
+#. module: hr_eos
+#: model:ir.ui.view,arch_db:hr_eos.eos_motivation_form
+#: model:ir.ui.view,arch_db:hr_eos.eos_reason_form
+msgid "Set To New"
+msgstr "البدء من جديد"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_state
+#: model:ir.model.fields,field_description:hr_eos.field_eos_motivation_state
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_state
+msgid "Status"
+msgstr "الحالة"
+
+#. module: hr_eos
+#: model:ir.model.fields,help:hr_eos.field_employee_eos_notice_period_deduction
+msgid ""
+"To calculate Notice period Deduction \n"
+" 1 . = zero, if (Notice period difference= 0) \n"
+" 2 . = Negative if Notice period difference=  negative value) \n"
+" 3 . Positive >> ( this field can not be a positive, your system will automatically manage the positive difference in payslip)."
+msgstr ""
+"لحساب مبلغ الخصم في فترة الإشعار.\n"
+"1. صفر إذا كان الاختلاف عن فترة الاشعار = 0\n"
+"2. رقم سالب إذا كان الاختلان عن فترة الإشعار = رقم سالب\n"
+"3. رقم موجب . ( لن يقوم النظام بحساب أي قيمه هنا لأننا سنعالج الزياده في فترة الاشعار عن طريق حقل الراتب حتى تاريخ اخر يوم عمل )"
+
+#. module: hr_eos
+#: model:ir.model.fields,help:hr_eos.field_employee_eos_notice_period_difference
+msgid ""
+"To calculate Notice period difference \n"
+" 1 . = zero, if (the employee didn’t have any payslips) or ( actual last working day is equal to expected last working day ) \n"
+" 2 . = Negative if ( expected last working day is greater than actual last working day) \n"
+" 3 . Positive Notice period difference (actual last working day is greater than expected last working day ), your system will create individual payslip for this employee for the positive difference days."
+msgstr ""
+"لحساب الاختلاف في فترة الاشعار\n"
+"1. تساوى صفر اذا لم يكن للموظف أي مسيرات رواتب سابقه. أو إذا كان أخر يوم عمل أقل من أو يساوى أخر يوم عمل متوقع.\n"
+"2. تساوى رقم سالب إذا كان أخر يوم عمل فعلى أقل من أخر يوم عمل متوقع.\n"
+"3. تساوى رقم موجب اخر يوم عمل فعلى أكبر من أخر يوم عمل متوقع. سوف يقوم النظام بإحتساب مستحقات الموظف خلال تلك الفتره تلقائيا."
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_total_number_of_years
+msgid "Total Number of years"
+msgstr "إجمالى عدد السنوات"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_total_work_duration
+msgid "Total Work Duration"
+msgstr "إجمالى مدة العمل"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_air_ticket_one_way
+msgid "Total air ticket value - one way"
+msgstr "إجمالى سعر تذاكر الطيران - ذهاب فقط"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_total_unpaid_leave_duration
+msgid "Total unpaid leave duration"
+msgstr "إجمالى مدة الأجازات الغير مدفوعه"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_total_unpaid_leaves_years
+msgid "Total unpaid leaves in years"
+msgstr "إجمالي مدة الأجازات الغير مدفوعه بالسنوات"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_pending_transactions_wizard_line_name
+msgid "Transaction"
+msgstr "معامله"
+
+#. module: hr_eos
+#: selection:employee.eos,final_exit:0
+msgid "Transfer Sponsorship"
+msgstr "نقل كفالة"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_hr_employee_unpaid_before
+msgid "Unpaid leaves before using the system"
+msgstr "رصيد الأجازات الغير مدفوعه قبل إستخدام النظام"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_message_unread
+#: model:ir.model.fields,field_description:hr_eos.field_eos_motivation_message_unread
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_message_unread
+msgid "Unread Messages"
+msgstr "رسائل غير مقروءة"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_message_unread_counter
+#: model:ir.model.fields,field_description:hr_eos.field_eos_motivation_message_unread_counter
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "عداد الرسائل الغير مقروؤه"
+
+#. module: hr_eos
+#: model:ir.ui.view,arch_db:hr_eos.pending_transactions_wizard
+msgid "View Pending Transaction"
+msgstr "عرض المعاملات المعلقة في النظام"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_website_message_ids
+#: model:ir.model.fields,field_description:hr_eos.field_eos_motivation_website_message_ids
+#: model:ir.model.fields,field_description:hr_eos.field_eos_reason_website_message_ids
+msgid "Website Messages"
+msgstr "رسائل الموقع"
+
+#. module: hr_eos
+#: model:ir.model.fields,help:hr_eos.field_employee_eos_website_message_ids
+#: model:ir.model.fields,help:hr_eos.field_eos_motivation_website_message_ids
+#: model:ir.model.fields,help:hr_eos.field_eos_reason_website_message_ids
+msgid "Website communication history"
+msgstr "سجل تواصل الموقع"
+
+#. module: hr_eos
+#: selection:eos.reason,relatives_air_ticket:0
+msgid "Will be included"
+msgstr "يتم دفع تذاكر طيران المرافقين"
+
+#. module: hr_eos
+#: selection:eos.reason,relatives_air_ticket:0
+msgid "Will not be included"
+msgstr "لا يتم دفع تذاكر طيران المرافقين"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_pending_transactions_wizard_line_wizard_id
+msgid "Wizard id"
+msgstr "الكود"
+
+#. module: hr_eos
+#: model:ir.ui.view,arch_db:hr_eos.eos_form
+msgid "Years"
+msgstr "السنوات"
+
+#. module: hr_eos
+#: model:ir.ui.view,arch_db:hr_eos.eos_form
+msgid "Your system will auto create payslip to the last working day"
+msgstr "سيقوم النظام تلقائيا باحتساب راتب الموظف من تاريخ أخر مسير رواتب حتى أخر يوم عمل"
+
+#. module: hr_eos
+#: model:ir.model.fields,help:hr_eos.field_employee_eos_air_ticket_price_one_way
+msgid "Your system will read air ticket price one way from ( city >> Country >> contract )."
+msgstr "سيقوم النظام بقراءة سعر تذكرة الطيران من ( المدينه - الدوله - العقد )"
+
+#. module: hr_eos
+#: selection:eos.reason,calc_based_on:0
+msgid "Zero - No End Of Services"
+msgstr "صفر - لا توجد مستحقات نهاية خدمه"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_air_ticket_price_one_way
+msgid "air ticket price one way"
+msgstr "سعر تذكرة الطيران ذهاب فقط"
+
+#. module: hr_eos
+#: code:addons/hr_eos/models/models.py:748
+#, python-format
+msgid "air ticket price one way Can not be minus"
+msgstr "سعر التذكره - ذهاب فقط لا يمكن أن يكون رقما سالبا"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_employee_eos_branch_id
+msgid "branch"
+msgstr "الفرع"
+
+#. module: hr_eos
+#: model:ir.model.fields,field_description:hr_eos.field_pending_transactions_wizard_line_ids
+msgid "dssff"
+msgstr "dssff"
+
+#. module: hr_eos
+#: model:ir.model,name:hr_eos.model_pending_transactions_wizard
+msgid "pending.transactions.wizard"
+msgstr "معاملات قيد الإنتظار"
+
+#. module: hr_eos
+#: model:ir.model,name:hr_eos.model_pending_transactions_wizard_line
+msgid "pending.transactions.wizard.line"
+msgstr "معاملات قيد الإنتظار"
+
+#. module: hr_eos
+#: selection:eos.reason,annual_air_ticket_balance:0
+msgid "‫‪Current air ticket balance will be paid ( ticket fractions will be paid"
+msgstr "يتم دفع الرصيد الحالي لمستحقات الموظف من تذاكر الطيران كاملا. حتى مع وجود أجزاء عن السنه"
+
+#. module: hr_eos
+#: selection:eos.reason,calc_based_on:0
+msgid "‫‪Total salary"
+msgstr "الراتب الإجمالى"

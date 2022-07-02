@@ -1,0 +1,400 @@
+<odoo>
+    <data>
+        <record id="paperformat_effective_notice" model="report.paperformat">
+            <field name="name">Effective Notice</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">10</field>
+            <field name="margin_bottom">23</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">68</field>
+            <field name="dpi">90</field>
+        </record>
+        <report
+            id="report_effective_notice"
+            model="effective.notice"
+            string="EMPLOYEE WORK START FORM"
+            name="saudi_hr_printout.report_effective_notice_view"
+            file="report_effective_notice"
+            report_type="qweb-pdf"
+                />
+
+        <template id="report_effective_notice_view">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="saudi_hr_printout.reconciliation_layout">
+                        <div class="page">
+                            <style>
+                                .table_cell{
+                                    border:1px solid black !important;
+                                    text-align: center;
+                                }
+                                .table_cell_right{
+                                    border:1px solid black !important;
+                                    text-align: right;
+                                    padding-right: 3px !important;
+                                }
+                                .table_cell_left{
+                                    border:1px solid black !important;
+                                    text-align: left;
+                                    padding-left: 3px !important;
+                                }
+                                .gray{
+                                    background-color: #c5c7c7;
+                                }
+                                .rtl{
+                                    direction:rtl;
+                                }
+                                .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+                                    padding: 5px;
+                                    font-size: 16.5px;
+                                }
+                            </style>
+
+                            <h4 t-if="o.state !='HR department approval'" class=" text-center">
+                                Not approved Employee work Start Form
+                            </h4>
+
+                            <table class="table table-bordered" style="width:100%">
+                                <tbody >
+                                    <tr  >
+                                        <td class="table_cell_left gray" style="width:20%;">
+                                            To Department:
+                                        </td>
+                                        <td class="table_cell_left" colspan="2" style="width:30%;">
+                                            <span t-field="o.employee_id.department_id.name"/>
+                                        </td>
+                                        <td class="table_cell_right" colspan="2" style="width:30%;">
+                                            <span t-field="o.employee_id.department_id.arabic_name"/>
+                                        </td>
+                                        <td class="table_cell_right gray rtl" style="width:20%;">
+                                            إلى إدارة:
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell_left gray" >
+                                            From:
+                                        </td>
+                                        <td class="table_cell_left" colspan="2">
+                                            Human Resources Department
+                                        </td>
+                                        <td class="table_cell_right" colspan="2">
+                                            الموارد البشرية
+                                        </td>
+                                        <td class="table_cell_right gray">
+                                            من  إدارة
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table table-bordered"  style="width:100%">
+                                <tbody >
+                                    <tr  >
+                                        <td class="table_cell_left gray" style="width:20%;">
+                                            Name:
+                                        </td>
+                                        <td class="table_cell_left" colspan="2" style="width:30%;">
+                                            <span t-field="o.employee_id.employee_english_name"/>
+                                        </td>
+                                        <td class="table_cell_right" colspan="2" style="width:30%;">
+                                            <span t-field="o.employee_id.name"/>
+                                        </td>
+                                        <td class="table_cell_right gray rtl" style="width:20%;">
+                                            الأسم :
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell_left gray" >
+                                            Nationality
+                                        </td>
+                                        <td class="table_cell_left" colspan="2">
+                                            <span t-field="o.employee_id.country_id.name"/>
+                                        </td>
+                                        <td class="table_cell_right" colspan="2">
+                                            <span t-field="o.employee_id.country_id.arabic_name"/>
+                                        </td>
+                                        <td class="table_cell_right gray rtl">
+                                            الجنسية
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell_left gray" >
+                                            Employee No.
+                                        </td>
+                                        <td class="table_cell_left" colspan="2">
+                                            <span t-field="o.employee_id.employee_number"/>
+                                        </td>
+                                        <td class="table_cell_right" colspan="2">
+                                            <span t-field="o.employee_id.employee_number"/>
+                                        </td>
+                                        <td class="table_cell_right gray rtl">
+                                            الرقم الوظيفي :
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell_left gray" >
+                                            Job Title:
+                                        </td>
+                                        <td class="table_cell_left" colspan="2">
+                                            <span t-field="o.employee_id.job_id.name"/>
+                                        </td>
+                                        <td class="table_cell_right" colspan="2">
+                                            <span t-field="o.employee_id.job_id.arabic_name"/>
+                                        </td>
+                                        <td class="table_cell_right gray rtl">
+                                            مسمى الوظيفة :
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell_left gray" >
+                                            Department / Section :
+                                        </td>
+                                        <td class="table_cell_left" colspan="2">
+                                            <span t-field="o.employee_id.department_id.name"/>
+                                        </td>
+                                        <td class="table_cell_right" colspan="2">
+                                            <span t-field="o.employee_id.department_id.arabic_name"/>
+                                        </td>
+                                        <td class="table_cell_right gray rtl">
+                                            الادارة / القسم :
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell_left gray" >
+                                            Contract Start Date:
+                                        </td>
+                                        <td class="table_cell_left" colspan="2">
+                                            <span t-field="o.employee_id.contract_id.date_start" t-field-options='{"format": "d/M/y"}'/>
+                                        </td>
+                                        <td class="table_cell_right" colspan="2">
+                                            <span t-field="o.employee_id.contract_id.date_start" t-field-options='{"format": "d/M/y"}'/>
+                                        </td>
+                                        <td class="table_cell_right gray rtl">
+                                            تاريخ بداية العقد :
+                                        </td>
+                                    </tr>
+<!--                                    <tr  >-->
+<!--                                        <td class="table_cell_left gray" >-->
+<!--                                            Contract Ending Date:-->
+<!--                                        </td>-->
+<!--                                        <td class="table_cell_left" colspan="2">-->
+<!--                                            <span t-if="o.employee_id.contract_id.duration_type=='Limited Time Contract'">-->
+<!--                                                <span t-field="o.employee_id.contract_id.date_end" t-field-options='{"format": "d/M/y"}'/>-->
+<!--                                            </span>-->
+<!--                                            <span t-if="o.employee_id.contract_id.duration_type=='Unlimited Time Contract'"  >-->
+<!--                                                Unlimited time contract-->
+<!--                                            </span>-->
+<!--                                        </td>-->
+<!--                                        <td class="table_cell_right" colspan="2">-->
+<!--                                            <span t-if="o.employee_id.contract_id.duration_type=='Limited Time Contract'">-->
+<!--                                                <span t-field="o.employee_id.contract_id.date_end" t-field-options='{"format": "d/M/y"}'/>-->
+<!--                                            </span>-->
+<!--                                            <span t-if="o.employee_id.contract_id.duration_type=='Unlimited Time Contract'"  >-->
+<!--                                                عقد غير محدد المده-->
+<!--                                            </span>-->
+<!--                                        </td>-->
+<!--                                        <td class="table_cell_right gray rtl">-->
+<!--                                            تاريخ نهاية العقد :-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+                                    <tr>
+                                        <td class="table_cell_left gray">Salary details</td>
+                                        <td class="table_cell_left" colspan="2">
+                                            Basic salary: <span t-field="o.employee_id.contract_id.basic_salary"/><br/>
+                                            House Allowance: <span t-field="o.employee_id.contract_id.house_allowance_amount"/><br/>
+                                            Transportation: <span t-field="o.employee_id.contract_id.transportation_allowance_amount"/><br/>
+                                            Phone Allowance : <span t-field="o.employee_id.contract_id.phone_allowance_amount"/><br/>
+                                            Food Allowance: <span t-field="o.employee_id.contract_id.food_allowance_amount"/><br/>
+                                            Other Allowance: <span t-field="o.employee_id.contract_id.other_allowance"/><br/>
+                                        </td>
+                                        <td class="table_cell_right" colspan="2">
+                                            الراتب الأساسي : <span t-field="o.employee_id.contract_id.basic_salary"/><br/>
+                                            بدل السكن : <span t-field="o.employee_id.contract_id.house_allowance_amount"/><br/>
+                                            بدل التنقل : <span t-field="o.employee_id.contract_id.transportation_allowance_amount"/><br/>
+                                            بدل المكالمات : <span t-field="o.employee_id.contract_id.phone_allowance_amount"/><br/>
+                                            بدل الإعاشه : <span t-field="o.employee_id.contract_id.food_allowance_amount"/><br/>
+                                            أخري : <span t-field="o.employee_id.contract_id.other_allowance"/><br/>
+                                        </td>
+                                        <td class="table_cell_right gray rtl">تفاصيل الراتب</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table table-bordered"  style="width:100%">
+                                <tbody >
+                                    <tr  >
+<!--
+                                        <td class="table_cell gray" style="width:20%;">
+                                            Employee:
+                                        </td>
+                                        <td class="table_cell" style="width:30%;">
+                                            <span t-field="o.department_id.manager_id.employee_english_name"/>
+                                        </td>
+                                        <td class="table_cell_right" style="width:30%;">
+                                            <span t-field="o.department_id.manager_id.name"/>
+                                        </td>
+                                        <td class="table_cell_right gray rtl" style="width:20%;">
+                                            الموظف :
+                                        </td>
+-->
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell gray" style="width:20%;" >
+                                            Signature:
+                                        </td>
+                                        <td class="table_cell"  style="width:60%;">
+                                        </td>
+                                        <td class="table_cell_right gray rtl" style="width:20%;">
+                                            التوقيع :
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell gray" style="width:20%;" >
+                                            Date:
+                                        </td>
+                                        <td class="table_cell" style="width:60%;">
+                                        </td>
+                                        <td class="table_cell_right gray rtl" style="width:20%;">
+                                            التاريخ :
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table table-bordered"  style="width:100%">
+                                <tbody >
+                                    <tr  >
+                                        <td class="table_cell_left" colspan="2" width="50%">
+                                            Please be informed that the above-mentioned candidate will start his/her work in your department effective starting from.
+                                            <b><span t-field="o.start_work" t-field-options='{"format": "d/M/y"}'/></b>
+                                        </td>
+                                        <td class="table_cell_right rtl" colspan="2">
+                                            نحيطكم علما ً بإن المرشح أعلاه سيبدأ العمل في إدارتك إعتبارا ً من:
+                                            <b><span t-field="o.start_work" t-field-options='{"format": "d/M/y"}'/></b>
+                                        </td>
+
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell_left gray" style="width:20%;">
+                                            HR Manager:
+                                        </td>
+                                        <td class="table_cell_left" style="width:30%;">
+                                            <span t-if="hr_manager" t-field="hr_manager.employee_english_name"/>
+                                        </td>
+                                        <td class="table_cell_right" style="width:30%;">
+                                            <span t-if="hr_manager" t-field="hr_manager.name"/>
+                                        </td>
+                                        <td class="table_cell_right gray rtl" style="width:20%;">
+                                            مدير الموارد البشرية :
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell_left gray" >
+                                            Signature:
+                                        </td>
+                                        <td class="table_cell" >
+                                        </td>
+                                        <td class="table_cell" >
+                                        </td>
+                                        <td class="table_cell_right gray rtl">
+                                            التوقيع :
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell_left gray" >
+                                            Date:
+                                        </td>
+                                        <td class="table_cell" >
+                                        </td>
+                                        <td class="table_cell" >
+                                        </td>
+                                        <td class="table_cell_right gray rtl">
+                                            التاريخ :
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table table-bordered"  style="width:100%">
+                                <tbody >
+                                    <tr  >
+                                        <td class="table_cell_left" style="width:50%;">
+                                            To:  Human Resources Manager
+                                        </td>
+                                        <td class="table_cell_right rtl" >
+                                            إلى :  مدير الموارد البشرية
+                                        </td>
+
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell_left" >
+                                            From <span t-field="o.department_id.name" /> Department
+                                        </td>
+                                        <td class="table_cell_right rtl" >
+                                            من إدارة :
+                                            <span t-field="o.department_id.arabic_name" />
+                                        </td>
+
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell_left" >
+                                            Please be informed that the above-mentioned candidate has started working in our department on
+                                            <span t-field="o.start_work" t-field-options='{"format": "d/M/y"}'/>
+                                        </td>
+                                        <td class="table_cell_right rtl" >
+                                            نود أن نحيطكم بأن الموظف الموضحه بياناته أعلاهـ تمت مباشرته لدينا بالإدارة بتاريخ
+                                            <span t-field="o.start_work" t-field-options='{"format": "d/M/y"}'/>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table table-bordered"  style="width:100%">
+                                <tbody >
+                                    <tr  >
+                                        <td class="table_cell gray" style="width:20%;">
+                                            Department Manager:
+                                        </td>
+                                        <td class="table_cell" style="width:30%;">
+                                            <span t-field="o.department_id.manager_id.employee_english_name"/>
+                                        </td>
+                                        <td class="table_cell_right" style="width:30%;">
+                                            <span t-field="o.department_id.manager_id.name"/>
+                                        </td>
+                                        <td class="table_cell_right gray rtl" style="width:20%;">
+                                            مدير الإدارة:
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell gray" >
+                                            Signature:
+                                        </td>
+                                        <td class="table_cell" colspan="2">
+                                        </td>
+                                        <td class="table_cell_right gray rtl">
+                                            التوقيع :
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell gray" >
+                                            Date:
+                                        </td>
+                                        <td class="table_cell" colspan="2">
+                                        </td>
+                                        <td class="table_cell_right gray rtl">
+                                            التاريخ :
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="account_invoice_supplier_form_view_expense_inherit" model="ir.ui.view">
+        <field name="name">account.invoice_supplier_form.expense.inherit</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_supplier_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='asset_category_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            
+            <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='name']" position="after">
+                <field name="expense_nature"/>
+                <field name="expense_type_id" attrs="{'invisible': [('expense_nature', '=', 'normal')], 'required': [('expense_nature', '=', 'prepaid')]}"/>
+                <field name="asset_category_id" attrs="{'invisible': [('expense_nature', '=', 'prepaid')]}"/>
+            </xpath>
+            <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='analytic_tag_ids']" position="after">
+                <field name="start_date" attrs="{'invisible': [('expense_nature', '=', 'normal')], 'required': [('expense_nature', '=', 'prepaid')]}"/>
+                <field name="end_date" attrs="{'invisible': [('expense_nature', '=', 'normal')], 'required': [('expense_nature', '=', 'prepaid')]}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

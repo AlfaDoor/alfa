@@ -1,0 +1,5 @@
+<odoo>
+    <data noupdate="1">
+        <function model="res.country" name="update_eos_notice_period"/>
+    </data>
+</odoo>

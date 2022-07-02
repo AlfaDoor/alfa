@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<record id="wizard_open_tax_compute" model="ir.ui.view">
+    <field name="name">open_tax_compute</field>
+    <field name="model">open.tax.compute</field>
+    <field name="arch" type="xml">
+        <form string="Taxes Compute">
+            <group>
+                <field name="company_id"/>
+                <field name="date_range_id"/>
+                <field name="from_date"></field>
+                <field name="to_date"></field>
+            </group>
+            <footer>
+                <button string="Compute Taxes" name="get_lines" type="object" class="oe_highlight"/>
+                or
+                <button string="Cancel" class="oe_link" special="cancel"/>
+            </footer>
+        </form>
+    </field>
+ </record>
+
+<record id="action_open_tax_compute" model="ir.actions.act_window">
+    <field name="name">Taxes Compute</field>
+    <field name="res_model">open.tax.compute</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">form</field>
+    <field name="view_id" ref="wizard_open_tax_compute"/>
+    <field name="target">new</field>
+</record>
+
+
+</odoo>

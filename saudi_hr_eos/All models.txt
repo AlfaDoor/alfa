@@ -1,0 +1,7 @@
+eos.reason
+eos.reason.attachment
+eos.motivation
+employee.eos
+employee.eos.payment.deduction
+pending.transactions.wizard
+pending.transactions.wizard.line

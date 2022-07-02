@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Salary rule Category ( DED ) -->
+        <record id="DEDUCT" model="hr.salary.rule.category">
+            <field name="name">Total deduction</field>
+            <field name="code">DEDUCT</field>
+        </record>
+        <record id="HOUSEALL" model="hr.salary.rule.category">
+            <field name="name">House allowance</field>
+            <field name="code">HOSALL</field>
+            <field name="parent_id" ref="hr_payroll.ALW"/>
+        </record>
+        <record id="TRANSEALL" model="hr.salary.rule.category">
+            <field name="name">Transportation allowance</field>
+            <field name="code">TRANSALL</field>
+            <field name="parent_id" ref="hr_payroll.ALW"/>
+        </record>
+        <!-- Total Deduction -->
+        <record id="hr_rule_total_deductions" model="hr.salary.rule">
+            <field name="name">Net Deductions and Rewards</field>
+            <field name="code">DED</field>
+            <field name="category_id" ref="saudi_hr_payroll.DEDUCT"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = categories.DED</field>
+            <field name="sequence" eval="95"/>
+        </record>
+        <!-- Total Gross -->
+        <record id="hr_rule_gross" model="hr.salary.rule">
+            <field name="name">Gross</field>
+            <field name="sequence" eval="50"/>
+            <field name="code">GROSS</field>
+            <field name="category_id" ref="hr_payroll.GROSS"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = categories.BASIC + categories.ALW</field>
+        </record>
+        <!-- Basic -->
+        <record model="hr.salary.rule" id="basic_salary_rule">
+            <field name="name">Basic Salary</field>
+            <field name="category_id" ref="hr_payroll.BASIC"/>
+            <field name="code">BSC</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = payslip.dict.BSC_rule()</field>
+            <field eval="2" name="sequence"/>
+        </record>
+        <!-- House Allowance -->
+        <record model="hr.salary.rule" id="house_salary_rule">
+            <field name="name">House Allowance</field>
+            <field name="category_id" ref="saudi_hr_payroll.HOUSEALL"/>
+            <field name="code">HOUSEALL</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = payslip.dict.HOUSEALL_rule()</field>
+            <field eval="4" name="sequence"/>
+        </record>
+        <!-- Transportation Allowance -->
+        <record model="hr.salary.rule" id="transportation_salary_rule">
+            <field name="name">Transportation Allowance</field>
+            <field name="category_id" ref="saudi_hr_payroll.TRANSEALL"/>
+            <field name="code">TRANSALL</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = payslip.dict.TRANSALL_rule()</field>
+            <field eval="6" name="sequence"/>
+        </record>
+        <!-- Phone Allowance -->
+        <record model="hr.salary.rule" id="phone_salary_rule">
+            <field name="name">Phone Allowance</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="code">PHOALL</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = payslip.dict.PHOALL_rule()</field>
+            <field eval="8" name="sequence"/>
+        </record>
+        <!-- Food Allowance -->
+        <record model="hr.salary.rule" id="food_salary_rule">
+            <field name="name">Food Allowance</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="code">FODALL</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = payslip.dict.FODALL_rule()</field>
+            <field eval="8" name="sequence"/>
+        </record>
+        <!-- Other Allowance -->
+        <record model="hr.salary.rule" id="other_salary_rule">
+            <field name="name">Other Allowance</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="code">OTHERALL</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = payslip.dict.OTHERALL()</field>
+            <field eval="10" name="sequence"/>
+        </record>
+        <!-- Net -->
+        <record model="hr.salary.rule" id="net_salary_rule">
+            <field name="name">Net</field>
+            <field name="category_id" ref="hr_payroll.NET"/>
+            <field name="code">NET_RULE</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = payslip.dict.net_rule()</field>
+            <field eval="100" name="sequence"/>
+        </record>
+
+        <!-- Salary Structure -->
+        <record id="rz_salary_structure" model="hr.payroll.structure">
+            <field name="name">Salary Structure</field>
+            <field name="code">RZ</field>
+            <field name="parent_id" eval="False"/>
+            <field name="is_default" eval="True"/>
+            <field name="rule_ids" eval="[
+                (4, ref('saudi_hr_payroll.basic_salary_rule')),
+                (4, ref('saudi_hr_payroll.house_salary_rule')),
+                (4, ref('saudi_hr_payroll.transportation_salary_rule')),
+                (4, ref('saudi_hr_payroll.phone_salary_rule')),
+                (4, ref('saudi_hr_payroll.food_salary_rule')),
+                (4, ref('saudi_hr_payroll.other_salary_rule')),
+                (4, ref('saudi_hr_payroll.net_salary_rule')),
+                (4, ref('saudi_hr_payroll.hr_rule_total_deductions')),
+                (4, ref('saudi_hr_payroll.hr_rule_gross')),
+            ]"/>
+        </record>
+    </data>
+
+</odoo>

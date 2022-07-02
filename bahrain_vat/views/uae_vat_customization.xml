@@ -1,0 +1,480 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record id="reverse_charge_service_payment_view_form" model="ir.ui.view">
+            <field name="name">reverse.charge.service.form</field>
+            <field name="model">reverse.charge.service</field>
+            <field name="arch" type="xml">
+                <form string="Register Payment">
+                    <sheet>
+                        <field name="id" invisible="1"/>
+                        <div class="oe_title">
+                            <h1>Reverse Charge</h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="partner_id" attrs="{'readonly': [['state', 'not in', ['draft']]]}"/>
+                                <field name="journal_id" widget="selection" attrs="{'readonly': [['state', 'not in', ['draft']]]}"/>
+                                <field name="amount" string="Vendor Bill Amount" attrs="{'readonly': [['state', 'not in', ['draft']]]}"/>
+                                <field name="reverse_charge_amount" attrs="{'readonly': [['state', 'not in', ['draft']]]}"/>
+                            </group>
+                            <group>
+                                <field name="state" invisible="1"/>
+                                <field name="reverse_charge_tax" attrs="{'readonly': [['state', 'not in', ['draft']]]}"/>
+                                <field name="reverse_charge_tax_input" attrs="{'readonly': [['state', 'not in', ['draft']]]}"/>
+                                <field name="move_id" readonly="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button string='Save' name="save_reverse_charge" attrs="{'invisible': [['state', '=', 'validate']]}" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel" attrs="{'invisible': [['state', '=', 'validate']]}"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    <record model="ir.ui.view" id="view_reverse_charge_service_tree">
+        <field name="name">reverse.charge.service.tree</field>
+        <field name="model">reverse.charge.service</field>
+        <field name="arch" type="xml">
+            <tree string="VAT Return Form">
+                <field name="date"/>
+                <field name="partner_id"/>
+                <field name="amount"/>
+                <field name="amount"/>
+                <field name="reverse_charge_amount"/>
+            </tree>
+        </field>
+    </record>
+        <!-- Expenses -->
+        <record id="reverse_charge_wizard_action" model="ir.actions.act_window">
+            <field name="name">Reverse Charge</field>
+            <field name="res_model">reverse.charge.service</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="reverse_charge_service_payment_view_form"/>
+            <field name="target">new</field>
+            <field name="context">{'default_vendor_bill': active_id}</field>
+        </record>
+
+        <record forcecreate="True" id="decimal_payroll" model="decimal.precision">
+            <field name="name">TaxReturn</field>
+            <field name="digits">2</field>
+        </record>
+        <record id="view_tax_form_inherit" model="ir.ui.view">
+            <field name="name">account.tax.form</field>
+            <field name="model">account.tax</field>
+            <field name="inherit_id" ref="account.view_tax_form"/>
+            <field name="arch" type="xml">
+                <field name="price_include" position="after">
+                    <field name="reverse_charge"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_uae_vat_kanban">
+            <field name="name">uae.vat.return.kanban</field>
+            <field name="model">uae.vat.return</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile">
+                    <field name="name"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="total_payable"/>
+                    <field name="state"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                                <div class="o_kanban_record_top mb16">
+                                    <div class="o_kanban_record_headings mt4">
+                                        <strong class="o_kanban_record_title"><span><t t-esc="record.name.value"/></span></strong>
+                                    </div>
+                                    <strong><field name="total_payable" widget="monetary"/></strong>
+                                </div>
+                                <div class="o_kanban_record_bottom">
+                                    <div class="oe_kanban_bottom_left text-muted">
+                                        <span><t t-esc="record.start_date.value"/> to <t t-esc="record.end_date.value"/></span>
+                                    </div>
+                                    <div class="oe_kanban_bottom_right">
+                                        <field name="state" widget="label_selection" options="{'classes': {'draft': 'default', 'rollover': 'danger', 'paid': 'success'}}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_uae_vat_return_tree">
+            <field name="name">uae.vat.return.tree</field>
+            <field name="model">uae.vat.return</field>
+            <field name="arch" type="xml">
+                <tree string="VAT Return Form">
+                    <field name="name"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="total_taxable_sales_in_period_before_tax"/>
+                    <field name="total_collected_on_sales"/>
+                    <field name="total_taxable_purchase_in_period_before_tax"/>
+                    <field name="total_collected_on_purchase"/>
+                    <field name="total_payable" string="Net Amount"/>
+                    <field name="adjustment_amount"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_uae_vat_return_form">
+            <field name="name">uae.vat.return.form</field>
+            <field name="model">uae.vat.return</field>
+            <field name="arch" type="xml">
+                <form string="Vat Return">
+                    <header>
+                        <field name="state" widget="statusbar"/>
+                        <button name="%(bahrain_vat.vat_return_payment_wizard_action)d" states="validate" type="action" string="Register Payment" class="oe_highlight o_expense_sheet_pay" context="{'default_amount': total_payable}" groups="account.group_account_manager"/>
+                        <button name="tax_compute" type="object" states="new" string="Compute Tax" class="oe_highlight"/>
+                        <button name="action_validate_new" type="object" states="new" string="Validate" class="oe_highlight"/>
+                        <button name="tax_close" type="object" states="validate" string="Close" class="oe_highlight"/>
+                        <button string="Export Report" class="oe_highlight" name="export_for_import" type="object" groups="base.group_user"/>
+                        <button name="tax_adjustment" states="new" type="object" string="TAX Adjustment" class="oe_highlight o_expense_sheet_pay" context="{'default_amount': total_payable}" groups="account.group_account_manager"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1><field name="name" placeholder="Name"/></h1>
+                        </div>
+                        <div style="margin-left:786px;color:red">
+                            <label for="total_payable" string="Net Amount"/>
+                            <field name="total_payable" required="1" class="oe_inline"/>
+                        </div>
+                        <group>
+                            <label for="start_date" string="Period"/>
+                            <div>
+                                <field name="start_date" required="1" class="oe_inline"/> - <field name="end_date" required="1" class="oe_inline"/>
+                            </div>
+                            <label for="partner_id"/>
+                            <div>
+                                <field name="partner_id" required="1" class="oe_inline"/>
+                            </div>
+                        </group>
+                        <group>
+                            <group string="Sales">
+                                <field name="total_minus" invisible="1"/>
+                                <field name="total_taxable_sales_in_period_before_tax" readonly="1"/>
+                                <field name="total_collected_on_sales" readonly="1"/>
+                                <field name="total_sale_adjustment_amount"/>
+                            </group>
+                            <group string="Purchase">
+                                <field name="total_taxable_purchase_in_period_before_tax" readonly="1"/>
+                                <field name="total_collected_on_purchase" readonly="1"/>
+                                <field name="total_purchase_adjustment_amount"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Tax Details" >
+                                <field name="return_line_ids" nolabel="1" readonly="1">
+                                    <tree string="Tax Details">
+                                        <field name="name"/>
+                                        <field name="scope"/>
+                                        <field name="base_amount"/>
+                                        <button type="object" name="view_base_regular_lines"
+                                                string="View base regular lines" icon="fa-search-plus"/>
+                                        <field name="tax_amount"/>
+                                        <button type="object" name="view_tax_regular_lines"
+                                                string="View Tax regular lines" icon="fa-search-plus"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Reverse Charge" >
+                                <field name="reverse_charge_line_ids" nolabel="1" readonly="1">
+                                    <tree string="Reverse Charge">
+                                        <field name="type"/>
+                                        <field name="amount"/>
+                                        <field name="custom_amount"/>
+                                        <field name="reverse_charge_amount"/>
+                                    </tree>
+                                </field>
+                                <group>
+                                    <group>
+                                        <button type="object" name="sales_domestic_charge"
+                                                string="View Domestic Reverse Charge Invoices" icon="fa-search-plus"/>
+                                    </group>
+                                    <group>
+                                        <button type="object" name="purchases_domestic_charge"
+                                                string="View Domestic reverse Charge Bills" icon="fa-search-plus"/>
+                                    </group>
+                                    <group>
+                                        <button type="object" name="open_import_charge"
+                                                string="View Import Charge Bills" icon="fa-search-plus"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Account Details">
+                                <group>
+                                    <group>
+                                        <field name="journal_id"/>
+                                        <field name="move_id"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Tax Adjustments" >
+                                <field name="tax_adjustment_log_ids" nolabel="1" readonly="1">
+                                    <tree string="Adjustments" delete="false">
+                                        <field name="tax_id"/>
+                                        <field name="reason"/>
+                                        <field name="date"/>
+                                        <field name="amount"/>
+                                        <field name="move_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                        </sheet>
+                        <div class="oe_chatter">
+                            <field name="message_follower_ids" widget="mail_followers"/>
+                            <field name="message_ids" widget="mail_thread"/>
+                        </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="uae_vat_return_action" model="ir.actions.act_window">
+            <field name="name">Vat Return</field>
+            <field name="res_model">uae.vat.return</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,pivot,graph,form</field>
+        </record>
+
+        <menuitem id="menu_account_tax_report_uae_return" name="Vat Return" action="uae_vat_return_action" parent="account.menu_finance_entries_actions" sequence="31" groups="account.group_account_manager,account.group_account_user"/>
+
+      <!--  <record id="account.view_account_move_line_filter" model="ir.ui.view">
+            <field name="name">Journal Items</field>
+            <field name="model">account.move.line</field>
+            <field name="arch" type="xml">
+                <search string="Search Journal Items">
+                    <field name="name" filter_domain="['|', ('name','ilike',self), ('ref','ilike',self)]" string="Move"/>
+                    <field name="date"/>
+                    <separator/>
+                    <filter string="Unposted" name="unposted" domain="[('move_id.state','=','draft')]" help="Unposted Journal Items"/>
+                    <filter name="posted" string="Posted" domain="[('move_id.state','=','posted')]" help="Posted Journal Items"/>
+                    <separator/>
+                    <filter string="Unreconciled" domain="[('full_reconcile_id', '=', False), ('balance','!=', 0), ('account_id.reconcile','=',True)]" help="Journal items where matching number isn't set" name="unreconciled"/>
+                    <separator/>
+                    <filter string="Payable" domain="[('account_id.internal_type', '=', 'payable')]" help="From Payable accounts" name="payable"/>
+                    <filter string="Receivable" domain="[('account_id.internal_type', '=', 'receivable')]" help="From Receivable accounts" name="receivable"/>
+                    <separator/>
+                    <field name="account_id"/>
+                    <field name="partner_id"/>
+                    <field name="journal_id"/>
+                    <field name="move_id" string="Number (Move)"/>
+                    <field name="tax_line_id"/>
+                    <field name="tax_ids" />
+                    <group expand="0" string="Group By">
+                        <filter name="Partner" string="Partner" domain="[]" context="{'group_by':'partner_id'}"/>
+                        <filter name="Journal" string="Journal" domain="[]" context="{'group_by':'journal_id'}"/>
+                        <filter name="Account" string="Account"  context="{'group_by':'account_id'}"/>
+                        <filter name="Date" string="Date" domain="[]" context="{'group_by':'date'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>-->
+
+        <record id="view_company_form_inherit" model="ir.ui.view">
+            <field name="name">res.company.form</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <field name="vat" position="replace">
+                    <field name="vat" string="TRN"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="invoice_form_inherit" model="ir.ui.view">
+            <field name="name">account.invoice.form.inherit</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <field name="payment_term_id" position="before">
+                    <field name="trn"/>
+                    <field name="domestic"/>
+                    <field name="export"/>
+                </field>
+                <field name="date_due" position="after">
+                    <field name="date_of_issue"/>
+                    <field name="date_of_supply"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_partner_form_inherit" model="ir.ui.view">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <field name="vat" position="replace">
+                    <field name="vat" string="TRN"/>
+                </field>
+                <xpath expr="/form/sheet/notebook/page[@name='sales_purchases']/group/group/field[@name='supplier']" position="after">
+                    <field name="product_ids" widget="many2many_tags"/>
+                </xpath>
+            </field>
+        </record>
+        <!--<record id="action_tax_report" model="ir.actions.client">-->
+            <!--<field name="name">UAE Tax Report</field>-->
+            <!--<field name="tag">account_report</field>-->
+            <!--<field name="context" eval="{'model': 'account.tax.ledger'}" />-->
+        <!--</record>-->
+        <!--<menuitem action="action_tax_report" id="uae_tax_report" parent="account.menu_finance_receivables_documents"/>-->
+    <record model="ir.ui.view" id="view_reverse_charge_tree">
+        <field name="name">reverse.charge.tree</field>
+        <field name="model">reverse.charge</field>
+        <field name="arch" type="xml">
+            <tree string="VAT Return Form">
+                <field name="name"/>
+                <field name="date"/>
+                <field name="partner_id" string="Customs Agent"/>
+                <field name="amount"/>
+                <field name="reverse_charge_amount"/>
+                <field name="custom_amount" string="Customs Amount"/>
+            </tree>
+        </field>
+    </record>
+
+        <record model="ir.ui.view" id="view_reverse_charge_form">
+            <field name="name">reverse.charge.form</field>
+            <field name="model">reverse.charge</field>
+            <field name="arch" type="xml">
+                <form string="Vat Return">
+                <header>
+                    <field name="state" widget="statusbar"/>
+                    <button name="tax_compute" type="object" states="draft" string="Compute reverse charge" class="oe_highlight"/>
+                    <button name="action_move_create" states="draft" string="Post Journal Entries" type="object" groups="account.group_account_manager" class="oe_highlight o_expense_sheet_post"/>
+                    <button name="%(bahrain_vat.reverse_charge_payment_wizard_action)d" states="validate" type="action" string="Register Payment" class="oe_highlight o_expense_sheet_pay" context="{'default_amount': custom_amount_and_reverse}" groups="account.group_account_manager"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1><field name="name" placeholder="Name" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="date" attrs="{'readonly': [['state', 'not in', ['draft']]]}"/>
+                            <field name="partner_id" attrs="{'readonly': [['state', 'not in', ['draft']]]}" string="Custom Agent"/>
+                            <field name="amount" attrs="{'readonly': [['state', 'not in', ['draft']]]}" readonly="0"/>
+                            <field name="port" attrs="{'readonly': [['state', 'not in', ['draft']]]}"/>
+                            <field name="ref" attrs="{'readonly': [['state', 'not in', ['draft']]]}"/>
+                            <field name="vendor_bill" invisible="1"/>
+                            <field name="custom_amount_and_reverse" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="reverse_charge_tax" attrs="{'readonly': [['state', 'not in', ['draft']]]}"/>
+                            <field name="reverse_charge_tax_input" attrs="{'readonly': [['state', 'not in', ['draft']]]}"/>
+                            <field name="custom_amount" attrs="{'readonly': [['state', 'not in', ['draft']]]}"/>
+                            <field name="custom_account_id" attrs="{'readonly': [['state', 'not in', ['draft']]]}"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Tax Details" >
+                            <field name="reverse_charge_line_ids"  nolabel="1" attrs="{'readonly': [['state', 'not in', ['draft']]]}">
+                                <tree string="Reverse Charge" editable="bottom">
+                                    <field name="name"/>
+                                    <field name="amount"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Account Details">
+                            <group>
+                                <group>
+                                    <field name="journal_id" attrs="{'readonly': [['state', 'not in', ['draft']]]}"/>
+                                    <field name="move_id" readonly="1" string="Tax Journal Entry"/>
+                                    <field name="move_id_tax" readonly="1" string=" Payable Entry"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="uae_reverse_charge_action" model="ir.actions.act_window">
+            <field name="name">Bill Of Entry</field>
+            <field name="res_model">reverse.charge</field>
+            <field name="context">{}</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,pivot,graph,form</field>
+        </record>
+
+        <menuitem id="menu_reverse_charge" action="uae_reverse_charge_action" parent="account.menu_finance_entries_actions" sequence="32" groups="account.group_account_manager,account.group_account_user"/>
+
+        <record id="vat_return_view_search_analysis" model="ir.ui.view">
+            <field name="name">reverse.charge.search</field>
+            <field name="model">reverse.charge</field>
+            <field name="arch" type="xml">
+                <search string="Tickets Search">
+                        <field name="vendor_bill"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="uae_reverse_charge_action_2" model="ir.actions.act_window">
+            <field name="name">Bill of Entry</field>
+            <field name="res_model">reverse.charge</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{
+                'search_default_vendor_bill': [active_id],
+            }</field>
+        </record>
+
+        <record id="invoice_supplier_form_inherit" model="ir.ui.view">
+            <field name="name">account.invoice.supplier.form.inherit</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                 <xpath expr="/form/header" position="inside">
+                        <button name="%(uae_reverse_charge_action_2)d"
+                            class="oe_stat_button"
+                            icon="fa-book"
+                            type="action"
+                            attrs="{'invisible': [['import_charge', '=', False]]}"
+                            string="Bill of Entry">
+                        </button>
+                        <!--<button name="%(reverse_charge_wizard_action)d"-->
+                            <!--class="oe_stat_button"-->
+                            <!--icon="fa-book"-->
+                            <!--type="action"-->
+                            <!--attrs="{'invisible': ['|', '|',('reverse_charge', '=', False),('import_charge', '=', True),('state', '!=', 'draft')]}"-->
+                            <!--context="{'default_amount': amount_total, 'default_vendor_bill': active_id}"-->
+                            <!--string="Reverse Charge">-->
+                        <!--</button>-->
+                     <field name="amount_total" invisible="1"/>
+                 </xpath>
+                <field name="reference" position="before">
+                    <field name="trn"/>
+                </field>
+                <field name="date_due" position="after">
+                    <field name="date_of_issue"/>
+                    <field name="date_of_supply"/>
+                    <field name="reverse_charge" invisible="1"/>
+                    <field name="domestic"/>
+                    <field name="import_charge"/>
+                    <field name="reverse_charge_entry" invisible="1"/>
+                </field>
+                <xpath expr="//page[@name='other_info']" position="after">
+                    <page name="bill of entry" string="Bill of Entry" attrs="{'invisible': [['import_charge', '=', False]]}">
+                        <field name="bill_of_entry" widget="one2many_list" nolabel="1"/>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

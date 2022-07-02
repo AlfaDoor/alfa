@@ -1,0 +1,1184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="reconciliation_layout">
+            <!-- Multicompany -->
+            <t t-if="not o and doc">
+                <t t-set="o" t-value="doc"/>
+            </t>
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"></t>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"></t>
+            </t>
+
+            <t t-call="saudi_hr_printout.reconciliation_layout_header" />
+            <t t-raw="0" />
+            <t t-call="saudi_hr_printout.reconciliation_layout_footer" />
+        </template>
+
+        <template id="reconciliation_layout_header">
+            <div class="header">
+                <div class="row">
+                    <div class="col-xs-4 text-left" style="margin-top:40px;font-size:16px;font-weight:bold;">
+                        <span t-esc="header_english"/>
+                    </div>
+                    <div class="col-xs-4 text-center" style="width:40%">
+<!--                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 100px;"/>-->
+                        <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" alt="Logo" style="max-height: 100px;"/>
+                    </div>
+                    <div class="col-xs-4 text-right" style="margin-top:40px;font-size:16px;font-weight:bold;">
+                        <span t-esc="header_arabic"/>
+                    </div>
+                </div>
+                <!--<div class="row zero_min_height">-->
+                    <!--<div class="col-xs-12">-->
+                        <!--<div style="border-bottom: 1px solid black;"></div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            </div>
+        </template>
+
+        <template id="reconciliation_layout_footer">
+            <div class="footer">
+                <div class="text-center" style="border-top: 1px solid black;">
+                    <ul  class="list-inline"><!--t-if="not company.custom_footer"-->
+                        <li t-if="company.phone">Phone: <span t-field="company.phone"/></li>
+
+<!--                        <li t-if="company.fax and company.phone">&amp;bull;</li>-->
+<!--                        <li t-if="company.fax">Fax: <span t-field="company.fax"/></li>-->
+
+<!--                        <li t-if="company.email and company.fax or company.email and company.phone">&amp;bull;</li>-->
+                        <li t-if="company.email">Email: <span t-field="company.email"/></li>
+
+<!--                        <li t-if="company.website and company.email or company.website and company.fax or company.website and company.phone">&amp;bull;</li>-->
+                        <li t-if="company.website">Website: <span t-field="company.website"/></li>
+                    </ul>
+
+                    <ul class="list-inline" name="financial_infos"><!--t-if="not company.custom_footer"-->
+                        <li t-if="company.vat">TIN: <span t-field="company.vat"/></li>
+                    </ul>
+
+<!--                    <t t-if="company.custom_footer">-->
+<!--                        <span t-raw="company.rml_footer"/>-->
+<!--                    </t>-->
+
+                    <ul class="list-inline">
+                        <li>Page:</li>
+                        <li><span class="page"/></li>
+                        <li>/</li>
+                        <li><span class="topage"/></li>
+                    </ul>
+                </div>
+            </div>
+        </template>
+
+
+        <template id="reconciliation">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="saudi_hr_printout.reconciliation_layout">
+                        <div class="page">
+                            <style>
+                                .table_cell{
+                                    border:1px solid black !important;
+                                    text-align: center;
+                                }
+                                .table_cell_right{
+                                    border:1px solid black !important;
+                                    text-align: right;
+                                    padding-right: 3px !important;
+                                }
+                                .table_cell_left{
+                                    border:1px solid black !important;
+                                    text-align: left;
+                                    padding-left: 3px !important;
+                                }
+                                .gray{
+                                    background-color: #c5c7c7;
+                                }
+                                .rtl{
+                                    direction:rtl;
+                                }
+                                .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+                                    padding: 1.25px;
+                                    font-size: 16.5px;
+                                }
+                            </style>
+                            <h4 t-if="o.state !='approved'" class=" text-center">
+                                Not approved vacation settlement
+                            </h4>
+                            <br />
+
+                            <table class="table table-bordered" style="width:100%">
+                                <tbody >
+                                    <tr  >
+                                        <td class="table_cell gray" >
+                                            Employee Name
+                                        </td>
+                                        <td class="table_cell_left" colspan="2">
+                                            <span t-field="o.employee_id.employee_english_name"/>
+                                        </td>
+                                        <td class="table_cell_right" colspan="2">
+                                            <span t-field="o.employee_id.name"/>
+                                        </td>
+                                        <td class="table_cell gray">
+                                            اسم الموظف
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell gray" >
+                                            Employee Number
+                                        </td>
+                                        <td class="table_cell_left" colspan="2">
+                                            <span t-field="o.employee_id.employee_number"/>
+                                        </td>
+                                        <td class="table_cell_right" colspan="2">
+                                            <span t-field="o.employee_id.employee_number"/>
+                                        </td>
+                                        <td class="table_cell gray">
+                                            رقم الموظف
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell gray" >
+                                            Position
+                                        </td>
+                                        <td class="table_cell_left" colspan="2">
+                                            <span t-field="o.employee_id.job_id.name"/>
+                                        </td>
+                                        <td class="table_cell_right" colspan="2">
+                                            <span t-field="o.employee_id.job_id.arabic_name"/>
+                                        </td>
+                                        <td class="table_cell gray">
+                                            الوظيفة
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell gray" >
+                                            Nationality
+                                        </td>
+                                        <td class="table_cell_left" colspan="2">
+                                            <span t-field="o.employee_id.country_id.name"/>
+                                        </td>
+                                        <td class="table_cell_right" colspan="2">
+                                            <span t-field="o.employee_id.country_id.arabic_name"/>
+                                        </td>
+                                        <td class="table_cell gray">
+                                            الجنسية
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell gray" >
+                                            Department / Section
+                                        </td>
+                                        <td class="table_cell_left" colspan="2">
+                                            <span t-field="o.employee_id.department_id.name"/>
+                                        </td>
+                                        <td class="table_cell_right" colspan="2">
+                                            <span t-field="o.employee_id.department_id.arabic_name"/>
+                                        </td>
+                                        <td class="table_cell gray">
+                                            الادارة / القسم
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell gray" >
+                                            Hiring Date
+                                        </td>
+                                        <td class="table_cell_left" colspan="2">
+                                            <span t-field="o.employee_id.start_working_date" t-field-options='{"format": "d/M/y"}'/>
+                                        </td>
+                                        <td class="table_cell_right" colspan="2">
+                                            <span t-field="o.employee_id.start_working_date" t-field-options='{"format": "d/M/y"}'/>
+                                        </td>
+                                        <td class="table_cell gray">
+                                            تاريخ التعيين
+                                        </td>
+                                    </tr>
+                                    <t t-set="last_leave" t-value="o.leave_to_reconcile_ids[-1]"/>
+                                    <tr  >
+                                        <td class="table_cell gray" >
+                                            Last  Working Day
+                                        </td>
+                                        <td class="table_cell_left" colspan="2">
+                                            <span t-esc="last_leave.last_working_day" t-field-options='{"format": "d/M/y"}'/>
+                                        </td>
+                                        <td class="table_cell_right" colspan="2">
+                                            <span t-esc="last_leave.last_working_day" t-field-options='{"format": "d/M/y"}'/>
+                                        </td>
+                                        <td class="table_cell gray">
+                                            اخر يوم عمل
+                                        </td>
+                                    </tr>
+                                     <tr  >
+                                        <td class="table_cell gray" >
+                                            Vacation Type
+                                        </td>
+                                        <td class="table_cell_left" colspan="2">
+                                            <span t-if="last_leave.leave_request_id.request_reason == 'annual'" >Annual leave -</span>
+                                            <span t-if="last_leave.leave_request_id.request_reason == 'non-annual'" >Non Annual leave -</span>
+                                            <span t-field="last_leave.holiday_status_id.name"/>
+                                        </td>
+                                        <td class="table_cell_right rtl"  colspan="2">
+                                            <span t-if="last_leave.leave_request_id.request_reason == 'annual'" >
+                                                اجازة سنوية
+                                            </span>
+                                            <span t-if="last_leave.leave_request_id.request_reason == 'non-annual'" >
+                                                اجازة غير سنوية
+                                            </span>
+                                            <span t-field="last_leave.holiday_status_id.name"/>
+                                        </td>
+                                        <td class="table_cell gray">
+                                            نوع الاجازة
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell gray">
+                                            Starting Date
+                                        </td>
+                                        <td class="table_cell gray">
+                                            End Date
+                                        </td>
+                                        <td class="table_cell gray">
+                                            No. of Days
+                                        </td>
+                                        <td class="table_cell gray">
+                                            عدد الايام
+                                        </td>
+                                        <td class="table_cell gray">
+                                            تاريخ نهاية الاجازة
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            تاريخ بداية الاجازة
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell">
+                                            <span t-field="last_leave.leave_request_id.date_from" t-field-options='{"format": "d/M/y"}'/>
+                                        </td>
+                                        <td class="table_cell">
+                                            <span t-field="last_leave.leave_request_id.date_to" t-field-options='{"format": "d/M/y"}'/>
+                                        </td>
+                                        <td class="table_cell" colspan="2">
+                                            <t t-esc="'{0:,.2f}'.format(last_leave.leave_request_id.number_of_days)" />
+                                        </td>
+                                        <td class="table_cell">
+                                            <span t-field="last_leave.leave_request_id.date_to" t-field-options='{"format": "d/M/y"}'/>
+                                        </td>
+                                        <td class="table_cell" >
+                                            <span t-field="last_leave.leave_request_id.date_from" t-field-options='{"format": "d/M/y"}'/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table table-bordered" style="width:100%" >
+                                <tbody >
+                                    <tr>
+                                        <td class="table_cell rtl gray" colspan="3">
+                                            بيانات الراتب    Salary Details
+                                        </td>
+                                        <td class="table_cell rtl gray" colspan="3">
+                                            المستحقات   Earnings
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell  gray">
+                                            Basic Salary
+                                        </td>
+                                        <td class="table_cell" >
+                                            <t t-esc="'{0:,.2f}'.format(o.contract_id.basic_salary)" />
+                                        </td>
+                                        <td class="table_cell gray">
+                                            الراتب الأساسي
+                                        </td>
+                                        <td class="table_cell  gray">
+                                            Vacation Allowance
+                                        </td>
+                                        <td class="table_cell">
+                                            <t t-esc="'{0:,.2f}'.format(last_leave.leave_request_id.current_balance)" />
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            أيام اجازات مستحقة
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell  gray">
+                                            Housing Allowance
+                                        </td>
+                                        <td class="table_cell" >
+                                            <t t-esc="'{0:,.2f}'.format(o.contract_id.house_allowance_amount)" />
+                                        </td>
+                                        <td class="table_cell gray">
+                                            بدل السكن
+                                        </td>
+                                        <td class="table_cell  gray">
+                                            Used Vacations
+                                        </td>
+                                        <td class="table_cell">
+                                            <t t-esc="'{0:,.2f}'.format(last_leave.leave_request_id.number_of_days)" />
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            اجازه مستنفده
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell  gray">
+                                            Transportation
+                                        </td>
+                                        <td class="table_cell" >
+                                            <t t-esc="'{0:,.2f}'.format(o.contract_id.transportation_allowance_amount)" />
+                                        </td>
+                                        <td class="table_cell gray">
+                                            بدل النقل
+                                        </td>
+                                        <td class="table_cell  gray">
+                                            Unused Vacations
+                                        </td>
+                                        <td class="table_cell">
+                                            <t t-esc="'{0:,.2f}'.format(last_leave.leave_request_id.remaining_balance)" />
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            أيام اجازات متبقية
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell  gray">
+                                            Other Allowances
+                                        </td>
+                                        <td class="table_cell" >
+                                            <t t-esc="'{0:,.2f}'.format(o.contract_id.other_allowance)" />
+                                        </td>
+                                        <td class="table_cell gray">
+                                            بدلات اخرى
+                                        </td>
+                                        <td class="table_cell  gray">
+                                            Due Amount
+                                        </td>
+                                        <td class="table_cell">
+                                            <t t-esc="'{0:,.2f}'.format(o.total_pay_reconciliation + o.plus_balance_liquidation_amount)" />
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            المبالغ المستحقة
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell  gray">
+                                            Adjustments
+                                        </td>
+                                        <td class="table_cell" >
+
+                                        </td>
+                                        <td class="table_cell gray">
+                                            تسويات
+                                        </td>
+                                        <td class="table_cell  gray">
+                                            Unpaid Salary
+                                        </td>
+                                        <td class="table_cell">
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            راتب لم يستلم
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell rtl gray" colspan="3">
+                                            Deductions حسميات
+                                        </td>
+                                        <td class="table_cell gray" rowspan="6">
+                                            Other Earnings
+                                        </td>
+                                        <td class="table_cell" rowspan="6">
+                                            <t t-esc="'{0:,.2f}'.format(o.plus_rewards + o.plus_air_ticket_value)" />
+                                        </td>
+                                        <td class="table_cell  gray" rowspan="6">
+                                            مستحقات اخرى
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell gray" >
+                                            Cash Advance
+                                        </td>
+                                        <td class="table_cell" >
+                                            <t t-esc="'{0:,.2f}'.format(o.deduct_loan)" />
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            سلفة / قرض
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell gray" >
+                                            Deductions And Violations
+                                        </td>
+                                        <td class="table_cell" >
+                                            <t t-esc="'{0:,.2f}'.format(o.deduct_deduction)" />
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            خصومات ومخالفات
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell gray" >
+                                            Absent Days
+                                        </td>
+                                        <td class="table_cell" >
+                                            <t t-esc="'{0:,.2f}'.format(o.absence_amount)" />
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            ايام غياب
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell gray" >
+                                            GOSI
+                                        </td>
+                                        <td class="table_cell" >
+                                            <t t-esc="'{0:,.2f}'.format(o.gosi_amount)" />
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            التأمينات الاجتماعية
+                                        </td>
+                                    </tr>
+                                    <!--<tr>-->
+                                        <!--<td class="table_cell gray" >-->
+                                            <!--Other Deductions-->
+                                        <!--</td>-->
+                                        <!--<td class="table_cell" >-->
+                                            <!--<t t-esc="'{0:,.2f}'.format(o.deduct_deduction)" />-->
+                                        <!--</td>-->
+                                        <!--<td class="table_cell gray" >-->
+                                            <!--خصومات اخرى-->
+                                        <!--</td>-->
+                                    <!--</tr>-->
+                                    <tr>
+                                        <td class="table_cell rtl gray" colspan="3">
+                                            مجموع الاستقطاعات   Total Deduction
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell rtl " colspan="3" >
+                                            <t t-esc="'{0:,.2f}'.format(o.report_total_deduction)" />
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            Total Earning
+                                        </td>
+                                        <td class="table_cell" >
+                                            <t t-esc="'{0:,.2f}'.format(o.report_total_earnings)" />
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            مجموع المستحقات
+                                        </td>
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                            <br/>
+
+                            <table class="table table-bordered"  style="width:100%">
+                                <tbody >
+                                    <tr>
+                                        <td class="table_cell rtl gray" >
+                                            المبلغ   Amount
+                                        </td>
+                                        <td class="table_cell rtl gray" >
+                                            رقم الحساب /Account No
+                                        </td>
+                                        <td class="table_cell rtl gray" >
+                                            إسم البنك / Bank Name
+                                        </td>
+                                        <td class="table_cell rtl gray" >
+                                            طريقة الدفع  Payment Method
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell" >
+                                            <t t-esc="'{0:,.2f}'.format(o.report_net)" />
+                                        </td>
+                                        <td class="table_cell" >
+                                            <span t-field="o.employee_id.iban_number" />
+                                        </td>
+                                        <td class="table_cell" >
+                                            <span t-field="o.employee_id.Bank_name_id.name" />
+                                        </td>
+                                        <td class="table_cell" >
+                                            Bank /
+                                            بنك
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table table-bordered"  style="width:100%">
+                                <tbody >
+                                    <tr>
+                                        <td class="table_cell rtl gray" >
+                                            Net Earning
+                                        </td>
+                                        <td class="table_cell" >
+                                            <t t-esc="'{0:,.2f}'.format(o.report_net)" />
+                                        </td>
+                                        <td class="table_cell rtl gray" >
+                                            صافي المستحقات
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table table-bordered" style="width:100%" >
+                                <tbody >
+                                    <tr>
+                                        <td class="table_cell rtl gray" >
+                                            مدير الموارد البشرية     HR Manager
+                                        </td>
+                                        <td class="table_cell rtl gray" >
+                                            تدقيق        Audit
+                                        </td>
+                                        <td class="table_cell rtl gray" >
+                                            اخصائي الرواتب  Payroll Specialist
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell " >
+                                            <t t-if="hr_manager">
+                                                <span t-field="hr_manager.name" />
+                                            </t>
+                                        </td>
+                                        <td class="table_cell" >
+                                            ............................
+                                        </td>
+                                        <td class="table_cell" >
+                                            ............................
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table table-bordered" style="width:100%" >
+                                <tbody >
+                                    <tr>
+                                        <td class="table_cell rtl gray" >
+                                            المدير المالي    Financial Manager
+                                        </td>
+                                        <td class="table_cell rtl gray" >
+                                            قسم المحاسبة Account Section
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell" >
+                                            ..................................
+                                        </td>
+                                        <td class="table_cell" >
+                                            ..................................
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell" >
+                                            I the undersigned, acknowledge receipt of all my dues men-
+                                            toned above, I shall have no right to any claims other than
+                                            the mentioned, or object this settlement.
+                                        </td>
+                                        <td class="table_cell" >
+                                            أقر أنا الموقع أدناه بإستلامي كافة مستحقاتي الموضحة عاليه ولايحق
+لي بعد هذا التاريخ المطالبة بأية مستحقات أخرى خلاف ما ذكر كما
+لا يحق الإعتراض على هذه التسوية.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table table-bordered" style="width:100%" >
+                                <tbody >
+                                    <tr>
+                                        <td class="table_cell rtl gray" >
+                                            التاريخ               Date
+                                        </td>
+                                        <td class="table_cell rtl gray" >
+                                            التوقيع       SIGNATURE
+                                        </td>
+                                        <td class="table_cell rtl gray" >
+                                            الweb.html_containerاسم  Name
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell" >
+                                            ........................
+                                        </td>
+                                        <td class="table_cell" >
+                                            ........................
+                                        </td>
+                                        <td class="table_cell" >
+                                            <span t-field="o.employee_id.name" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <template id="eos">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="saudi_hr_printout.reconciliation_layout">
+                        <div class="page">
+                            <style>
+                                .table_cell{
+                                    border:1px solid black !important;
+                                    text-align: center;
+                                }
+                                .table_cell_right{
+                                    border:1px solid black !important;
+                                    text-align: right;
+                                    padding-right: 3px !important;
+                                }
+                                .table_cell_left{
+                                    border:1px solid black !important;
+                                    text-align: left;
+                                    padding-left: 3px !important;
+                                }
+                                .gray{
+                                    background-color: #c5c7c7;
+                                }
+                                .rtl{
+                                    direction:rtl;
+                                }
+                                .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+                                    padding: 1.25px;
+                                    font-size: 16.5px;
+                                }
+                            </style>
+                            <h4 t-if="o.state !='Final Approved'" class=" text-center">
+                                Not approved End Of Service
+                            </h4>
+                            <table class="table table-bordered" >
+                                <tbody >
+                                    <tr  >
+                                        <td class="table_cell gray" >
+                                            Employee Name
+                                        </td>
+                                        <td class="table_cell_left" >
+                                            <span t-field="o.employee_id.employee_english_name"/>
+                                        </td>
+                                        <td class="table_cell_right " >
+                                            <span t-field="o.employee_id.name"/>
+                                        </td>
+                                        <td class="table_cell gray ">
+                                            اسم الموظف
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell gray" >
+                                            Employee Number
+                                        </td>
+                                        <td class="table_cell_left" >
+                                            <span t-field="o.employee_id.employee_number"/>
+                                        </td>
+                                        <td class="table_cell_right" >
+                                            <span t-field="o.employee_id.employee_number"/>
+                                        </td>
+                                        <td class="table_cell gray">
+                                            رقم الموظف
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell gray" >
+                                            Position
+                                        </td>
+                                        <td class="table_cell_left" >
+                                            <span t-field="o.employee_id.job_id.name"/>
+                                        </td>
+                                        <td class="table_cell_right" >
+                                            <span t-field="o.employee_id.job_id.arabic_name"/>
+                                        </td>
+                                        <td class="table_cell gray">
+                                            الوظيفة
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell gray" >
+                                            Nationality
+                                        </td>
+                                        <td class="table_cell_left" >
+                                            <span t-field="o.employee_id.country_id.name"/>
+                                        </td>
+                                        <td class="table_cell_right" >
+                                            <span t-field="o.employee_id.country_id.arabic_name"/>
+                                        </td>
+                                        <td class="table_cell gray">
+                                            الجنسية
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell gray" >
+                                            Department / Section
+                                        </td>
+                                        <td class="table_cell_left" >
+                                            <span t-field="o.employee_id.department_id.name"/>
+                                        </td>
+                                        <td class="table_cell_right" >
+                                            <span t-field="o.employee_id.department_id.arabic_name"/>
+                                        </td>
+                                        <td class="table_cell gray">
+                                            الادارة / القسم
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell gray" >
+                                            Hiring Date
+                                        </td>
+                                        <td class="table_cell_left" >
+                                            <span t-field="o.employee_id.start_working_date" t-field-options='{"format": "d/M/y"}'/>
+                                        </td>
+                                        <td class="table_cell_right" >
+                                            <span t-field="o.employee_id.start_working_date" t-field-options='{"format": "d/M/y"}'/>
+                                        </td>
+                                        <td class="table_cell gray">
+                                            تاريخ التعيين
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell gray" >
+                                            Actual Last Working Day
+                                        </td>
+                                        <td class="table_cell_left" >
+                                            <span t-field="o.actual_last_working_day" t-field-options='{"format": "d/M/y"}'/>
+                                        </td>
+                                        <td class="table_cell_right" >
+                                            <span t-field="o.actual_last_working_day" t-field-options='{"format": "d/M/y"}'/>
+                                        </td>
+                                        <td class="table_cell gray">
+                                            تاريخ اخر يوم عمل
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell gray" >
+                                            Service Length
+                                        </td>
+                                        <td class="table_cell"  colspan="2">
+                                            <table class="table table-bordered" style="font-size:12px;margin:0;padding:0;">
+                                                <tbody >
+                                                    <tr  >
+                                                        <td class="table_cell gray rtl" >
+                                                             عدد السنواتNo. Of Years
+                                                        </td>
+                                                        <td class="table_cell gray rtl" >
+                                                              عدد الأشهرNo. Of Months
+                                                        </td>
+                                                        <td class="table_cell gray rtl">
+                                                            عدد الأيامNo. Of Days
+                                                        </td>
+                                                    </tr>
+                                                    <tr  >
+                                                        <td class="table_cell" >
+                                                            <span t-field="o.total_work_duration_years" />
+                                                        </td>
+                                                        <td class="table_cell" >
+                                                            <span t-field="o.total_work_duration_months" />
+                                                        </td>
+                                                        <td class="table_cell">
+                                                            <span t-field="o.total_work_duration_days" />
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                        <td class="table_cell gray">
+                                            مدة الخدمة
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell gray" >
+                                            EOS Reason
+                                        </td>
+                                        <td class="table_cell" >
+                                            <span t-field="o.reason_id.english_name"/>
+                                        </td>
+                                        <td class="table_cell" >
+                                            <span t-field="o.reason_id.name"/>
+                                        </td>
+                                        <td class="table_cell gray">
+                                            سبب انهاء الخدمات
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table table-bordered" >
+                                <tbody >
+                                    <tr>
+                                        <td class="table_cell rtl gray" colspan="3">
+                                            Deductions الاستقطاعات
+                                        </td>
+                                        <td class="table_cell rtl gray" colspan="3">
+                                            Earnings المستحقات
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell  gray">
+                                            Loans
+                                        </td>
+                                        <td class="table_cell">
+                                            <t t-esc="'{0:,.2f}'.format(o.remaining_loan_amount)" />
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            سلف وقروض
+                                        </td>
+                                        <td class="table_cell  gray">
+                                            Monthly salary
+                                        </td>
+                                        <td class="table_cell">
+                                            <t t-esc="'{0:,.2f}'.format(o.contract_id.basic_salary * o.report_payslip_percent)" />
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            الراتب الشهري
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell  gray">
+                                            Violations and deductions
+                                        </td>
+                                        <td class="table_cell">
+                                            <t t-esc="'{0:,.2f}'.format(o.remaining_deduction)" />
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            خصومات و مخالفات
+                                        </td>
+                                        <td class="table_cell  gray">
+                                            Housing Allowance
+                                        </td>
+                                        <td class="table_cell" >
+                                            <t t-esc="'{0:,.2f}'.format(o.contract_id.house_allowance_amount * o.report_payslip_percent)" />
+                                        </td>
+                                        <td class="table_cell gray">
+                                            بدل السكن
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell  gray">
+                                            Absence Deduction
+                                        </td>
+                                        <td class="table_cell">
+                                            <t t-esc="'{0:,.2f}'.format(o.absence_deduction)" />
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            خصومات غياب
+                                        </td>
+                                        <td class="table_cell  gray">
+                                            Transportation
+                                        </td>
+                                        <td class="table_cell" >
+                                            <t t-esc="'{0:,.2f}'.format(o.contract_id.transportation_allowance_amount * o.report_payslip_percent)" />
+                                        </td>
+                                        <td class="table_cell gray">
+                                            بدل النقل
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell  gray">
+                                            Notice Period Deduction
+                                        </td>
+                                        <td class="table_cell" >
+                                            <t t-esc="'{0:,.2f}'.format(o.notice_period_deduction)" />
+                                        </td>
+                                        <td class="table_cell gray">
+                                            الاختلاف عن فترة الاشعار
+                                        </td>
+                                        <td class="table_cell  gray">
+                                            Phone Allowances
+                                        </td>
+                                        <td class="table_cell">
+                                            <t t-esc="'{0:,.2f}'.format(o.contract_id.phone_allowance_amount * o.report_payslip_percent)" />
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            بدل اتصالات
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell  gray">
+                                            GOSI
+                                        </td>
+                                        <td class="table_cell" >
+                                            <t t-esc="'{0:,.2f}'.format(o.gosi_amount)" />
+                                        </td>
+                                        <td class="table_cell gray">
+                                            تأمينات إجتماعية
+                                        </td>
+                                        <td class="table_cell  gray">
+                                            Other Allowances
+                                        </td>
+                                        <td class="table_cell">
+                                            <t t-esc="'{0:,.2f}'.format(o.contract_id.other_allowance * o.report_payslip_percent)" />
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            بدلات أخري
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell  gray">
+                                            Adjustments
+                                        </td>
+                                        <td class="table_cell">
+                                            <!--<t t-esc="'{0:,.2f}'.format(last_leave.leave_request_id.number_of_days)" />-->
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            تسويات
+                                        </td>
+                                        <td class="table_cell  gray">
+                                            Over Time
+                                        </td>
+                                        <td class="table_cell" >
+                                            <!--<t t-esc="'{0:,.2f}'.format(o.contract_id.house_allowance_amount)" />-->
+                                        </td>
+                                        <td class="table_cell gray">
+                                            أجر إضافي
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell  gray">
+                                            Housing Recovery
+                                        </td>
+                                        <td class="table_cell" >
+                                            <!--<t t-esc="'{0:,.2f}'.format(o.contract_id.basic_salary)" />-->
+                                        </td>
+                                        <td class="table_cell gray">
+                                            خصم بدل السكن مقدم
+                                        </td>
+                                        <td class="table_cell  gray">
+                                            Vacation pay
+                                        </td>
+                                        <td class="table_cell" >
+                                            <t t-esc="'{0:,.2f}'.format(o.leave_balance_cash)" />
+                                        </td>
+                                        <td class="table_cell gray">
+                                            مقابل الاجازة
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell  gray">
+                                            EOS Loan
+                                        </td>
+                                        <td class="table_cell">
+                                            <!--<t t-esc="'{0:,.2f}'.format(last_leave.leave_request_id.number_of_days)" />-->
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            سلفة نهاية الخدمة
+                                        </td>
+                                        <td class="table_cell  gray">
+                                            Air Ticket Allowance
+                                        </td>
+                                        <td class="table_cell" >
+                                            <t t-esc="'{0:,.2f}'.format(o.air_ticket_one_way)" />
+                                        </td>
+                                        <td class="table_cell gray">
+                                            بدل تذاكر طيران
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell  gray" rowspan="2">
+                                            Other Deductions
+                                        </td>
+                                        <td class="table_cell" rowspan="2">
+                                            <t t-esc="'{0:,.2f}'.format(o.report_other_deductions)" />
+                                        </td>
+                                        <td class="table_cell gray" rowspan="2">
+                                            خصومات اخرى
+                                        </td>
+                                        <td class="table_cell  gray">
+                                            Notice Salary
+                                        </td>
+                                        <td class="table_cell" >
+                                            <!--<t t-esc="'{0:,.2f}'.format(o.contract_id.transportation_allowance_amount)" />-->
+                                        </td>
+                                        <td class="table_cell gray">
+                                            راتب إنذار
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell  gray">
+                                            End Service Reward
+                                        </td>
+                                        <td class="table_cell" >
+                                            <t t-esc="'{0:,.2f}'.format(o.amount)" />
+                                        </td>
+                                        <td class="table_cell gray">
+                                            مكافأة نهاية الخدمة
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell  gray" rowspan="2">
+                                            Total Deduction
+                                        </td>
+                                        <td class="table_cell" rowspan="2">
+                                            <t t-esc="'{0:,.2f}'.format(o.report_total_deductions)" />
+                                        </td>
+                                        <td class="table_cell gray" rowspan="2">
+                                            مجموع الاستقطاعات
+                                        </td>
+                                        <td class="table_cell  gray">
+                                            Other Earnings
+                                        </td>
+                                        <td class="table_cell" >
+                                            <t t-esc="'{0:,.2f}'.format(o.report_other_earnings)" />
+                                        </td>
+                                        <td class="table_cell gray">
+                                            مستحقات اخرى
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell  gray">
+                                            Total Earning
+                                        </td>
+                                        <td class="table_cell" >
+                                            <t t-esc="'{0:,.2f}'.format(o.report_total_earnings)" />
+                                        </td>
+                                        <td class="table_cell gray">
+                                            مجموع المستحقات
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell  gray">
+                                            Net Earning
+                                        </td>
+                                        <td class="table_cell" colspan="4">
+                                            <t t-esc="'{0:,.2f}'.format(o.report_net_earnings)" />
+                                        </td>
+                                        <td class="table_cell gray">
+                                            صافي المستحقات
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table table-bordered" >
+                                <tbody >
+                                    <tr>
+                                        <td class="table_cell rtl gray" >
+                                            المبلغ   Amount
+                                        </td>
+                                        <td class="table_cell rtl gray" >
+                                            رقم الحساب /Account No
+                                        </td>
+                                        <td class="table_cell rtl gray" >
+                                            إسم البنك / Bank Name
+                                        </td>
+                                        <td class="table_cell rtl gray" >
+                                            طريقة الدفع  Payment Method
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell" >
+                                            <t t-esc="'{0:,.2f}'.format(o.report_net_earnings)" />
+                                        </td>
+                                        <td class="table_cell" >
+                                            <span t-field="o.employee_id.iban_number" />
+                                        </td>
+                                        <td class="table_cell" >
+                                            <span t-field="o.employee_id.Bank_name_id.name" />
+                                        </td>
+                                        <td class="table_cell" >
+                                            Bank /
+                                            بنك
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table table-bordered" >
+                                <tbody >
+                                    <tr>
+                                        <td class="table_cell rtl gray" >
+                                            مدير الموارد البشرية     HR Manager
+                                        </td>
+                                        <td class="table_cell rtl gray" >
+                                            تدقيق        Audit
+                                        </td>
+                                        <td class="table_cell rtl gray" >
+                                            اخصائي الرواتب  Payroll Specialist
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell " >
+                                            <t t-if="hr_manager">
+                                                <span t-field="hr_manager.name" />
+                                            </t>
+                                        </td>
+                                        <td class="table_cell" >
+                                            ............................
+                                        </td>
+                                        <td class="table_cell" >
+                                            ............................
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table table-bordered" >
+                                <tbody >
+                                    <tr>
+                                        <td class="table_cell rtl gray" >
+                                            المدير المالي    Financial Manager
+                                        </td>
+                                        <td class="table_cell rtl gray" >
+                                            قسم المحاسبة Account Section
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell" >
+                                            ..................................
+                                        </td>
+                                        <td class="table_cell" >
+                                            ..................................
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell" >
+                                            I undersigned acknowledge that i receipt of all my
+                                            dues mentioned above, I shall have no right to any
+                                            claims other than the mentioned, or object this settlement.
+                                        </td>
+                                        <td class="table_cell" >
+                                            أقر أنا الموقع أدناه بإستلامي كافة مستحقاتي الموضحة عاليه ولايحق
+لي بعد هذا التاريخ المطالبة بأية مستحقات أخرى خلاف ما ذكر كما
+لا يحق الإعتراض على هذه التسوية.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table table-bordered" >
+                                <tbody >
+                                    <tr>
+                                        <td class="table_cell rtl gray" >
+                                            التاريخ               Date
+                                        </td>
+                                        <td class="table_cell rtl gray" >
+                                            التوقيع       SIGNATURE
+                                        </td>
+                                        <td class="table_cell rtl gray" >
+                                            الاسم  Name
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell" >
+                                            ........................
+                                        </td>
+                                        <td class="table_cell" >
+                                            ........................
+                                        </td>
+                                        <td class="table_cell" >
+                                            ........................
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

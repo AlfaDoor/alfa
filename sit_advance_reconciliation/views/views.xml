@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_account_invoice_advance_reconcile_amount" model="ir.ui.view">
+            <field name="name">advance.reconcile.amount.form</field>
+            <field name="model">advance.reconcile.amount</field>
+            <field name="arch" type="xml">
+                <form string="Advance Reconcile Amount">
+                    <sheet>
+                        <group>
+                        <group>
+                            <field name="journal_id"/>
+                            <field name="advance_account"/>
+                            <field name="amount"/>
+                        </group>
+                        <group>
+                            <field name="analytical_account"/>
+                            <field name="analytical_tags" widget="many2many_tags"/>
+                            <field name="memo_communication"/>
+                        </group>
+                        </group>
+
+                    </sheet>
+                    <footer>
+                        <button string='Validate' name="action_validate_advance_reconcile_amount" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        
+        <record id="action_account_invoice_advance_reconcile" model="ir.actions.act_window">
+            <field name="name">Advance Reconcile Amount</field>
+            <field name="res_model">advance.reconcile.amount</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_account_invoice_advance_reconcile_amount"/>
+            <field name="target">new</field>
+        </record>
+
+
+        <record id="account_invoice_form_inherit" model="ir.ui.view">
+            <field name="name">account.invoice.inherit</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//header/button[@name='preview_invoice']"  position="replace">
+                    <button 
+                        name="%(action_account_invoice_advance_reconcile)d" 
+                        id="invoice_advance_reconcile_amount" 
+                        type="action"
+                        attrs="{'invisible': [('state', '!=', 'open')]}"
+                        string="Advance Reconcile" 
+                        groups="sit_advance_reconciliation.group_advance_reconciliation" 
+                        class="oe_highlight"
+                    />
+                </xpath>
+
+            </field>
+        </record>
+
+    </data>
+</odoo>

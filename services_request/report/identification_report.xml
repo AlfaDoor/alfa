@@ -1,0 +1,681 @@
+<odoo>
+    <data>
+        <record id="paperformat_identification" model="report.paperformat">
+            <field name="name">identification</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">10</field>
+            <field name="margin_bottom">23</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">0</field>
+            <field name="dpi">90</field>
+        </record>
+        <report
+            id="report_identification"
+            model="service.request"
+            string="Request Service"
+            name="services_request.report_identification_view"
+            file="services_request.report_identification_view"
+            report_type="qweb-pdf"
+            menu="False"
+            paperformat="paperformat_identification"
+                />
+
+        <template id="report_identification_view">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <div t-if="o.type!='Salary Transfer Request'" class="page">
+                        <style>
+                            .table_cell{
+                                border:1px solid black !important;
+                                text-align: center;
+                            }
+                            .table_cell_right{
+                                border:1px solid black !important;
+                                text-align: right;
+                                padding-right: 3px !important;
+                            }
+                            .table_cell_left{
+                                border:1px solid black !important;
+                                text-align: left;
+                                padding-left: 3px !important;
+                            }
+                            .gray{
+                                background-color: #c5c7c7;
+                            }
+                            .rtl{
+                                direction:rtl;
+                            }
+                            .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+                                padding: 5px;
+                                font-size: 16.5px;
+                            }
+                        </style>
+                        <t t-if="o and 'company_id' in o">
+                            <t t-set="company" t-value="o.company_id"></t>
+                        </t>
+                        <t t-if="not o or not 'company_id' in o">
+                            <t t-set="company" t-value="res_company"></t>
+                        </t>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 100px;"/>
+                            </div>
+                            <div class="col-xs-8 text-right" style="margin-top:40px;font-size:16px;font-weight:bold;" >
+                                شهـــــــــــــــادة تعريــــــــــــف
+                                <br />‫‪
+                                IDENTIFICATION‬‬ ‫‪CERTIFICATE‬‬
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top:25px;">
+                            <div class="col-xs-6">
+                                <b>Date</b> : <span t-field="o.create_date" t-field-options='{"format": "d/M/y"}'/>
+                            </div>
+                            <div class="col-xs-6 text-right">
+                                <b>
+                                التاريخ:
+                                </b>
+                                <span t-field="o.create_date" t-field-options='{"format": "d/M/y"}'/>
+                            </div>
+                        </div>
+
+                        <table class="table table-bordered" style="margin-top:25px;">
+                            <tbody>
+                                <tr>
+                                    <td class="table_cell_left">
+                                        ‫‪To:‬‬ <span t-field="o.benefit_name_english" />
+                                    </td>
+                                    <td class="table_cell_right rtl">
+                                        الى
+                                        : <span t-field="o.benefit_name" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table_cell_left">
+                                        <span t-field="company.name" /> Company, certifies that below mentioned employee is currently working at the company:
+                                    </td>
+                                    <td class="table_cell_right rtl">
+                                        تشهد  شركة /
+                                        <span t-field="company.arabic_name" />
+                                        بأن المذكور بياناته / بياناتها ادناه يعمل / تعمل لدى الشركة حتى تاريخه:
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table_cell_left">
+                                        Employee No.: <span t-field="o.employee_id.employee_number" />
+                                    </td>
+                                    <td class="table_cell_right rtl">
+                                        رقم الموظف:
+                                        <span t-field="o.employee_id.employee_number" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table_cell_left">
+                                        Name: <span t-field="o.employee_id.employee_english_name" />
+                                    </td>
+                                    <td class="table_cell_right rtl">
+                                        الاسم :
+                                        <span t-field="o.employee_id.name" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table_cell_left">
+                                        Nationality: <span t-field="o.country_id.name" />
+                                    </td>
+                                    <td class="table_cell_right rtl">
+                                        الجنسية:
+                                        <span t-field="o.country_id.arabic_name" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table_cell_left">
+                                        ID No. / Passport No.:
+                                        <t t-if="o.employee_id.identification_id" >
+                                            <span t-field="o.employee_id.identification_id" />
+                                        </t>
+                                        <t t-if="not o.employee_id.identification_id" >
+                                            <span t-field="o.employee_id.passport_id" />
+                                        </t>
+                                    </td>
+                                    <td class="table_cell_right rtl">
+                                        رقم الهوية / الجواز :
+
+                                        <t t-if="o.employee_id.identification_id" >
+                                            <span t-field="o.employee_id.identification_id" />
+                                        </t>
+                                        <t t-if="not o.employee_id.identification_id" >
+                                            <span t-field="o.employee_id.passport_id" />
+                                        </t>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table_cell_left">
+                                        Issue Date:
+                                        <t t-if="o.employee_id.identification_id" >
+                                            <span t-field="o.employee_id.iqama_issue_date" />
+                                        </t>
+                                        <t t-if="not o.employee_id.identification_id" >
+                                            <span t-field="o.employee_id.passport_issue_date" />
+                                        </t>
+                                    </td>
+                                    <td class="table_cell_right rtl">
+                                        تاريخ الاصدار:
+
+                                        <t t-if="o.employee_id.identification_id" >
+                                            <span t-field="o.employee_id.iqama_issue_date" />
+                                        </t>
+                                        <t t-if="not o.employee_id.identification_id" >
+                                            <span t-field="o.employee_id.passport_issue_date" />
+                                        </t>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table_cell_left">
+                                        Expire Date:
+                                        <t t-if="o.employee_id.identification_id" >
+                                            <span t-field="o.employee_id.iqama_expiry_date" />
+                                        </t>
+                                        <t t-if="not o.employee_id.identification_id" >
+                                            <span t-field="o.employee_id.passport_expiry_date" />
+                                        </t>
+                                    </td>
+                                    <td class="table_cell_right rtl">
+                                        تاريخ الانتهاء:
+                                        <t t-if="o.employee_id.identification_id" >
+                                            <span t-field="o.employee_id.iqama_expiry_date" />
+                                        </t>
+                                        <t t-if="not o.employee_id.identification_id" >
+                                            <span t-field="o.employee_id.passport_expiry_date" />
+                                        </t>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table_cell_left">
+                                        Job TITLE: <span t-field="o.job_id.name" />
+                                    </td>
+                                    <td class="table_cell_right rtl">
+                                        الوظيفة:
+                                        <span t-field="o.job_id.arabic_name" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table_cell_left">
+                                        DEPARTMENT: <span t-field="o.department_id.name" />
+                                    </td>
+                                    <td class="table_cell_right rtl">
+                                        الادارة:
+                                        <span t-field="o.department_id.arabic_name" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table_cell_left">
+                                        DATE OF HIRE: <span t-field="o.employee_id.start_working_date" t-field-options='{"format": "d/M/y"}'/>
+                                    </td>
+                                    <td class="table_cell_right rtl">
+                                        تاريخ التعيين:
+                                        <span t-field="o.employee_id.start_working_date" t-field-options='{"format": "d/M/y"}'/>
+                                    </td>
+                                </tr>
+                                <tr t-if="o.type=='Identification Certificate with total salary'">
+                                    <td class="table_cell_left">
+                                        Gross Salary: <span t-field="o.contract_id.total" />
+                                    </td>
+                                    <td class="table_cell_right rtl">
+                                        الراتب الاجمالى:
+                                        <span t-field="o.contract_id.total" />
+                                    </td>
+                                </tr>
+                                <tr t-if="o.type=='Identification Certificate with salary details'">
+                                    <td class="table_cell_left">
+                                        Basic Salary: <span t-field="o.contract_id.basic_salary" /> SR
+                                    </td>
+                                    <td class="table_cell_right rtl">
+                                        الراتب الاساسى :
+                                        <span t-field="o.contract_id.basic_salary" />
+                                        ريال سعودى
+                                    </td>
+                                </tr>
+                                <tr t-if="o.type=='Identification Certificate with salary details'">
+                                    <td class="table_cell_left">
+                                        H.A: <span t-field="o.contract_id.house_allowance_amount" /> SR
+                                    </td>
+                                    <td class="table_cell_right rtl">
+                                        بدل السكن :
+                                        <span t-field="o.contract_id.house_allowance_amount" />
+                                        ريال سعودى
+                                    </td>
+                                </tr>
+                                <tr t-if="o.type=='Identification Certificate with salary details'">
+                                    <td class="table_cell_left">
+                                        T.A: <span t-field="o.contract_id.transportation_allowance_amount" /> SR
+                                    </td>
+                                    <td class="table_cell_right rtl">
+                                        بدل المواصلات :
+                                        <span t-field="o.contract_id.transportation_allowance_amount" />
+                                        ريال سعودى
+                                    </td>
+                                </tr>
+                                <tr t-if="o.type=='Identification Certificate with salary details'">
+                                    <td class="table_cell_left">
+                                        Other Allowance: <span t-esc="o.contract_id.phone_allowance_amount + o.contract_id.other_allowance" /> SR
+                                    </td>
+                                    <td class="table_cell_right rtl">
+                                        بدلات أخرى :
+                                        <span t-esc="o.contract_id.phone_allowance_amount + o.contract_id.other_allowance" />
+                                        ريال سعودى
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table_cell_left">
+                                        This certificate is issued upon the request of the above mentioned staff, without any liability what – so – ever, financial or otherwise.
+                                    </td>
+                                    <td class="table_cell_right rtl">
+                                        هــــــــذه الشهــــــــــادة تم اعطائها بناءً على طلب المذكور / المذكورة أعلاه ، دون أدنى مسئولية كانت مالية أو غيرها تجاه الغير.
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                        <div class="row">
+                            <div class="col-xs-12 text-center">
+                                مدير الموارد البشرية
+                                <br />
+                                Human Resources Manager
+                                <br/><br/>
+                                <span t-if="hr_manager" t-field="hr_manager.name"/>
+                                <br/>
+                                <span t-if="hr_manager" t-field="hr_manager.employee_english_name"/>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div t-if="o.type=='Salary Transfer Request'" class="page">
+                        <style>
+                            .table_cell{
+                                border:1px solid black !important;
+                                text-align: center;
+                            }
+                            .table_cell_right{
+                                border:1px solid black !important;
+                                text-align: right;
+                                padding-right: 3px !important;
+                            }
+                            .table_cell_left{
+                                border:1px solid black !important;
+                                text-align: left;
+                                padding-left: 3px !important;
+                            }
+                            .gray{
+                                background-color: #c5c7c7;
+                            }
+                            .rtl{
+                                direction:rtl;
+                            }
+                            .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+                                padding: 5px;
+                                font-size: 14px;
+                            }
+                            .vertical-text-left {
+                                position: absolute;
+                                left: 0%;
+                                margin-top: 60px;
+                                -webkit-transform:rotate(-90deg);
+                                padding-top: 10px;
+                            }
+                            .vertical-text-right {
+                                position: absolute;
+                                right: 0%;
+                                margin-top: 40px;
+                                -webkit-transform:rotate(-90deg);
+                            }
+                        </style>
+                        <t t-if="o and 'company_id' in o">
+                            <t t-set="company" t-value="o.company_id"></t>
+                        </t>
+                        <t t-if="not o or not 'company_id' in o">
+                            <t t-set="company" t-value="res_company"></t>
+                        </t>
+                        <div class="row" style="margin-bottom:25px;">
+                            <div class="col-xs-4">
+                                <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 100px;"/>
+                            </div>
+                            <div class="col-xs-4 text-left" style="margin-top:40px;font-size:16px;font-weight:bold;">
+                                Salary Transfer Request
+                            </div>
+                            <div class="col-xs-4 text-right" style="margin-top:40px;font-size:16px;font-weight:bold;" >
+                                طلب تحويل راتب
+                            </div>
+                        </div>
+
+                        <table class="table " >
+                            <tbody >
+                                <tr>
+                                    <td  class="table_cell gray" style="width:12%;">
+                                        <h1>1</h1>
+                                    </td>
+                                    <td colspan="4" class="table_cell" style="font-weight:blod;">
+                                        حرصاً منا على تقديم أفضل خدمة وفي أسرع وقت ممكن نأمل منكم توفير البيانات التالية
+                                        <br />
+                                        In order to provide you with an efficient and prompt service, kindly fill in the following information
+                                    </td>
+                                    <td  class="table_cell gray" style="width:12%;">
+                                        <h1>1</h1>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td  class="table_cell gray" rowspan="4" >
+                                        <span class="vertical-text-left">
+                                            Emp. Information
+                                        </span>
+                                    </td>
+                                    <td class="table_cell gray" >
+                                        الوظيفة
+                                        <br/>
+                                        Position
+                                    </td>
+                                    <td class="table_cell gray" >
+                                        رقم الموظف
+                                        <br/>
+                                        Emp #
+                                    </td>
+                                    <td colspan="2" class="table_cell gray" >
+                                        الاسم
+                                        <br/>
+                                        Name
+                                    </td>
+                                    <td  class="table_cell gray" rowspan="4" >
+                                        <span class="vertical-text-right">
+                                            بيانات الموظف
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table_cell" >
+                                        <span t-field="o.job_id.name"/>
+                                        <br/>
+                                        <span t-field="o.job_id.arabic_name" />
+                                    </td>
+                                    <td class="table_cell" >
+                                        <span t-field="o.employee_id.employee_number"/>
+                                    </td>
+                                    <td colspan="2" class="table_cell" >
+                                        <span t-field="o.employee_id.name"/>
+                                        <br/>
+                                        <span t-field="o.employee_id.employee_english_name"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table_cell gray" >
+                                        البريد الالكتروني
+                                        <br/>
+                                        E MAIL
+                                    </td>
+                                    <td class="table_cell gray" >
+                                        رقم الهاتف
+                                        <br/>
+                                        Telephone Number
+                                    </td>
+                                    <td class="table_cell gray" >
+                                        الجنسية
+                                        <br/>
+                                        Nationality
+                                    </td>
+                                    <td class="table_cell gray" >
+                                        تاريخ التعيين
+                                        <br/>
+                                        Started work on
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table_cell" >
+                                        <span t-field="o.employee_id.work_email" />
+                                    </td>
+                                    <td class="table_cell" >
+                                        <span t-field="o.employee_id.mobile_phone" />
+                                    </td>
+                                    <td class="table_cell" >
+                                        <span t-field="o.country_id.arabic_name" />
+                                        <br />
+                                        <span t-field="o.country_id.name" />
+                                    </td>
+                                    <td class="table_cell" >
+                                        <span t-field="o.employee_id.start_working_date" t-field-options='{"format": "d/M/y"}'/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table " >
+                            <tbody >
+                                <tr>
+                                    <td  class="table_cell gray" style="width:12%;">
+                                        <h1>2</h1>
+                                    </td>
+                                    <td  class="table_cell" style="font-weight:blod;" rowspan="2">
+                                        أفيدكم بأنه جرى توقيع هذا النموذج بعد موافقتي وعلم مني برغبتي في تحويل راتبي وجميع مستحقاتي المالية على حسابي البنكي الموضح أدناه.
+                                        <br />
+                                        I hereby sign this form to authorize you to automatically transfer my salary to the bank account mentioned below
+
+                                         <table class="table " >
+                                            <tbody >
+                                                <tr>
+                                                    <td class="table_cell gray" style="width:40%;">
+                                                        اسم البنك المحول اليه
+                                                        <br/>
+                                                        Name Of New Bank
+                                                    </td>
+                                                    <td class="table_cell " >
+                                                        <div class="row">
+                                                            <div class="col-xs-6 text-left">
+                                                                <span t-field="o.new_bank.english_name" />
+                                                            </div>
+                                                            <div class="col-xs-6 text-right rtl">
+                                                                <span t-field="o.new_bank.name" />
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+
+                                        <table class="table " >
+                                            <tbody >
+                                                <tr>
+                                                    <td class="table_cell gray" style="width:40%;">
+                                                        رقم الهوية / رقم الاقامة
+                                                        <br/>
+                                                        Saudi National ID / Iqama ID #
+                                                    </td>
+                                                    <td class="table_cell " >
+                                                        <t t-if="o.employee_id.identification_id" >
+                                                            <span t-field="o.employee_id.identification_id" />
+                                                        </t>
+                                                        <t t-if="not o.employee_id.identification_id" >
+                                                            <span t-field="o.employee_id.passport_id" />
+                                                        </t>
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                        <div class="row">
+                                            <div class="col-xs-6 text-left">
+                                                International Banking account number IBAN
+                                            </div>
+                                            <div class="col-xs-6 text-right rtl">
+                                                رقم الحساب البنكي الدولي أي بان
+                                            </div>
+                                        </div>
+                                        <table class="table ">
+                                            <tbody >
+                                                <tr>
+                                                    <t t-foreach="list(o.new_iban_number)" t-as="l" >
+                                                        <td class="table_cell" style="padding-top:30px;padding-bottom:30px;">
+                                                            <span t-esc="l" />
+                                                        </td>
+                                                    </t>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="row">
+                                            <div class="col-xs-6 text-left">
+                                                Name : <span t-field="o.employee_id.employee_english_name"/>
+                                            </div>
+                                            <div class="col-xs-6 text-right rtl">
+                                                الاسم :
+                                                <span t-field="o.employee_id.name"/>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-6 text-left">
+                                                Date : <span t-field="o.create_date" t-field-options='{"format": "d/M/y"}'/>
+                                                التاريخ
+                                            </div>
+                                            <div class="col-xs-6 text-right">
+                                                Signature:............................
+                                                التوقيع
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td  class="table_cell gray" style="width:12%;">
+                                        <h1>2</h1>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td  class="table_cell gray" >
+                                        <span class="vertical-text-left" >
+                                            Request Information
+                                        </span>
+                                    </td>
+                                    <td  class="table_cell gray" >
+                                        <span class="vertical-text-right">
+                                            معلومات الطلب
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table " >
+                            <tbody >
+                                <tr>
+                                    <td  class="table_cell gray" style="width:12%;">
+                                        <h1>3</h1>
+                                    </td>
+                                    <td  class="table_cell" style="font-weight:blod;" rowspan="2">
+                                        <div class="row">
+                                            <div class="col-xs-6 text-left">
+                                                For Hr Department Use Only
+                                            </div>
+                                            <div class="col-xs-6 text-right">
+                                                لاستخدام الموارد البشرية
+                                            </div>
+                                        </div>
+                                        <table class="table " >
+                                            <tbody >
+                                                <tr>
+                                                    <td class="table_cell gray" colspan="2" >
+                                                        بيانات المدخل
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="table_cell gray" >
+                                                        الاسم
+                                                        <br/>
+                                                        Name
+                                                    </td>
+                                                    <td class="table_cell gray" >
+                                                        التوقيع
+                                                        <br />
+                                                        Signature
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="table_cell " >
+                                                        <span t-if="o.started_by and o.started_by.employee_ids"  >
+                                                            <span t-esc="o.started_by.employee_ids[0].employee_english_name" />  /
+                                                            <span t-esc="o.started_by.employee_ids[0].name" />
+                                                        </span>
+                                                    </td>
+                                                    <td class="table_cell " >
+                                                        <br/>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                    <td  class="table_cell gray" style="width:12%;">
+                                        <h1>3</h1>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td  class="table_cell gray" style="height:150px;">
+                                        <span class="vertical-text-left">
+                                            HR - Payroll
+                                        </span>
+                                    </td>
+                                    <td  class="table_cell gray" >
+                                        <span class="vertical-text-right">
+                                            المواردالبشرية
+                                            <br />
+                                            - الرواتب
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table " >
+                            <tbody >
+                                <tr>
+                                    <td  class="table_cell gray" >
+                                        <h1>Note</h1>
+                                    </td>
+                                    <td  class="table_cell gray" >
+                                        <h1>ملاحظة</h1>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td  class="table_cell text-left" >
+                                        - Clearance letter from the previous Bank must be attached
+                                        <br />
+                                        - A copy of Bank account must be attached.
+                                    </td>
+                                    <td  class="table_cell text-right rtl" >
+                                        - يجب ارفاق إخلاء طرف من البنك السابق مع هذا الطلب .
+                                        <br/>
+                                        - يجب ارفاق صورة من الحساب البنكي للمطابقة.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="row">
+                            <div class="col-xs-12 text-center">
+                                مدير الموارد البشرية
+                                <br />
+                                Human Resources Manager
+                                <br/>
+                                <span t-if="hr_manager" t-field="hr_manager.name"/>
+                                <br/>
+                                <span t-if="hr_manager" t-field="hr_manager.employee_english_name"/>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

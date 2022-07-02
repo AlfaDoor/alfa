@@ -1,0 +1,195 @@
+<openerp>
+    <data>
+
+        <record id="paperformat_landscape" model="report.paperformat">
+            <field name="name">Landscape</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">15</field>
+            <field name="margin_bottom">20</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">10</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <report
+                id="report_payroll"
+                model="hr.payslip.run"
+                string="Payroll"
+                report_type="qweb-pdf"
+                name="saudi_hr_payroll.payroll_report"
+                file="saudi_hr_payroll.payroll_report"
+                paperformat="saudi_hr_payroll.paperformat_landscape"/>
+
+        <template id="payroll_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.internal_layout">
+                        <div class="page">
+                            <style>
+                                .border-table td{
+                                    border:1px solid #ddd;
+                                    text-align:center;
+                                    vertical-align: middle;
+                                }
+                                thead td{
+                                    background-color:#ccc;
+                                }
+                                .totals td{
+                                    background-color:#ccc;
+                                }
+                            </style>
+                            <table class="border-table" style="direction:rtl;width:100%">
+                                <t t-set="rule_basic" t-value="0"/>
+                                <t t-set="rule_house_allowance" t-value="0"/>
+                                <t t-set="rule_transportation_allowance" t-value="0"/>
+                                <t t-set="rule_food_allowance" t-value="0"/>
+                                <t t-set="rule_overtime" t-value="0"/>
+                                <t t-set="rule_other_llowance" t-value="0"/>
+                                <t t-set="rule_gross" t-value="0"/>
+                                <t t-set="rule_gosi_employee_share" t-value="0"/>
+                                <t t-set="rule_absence" t-value="0"/>
+                                <t t-set="rule_loan_deducted" t-value="0"/>
+                                <t t-set="rule_deductions_violations" t-value="0"/>
+                                <t t-set="rule_total_deductions" t-value="0"/>
+                                <t t-set="rule_net" t-value="0"/>
+                                <thead>
+                                    <tr><td colspan="18" style="border:0px;height:70px;background-color:#fff;">
+                                        <h2 style="text-align:center"><span t-field="o.name"/></h2></td></tr>
+                                    <tr>
+                                        <td rowspan="2">#</td>
+                                        <td rowspan="2">الرقم <br/>الوظيفى</td>
+                                        <td rowspan="2"> اسم الموظف </td>
+                                        <td colspan="6">الاستحقاقات </td>
+                                        <td rowspan="2">اجمالى <br/> الاستحقاقات</td>
+                                        <td colspan="4">الخصومات </td>
+                                        <td rowspan="2">اجمالى <br/>الخصومات</td>
+                                        <td rowspan="2">صافى الراتب </td>
+                                    </tr>
+                                    <tr>
+                                        <td>الراتب الاساسى</td>
+                                        <td>بدل السكن</td>
+                                        <td>بدل النقل</td>
+                                        <td>بدل الاعاشه</td>
+                                        <td>العمل الاضافى</td>
+                                        <td>اخرى</td>
+                                        <td>تأمينات اجتماعية</td>
+                                        <td>الغياب / التأخير</td>
+<!--                                        <td>خصم النقل</td>-->
+<!--                                        <td>خصم السكن</td>-->
+                                        <td>قسط القروض</td>
+                                        <td>أخرى</td>
+                                    </tr>
+                                </thead>
+                                <t t-set="rule_basic" t-value="0"/>
+                                <t t-set="rule_house_allowance" t-value="0"/>
+                                <t t-set="rule_transportation_allowance" t-value="0"/>
+                                <t t-set="rule_food_allowance" t-value="0"/>
+                                <t t-set="rule_overtime" t-value="0"/>
+                                <t t-set="rule_other_llowance" t-value="0"/>
+                                <t t-set="rule_gross" t-value="0"/>
+                                <t t-set="rule_gosi_employee_share" t-value="0"/>
+                                <t t-set="rule_absence" t-value="0"/>
+<!--                                <t t-set="rule_house_ded" t-value="0"/>-->
+<!--                                <t t-set="rule_trans_ded" t-value="0"/>-->
+                                <t t-set="rule_loan_deducted" t-value="0"/>
+                                <t t-set="rule_deductions_violations" t-value="0"/>
+                                <t t-set="rule_total_deductions" t-value="0"/>
+                                <t t-set="rule_net" t-value="0"/>
+                                <tbody>
+                                    <t t-foreach="o.slip_ids" t-as="slip">
+                                        <tr>
+                                            <td><span t-esc="slip_index + 1"/></td>
+                                            <td style="text-align:left;padding-left:5px"><span t-field="slip.employee_id.employee_number"/></td>
+                                            <td><span t-field="slip.employee_id.name" widget="integer"/> </td>
+                                            <td><span t-field="slip.rule_basic"/> </td>
+                                            <td><span t-field="slip.rule_house_allowance"/></td>
+                                            <td><span t-field="slip.rule_transportation_allowance"/></td>
+                                            <td><span t-field="slip.rule_food_allowance"/></td>
+                                            <td><span t-field="slip.rule_overtime"/></td>
+                                            <td><span t-field="slip.rule_other_llowance"/></td>
+                                            <td><span t-field="slip.rule_gross"/></td>
+                                            <td><span t-field="slip.rule_gosi_employee_share"/></td>
+                                            <td><span t-field="slip.rule_absence"/></td>
+<!--                                            <td><span t-field="slip.rule_trans_ded"/> </td>-->
+<!--                                            <td><span t-field="slip.rule_house_ded"/> </td>-->
+                                            <td><span t-field="slip.rule_loan_deducted"/></td>
+                                            <td><span t-field="slip.rule_deductions_violations"/></td>
+                                            <td><span t-field="slip.rule_total_deductions"/></td>
+                                            <td><span t-field="slip.rule_net"/></td>
+
+                                            <t t-set="rule_basic" t-value="rule_basic+slip.rule_basic"/>
+                                            <t t-set="rule_house_allowance" t-value="rule_house_allowance + slip.rule_house_allowance"/>
+                                            <!--<t t-set="rule_house_ded" t-value="rule_house_ded + slip.rule_house_ded"/>-->
+                                            <t t-set="rule_transportation_allowance" t-value="rule_transportation_allowance + slip.rule_transportation_allowance"/>
+<!--                                            <t t-set="rule_trans_ded" t-value="rule_trans_ded + slip.rule_trans_ded"/>-->
+<!--                                            <t t-set="rule_house_ded" t-value="rule_house_ded + slip.rule_house_ded"/>-->
+                                            <t t-set="rule_food_allowance" t-value="rule_food_allowance + slip.rule_food_allowance"/>
+                                            <t t-set="rule_overtime" t-value="rule_overtime + slip.rule_overtime"/>
+                                            <t t-set="rule_other_llowance" t-value="rule_other_llowance + slip.rule_other_llowance"/>
+                                            <t t-set="rule_gross" t-value="rule_gross + slip.rule_gross"/>
+                                            <t t-set="rule_gosi_employee_share" t-value="rule_gosi_employee_share + slip.rule_gosi_employee_share"/>
+                                            <t t-set="rule_absence" t-value="rule_absence + slip.rule_absence"/>
+                                            <t t-set="rule_loan_deducted" t-value="rule_loan_deducted + slip.rule_loan_deducted"/>
+                                            <t t-set="rule_deductions_violations" t-value="rule_deductions_violations + slip.rule_deductions_violations"/>
+                                            <t t-set="rule_total_deductions" t-value="rule_total_deductions + slip.rule_total_deductions"/>
+                                            <t t-set="rule_net" t-value="rule_net + slip.rule_net"/>
+                                        </tr>
+                                    </t>
+                                    <tr class="totals">
+                                        <td colspan="3" style="padding:5px">الاجــــــمــــــالـــــى</td>
+                                        <td><span t-esc="rule_basic"/> </td>
+                                        <td><span t-esc="rule_house_allowance"/> </td>
+                                        <td><span t-esc="rule_transportation_allowance"/> </td>
+                                        <td><span t-esc="rule_food_allowance"/> </td>
+                                        <td><span t-esc="rule_overtime"/> </td>
+                                        <td><span t-esc="rule_other_llowance"/> </td>
+                                        <td><span t-esc="rule_gross"/> </td>
+                                        <td><span t-esc="rule_gosi_employee_share"/> </td>
+                                        <td><span t-esc="rule_absence"/> </td>
+<!--                                        <td><span t-esc="rule_trans_ded"/> </td>-->
+<!--                                        <td><span t-esc="rule_house_ded"/> </td>-->
+                                        <td><span t-esc="rule_loan_deducted"/> </td>
+                                        <td><span t-esc="rule_deductions_violations"/> </td>
+                                        <td><span t-esc="rule_total_deductions"/> </td>
+                                        <td><span t-esc="rule_net"/> </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table style="direction:rtl; width:100%; margin-top:20px">
+                                <tr>
+                                    <td style="text-align:center">
+                                        أعــــده <br/>
+                                        -------------------
+                                    </td>
+                                    <td style="text-align:center">
+                                        إعــتـمــــده <br/>
+                                        -------------------
+                                    </td>
+                                    <td style="text-align:center">
+                                        راجــــعــــه <br/>
+                                        -------------------
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <template id="internal_layout_logo" inherit_id="web.internal_layout" name="add logo to internal layout">
+            <xpath expr="//div/div/div[2]" position="replace">
+                <div class="col-2 offset-2 text-center">
+                <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" alt="Logo" style="max-height: 50px;"/>
+<!--                <span t-esc="company.name"/>-->
+                </div>
+            </xpath>
+        </template>
+    </data>
+</openerp>

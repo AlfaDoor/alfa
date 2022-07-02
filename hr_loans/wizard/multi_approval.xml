@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Multi Reward Approval Wizard -->
+
+        <record id="multi_reward_form_wizard" model="ir.ui.view">
+            <field name="name">multi.reward.form.wizard</field>
+            <field name="model">multi.rewards.review.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Reward(s) Multi Review">
+                    <p class="oe_grey">
+                        Once draft Reward(s) are reviewed by HR, you will not be able
+                        to modify them.
+                    </p>
+                    <footer>
+                        <button name="multi_review" string="Review All" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_reward_review_wizard" model="ir.actions.act_window">
+            <field name="name">Multi Reward Review</field>
+            <field name="res_model">multi.rewards.review.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <act_window id="action_reward_review_wizard"
+            multi="True"
+            key2="client_action_multi2"
+            name="Review All Rewards"
+            res_model="multi.rewards.review.wizard" 
+            src_model="hr.employee.rewards"
+            view_mode="form" 
+            target="new" 
+            view_type="form"/>
+
+
+        <record id="multi_reward2_form_wizard" model="ir.ui.view">
+            <field name="name">multi.reward2.form.wizard</field>
+            <field name="model">multi.rewards.confirm.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Reward(s) Multi Confirm">
+                    <p class="oe_grey">
+                        Once Review Reward(s) are confirmed by HR, you will not be able
+                        to modify them.
+                    </p>
+                    <footer>
+                        <button name="multi_confirm" string="Confirm All" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_reward_confirm_wizard" model="ir.actions.act_window">
+            <field name="name">Multi Reward Confirm</field>
+            <field name="res_model">multi.rewards.confirm.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <act_window id="action_reward_confirm_wizard"
+            multi="True"
+            key2="client_action_multi2" 
+            name="Confirm All Rewards"
+            res_model="multi.rewards.confirm.wizard" 
+            src_model="hr.employee.rewards"
+            view_mode="form" 
+            target="new" 
+            view_type="form"/>
+
+
+        <record id="multi_reward3_form_wizard" model="ir.ui.view">
+            <field name="name">multi.reward3.form.wizard</field>
+            <field name="model">multi.rewards.reset.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Reward(s) Multi Reset">
+                    <p class="oe_grey">
+                        Once Confirm Reward(s) are reseted by HR, you will be able
+                        to modify them.
+                    </p>
+                    <footer>
+                        <button name="multi_reset" string="Reset All" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_reward_reset_wizard" model="ir.actions.act_window">
+            <field name="name">Multi Reward Reset</field>
+            <field name="res_model">multi.rewards.reset.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <act_window id="action_reward_reset_wizard"
+            multi="True"
+            key2="client_action_multi2" 
+            name="Reset All Rewards"
+            res_model="multi.rewards.reset.wizard" 
+            src_model="hr.employee.rewards"
+            view_mode="form" 
+            target="new" 
+            view_type="form"/>
+
+
+        <!-- Multi Deduction Approval Wizard -->
+
+        <record id="multi_deduction_form_wizard" model="ir.ui.view">
+            <field name="name">multi.deduction.form.wizard</field>
+            <field name="model">multi.deduction.review.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Deduction(s) Multi Review">
+                    <p class="oe_grey">
+                        Once draft Deduction(s) are reviewed by HR, you will not be able
+                        to modify them.
+                    </p>
+                    <footer>
+                        <button name="multi_review" string="Review All" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_deduction_review_wizard" model="ir.actions.act_window">
+            <field name="name">Multi Deduction Review</field>
+            <field name="res_model">multi.deduction.review.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <act_window id="action_deduction_review_wizard"
+            multi="True"
+            key2="client_action_multi2"
+            name="Review All Deductions"
+            res_model="multi.deduction.review.wizard" 
+            src_model="employee.deductions.violations"
+            view_mode="form" 
+            target="new" 
+            view_type="form"/>
+
+
+        <record id="multi_deduction2_form_wizard" model="ir.ui.view">
+            <field name="name">multi.deduction2.form.wizard</field>
+            <field name="model">multi.deduction.confirm.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Deduction(s) Multi Confirm">
+                    <p class="oe_grey">
+                        Once Review Deduction(s) are confirmed by HR, you will not be able
+                        to modify them.
+                    </p>
+                    <footer>
+                        <button name="multi_confirm" string="Confirm All" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_deduction_confirm_wizard" model="ir.actions.act_window">
+            <field name="name">Multi Deduction Confirm</field>
+            <field name="res_model">multi.deduction.confirm.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <act_window id="action_deduction_confirm_wizard"
+            multi="True"
+            key2="client_action_multi2" 
+            name="Confirm All Deductions"
+            res_model="multi.deduction.confirm.wizard" 
+            src_model="employee.deductions.violations"
+            view_mode="form" 
+            target="new" 
+            view_type="form"/>
+
+
+        <record id="multi_deduction3_form_wizard" model="ir.ui.view">
+            <field name="name">multi.deduction3.form.wizard</field>
+            <field name="model">multi.deduction.reset.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Deduction(s) Multi Reset">
+                    <p class="oe_grey">
+                        Once Confirm Deduction(s) are reseted by HR, you will be able
+                        to modify them.
+                    </p>
+                    <footer>
+                        <button name="multi_reset" string="Reset All" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_deduction_reset_wizard" model="ir.actions.act_window">
+            <field name="name">Multi Deduction Reset</field>
+            <field name="res_model">multi.deduction.reset.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <act_window id="action_deduction_reset_wizard"
+            multi="True"
+            key2="client_action_multi2" 
+            name="Reset All Deductions"
+            res_model="multi.deduction.reset.wizard" 
+            src_model="employee.deductions.violations"
+            view_mode="form" 
+            target="new" 
+            view_type="form"/>
+
+    </data>
+</odoo>

@@ -1,0 +1,9 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_service_request_config_employee,service.request.config.user,model_service_request_config,base.group_user,1,0,0,0
+access_service_request_config_officer,service.request.config.officer,model_service_request_config,hr.group_hr_user,1,1,1,0
+access_service_request_config_manager,service.request.config.manager,model_service_request_config,hr.group_hr_manager,1,1,1,1
+access_service_request_employee,service.request.user,model_service_request,base.group_user,1,1,1,0
+access_service_request_officer,service.request.officer,model_service_request,hr.group_hr_user,1,1,1,0
+access_service_request_manager,service.request.manager,model_service_request,hr.group_hr_manager,1,1,1,1
+access_service_request_attaches_employee,service.request.attaches.user,model_service_request_attaches,base.group_user,1,1,1,0
+access_service_request_attaches_manager,service.request.attaches.manager,model_service_request_attaches,hr.group_hr_manager,1,1,1,1

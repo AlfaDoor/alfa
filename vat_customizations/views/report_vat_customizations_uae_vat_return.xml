@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="internal_layout">
+        <t t-if="not o" t-set="o" t-value="doc"/>
+
+        <!-- <t t-if="not company"> -->
+            <!-- Multicompany -->
+            <!-- <t t-if="company_id">
+                <t t-set="company" t-value="company_id"/>
+            </t>
+            <t t-elif="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+            <t t-else="else">
+                <t t-set="company" t-value="res_company"/>
+            </t> -->
+        <!-- </t> -->
+
+        <div class="header">
+            <!-- <div class="row">
+                <div class="col-3">
+                    <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+                </div>
+                <div class="col-2 offset-2 text-center">
+                    <span t-esc="company.name"/>
+                </div>
+                <div class="col-2 offset-3 text-right">
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><span class="page"/></li>
+                        <li class="list-inline-item">/</li>
+                        <li class="list-inline-item"><span class="topage"/></li>
+                    </ul>
+                </div>
+            </div> -->
+        </div>
+        <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+          <t t-raw="0"/>
+        </div>
+    </template>
+
+    <template id="report_layout" name="Report layout">&lt;!DOCTYPE html&gt;
+        <html t-att-lang="lang and lang.replace('_', '-')"
+              t-att-data-editable="'1' if editable else None"
+              t-att-data-translatable="'1' if translatable else None"
+              t-att-data-edit_translations="'1' if edit_translations else None"
+              t-att-data-main-object="repr(main_object) if editable else None"
+              t-att-data-report-margin-top="data_report_margin_top"
+              t-att-data-report-header-spacing="data_report_header_spacing"
+              t-att-data-report-dpi="data_report_dpi"
+              t-att-data-report-landscape="data_report_landscape"
+              t-att-web-base-url="web_base_url">
+            <head>
+                <meta charset="utf-8"/>
+                <meta name="viewport" content="initial-scale=1"/>
+                <title><t t-esc="title or 'Odoo Report'"/></title>
+                <t t-call-assets="web.assets_common" t-js="false"/>
+                <t t-call-assets="web.report_assets_common" t-js="false"/>
+                <t t-if="editable">
+                    <t t-call-assets="web_editor.summernote" t-js="false"/>
+                    <t t-call-assets="web_editor.assets_editor" t-js="false"/>
+                    <t t-call-assets="web.report_assets_editor" t-js="false"/>
+                </t>
+                <t t-call-assets="web.assets_common" t-css="false"/>
+                <t t-call-assets="web.report_assets_common" t-css="false"/>
+                <t t-if="editable">
+                    <t t-call-assets="web_editor.summernote" t-css="false"/>
+                    <t t-call-assets="web_editor.assets_editor" t-css="false"/>
+                    <t t-call-assets="web.report_assets_editor" t-css="false"/>
+
+                    <script type="text/javascript" src="/web_editor/static/src/js/iframe.js"></script>
+                    <script t-if="enable_editor and inline_mode" type="text/javascript" src="/web_editor/static/src/js/inline.js"></script>
+                </t>
+            </head>
+            <body>
+                <div id="wrapwrap">
+                    <main t-att-class="'container' if not full_width else 'container-fluid'">
+                        <t t-raw="0"/>
+                    </main>
+                </div>
+            </body>
+        </html>
+    </template>
+
+    <template id="html_container">
+        <t t-set="body_classname" t-value="'container'"/>
+        <t t-call="vat_customizations.report_layout">
+            <t t-raw="0"/>
+        </t>
+    </template>
+
+    <template id="report_vat_customizations_uae_vat_return">
+        <t t-call="vat_customizations.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="vat_customizations.internal_layout">
+                    <div class="page" style="">
+                        <h1 class="text-left font-weight-bold" style="">VAT Return Form</h1>
+                        <div class="clearfix">
+                            <table class="table table-borderless table-sm mb32"  style="table-layout:auto">
+                                    
+                                <tbody class="invoice_tbody">
+                                    <tr>
+                                        <td class="text-right" style="" colspan="2">
+                                            <img t-if="o.vat_company_logo" t-att-src="image_data_uri(o.vat_company_logo)" class="float-right" alt="Logo"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                        </div>
+
+                        <t t-set="sales_base_amount_5" t-value="0.00"/>
+                        <t t-set="sales_tax_amount_5" t-value="0.00"/>
+                        <t t-set="sales_base_amount_15" t-value="0.00"/>
+                        <t t-set="sales_tax_amount_15" t-value="0.00"/>
+                        <t t-set="purchase_base_amount_5" t-value="0.00"/>
+                        <t t-set="purchase_tax_amount_5" t-value="0.00"/>
+                        <t t-set="purchase_base_amount_15" t-value="0.00"/>
+                        <t t-set="purchase_tax_amount_15" t-value="0.00"/>
+                        <!-- <t t-set="total_vat" t-value="0"/>
+                        <t t-set="total_vat" t-value="0"/>
+                        <t t-set="total_vat" t-value="0"/>
+                        <t t-set="total_vat" t-value="0"/>
+                        <t t-set="total_vat" t-value="0"/>
+                        <t t-set="total_vat" t-value="0"/>
+                        <t t-set="total_vat" t-value="0"/>
+                        <t t-set="total_vat" t-value="0"/>
+                        <t t-set="total_vat" t-value="0"/>
+                        <t t-set="total_vat" t-value="0"/>
+                        <t t-set="total_vat" t-value="0"/>
+                        <t t-set="total_vat" t-value="0"/> -->
+
+                        <t t-foreach="o.return_line_ids" t-as="line">
+                            <t t-if="line.scope == 'Sale'">
+                                <t t-if="line.tax_per == 5">
+                                    <t t-set="sales_base_amount_5" t-value="sales_base_amount_5 + line.base_amount" />
+                                    <t t-set="sales_tax_amount_5" t-value="sales_tax_amount_5 + line.tax_amount" />
+                                </t>
+                                <t t-if="line.tax_per == 15">
+                                    <t t-set="sales_base_amount_15" t-value="sales_base_amount_15 + line.base_amount" />
+                                    <t t-set="sales_tax_amount_15" t-value="sales_tax_amount_15 + line.tax_amount" />
+                                </t>
+                            </t>
+                            <t t-if="line.scope == 'Purchase'">
+                                <t t-if="line.tax_per == 5">
+                                    <t t-set="purchase_base_amount_5" t-value="purchase_base_amount_5 + line.base_amount" />
+                                    <t t-set="purchase_tax_amount_5" t-value="purchase_tax_amount_5 + line.tax_amount" />
+                                </t>
+                                <t t-if="line.tax_per == 15">
+                                    <t t-set="purchase_base_amount_15" t-value="purchase_base_amount_15 + line.base_amount" />
+                                    <t t-set="purchase_tax_amount_15" t-value="purchase_tax_amount_15 + line.tax_amount" />
+                                </t>
+                            </t>
+                        </t>
+                        <div class="clearfix">
+
+                            <table class="table table-borderless table-sm mb32"  style="table-layout:auto">
+                                    
+                                <tbody class="invoice_tbody">
+                                    <tr>
+                                        <td class="text-left" style="" colspan="2">Commercial Name:</td>
+                                        <td class="text-right" style="" colspan="2">General Authority of Zakat &amp; Tax</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-left" style="">Special No: ________</td>
+                                        <td class="text-left" style="">Branch: RUH</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-left" style="">Month: 
+                                            <t t-if="o.month_type == 'quarter'">
+                                                <span t-field="o.month_quarter" />
+                                            </t>
+                                            <t t-if="o.month_type != 'quarter'">
+                                                <span t-field="o.no_of_months" /> Months
+                                            </t>
+                                        </td>
+
+                                        <td class="text-left" style="">Year: <span t-field="o.end_date" t-options="{'widget': 'date', 'format': 'yyyy'}"/></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="clearfix row"  style="width:100%">
+                            <div class="col-7" style="float:left;">
+                                <table class="table table-sm mb32 table-bordered" style="width:100%;table-layout:auto;margin-top:20px;">
+                                    <tbody class="invoice_tbody">
+                                        <tr style="height:2pt;">
+                                            <td rowspan="7" style="width:7%;background-color:#959495; vertical-align:middle; overflow:hidden;height:40px;text-overflow:ellipsis;">
+                                                <span style="white-space: nowrap;-webkit-writing-mode: vertical-lr;-ms-writing-mode: tb-lr;writing-mode: vertical-lr;padding: 2%;transform: rotate(90deg);font-size: 12px;color: white;">VAT on Sales</span>
+                                            </td>
+                                            <!-- <td>1- Standard rated sales -5%</td> -->
+                                        </tr>
+                                        <tr style="height:3%;width:93%;">
+                                            <td style="height:2pt;font-size: 10px;">1- Standard rated sales -5%</td>
+                                        </tr>
+                                        <tr style="height:3%;width:93%;">
+                                            <td style="height:2pt;font-size: 10px;">2- Standard rated sales -15%</td>
+                                        </tr>
+                                        <tr style="height:3%;width:93%;">
+                                            <td style="height:2pt;font-size: 10px;">3- Zero rated domestic sales</td>
+                                        </tr>
+                                        <tr style="height:3%;width:93%;">
+                                            <td style="height:2pt;font-size: 10px;">4- Exports</td>
+                                        </tr>
+                                        <tr style="height:3%;width:93%;">
+                                            <td style="height:2pt;font-size: 10px;">5- Exempt sales</td>
+                                        </tr>
+                                        <tr style="height:3%;width:93%;">
+                                            <td style="height:2pt;background-color:#959495;color:white;font-size: 10px;">6- Total Sales </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-5" style="float:left;">
+                                <table class="table table-sm mb32 table-bordered" style="width:100%;table-layout:auto">
+                                    <tbody class="invoice_tbody">
+                                        <tr>
+                                            <td style="height:5px;min-height:5px;font-size: 9px;">
+                                                <span class="font-weight-bold">Amount (SAR)</span>
+                                            </td>
+                                            <td style="height:5px;min-height:5px;font-size: 9px;">
+                                                <span class="font-weight-bold">Adjustment (SAR)</span>
+                                            </td>
+                                            <td style="height:5px;min-height:5px;font-size: 9px;">
+                                                <span class="font-weight-bold">VAT Amount (SAR)</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span digits="(14, 3)" t-esc="'%.2f'% sales_base_amount_5"/>
+                                            </td>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span>0.00</span>
+                                            </td>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span digits="(14, 3)" t-esc="'%.2f'% sales_tax_amount_5"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span t-esc="'%.2f'% sales_base_amount_15"/>
+                                            </td>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span>0.00</span>
+                                            </td>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span t-esc="'%.2f'% sales_tax_amount_15"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span>0.00</span>
+                                            </td>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span>0.00</span>
+                                            </td>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span>0.00</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span>0.00</span>
+                                            </td>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span>0.00</span>
+                                            </td>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span>0.00</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span>0.00</span>
+                                            </td>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span>0.00</span>
+                                            </td>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span>0.00</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span t-field="o.total_taxable_sales_in_period_before_tax"/>
+                                            </td>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span t-field="o.total_sale_adjustment_amount"/>
+                                            </td>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span t-field="o.total_collected_on_sales"/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="clearfix row"  style="width:100%">
+                            <div class="col-7" style="float:left;">
+                                <table class="table table-sm mb32 table-bordered"  cellpadding="0" cellspacing="0" padding="0" margin="0" style="width:100%;table-layout:auto;">
+                                    <tbody class="invoice_tbody">
+                                        <tr style="height:2pt;">
+                                            <td rowspan="7" style="width:10pt; background-color:#959495; vertical-align:middle; height:10pt">
+                                                <span style="white-space: nowrap;-webkit-writing-mode: vertical-rl;-ms-writing-mode: tb-rl;writing-mode: vertical-lr;padding: 2%;transform: rotate(180deg);font-size: 12px;color: white;">VAT Purchases</span>
+                                            </td>
+                                            <!-- <td>1- Standard rated sales -5%</td> -->
+                                        </tr>
+                                        <tr style="height:2pt;">
+                                            <td style="height:2pt;font-size: 10px;">7- Standard rated purchases -5%</td>
+                                        </tr>
+                                        <tr style="height:2pt;">
+                                            <td style="height:2pt;font-size: 10px;">8- Standard rated purchases -15%</td>
+                                        </tr>
+                                        <tr style="height:2pt;">
+                                            <td style="height:2pt;font-size: 10px;">9- Imports subject to standard rate paid at customs</td>
+                                        </tr>
+                                        <tr style="height:2pt;">
+                                            <td style="height:2pt;font-size: 9px;">10- Imports subject to VAT accounted for through reverse charge mechanism</td>
+                                        </tr>
+                                        <tr style="height:2pt;">
+                                            <td style="height:2pt;font-size: 10px;">11- Zero rated purchases</td>
+                                        </tr>
+                                        <tr style="height:2pt;">
+                                            <td style="height:2pt;background-color:#959495;color:white;font-size: 10px;">12- Total Purchases </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-5" style="float:left;">
+                                <table class="table table-sm mb32 table-bordered"  cellpadding="0" cellspacing="0" padding="0" margin="0" style="width:100%;table-layout:auto">
+                                    <tbody class="invoice_tbody">
+                                        <tr>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span t-esc="'%.2f'% purchase_base_amount_5"/>
+                                            </td>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span>0.00</span>
+                                            </td>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span t-esc="'%.2f'% purchase_tax_amount_5"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span t-esc="'%.2f'% purchase_base_amount_15"/>
+                                            </td>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span>0.00</span>
+                                            </td>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span t-esc="'%.2f'% purchase_tax_amount_15"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span>0.00</span>
+                                            </td>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span>0.00</span>
+                                            </td>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span>0.00</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span>0.00</span>
+                                            </td>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span>0.00</span>
+                                            </td>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span>0.00</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span>0.00</span>
+                                            </td>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span>0.00</span>
+                                            </td>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span>0.00</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span t-field="o.total_taxable_purchase_in_period_before_tax"/>
+                                            </td>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span t-field="o.total_purchase_adjustment_amount"/>
+                                            </td>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span t-field="o.total_collected_on_purchase"/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="clearfix row"  style="width:100%">
+                            <div class="col-7" style="float:left;">
+                                <table  cellpadding="0" cellspacing="0" padding="0" margin="0" class="table table-sm mb32 table-bordered" style="width:100%;table-layout:auto;">
+                                    <tbody class="invoice_tbody">
+                                        <tr style="height:2pt;">
+                                            <td style="height:2pt;font-size: 10px;background-color:#959495;">13- Total VAT due for current period</td>
+                                        </tr>
+                                        <tr style="height:2pt;">
+                                            <td style="height:2pt;font-size: 10px;">14- Corrections from previos period (between SAR ± 5,000 )</td>
+                                        </tr>
+                                        <tr style="height:2pt;">
+                                            <td style="height:2pt;font-size: 10px;">15- VAT credit carried forward from previos period(s)</td>
+                                        </tr>
+                                        <tr style="height:2pt;">
+                                            <td style="height:2pt;font-size: 10px;background-color:#959495;">16- Net VAT due (or claim )</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-5 text-right" style="float:left;text-align:right">
+                                <table  cellpadding="0" cellspacing="0" padding="0" margin="0" class="table table-sm mb32 table-bordered text-right" style="width:40%;table-layout:auto;">
+                                    <tbody class="invoice_tbody">
+                                        <tr>
+                                            <t t-set="total_vat" t-value="0"/> 
+                                            <t t-set="total_calculated_vat" t-value="0"/> 
+                                            <t t-set="total_vat" t-value="o.total_collected_on_sales - o.total_collected_on_purchase"/>
+                                            <t t-set="total_calculated_vat" t-value="total_vat + o.vat_report_14 + o.vat_report_15"/>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span t-esc="'%.2f'% total_vat"/>
+                                            </td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span t-field="o.vat_report_14"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span t-field="o.vat_report_15"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="min-height:5px;height:5px;font-size: 10px;">
+                                                <span t-esc="'%.2f'% total_vat"/>
+                                            </td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="clearfix row"  style="width:100%">
+                            <div class="col-12 text-left" style="text-align:left; font-size: 10px;">
+                                <span style="font-size: 10px;">I the undersigned hereby certify that all amounts reported in this return are correct and reflect the amount due for value added tax during the month, and are calculated in accordance with the Value Added Tax Regulations in the Kingdom of Saudi Arabia and its Implementation guidelines.</span>
+                            </div>
+                        </div><br/><br/>
+                        <div class="clearfix row"  style="width:100%;margin-top:10px;">
+                            <div class="col-6 text-left" style="text-align:left;font-size: 10px;float:left;">
+                                <span style="text-align:left">Name:</span>
+                            </div>
+                            <div class="col-3 text-left" style="text-align:left;font-size: 10px;float:left;">
+                                <span style="text-align:left">Signature:</span>
+                            </div>
+                            <div class="col-3 text-left" style="text-align:left;font-size: 10px;float:left;">
+                                <span style="text-align:left">Stamp:</span>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

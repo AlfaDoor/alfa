@@ -1,0 +1,51 @@
+# -*- coding: utf-8 -*-
+{
+    'name': "COA Task",
+    'summary': """
+        Make a wizard form and fetch the data of last updated chart of account with respective details""",
+  
+    "author": " M. Faizan  |  Senior Functional-Technical Consultant  |  Phone: +923322676365  |  Karachi, Pakistan ",    
+    'website': 'https://www.linkedin.com/in/engr-muhammad-faizan-80011782/',
+    'category': 'Custom',
+    'version': '10.0.1',
+
+    # any module necessary for this one to work correctly
+    'depends': ['base', 'account'],
+
+    # always loaded
+    'data': [
+        'views/views.xml',
+        'views/templates.xml',
+#        'report/report_balance_contract.xml',
+#        'report/report_product_ledger.xml',
+#        'report/report_godown_position.xml',
+#        'report/cotton_transfer_detail.xml',
+#        'report/report_department_category.xml',
+#        'report/sale_report_menu.xml',
+#        'report/report_sale_aging.xml',
+#        'report/report_cotton_pledge.xml',
+#        'report/report_cotton_godown.xml',
+#        'report/report_yarn_pledge.xml',
+#        'report/report_credit_aging.xml',
+#        'report/report_credit_agingx.xml',
+#        'report/report_customer_ledger.xml',
+#        'views/balance_contract_report_wizard_view.xml',
+#        'views/product_ledger_report_wizard_view.xml',
+#        'views/godown_position_report_wizard_view.xml',
+#        'views/cotton_transfer_detail_report_wizard_view.xml',
+#        'views/department_category_report_wizard_view.xml',
+#        'views/sale_aging_report_wizard_view.xml',
+#        'views/cotton_pledge_report_wizard_view.xml',
+#        'views/cotton_godown_report_wizard_view.xml',
+#        'views/yarn_pledge_report_wizard_view.xml',
+#	    'views/stock_report_wizard_view.xml',
+#        'views/credit_aging_report_wizard_view.xml',
+#        'views/customer_ledger_report_wizard_view.xml'
+#        'views/stock_report_wizard_view.xml'
+        
+    ],
+    # only loaded in demonstration mode
+    'demo': [
+        'demo/demo.xml',
+    ],
+}

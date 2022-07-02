@@ -1,0 +1,5 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_internal_requisition_employee,acc_internal_requisition_employee,model_internal_requisition,base.group_user,1,1,1,1
+access_internal_requisition_line_employee,acc_internal_requisition_line_employee,model_requisition_line,base.group_user,1,1,1,1
+mi_account_move_line,MI_Employee,account.model_account_move_line,base.group_user,1,1,1,1
+access_requisition_procurement,acc_requisition_procurement,model_requisition_procurement,base.group_user,1,1,1,1

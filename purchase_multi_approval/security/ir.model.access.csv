@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+view_program_status,program.status,model_program_status,hr.group_hr_manager,1,1,1,1
+view_program_status,program.status,model_program_status,hr.group_hr_user,1,1,1,1
+view_cv_source,cv.source,model_cv_source,hr.group_hr_manager,1,1,1,1
+view_cv_source,cv.source,model_cv_source,hr.group_hr_user,1,1,1,1
+view_work_skills,work.skills,model_work_skills,hr.group_hr_manager,1,1,1,1
+view_work_skills,work.skills,model_work_skills,hr.group_hr_user,1,1,1,1

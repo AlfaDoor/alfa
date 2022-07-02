@@ -1,0 +1,149 @@
+<odoo>
+    <data>
+        <record id="view_partner_form_inherite_sit" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="/form/*" position="before">
+                    <header>
+                        <button name="to_submit" type="object" class="oe_highlight" string="Submit" attrs="{'invisible':[('res_status','!=','new')]}" confirm="Are you sure you want to submit?" groups="alfa_customizations.group_contact_user,transaction_log.group_contact_manager"/>
+                        <button name="to_approve" type="object" class="oe_highlight" string="Approve" attrs="{'invisible':[('res_status','!=','submitted')]}" confirm="Are you sure you want to approve?" groups="alfa_customizations.group_contact_manager"/>
+                        <button name="to_draft" type="object" class="oe_highlight" string="Set to Draft" attrs="{'invisible':[('res_status','!=','approve')]}" confirm="Are you sure you want to set to draft?" groups="alfa_customizations.group_contact_manager"/>
+                        <field name="res_status" statusbar_visible="new,submitted,approve" widget="statusbar"/>
+                    </header>
+                </xpath>
+
+                <!-- Readonly condition on approved res_status -->
+
+                <xpath expr="//page[@name='sales_purchases']/group/group/field[@name='customer']" position='after'>
+					<field name="allow_credit_sale" attrs="{'readonly':[('res_status','=','approve')]}"/>
+                </xpath>
+
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="english_name" placeholder="English name" attrs="{'readonly':[('res_status','=','approve')]}" />
+                </xpath>
+
+                <xpath expr="//field[@name='company_type']" position="attributes">
+                    <attribute name="attrs">{'readonly':[('res_status','=','approve')]}</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="attrs">{'readonly':[('res_status','=','approve')]}</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='vat']" position="attributes">
+                    <attribute name="attrs">{'readonly':[('res_status','=','approve')]}</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='street2']" position="attributes">
+                    <attribute name="attrs">{'readonly':[('res_status','=','approve')]}</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='street']" position="attributes">
+                    <attribute name="attrs">{'readonly':[('res_status','=','approve')]}</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='type']" position="attributes">
+                    <attribute name="attrs">{'readonly':[('res_status','=','approve')]}</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='city']" position="attributes">
+                    <attribute name="attrs">{'readonly':[('res_status','=','approve')]}</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='state_id']" position="attributes">
+                    <attribute name="attrs">{'readonly':[('res_status','=','approve')]}</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='zip']" position="attributes">
+                    <attribute name="attrs">{'readonly':[('res_status','=','approve')]}</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='country_id']" position="attributes">
+                    <attribute name="attrs">{'readonly':[('res_status','=','approve')]}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='phone']" position="attributes">
+                    <attribute name="attrs">{'readonly':[('res_status','=','approve')]}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='mobile']" position="attributes">
+                    <attribute name="attrs">{'readonly':[('res_status','=','approve')]}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='email']" position="attributes">
+                    <attribute name="attrs">{'readonly':[('res_status','=','approve')]}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='website']" position="attributes">
+                    <attribute name="attrs">{'readonly':[('res_status','=','approve')]}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='lang']" position="attributes">
+                    <attribute name="attrs">{'readonly':[('res_status','=','approve')]}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='category_id']" position="attributes">
+                    <attribute name="attrs">{'readonly':[('res_status','=','approve')]}</attribute>
+                </xpath>
+                <xpath expr="//notebook/page[@name='sales_purchases']/group/group[@name='sale']/field[@name='user_id']" position="attributes">
+                    <attribute name="attrs">{'readonly':[('res_status','=','approve')]}</attribute>
+                </xpath>
+
+         
+      </field>
+        </record>
+
+        <!-- End -->
+
+        <!-- Readonly condition on approve res_status -->
+		   <record id="view_partner_form_inherit_view2" model="ir.ui.view">
+            <field name="name">res.partner.form.sit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="account.view_partner_property_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='accounting']/group/group[@name='banks']/field[@name='bank_ids']" position="attributes">
+                    <attribute name="attrs">{'readonly':[('res_status','=','approve')]}</attribute>
+                </xpath>
+                <xpath expr="//page[@name='accounting']/group/group[@name='accounting_entries']/field[@name='property_account_receivable_id']" position="attributes">
+                    <attribute name="attrs">{'readonly':[('res_status','=','approve')]}</attribute>
+                </xpath>
+                <xpath expr="//page[@name='accounting']/group/group[@name='accounting_entries']/field[@name='property_account_payable_id']" position="attributes">
+                    <attribute name="attrs">{'readonly':[('res_status','=','approve')]}</attribute>
+                </xpath>
+                <xpath expr="//notebook/page[@name='sales_purchases']/group/group[@name='sale']/field[@name='property_payment_term_id']" position="attributes">
+                    <attribute name="attrs">{'readonly':[('res_status','=','approve')]}</attribute>
+                </xpath>
+                <xpath expr="//notebook/page[@name='sales_purchases']/group/group[@name='purchase']/field[@name='property_supplier_payment_term_id']" position="attributes">
+                    <attribute name="attrs">{'readonly':[('res_status','=','approve')]}</attribute>
+                </xpath>
+                <xpath expr="//group[@name='fiscal_information']/field[@name='property_account_position_id']" position="attributes">
+                    <attribute name="attrs">{'readonly':[('res_status','=','approve')]}</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_partner_form_inherit_view_sit" model="ir.ui.view">
+            <field name="name">res.partner.form.sit.one</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="product.view_partner_property_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='property_product_pricelist']" position="attributes">
+                    <attribute name="attrs">{'readonly':[('res_status','=','approve')]}</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_partner_form_inherit_view_sit_one" model="ir.ui.view">
+            <field name="name">res.partner.form.sit.two</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="account.partner_view_buttons"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='invoice_warn']" position="attributes">
+                    <attribute name="attrs">{'readonly':[('res_status','=','approve')]}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='invoice_warn_msg']" position="attributes">
+                    <attribute name="attrs">{'readonly':[('res_status','=','approve')]}</attribute>
+                </xpath>
+            </field>
+        </record>
+
+    
+   </data>
+</odoo>

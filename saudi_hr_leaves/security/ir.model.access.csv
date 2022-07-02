@@ -1,0 +1,18 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_contract_employee,hr_contract_employee,hr_contract.model_hr_contract,base.group_user,1,0,0,0
+access_national_holiday,access National Holiday,model_hr_national_holiday,hr.group_hr_user,1,1,1,1
+access_employee_leaves_days,access employee leaves_days,model_leave_month_days,base.group_user,1,1,1,1
+access_all_leave_reconciliation_paid_line,access all leaves_days,model_leave_reconciliation_paid_line,,1,1,1,1
+access_all_leave_attachment,access all leave_attachment,model_leave_attachment,,1,1,1,1
+access_air_ticket_type_employee,mits_a_t.air_ticket_type.user,saudi_hr_leaves.model_air_ticket_type,base.group_user,1,1,1,0
+access_air_ticket_type,mits_a_t.air_ticket_type.user,saudi_hr_leaves.model_air_ticket_type,hr.group_hr_user,1,1,1,1
+access_contract_work_permit_line_all,contract_work_permit_line all,saudi_hr_leaves.model_contract_work_permit_line,,1,1,1,1
+access_leaves_calc_method_line_all,leaves_calc_method_line all,saudi_hr_leaves.model_leaves_calc_method_line,,1,1,1,1
+access_non_annual_leave_balance_all,non_annual_leave_balance all,saudi_hr_leaves.model_non_annual_leave_balance,,1,1,1,1
+access_air_ticket_balance_allocation_all,air_ticket_balance_allocation all,saudi_hr_leaves.model_air_ticket_balance_allocation,,1,1,1,1
+access_air_ticket_request_all,air_ticket_request all,saudi_hr_leaves.model_air_ticket_request,,1,1,1,1
+access_hr_leave_reconciliation_all,hr_leave_reconciliation all,saudi_hr_leaves.model_hr_leave_reconciliation,,1,1,1,1
+access_leave_reconcile_line_all,leave_reconcile_line all,saudi_hr_leaves.model_leave_reconcile_line,,1,1,1,1
+access_leave_reconciliation_attachment_all,leave_reconciliation_attachment all,saudi_hr_leaves.model_leave_reconciliation_attachment,,1,1,1,1
+access_air_ticket_reconcile_line_all,air_ticket_reconcile_line all,saudi_hr_leaves.model_air_ticket_reconcile_line,,1,1,1,1
+access_air_ticket_details_all,air_ticket_details all,saudi_hr_leaves.model_air_ticket_details,,1,1,1,1

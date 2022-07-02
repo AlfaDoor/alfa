@@ -1,0 +1,23 @@
+
+<odoo>
+    <data>
+
+<!--        <record model="ir.ui.view" id="account_report_general_ledger_view_inherit">-->
+<!--            <field name="name">General Ledger Report</field>-->
+<!--            <field name="model">account.report.general.ledger</field>-->
+<!--            <field name="inherit_id" ref="account.account_report_general_ledger_view"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <xpath expr="//form/group[2]" position="attributes">-->
+<!--                    <attribute name="col"></attribute>-->
+<!--                </xpath>-->
+<!--                <xpath expr="//form/group[2]" position="before">-->
+<!--                    <group>-->
+<!--                        <field name="analytic_ids" widget="many2many_tags" options="{'no_create': True}"/>-->
+<!--                        <field name="project_ids" widget="many2many_tags" options="{'no_create': True}"/>-->
+<!--                    </group>-->
+<!--                </xpath>-->
+<!--            </field>-->
+<!--        </record>-->
+
+    </data>
+</odoo>

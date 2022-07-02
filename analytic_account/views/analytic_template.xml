@@ -1,0 +1,80 @@
+<odoo>
+    <data>
+
+        <!-- Analytic template -->
+        <record model="ir.ui.view" id="view_analytic_template_form">
+            <field name="name">analytic.template.form</field>
+            <field name="model">analytic.template</field>
+            <field name="arch" type="xml">
+                <form string="Analytic templates">
+                    <header>
+                        <button name="active" string="Active" states="new" type="object" groups="account.group_account_manager"/>
+                        <button name="close" string="Close" states="new,active" type="object" groups="account.group_account_manager"/>
+                        <button name="reopen" string="Reopen" states="close" type="object" groups="account.group_account_manager"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" required="1"/>
+                                <field name="code"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Analytic accounts">
+                                <group string="Analytic accounts">
+                                    <field name="analytic_account_ids" nolabel="1">
+                                        <tree>
+                                            <field name="name"/>
+                                            <field name="code"/>
+                                            <field name="type"/>
+                                            <field name="note"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Notes">
+                                <group string="Notes">
+                                    <field name="note" nolabel="1"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <!--Analytic template tree view-->
+        <record id="view_analytic_template_tree" model="ir.ui.view">
+            <field name="name">analytic.template.tree</field>
+            <field name="model">analytic.template</field>
+            <field name="arch" type="xml">
+                <tree string="Analytic templates">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="analytic_account_ids" widget="many2many_tags"/>
+                </tree>
+            </field>
+        </record>
+        <!--Analytic template Action-->
+        <record model="ir.actions.act_window" id="action_analytic_template">
+            <field name="name">Analytic template</field>
+            <field name="res_model">analytic.template</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!--<field name="view_id" ref="view_analytic_template_tree"/>-->
+        </record>
+
+        <menuitem
+                id="menu_analytic_temp"
+                name="Analytic templates"
+                parent="account.menu_analytic_accounting"
+                action="action_analytic_template"
+                groups="account.group_account_user"
+                sequence="9"/>
+
+    </data>
+</odoo>

@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_uae_vat_return,account_uae_vat_return,model_uae_vat_return,account.group_account_user,1,1,1,1
+access_uae_vat_return_line,account_uae_vat_return_line,model_uae_vat_return_line,account.group_account_user,1,1,1,1
+access_vat_place,account_uae_vat_place,model_vat_place,account.group_account_user,1,1,1,1
+access_tax_adjustment_log,account_tax_adjustment_log,model_tax_adjustment_log,account.group_account_user,1,1,1,1
+access_reverse_charge,account_reverse_charge,model_reverse_charge,account.group_account_user,1,1,1,1
+access_reverse_charge_line,account_reverse_charge_line,model_reverse_charge_line,account.group_account_user,1,1,1,1
+access_vat_reverse_charge_line,account_vat_reverse_charge_line,model_vat_reverse_charge_line,account.group_account_user,1,1,1,1

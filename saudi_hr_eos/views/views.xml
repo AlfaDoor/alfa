@@ -1,0 +1,467 @@
+<odoo>
+    <data>
+
+
+        <record id="view_res_country_custom" model="ir.ui.view">
+            <field name="name">view.res.country.custom</field>
+            <field name="model">res.country</field>
+            <field name="inherit_id" ref="basic_hr.view_res_country_custom"/>
+            <field name="arch" type="xml">
+                <field name="is_saudi" position="after">
+                    <label for="eos_notice_period" groups="hr.group_hr_user"/>
+                    <div groups="hr.group_hr_user">
+<!--                        <field name="eos_notice_period" class="oe_inline" />  Days-->
+                    </div>
+                </field>
+            </field>
+        </record>
+
+        <record id="employee_absence_line_form_custom" model="ir.ui.view">
+            <field name="name">employee.absence.line.form.custom</field>
+            <field name="model">employee.absence.line</field>
+            <field name="inherit_id" ref="hr_loans.employee_absence_line_form"/>
+            <field name="arch" type="xml">
+                <field name="paid" position="after">
+                    <field name="eos_id" readonly="1" attrs="{'invisible':[('eos_id','=',False)]}"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_leave_allocation_form" model="ir.ui.view">
+            <field name="name">view.leave.allocation.form</field>
+            <field name="model">hr.leave</field>
+            <field name="inherit_id" ref="saudi_hr_leaves.leave_request_form"/>
+            <field name="arch" type="xml">
+                <field name="by_eos" position="after">
+                    <field name="eos_id" readonly="1" groups="hr.group_hr_user"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_air_ticket_allocation_form" model="ir.ui.view">
+            <field name="name">view.air.ticket.allocation.form</field>
+            <field name="model">air.ticket.balance.allocation</field>
+            <field name="inherit_id" ref="saudi_hr_leaves.air_ticket_balance_allocation_form"/>
+            <field name="arch" type="xml">
+                <field name="by_eos" position="after">
+                    <field name="eos_id" readonly="1" />
+                </field>
+            </field>
+        </record>
+
+        <record id="hr_contract_form_eos" model="ir.ui.view">
+            <field name="name">hr.contract.form.eos</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="saudi_hr_contract.hr_contract_form_inherit"/>
+            <field name="arch" type="xml">
+                <page name="work_schedule" position="inside">
+                    <group string="End of services">
+                        <label for="eos_notice_period" />
+                        <div >
+                            <field name="eos_notice_period" class="oe_inline" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>  Days
+                        </div>
+                    </group>
+                </page>
+            </field>
+        </record>
+
+
+
+        <!--///////////// EOS Reason //////////////////////-->
+        <record id="action_eos_reason" model="ir.actions.act_window">
+            <field name="name">EOS Reason</field>
+            <field name="res_model">eos.reason</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="menu_config_eos" name="EOS Configuration" groups="hr.group_hr_user"
+                  parent="hr.menu_human_resources_configuration" sequence="15" />
+        <menuitem id="menu_eos_reason" name="EOS Reason" groups="hr.group_hr_user"
+                  parent="menu_config_eos" sequence="1" action="action_eos_reason"/>
+        <record id="eos_reason_form" model="ir.ui.view">
+            <field name="name">eos.reason.form</field>
+            <field name="model">eos.reason</field>
+            <field name="arch" type="xml">
+                <form string="EOS Reason">
+                    <header>
+                        <button name="action_confirm" string="Confirm" type="object" class="oe_highlight"
+                                groups="hr.group_hr_manager" states="New" />
+                        <button name="action_set_new" string="Set To New" type="object" class="oe_highlight"
+                                groups="hr.group_hr_manager" states="Confirmed" />
+                        <field name="state" widget="statusbar" readonly="1"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button type="object" name="open_eos" icon="fa-star" class="oe_inline oe_stat_button">
+                                <field string="Employee EOS" name="count_eos" widget="statinfo"/>
+                            </button>
+                            <button type="object" name="open_employees" icon="fa-star" class="oe_inline oe_stat_button">
+                                <field string="Resigned Employees" name="count_employees" widget="statinfo"/>
+                            </button>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="code" readonly="1"/>
+                                <field name="name" required="1" attrs="{'readonly':[('state','=','Confirmed')]}"/>
+                                <field name="english_name" required="1" attrs="{'readonly':[('state','=','Confirmed')]}"/>
+                                <field name="no_delete" attrs="{'readonly':[('state','=','Confirmed')]}"/>
+                                <field name="calc_based_on" required="1" attrs="{'readonly':[('state','=','Confirmed')]}"/>
+                                <field name="resignation" attrs="{'readonly':[('state','=','Confirmed')]}"/>
+                                <field name="no_tickets_with_eos" attrs="{'readonly':[('state','=','Confirmed')]}"/>
+                                <field name="cash_air_tickets_allowance" attrs="{'readonly':[('state','=','Confirmed')]}"/>
+                                <field name="annual_air_ticket_balance" required="1" attrs="{'readonly':[('state','=','Confirmed')],'invisible':[('no_tickets_with_eos','=',True)]}"/>
+                            </group>
+                            <group>
+                                <field name="relatives_air_ticket" required="1" attrs="{'readonly':[('state','=','Confirmed')],'invisible':[('no_tickets_with_eos','=',True)]}"/>
+                                <field name="final_exit" required="1" attrs="{'readonly':[('state','=','Confirmed')]}"/>
+                                <field name="exclude_unpaid" attrs="{'readonly':[('state','=','Confirmed')]}"/>
+                                <field name="active" attrs="{'readonly':[('state','=','Confirmed')]}"/>
+                                <field name="trial_0" attrs="{'readonly':[('state','=','Confirmed')]}"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="law_calc" widget ="url" text="View" attrs="{'readonly':[('state','=','Confirmed')]}" />
+                        </group>
+                        <notebook>
+                            <page string="EOS details">
+                                <field name="details" attrs="{'readonly':[('state','=','Confirmed')]}"/>
+                            </page>
+                            <page string="Employee end of services">
+                                <field name="eos_ids" readonly="1" />
+                            </page>
+                            <page string="Other Notes">
+                                <field name="notes" attrs="{'readonly':[('state','=','Confirmed')]}"/>
+                            </page>
+                            <page string="Attachments">
+                                <group>
+                                    <field name="attachment_ids" nolabel="1" attrs="{'readonly':[('state','=','Confirmed')]}">
+                                        <tree editable="bottom">
+                                            <field name="name" required="1"/>
+                                            <field name="file_name" invisible="1" />
+                                            <field name="file" required="1" filename="file_name"/>
+                                            <field name="note"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="eos_reason_tree" model="ir.ui.view">
+            <field name="name">eos.reason.tree</field>
+            <field name="model">eos.reason</field>
+            <field name="arch" type="xml">
+                <tree string="EOS Reason">
+                    <field name="code" />
+                    <field name="name" />
+                    <field name="english_name"  />
+                    <field name="no_delete"  />
+                    <field name="calc_based_on"  />
+                    <field name="resignation"  />
+                    <field name="annual_air_ticket_balance"  />
+                    <field name="relatives_air_ticket" />
+                    <field name="final_exit" />
+                    <field name="exclude_unpaid"  />
+                    <field name="active" />
+                    <field name="trial_0" />
+                    <field name="state" />
+                </tree>
+            </field>
+        </record>
+
+        <!--///////////// EOS motivation //////////////////////-->
+        <record id="action_eos_motivation" model="ir.actions.act_window">
+            <field name="name">EOS Motivation</field>
+            <field name="res_model">eos.motivation</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="menu_eos_motivation" name="EOS Motivation" groups="hr.group_hr_user"
+                  parent="menu_config_eos" sequence="2" action="action_eos_motivation"/>
+        <record id="eos_motivation_form" model="ir.ui.view">
+            <field name="name">eos.motivation.form</field>
+            <field name="model">eos.motivation</field>
+            <field name="arch" type="xml">
+                <form string="EOS Motivation">
+                    <header>
+                        <button name="action_confirm" string="Confirm" type="object" class="oe_highlight"
+                                groups="hr.group_hr_manager" states="New" />
+                        <button name="action_set_new" string="Set To New" type="object" class="oe_highlight"
+                                groups="hr.group_hr_manager" states="Confirmed" />
+                        <field name="state" widget="statusbar" readonly="1"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="code" readonly="1"/>
+                            <field name="name" required="1" attrs="{'readonly':[('state','=','Confirmed')]}"/>
+                            <field name="english_name" required="1" attrs="{'readonly':[('state','=','Confirmed')]}"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="eos_motivation_tree" model="ir.ui.view">
+            <field name="name">eos.motivation.tree</field>
+            <field name="model">eos.motivation</field>
+            <field name="arch" type="xml">
+                <tree string="EOS Motivation">
+                    <field name="code" />
+                    <field name="name" />
+                    <field name="english_name"  />
+                </tree>
+            </field>
+        </record>
+
+        <!--///////////// EOS //////////////////////-->
+        <record id="action_eos" model="ir.actions.act_window">
+            <field name="name">EOS</field>
+            <field name="res_model">employee.eos</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,pivot,graph</field>
+        </record>
+        <menuitem id="menu_eos_root" name="EOS" groups="hr.group_hr_user"
+                  parent="hr.menu_hr_root" sequence="30" />
+        <menuitem id="menu_eos" name="Employee End Of Services" groups="hr.group_hr_user"
+                  parent="menu_eos_root" sequence="1" action="action_eos"/>
+        <record id="eos_form" model="ir.ui.view">
+            <field name="name">eos.form</field>
+            <field name="model">employee.eos</field>
+            <field name="arch" type="xml">
+                <form string="EOS">
+                    <header>
+                        <button name="recalculate_eos_wizard" type="object" string="Re-Calculate EOS" attrs="{'invisible':[('state','in',['Refused - Cancelled','Final Approved'])]}"
+                                groups="hr.group_hr_manager,saudi_hr_employee.group_eos_review,saudi_hr_employee.group_eos_confirm,saudi_hr_employee.group_eos_approve,saudi_hr_employee.group_eos_final_approve,saudi_hr_employee.group_eos_set_new,saudi_hr_employee.group_eos_cancel,saudi_hr_employee.group_eos_delete"/>
+                        <button name="action_review" string="Review" type="object" class="oe_highlight"
+                                groups="hr.group_hr_manager,saudi_hr_employee.group_eos_review" states="New" />
+                        <button name="action_confirm" string="Confirm" type="object" class="oe_highlight"
+                                groups="hr.group_hr_manager,saudi_hr_employee.group_eos_confirm" states="Reviewed" />
+                        <button name="action_approve" string="Approve &amp; Calculate EOS" type="object" class="oe_highlight"
+                                groups="hr.group_hr_manager,saudi_hr_employee.group_eos_approve" states="Confirmed" confirm="Are you sure that you want to final approve this EOS Request, your system will search for any pending transactions ( if any )." />
+                        <button name="action_final_approve_continue" string="Final Approval" type="object" class="oe_highlight"
+                                groups="hr.group_hr_manager,saudi_hr_employee.group_eos_final_approve" states="Approved" confirm="Are you sure that you want to final approve this EOS Request, If you approved, you can not cancel this transaction, your system will close all transactions related to this employee. We highly recommend to click manually on (Re-calculate EOS button) before final approving Employee EOS." />
+                        <button name="action_set_draft" string="Set To Draft" type="object" class="oe_highlight"
+                                groups="hr.group_hr_manager,saudi_hr_employee.group_eos_set_new" states="Reviewed,Confirmed,Approved" confirm="Are you sure that you want to set this transaction to new ?"/>
+                        <button name="action_refuse" string="Refuse - Cancel  EOS" type="object" class="oe_highlight"
+                                groups="hr.group_hr_manager,saudi_hr_employee.group_eos_cancel" states="New,Reviewed,Confirmed" confirm="Are you sure that you want to refuse this EOS request?"/>
+                        <field name="state" widget="statusbar" readonly="1"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="code" readonly="1"/>
+                                <field name="employee_id" required="1"  options="{'no_create': True}" attrs="{'readonly':[('state','!=','New')]}"/>
+                                <field name="employee_english_name" readonly="1"/>
+                                <field name="contract_id" readonly="1" groups="hr.group_hr_user,saudi_hr_employee.group_eos_create"/>
+                                <label for="eos_notice_period" groups="hr.group_hr_user"/>
+                                <div groups="hr.group_hr_user">
+                                    <field name="eos_notice_period" class="oe_inline" attrs="{'readonly':[('state','in',['Refused - Cancelled','Approved','Final Approved'])]}" />  Days
+                                </div>
+                                <field name="create_date" readonly="1" widget="date"/>
+                                <field name="first_hiring_date" readonly="1" groups="hr.group_hr_user"/>
+                                <field name="request_date" required="1" attrs="{'readonly':[('state','in',['Refused - Cancelled','Approved','Final Approved'])]}" />
+                                <field name="expected_last_working_day" readonly="1" groups="hr.group_hr_user"/>
+                                <field name="actual_last_working_day" attrs="{'readonly':[('state','in',['Refused - Cancelled','Approved','Final Approved'])]}" groups="hr.group_hr_user,saudi_hr_employee.group_eos_review,saudi_hr_employee.group_eos_confirm,saudi_hr_employee.group_eos_approve,saudi_hr_employee.group_eos_final_approve,saudi_hr_employee.group_eos_set_new,saudi_hr_employee.group_eos_cancel,saudi_hr_employee.group_eos_delete"/>
+                                <field name="last_working_day_remaining" readonly="1"/>
+                                <field name="actual_last_working_day_confirmed" attrs="{'readonly':[('state','in',['Refused - Cancelled','Approved','Final Approved'])]}" groups="hr.group_hr_user,saudi_hr_employee.group_eos_review,saudi_hr_employee.group_eos_confirm,saudi_hr_employee.group_eos_approve,saudi_hr_employee.group_eos_final_approve,saudi_hr_employee.group_eos_set_new,saudi_hr_employee.group_eos_cancel,saudi_hr_employee.group_eos_delete"/>
+                            </group>
+                            <group groups="hr.group_hr_user">
+                                <label for="notice_period_difference" />
+                                <div >
+                                    <field name="notice_period_difference" class="oe_inline" readonly="1" />  Days
+                                </div>
+                                <field name="total_work_duration"/>
+                                <label for="total_unpaid_leave_duration" />
+                                <div >
+                                    <field name="total_unpaid_leave_duration" class="oe_inline" readonly="1" />  Days
+                                </div>
+                                <field name="total_unpaid_leaves_years" readonly="1"/>
+                                <label for="total_number_of_years" />
+                                <div >
+                                    <field name="total_number_of_years" class="oe_inline" readonly="1" />  Years
+                                </div>
+                                <label for="net_years" />
+                                <div >
+                                    <field name="net_years" class="oe_inline" readonly="1" />  Years
+                                </div>
+                            </group>
+                        </group>
+                        <group string="EOS Calculation" >
+                            <group groups="hr.group_hr_user">
+                                <field name="remaining_loan_amount" readonly="1"/>
+                                <field name="remaining_deduction" readonly="1"/>
+                                <field name="absence_deduction" attrs="{'readonly':[('state','in',['Refused - Cancelled','Approved','Final Approved'])]}"/>
+                                <field name="notice_period_deduction"/>
+                                <field name="rewards" readonly="1"/>
+                                <field name="manual_leave_balance" attrs="{'readonly':[('state','in',['Refused - Cancelled','Final Approved'])]}" />
+                                <field name="leaves_count" attrs="{'readonly':[('manual_leave_balance','=',False)]}" />
+                                <field name="leave_allocation" attrs="{'invisible':[('leave_allocation','=',False)]}" readonly="1" context="{'form_view_ref': 'saudi_hr_leaves.edit_holiday_new_inherit'}"/>
+                                <field name="leave_balance_cash" readonly="1"/>
+                                <field name="old_unreconciled_leaves" readonly="1"/>
+                                <field name="annual_air_ticket_balance" readonly="1"/>
+                                <field name="air_ticket_allocation" attrs="{'invisible':[('air_ticket_allocation','=',False)]}" readonly="1"/>
+                                <field name="number_of_relatives" readonly="1"/>
+                                <field name="air_ticket_price_one_way" attrs="{'readonly':[('state','in',['Refused - Cancelled','Approved','Final Approved'])]}"/>
+                                <field name="air_ticket_one_way" attrs="{'readonly':['|',('annual_air_ticket_balance','=',0),('state','in',['Approved','Final Approved'])]}"/>
+                                <field name="reason_final_exit" invisible="1"/>
+                            </group>
+                            <group>
+                                <field name="final_exit" attrs="{'invisible':[('nationality_type','=','Native')],'required':[('nationality_type','!=','Native'),('state','in',['Approved','Final Approved'])],'readonly':[('state','in',['Refused - Cancelled','Final Approved'])]}" groups="hr.group_hr_user"/>
+                                <field name="final_exit_request" attrs="{'invisible':['|','|','|','|',('nationality_type','=','Native'),('final_exit','!=','Final Exit'),('reason_id','=',False),('reason_final_exit','=','no'),'&amp;',('reason_final_exit','=','if_no_air_ticket_balance'),('annual_air_ticket_balance','&gt;=',1)]
+                                    ,'required':[('nationality_type','!=','Native'),('final_exit','=','Final Exit'),('reason_id','!=',False),'|',('reason_final_exit','=','always'),'&amp;',('reason_final_exit','=','if_no_air_ticket_balance'),('annual_air_ticket_balance','&lt;',1)],'readonly':[('state','in',['Refused - Cancelled','Approved','Final Approved'])]}" groups="hr.group_hr_user"/>
+                                <label for="last_payslip" groups="hr.group_hr_user"/>
+                                <div groups="hr.group_hr_user">
+                                    <field name="last_payslip"  />
+                                </div>
+                                <div name="last_payslip_message" colspan="2" groups="hr.group_hr_user">
+                                    Your system will auto create payslip to the last working day
+                                </div>
+                                <field name="payslip_amount"  groups="hr.group_hr_user"/>
+                                <field name="last_payslip_date" readonly="1" groups="hr.group_hr_user"/>
+                                <field name="deduct_gosi" />
+                                <field name="gosi_amount" attrs="{'invisible':[('deduct_gosi','=',False)]}" />
+                                <field name="other_payment" readonly="1" groups="hr.group_hr_user"/>
+                                <field name="reason_id" options="{'no_create': True}" domain="[('state','=','Confirmed')]" attrs="{'readonly':[('state','!=','New')]}"/>
+                                <field name="motivation_ids" options="{'no_create': True}" widget="many2many_tags" attrs="{'readonly':[('state','in',['Refused - Cancelled','Approved','Final Approved'])]}"/>
+                                <field name="calc_based_on" readonly="1" groups="hr.group_hr_user"/>
+                                <field name="amount" readonly="1" groups="hr.group_hr_user"/>
+                                <field name="labor_row" widget ="url" text="View" attrs="{'invisible':[('labor_row','=',False)],'readonly':[('state','in',['Refused - Cancelled','Approved','Final Approved'])]}" groups="hr.group_hr_user"/>
+                            </group>
+                            <group class="oe_subtotal_footer oe_right">
+                                <field name="net_eos_amount" class="oe_subtotal_footer_separator"/>
+                            </group>
+                        </group>
+                        <notebook groups="hr.group_hr_user">
+                            <page string="Other Payment / Deductions">
+                                <field name="payment_ids" attrs="{'readonly':[('state','in',['Refused - Cancelled','Approved','Final Approved'])]}">
+                                    <tree editable="bottom">
+                                        <field name="name" required="1"/>
+                                        <field name="amount" required="1" sum="Sum"/>
+                                        <field name="note" required="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Employee Personal information" groups="base.group_no_one">
+                                <group>
+                                    <field name="country_id" readonly="1"/>
+                                    <field name="nationality_type" readonly="1"/>
+                                    <field name="gender" readonly="1"/>
+                                    <field name="marital" readonly="1"/>
+                                    <field name="religion" readonly="1"/>
+                                    <field name="branch_id" readonly="1"/>
+                                    <field name="department_id" readonly="1"/>
+                                    <field name="job_id" readonly="1"/>
+                                    <field name="identification_id" readonly="1"/>
+                                    <field name="iqama_expiry_date" readonly="1"/>
+                                    <field name="passport_expiry_date" readonly="1"/>
+                                    <field name="current_age" readonly="1"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="eos_tree" model="ir.ui.view">
+            <field name="name">eos.tree</field>
+            <field name="model">employee.eos</field>
+            <field name="arch" type="xml">
+                <tree string="EOS ">
+                    <field name="code" />
+                    <field name="employee_id" />
+                    <field name="employee_english_name" />
+                    <field name="department_id" />
+                    <field name="job_id" />
+                    <field name="actual_last_working_day" />
+                    <field name="total_work_duration" />
+                    <field name="net_years" />
+                    <field name="reason_id" />
+                    <field name="motivation_ids" />
+                    <field name="amount" />
+                    <field name="net_eos_amount" />
+                    <field name="state" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- EOS search view-->
+        <record id="eos_view_search" model="ir.ui.view">
+            <field name="name">eos.search</field>
+            <field name="model">employee.eos</field>
+            <field name="arch" type="xml">
+                <search string="EOS">
+                    <group expand="0" string="Group By">
+                        <filter name="eos_reason" string="EOS Reason" domain="[]" context="{'group_by':'reason_id'}"/>
+                        <filter name="nationality" string="Nationality" domain="[]" context="{'group_by':'country_id'}"/>
+                        <filter name="department" string="Department" domain="[]" context="{'group_by':'department_id'}"/>
+                        <filter name="job" string="Job" domain="[]" context="{'group_by':'job_id'}"/>
+                        <filter name="actual_last_day" string="Actual last working day" domain="[]" context="{'group_by':'actual_last_working_day'}" />
+                        <filter name="eos_notice_period" string="EOS Notice period" domain="[]" context="{'group_by':'eos_notice_period'}"/>
+                        <filter name="net_years" string="Net years" domain="[]" context="{'group_by':'net_years'}"/>
+                        <filter name="no_of_relatives" string="Number of Relatives" domain="[]" context="{'group_by':'number_of_relatives'}"/>
+                        <filter name="gender" string="Gender" domain="[]" context="{'group_by':'gender'}"/>
+                        <filter name="age" string="Age" domain="[]" context="{'group_by':'current_age'}"/>
+                        <filter name="branch" string="Branch" domain="[]" context="{'group_by':'branch_id'}"/>
+                        <!--<filter string="Status" domain="[]" context="{'group_by':'state'}"/>-->
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!--/////////////////////////////  Pivot and Graph ////////////////////////////////////////-->
+        <record id="eos_pivot" model="ir.ui.view">
+             <field name="name">eos.pivot</field>
+             <field name="model">employee.eos</field>
+             <field name="arch" type="xml">
+                 <pivot string="EOS" disable_linking="True">
+                     <field name="department_id" />
+                 </pivot>
+             </field>
+        </record>
+
+        <record id="eos_graph" model="ir.ui.view">
+             <field name="name">eos.graph</field>
+             <field name="model">employee.eos</field>
+             <field name="arch" type="xml">
+                 <graph string="EOS">
+                     <field name="department_id" />
+                 </graph>
+             </field>
+        </record>
+        <!--//////////////////////////////////////////////////////////////////////////////////////-->
+        <record model="ir.ui.view" id="payslip_form">
+            <field name="name">payslip form</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="saudi_hr_payroll.view_hr_payslip_inherit_form"/>
+            <field name="arch" type="xml">
+                <field name="total_excluded_days" position="after">
+                    <field name="eos_id" />
+                    <field name="actual_last_working_day" readonly="1" />
+                </field>
+                <xpath expr="//div[@name='button_box']" position="after">
+                    <field name="show_last_payslip_message" invisible="1" />
+                    <div class="alert-danger" attrs="{'invisible':[('show_last_payslip_message','=',False)]}">
+                        Kindly be attention that this is the last payslip for this employee. employee is retired.
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

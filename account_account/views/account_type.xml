@@ -1,0 +1,59 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="view_account_type_form_inherit">
+            <field name="name">account.account.type.form</field>
+            <field name="model">account.account.type</field>
+            <field name="inherit_id" ref="account.view_account_type_form"/>
+            <field name="arch" type="xml">
+                <form position="replace">
+                    <form string="Account types">
+                        <sheet>
+                            <group>
+                                <group>
+                                    <field name="code"/>
+                                    <field name="name" string="English name"/>
+                                    <field name="arabic_name"/>
+                                    <field name="type"/>
+                                </group>
+                                <group>
+                                    <field name="location" required="1"/>
+                                    <field name="debit_credit" required="1"/>
+                                    <field name="include_initial_balance"/>
+                                    <field name="account_ids" widget="many2many_tags"/>
+                                    <field name="account_count_"/>
+                                </group>
+                            </group>
+                            <separator string="Description"/>
+                            <field name="note"/>
+                        </sheet>
+                    </form>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_account_type_tree_inheirt" model="ir.ui.view">
+            <field name="name">account.account.type.tree</field>
+            <field name="model">account.account.type</field>
+            <field name="inherit_id" ref="account.view_account_type_tree"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="code"/>
+                    <field name="arabic_name"/>
+                </field>
+                <field name="type" position="after">
+                    <field name="location"/>
+                    <field name="account_count_"/>
+                    <field name="debit_credit"/>
+                </field>
+            </field>
+        </record>
+        <menuitem name="Account Type"
+                  string="Account Type"
+                  id="menu_account_type"
+                  action="account.action_account_type_form"
+                  parent="account.menu_finance_entries"
+                  sequence="25"/>
+
+    </data>
+</odoo>

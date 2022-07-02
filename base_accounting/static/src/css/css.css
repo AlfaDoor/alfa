@@ -1,0 +1,36 @@
+.table-responsive .o_list_view .o_list_number {
+    text-align: left;
+}
+
+.o_web_client .o_list_editable .o_form_view.o_list_editable_form .o_form_field_number {
+    text-align: left;
+}
+
+.o_web_client .o_application_switcher .o_apps .o_app .o_app_web_icon {
+    /*border: 1px solid black;*/
+    background-color: rgb(73, 121, 136);
+}
+
+.o_web_client .o_application_switcher .o_apps .o_app .o_app_icon {
+    /*border: 1px solid black;*/
+    background-color: rgb(73, 121, 136);
+}
+
+.o_list_view tbody > tr.o_group_header {
+    font-weight: bolder;
+}
+
+.o_form_editable .oe_inline {
+    /*min-width: 170px;*/
+}
+.datepicker .cw{
+    background-color: #ccc;
+    color: white;
+}
+.o_web_client .o_application_switcher{
+    background-image: url("/base_accounting/static/src/img/home-menu-bg-overlay.svg"), linear-gradient(to right bottom, #77717e, #c9a8a9);
+}
+.o_web_client .navbar-inverse{
+    background-color: #875A7B;
+}
+

@@ -1,0 +1,789 @@
+<odoo>
+    <data>
+        <!--Air ticket type-->
+        <record id="tickets_type_form" model="ir.ui.view">
+            <field name="name">tickets.type.form</field>
+            <field name="model">air.ticket.type</field>
+            <field name="arch" type="xml">
+                <form string="Air Ticket Types">
+                    <header>
+                        <button name="ticket_approve" string="Approve" type="object" class="oe_highlight"
+                                groups="hr.group_hr_manager "
+                                attrs="{'invisible': [('state', '!=', 'New')]}"
+                                confirm="Are you sure that you want to approve this air ticket type?"/>
+                        <button name="ticket_set_new" string="set to new" type="object" class="oe_highlight"
+                                groups="hr.group_hr_manager"
+                                attrs="{'invisible': [('state', '!=', 'Approved')]}"
+                                confirm="Are you sure that you want to set this air ticket type to new?"/>
+                        <field name="state" widget="statusbar" readonly="1"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="policy_name" attrs="{'readonly':[('state', '=', 'Approved')]}"/>
+                                <field name="type" required="1" attrs="{'readonly':[('state', '=', 'Approved')]}"
+                                       groups="hr.group_hr_user"/>
+                                <field name="nationality" attrs="{'readonly':[('state', '=', 'Approved')]}"
+                                       groups="hr.group_hr_user"/>
+                                <field name="frequency_air_ticket" attrs="{'readonly':[('state', '=', 'Approved')]}"
+                                       groups="hr.group_hr_user"/>
+                                <label for="number_of_months" attrs="{'required': [('frequency_air_ticket', '!=', 'one time each')],
+                                   'invisible': [('frequency_air_ticket', '!=', 'one time each')]}"
+                                       groups="hr.group_hr_user"/>
+                                <div attrs="{'required': [('frequency_air_ticket', '!=', 'one time each')],
+                                   'invisible': [('frequency_air_ticket', '!=', 'one time each')]}"
+                                     groups="hr.group_hr_user">
+                                    <field name="number_of_months" class="oe_inline"
+                                           attrs="{'readonly':[('state', '=', 'Approved')]}"/>
+                                    In Months
+                                </div>
+                                <label for="months_to_request_air_ticket"
+                                       attrs="{'invisible': [('frequency_air_ticket', '!=', 'one time each')]}"
+                                       groups="hr.group_hr_user"/>
+                                <div attrs="{'invisible': [('frequency_air_ticket', '!=', 'one time each')]}"
+                                     groups="hr.group_hr_user">
+                                    <field name="months_to_request_air_ticket" class="oe_inline"
+                                           attrs="{'readonly':[('state', '=', 'Approved')]}"/>
+                                    In Months
+                                </div>
+                            </group>
+                            <group groups="hr.group_hr_user">
+                                <label for="maximum_accumulated_balance"
+                                       attrs="{'invisible': [('frequency_air_ticket', '!=', 'one time each')]}"/>
+                                <div attrs="{'invisible': [('frequency_air_ticket', '!=', 'one time each')]}">
+                                    <field name="maximum_accumulated_balance" class="oe_inline"
+                                           attrs="{'readonly':[('state', '=', 'Approved')]}"/>
+                                    In Months
+                                </div>
+                                <field name="air_ticket_class"
+                                       attrs="{'invisible': [('frequency_air_ticket', '=', 'Not allowed')],
+                                   'required': [('frequency_air_ticket','!=','Not allowed')], 'readonly':[('state', '=', 'Approved')]}"/>
+                                <field name="give_cash_instead_tickets"
+                                       attrs="{'invisible': [('frequency_air_ticket', '=', 'Not allowed')],
+                                   'required': [('frequency_air_ticket','!=','Not allowed')], 'readonly':[('state', '=', 'Approved')]}"/>
+                                <field name="relatives_tickets"
+                                       attrs="{'invisible': [('frequency_air_ticket', '=', 'Not allowed')],
+                                   'required': [('frequency_air_ticket','!=','Not allowed')], 'readonly':[('state', '=', 'Approved')]}"/>
+                                <field name="number_of_wives"
+                                       attrs="{'invisible': [('relatives_tickets', '!=', 'Allow tickets for relatives')],'readonly':[('state', '=', 'Approved')]}"/>
+                                <field name="children"
+                                       attrs="{'invisible': [('relatives_tickets', '!=', 'Allow tickets for relatives')],'readonly':[('state', '=', 'Approved')]}"/>
+                                <label for="max_child_age"
+                                       attrs="{'invisible': [('relatives_tickets', '!=', 'Allow tickets for relatives')]}"/>
+                                <div attrs="{'invisible': [('relatives_tickets', '!=', 'Allow tickets for relatives')]}">
+                                    <field name="max_child_age" class="oe_inline"
+                                           attrs="{'readonly':[('state', '=', 'Approved')]}"/>
+                                    Years
+                                </div>
+                                <field name="number_of_relatives" readonly="1"
+                                       attrs="{'invisible': ['|',('relatives_tickets', '!=', 'Allow tickets for relatives'),
+                                   ('frequency_air_ticket', '=', 'Not allowed')]}"/>
+                                <field name="loan_type_id"
+                                       domain="[('state','=','Confirmed'),('type','=','Loan'),('for_air_ticket','=',True)]"
+                                       options="{'no_create': True}" attrs="{'readonly':[('state', '=', 'Approved')]}"/>
+                            </group>
+                        </group>
+                        <notebook groups="hr.group_hr_user">
+                            <page string="Air ticket requests">
+                                <group string="Air ticket requests">
+                                    <field name="air_ticket_request_ids" readonly="1" nolabel="1"/>
+                                </group>
+                            </page>
+                            <page string="Notes">
+                                <field name="notes" attrs="{'readonly':[('state', '=', 'Approved')]}"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="tickets_type_tree" model="ir.ui.view">
+            <field name="name">tickets.type.tree</field>
+            <field name="model">air.ticket.type</field>
+            <field name="arch" type="xml">
+                <tree string="Air Ticket Types">
+                    <field name="name"/>
+                    <field name="policy_name"/>
+                    <field name="nationality"/>
+                    <field name="frequency_air_ticket"/>
+                    <field name="number_of_months"/>
+                    <field name="air_ticket_class"/>
+                    <field name="give_cash_instead_tickets"/>
+                    <field name="relatives_tickets"/>
+                    <field name="type" invisible="1"/>
+                    <field name="number_of_relatives"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="tickets_type_search" model="ir.ui.view">
+            <field name="name">tickets.type.search</field>
+            <field name="model">air.ticket.type</field>
+            <field name="arch" type="xml">
+                <search string="Air Ticket Types">
+                    <group expand="0" string="Group By">
+                        <filter name="type" string="Type" context="{'group_by':'type'}"/>
+                        <filter name="type" string="Nationality" context="{'group_by':'nationality'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record id="action_tickets_type" model="ir.actions.act_window">
+            <field name="name">Air Ticket Types</field>
+            <field name="res_model">air.ticket.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="menu_tickets_type" name="Air Ticket Types" groups="base.group_user"
+                  parent="saudi_hr_leaves.air_ticket_config_menu" sequence="13" action="action_tickets_type"/>
+
+        <!--Air ticket request-->
+        <record id="tickets_request_form" model="ir.ui.view">
+            <field name="name">tickets.request.form</field>
+            <field name="model">air.ticket.request</field>
+            <field name="arch" type="xml">
+                <form string="Air Ticket Request">
+                    <header>
+                        <button name="review" string="Data review" states="new" type="object" class="oe_highlight"
+                                confirm="Are you sure that you reviewed this air ticket request?"
+                                groups="saudi_hr_employee.group_air_ticket_review"/>
+                        <button name="approve" string="Final approve" states="reviewed" type="object"
+                                class="oe_highlight"
+                                confirm="Are you sure that you want to approve this air ticket request?"
+                                groups="saudi_hr_employee.group_air_ticket_approve"/>
+                        <button name="refuse" string="Refuse" states="new,reviewed" type="object"
+                                confirm="Are you sure that you want to refuse this air ticket request?"
+                                groups="saudi_hr_employee.group_air_ticket_refuse"/>
+                        <button name="reset" string="Set to new" states="refused,reviewed" type="object"
+                                confirm="Are you sure that you want to set this air ticket request to new?"
+                                groups="saudi_hr_employee.group_air_ticket_set_draft"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="id_" groups="base.group_no_one"/>
+                                <field name="name" groups="hr.group_hr_user"/>
+                                <field name="description"
+                                       attrs="{'readonly': [('state','not in',['new','reviewed'])]}"/>
+                                <field name="employee_id" options="{'no_create': True}"
+                                       attrs="{'readonly': [('state','not in',['new','reviewed'])]}"/>
+                                <field name="branch_id" groups="base.group_no_one"/>
+                                <field name="department_id" groups="base.group_no_one"/>
+                                <field name="job_id" groups="base.group_no_one"/>
+                                <field name="country_id" groups="base.group_no_one"/>
+                                <field name="employee_nationality" groups="base.group_no_one"/>
+                                <field name="iqama_id" readonly="1" groups="base.group_no_one"/>
+                                <field name="iqama_expiry_date" readonly="1" groups="base.group_no_one"/>
+                                <field name="passport_no" readonly="1" groups="base.group_no_one"/>
+                                <field name="passport_expiry_date" readonly="1" groups="base.group_no_one"/>
+                                <field name="request_reason"
+                                       attrs="{'readonly': [('state','not in',['new','reviewed'])]}"/>
+                                <field name="reason_detail"
+                                       attrs="{'invisible':[['request_reason','!=','Other']],'required':[['request_reason','=','Other']]}"/>
+                                <field name="leave_request" options="{'no_create': True}"
+                                       domain="[['state','=','validate'],['employee_id','=',employee_id],
+                                        ['create_air_ticket_request','=','yes'],['air_ticket_id','=',False]]"
+                                       attrs="{'invisible': [('request_reason', 'not in', ['leave'])],
+                                        'required': [('request_reason', 'in', ['leave'])],'readonly': [('state','not in',['new','reviewed'])]}"
+                                       context="{'form_view_ref':'saudi_hr_leaves.leave_request_form'}"/>
+                                <field name="air_ticket_type" options="{'no_create': True}" attrs="{'required':[['contract_type_equal_leave_type','=',False]],
+                                    'readonly':['|','|',['contract_type_equal_leave_type','=',True],['state','=','approved'],['request_reason','=','leave']]}"
+                                       domain="[['nationality','in',[employee_nationality,'All Nationalities']],['state','=','Approved'],['type','=','non-annual']]"/>
+                                <field name="show_remaining" invisible="1"/>
+                                <label for="current_air_ticket_balance"
+                                       attrs="{'invisible':[['show_remaining','!=',True]]}"/>
+                                <!--                                <div attrs="{'invisible':[['show_remaining','!=',True]]}"  class="o_row">-->
+                                <!--                                    <field name="current_air_ticket_balance" readonly="1"  class="oe_inline"/> months-->
+                                <!--                                </div>-->
+                                <label for="deduct" attrs="{'invisible':[['show_remaining','!=',True]]}"/>
+                                <!--                                <div attrs="{'invisible':[['show_remaining','!=',True]]}"  class="o_row">-->
+                                <!--                                    <field name="deduct"   class="oe_inline" attrs="{'readonly': [('state','not in',['new','reviewed'])]}"/> months-->
+                                <!--                                </div>-->
+                                <label for="remaining_balance" attrs="{'invisible':[['show_remaining','!=',True]]}"/>
+                                <!--                                <div attrs="{'invisible':[['show_remaining','!=',True]]}"  class="o_row">-->
+                                <!--                                    <field name="remaining_balance" readonly="1"  class="oe_inline"/> months-->
+                                <!--                                </div>-->
+                                <button string="Refresh data" name="get_remaining" type="object"
+                                        attrs="{'invisible':['|',['show_remaining','!=',True],['state','in',['approved','refused']]]}"
+                                        confirm="Attention,
+                                The purpose from this button is to re-load employee air ticket balance. Employee balance may change if you refresh data"/>
+                                <!--                                <div/>-->
+                                <field name="loan_request_id" readonly="1" groups="hr.group_hr_user"
+                                       attrs="{'invisible':[('loan_request_id','=',False)]}"/>
+                                <field name="request_date" groups="hr.group_hr_user"
+                                       attrs="{'readonly': [('state','not in',['new','reviewed'])]}"/>
+                            </group>
+                            <group>
+                                <label for="leave_from" string="Leave start / End date"/>
+                                <!--                                <div attrs="{'invisible': [('request_reason', 'not in', ['leave','Deputation / business trip'])]}" class="o_row">-->
+                                <!--                                    <field name="leave_from" readonly="1" class="oe_inline"/>-->
+                                <!--                                    <label string="-" class="oe_inline"/>-->
+                                <!--                                    <field name="leave_to" readonly="1" class="oe_inline"/>-->
+                                <!--                                </div>-->
+                                <field name="travel_date"
+                                       attrs="{'readonly': [('state','not in',['new','reviewed'])]}"/>
+                                <field name="expected_return_date" readonly="1"/>
+                                <field name="contract_id" groups="hr.group_hr_user"/>
+                                <field name="contract_leave_policy" groups="base.group_no_one"/>
+                                <field name="air_ticket_policy" groups="base.group_no_one"/>
+                                <field name="reserve_ticket_for"
+                                       attrs="{'readonly': ['|',('relatives_tickets', '=', 'Never allow tickets for relatives'),('state','not in',['new','reviewed'])]}"/>
+                                <field name="cash_allowed"/>
+                                <field name="i_want_to"
+                                       attrs="{'readonly': ['|','|',('cash_allowed', '=', 'No'),('request_reason', '=', 'Air Ticket Cash Allowance'),('state','not in',['new','reviewed'])]}"/>
+                                <field name="payment_time" attrs="{'invisible':[['i_want_to','!=','Cash']],
+                                    'readonly':['|','&amp;',['request_reason','!=','leave'],['i_want_to','=','Cash'],['state','=','approved']]}"/>
+                                <field name="paid_through_reconciliation" groups="base.group_no_one"
+                                       attrs="{'readonly': [('state','not in',['new','reviewed'])]}"/>
+                                <field name="number_of_relatives"
+                                       attrs="{'invisible': [('relatives_tickets', '!=', 'Allow tickets for relatives')]}"
+                                       groups="hr.group_hr_user" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="leave_request_type_id" invisible="1"/>
+                                <field name="contract_type_equal_leave_type" groups="base.group_no_one"/>
+                                <field name="ticket_allowance_per_contract" readonly="1"
+                                       attrs="{'invisible':[('request_reason','!=','Air Ticket Cash Allowance')]}"/>
+                                <field name="ticket_total_price"
+                                       attrs="{'readonly': [('state','not in',['new','reviewed'])]}"/>
+                                <field name="company_share"
+                                       attrs="{'invisible':[['i_want_to','=','Cash']],'readonly': [('state','not in',['new','reviewed'])]}"/>
+                                <field name="employee_share"
+                                       attrs="{'invisible':[['i_want_to','=','Cash']],'readonly': [('state','not in',['new','reviewed'])]}"/>
+                                <fielsd name="loan_type_id" readonly="1" groups="base.group_no_one"/>
+                                <field name="relatives_tickets" groups="hr.group_hr_user"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Air Ticket Details">
+                                <field name="air_ticket_details">
+                                    <tree create="false" delete="false" editable="bottom">
+                                        <field name="check_box"/>
+                                        <field name="name"/>
+                                        <field name="name_in_passport"
+                                               attrs="{'required': [('check_box', '=', True)]}"/>
+                                        <field name="relation"/>
+                                        <field name="ticket_type" attrs="{'readonly': [('check_box', '=', False)]}"/>
+                                        <field name="departure_date"/>
+                                        <field name="departure_airport"/>
+                                        <field name="flight_number"/>
+                                        <field name="airlines"/>
+                                        <field name="return_date"
+                                               attrs="{'readonly': [('ticket_type', '!=', 'Return')]}"/>
+                                        <field name="return_airport"
+                                               attrs="{'readonly': [('ticket_type', '!=', 'Return')]}"/>
+                                        <field name="return_flight_number"
+                                               attrs="{'readonly': [('ticket_type', '!=', 'Return')]}"/>
+                                        <field name="return_airlines"
+                                               attrs="{'readonly': [('ticket_type', '!=', 'Return')]}"/>
+                                        <field name="ticket_price" attrs="{'readonly': [('check_box', '=', False)]}"/>
+                                        <field name="notes"/>
+                                        <field name="date_of_birth" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Other information" groups="hr.group_hr_user">
+                                <group>
+                                    <group>
+                                        <field name="create_date" readonly="1"/>
+                                        <field name="create_uid" readonly="1"/>
+                                    </group>
+                                    <group>
+                                        <field name="reviewed_by"/>
+                                        <field name="reviewed_on"/>
+                                        <field name="confirmed_by"/>
+                                        <field name="confirmed_on"/>
+                                    </group>
+                                    <group>
+                                        <field name="skip_valid_approve_req" groups="hr.group_hr_manager"
+                                               attrs="{'readonly': [('state','not in',['new','reviewed'])]}"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Old air tickets">
+                                <group>
+                                    <field name="old_tickets_request_ids" nolabel="1" readonly="1"/>
+                                </group>
+                            </page>
+                            <page string="Attachments">
+                                <group string="Attachments">
+                                    <field name="attachment_ids" nolabel="1"
+                                           attrs="{'readonly': [('state','not in',['new','reviewed'])]}">
+                                        <tree editable="bottom">
+                                            <field name="name" required="1"/>
+                                            <field name="file_name" invisible="1"/>
+                                            <field name="file" required="1" filename="file_name"/>
+                                            <field name="note"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Notes">
+                                <group string="Notes">
+                                    <field name="note" nolabel="1"
+                                           attrs="{'readonly': [('state','not in',['new','reviewed'])]}"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="tickets_request_tree" model="ir.ui.view">
+            <field name="name">tickets.request.tree</field>
+            <field name="model">air.ticket.request</field>
+            <field name="arch" type="xml">
+                <tree string="Air Ticket Request">
+                    <field name="employee_id"/>
+                    <field name="description"/>
+                    <field name="request_reason"/>
+                    <field name="air_ticket_type"/>
+                    <field name="travel_date"/>
+                    <field name="reserve_ticket_for"/>
+                    <field name="i_want_to"/>
+                    <field name="ticket_total_price"/>
+                    <field name="company_share"/>
+                    <field name="employee_share"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_tickets_request" model="ir.actions.act_window">
+            <field name="name">Air Ticket Request</field>
+            <field name="res_model">air.ticket.request</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+        </record>
+        <menuitem id="menu_tickets_request" name="Air Ticket Request"
+                  parent="saudi_hr_leaves.air_ticket_menu" sequence="14" action="action_tickets_request"/>
+
+
+        <record id="custom_leave_type_form_inherit" model="ir.ui.view">
+            <field name="name">custom.air.ticket.leave.type.form</field>
+            <field name="model">hr.leave.type</field>
+            <field name="inherit_id" ref="saudi_hr_leaves.custom_leave_type_form"/>
+            <field name="arch" type="xml">
+                <field name="can_request_air_ticket" position="after">
+                    <field name="allowed_air_ticket_id"
+                           domain="[['state','=','Approved'],['nationality','=',[nationality,'All Nationalities']]]"
+                           options="{'no_create':True}"
+                           attrs="{'invisible':[['can_request_air_ticket','!=','yes']],'required':[['can_request_air_ticket','=','yes']]}"
+                           groups="hr.group_hr_user"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="edit_holiday_new_inherit" model="ir.ui.view">
+            <field name="name">edit.holiday.new.inherit</field>
+            <field name="model">hr.leave</field>
+            <field name="inherit_id" ref="saudi_hr_leaves.leave_request_form"/>
+            <field name="arch" type="xml">
+                <field name="request_reason" position="after">
+                    <field name="annual_air_ticket_policy_id"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="edit_holiday_new_inherit2" model="ir.ui.view">
+            <field name="name">edit.holiday.new.inherit</field>
+            <field name="model">hr.leave</field>
+            <field name="inherit_id" ref="saudi_hr_leaves.leave_request_form"/>
+            <field name="arch" type="xml">
+                <field name="remaining_balance" position="after">
+                    <field name="allow_to_request_air_ticket" readonly="1"/>
+                    <field name="create_air_ticket_request" attrs="{'invisible':[('allow_to_request_air_ticket','=','no')],
+                        'required':[('allow_to_request_air_ticket','=','yes')],'readonly':['|',('state','!=','draft'),('alternative_approval','=',True)]}"
+                           readonly="context.get('default_create_air_ticket_request',False)"/>
+                    <field name="air_ticket_id" attrs="{'invisible':[('create_air_ticket_request','!=','yes')]}"
+                           readonly="1"/>
+                </field>
+            </field>
+        </record>
+        <!--Skip validate-->
+        <record id="skip_validate_wizard_form" model="ir.ui.view">
+            <field name="name">Skip validate</field>
+            <field name="model">validate.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Skip validate ?">
+                    <group>
+                        <p>
+                            We found that you requested from your system to skip any validations and approve this Air
+                            Ticket request, we highly recommend not to
+                            select to skip system validations and let your system to decide whether to accept or reject
+                            the air ticket request.
+                        </p>
+                        <field name="air_ticket_request_id" invisible="1"/>
+                    </group>
+                    <footer>
+                        <button name="approve_air_ticket" type="object"
+                                string="SKIP VALIDATIONS AND APPROVE THIS TICKET"/>
+                        or
+                        <button string="Back to the request" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+
+            </field>
+        </record>
+        <!--Company share validate-->
+        <record id="company_share_validate_wizard_form" model="ir.ui.view">
+            <field name="name">Skip validate</field>
+            <field name="model">validate.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Company share validate ?">
+                    <group>
+                        <field name="air_ticket_request_id" invisible="1"/>
+                    </group>
+                    <p>
+                        We found that the air ticket total price is (
+                        <field name="total_price" readonly="1"/>
+                        ), Company share is zero, the employee have(
+                        <field name="aa" readonly="1"/>
+                        ) months in his air ticket balance.
+                        <br/>
+                        This means that the employee will full pay for this air ticket, also this means that the air
+                        ticket balance for this employee (
+                        <field name="a" readonly="1"/>
+                        Months ) will not change after approving this request. Later on, the employee can request for
+                        another air tickets if his balance meets
+                        the minimum requirements for this air ticket policy.
+                        <br/>
+                        <br/>
+                        <h3>Do you want to confirm?</h3>
+                    </p>
+                    <footer>
+                        <button name="confirm_company_share" type="object" string="Confirm"/>
+                        <button string="Reject" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+
+            </field>
+        </record>
+
+        <!--Air ticket balance allocation-->
+        <record id="air_ticket_balance_allocation_form" model="ir.ui.view">
+            <field name="name">air.ticket.balance.allocation form view</field>
+            <field name="model">air.ticket.balance.allocation</field>
+            <field name="arch" type="xml">
+                <form string="Air ticket balance allocation">
+                    <header>
+                        <button name="confirm" string="Confirm" states="new" type="object" class="oe_highlight"
+                                groups="hr.group_hr_manager"/>
+                        <button name="reverse_allocation" attrs="{'invisible':[['state','!=','confirmed']]}"
+                                string="Reverse Allocation" type="object" groups="hr.group_hr_manager"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="employee_id" attrs="{'readonly':[['state','=','confirmed']]}" required="1"
+                                       options="{'no_create':True}"/>
+                                <label for="allocated_balance"/>
+                                <div>
+                                    <field name="allocated_balance" required="1"
+                                           attrs="{'readonly':[['state','=','confirmed']]}" class="oe_inline"/>
+                                    Months
+                                </div>
+                                <field name="allocated_date" required="1"
+                                       attrs="{'readonly':[['state','=','confirmed']]}"/>
+                                <field name="adjusted_date" readonly="1"/>
+                                <field name="last_allocation_date" readonly="1"/>
+                                <field name="reason" required="1"/>
+                            </group>
+                            <group>
+                                <field name="auto_create" readonly="1"/>
+                                <field name="air_ticket_auto_allocation_id" readonly="1"/>
+                                <field name="air_ticket_request_id" readonly="1"/>
+                                <field name="create_uid" readonly="1"/>
+                                <field name="confirmed_uid" readonly="1"/>
+                                <field name="by_eos" readonly="1"/>
+                            </group>
+                        </group>
+                        <notebook colspan="4">
+                            <page string="Notes">
+                                <group string="Notes">
+                                    <field name="note" nolabel="1" attrs="{'readonly':[['state','=','confirmed']]}"/>
+                                </group>
+                            </page>
+                            <page string="Attachments">
+                                <group string="Attachments">
+                                    <field name="attachment_ids" nolabel="1"
+                                           attrs="{'readonly':[['state','=','confirmed']]}">
+                                        <tree editable="bottom">
+                                            <field name="name" required="1"/>
+                                            <field name="file_name" invisible="1"/>
+                                            <field name="file" required="1" filename="file_name"/>
+                                            <field name="note"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="air_ticket_balance_allocation_tree" model="ir.ui.view">
+            <field name="name">air.ticket.balance.allocation tree view</field>
+            <field name="model">air.ticket.balance.allocation</field>
+            <field name="arch" type="xml">
+                <tree string="Air ticket balance allocation">
+                    <field name="employee_id"/>
+                    <field name="allocated_balance" sum="Sum"/>
+                    <field name="allocated_date"/>
+                    <field name="adjusted_date"/>
+                    <field name="reason"/>
+                    <field name="auto_create"/>
+                    <field name="air_ticket_auto_allocation_id"/>
+                    <field name="air_ticket_request_id"/>
+                    <field name="create_uid"/>
+                    <field name="confirmed_uid"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="air_ticket_balance_allocation_action" model="ir.actions.act_window">
+            <field name="name">Air ticket balance allocation</field>
+            <field name="res_model">air.ticket.balance.allocation</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Click to define a new Air ticket balance allocation</p>
+            </field>
+        </record>
+        <menuitem id="air_ticket_balance_allocation_menu" parent="saudi_hr_leaves.air_ticket_config_menu"
+                  action="air_ticket_balance_allocation_action"
+                  sequence="5"/>
+
+        <!--Air Ticket Automatic Allocation-->
+        <record id="air_ticket_automatic_allocation_form" model="ir.ui.view">
+            <field name="name">Air Ticket Automatic Allocation form view</field>
+            <field name="model">air.ticket.automatic.allocation</field>
+            <field name="arch" type="xml">
+                <form string="Air Ticket Automatic Allocation">
+                    <header>
+                        <button string="Confirm" name="confirm" type="object" states="new" class="oe_highlight"
+                                groups="hr.group_hr_manager"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="code" readonly="1"/>
+                                <field name="create_date" readonly="1" string="Created on"/>
+                                <field name="create_uid" readonly="1" string="Created by" groups="hr.group_hr_user"/>
+                                <field name="confirmed_uid" readonly="1" string="Confirmed by"
+                                       groups="hr.group_hr_user"/>
+                                <field name="allocate_till_date" required="1"/>
+                            </group>
+                        </group>
+                        <notebook colspan="4" groups="hr.group_hr_user">
+                            <page string="Balance allocations">
+                                <group string="Balance allocations">
+                                    <field name="allocation_ids" readonly="1" nolabel="1"/>
+                                </group>
+                            </page>
+                            <page string="Notes">
+                                <group string="Notes">
+                                    <field name="note" nolabel="1"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="air_ticket_automatic_allocation_tree" model="ir.ui.view">
+            <field name="name">Air Ticket Automatic Allocation tree view</field>
+            <field name="model">air.ticket.automatic.allocation</field>
+            <field name="arch" type="xml">
+                <tree string="Air Ticket Automatic Allocation">
+                    <field name="code"/>
+                    <field name="create_date"/>
+                    <field name="create_uid"/>
+                    <field name="confirmed_uid"/>
+                    <field name="allocate_till_date"/>
+                </tree>
+            </field>
+        </record>
+        <record id="air_ticket_automatic_allocation_action" model="ir.actions.act_window">
+            <field name="name">Air Ticket Automatic Allocation</field>
+            <field name="res_model">air.ticket.automatic.allocation</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Click to define a new Air Ticket Automatic Allocation</p>
+            </field>
+        </record>
+        <menuitem id="air_ticket_automatic_allocation_menu" parent="saudi_hr_leaves.air_ticket_config_menu"
+                  action="air_ticket_automatic_allocation_action"
+                  sequence="5"/>
+
+
+        <!--Employee view-->
+        <record id="view_employee_form_leave_inherit" model="ir.ui.view">
+            <field name="name">view_employee_form_leave_inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr_holidays.view_employee_form_leave_inherit"/>
+            <field name="arch" type="xml">
+                <button name="%(hr_holidays.act_hr_employee_holiday_request)d" position="replace">
+                    <button name="open_employee_leaves"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-calendar"
+                            help="leaves balance">
+                        <field string="leaves balance" name="leaves_count" widget="statinfo"/>
+                    </button>
+                    <button name="open_air_ticket_allocations"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-calendar"
+                            help="Air ticket balance">
+                        <field string="Air ticket balance" name="air_ticket_balance_button" widget="statinfo"/>
+                    </button>
+                </button>
+                <!--<field name="leaves_count" position="attributes">-->
+                <!--<attribute name="string">leaves balance</attribute>-->
+                <!--</field>-->
+            </field>
+        </record>
+        <record id="view_employee_form_inherit" model="ir.ui.view">
+            <field name="name">hr.employee inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="saudi_hr_employee.view_employee_form"/>
+            <field name="arch" type="xml">
+                <field name="relatives" position="before">
+                    <group>
+                        <group>
+                            <field name="last_reconciliation_date" readonly="1"/>
+                            <field name="air_ticket_balance" readonly="1"/>
+                        </group>
+                    </group>
+                </field>
+            </field>
+        </record>
+
+        <record id="hr_contract_form_air_tickets" model="ir.ui.view">
+            <field name="name">hr.contract.form.air.tickets</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="saudi_hr_leaves.hr_contract_form_leaves"/>
+            <field name="arch" type="xml">
+                <page name="leaves" position="attributes">
+                    <attribute name="string">Leave - Air tickets</attribute>
+                </page>
+                <page name="leaves" position="inside">
+                    <group string="Employee &amp; Relative tickets">
+                        <group>
+                            <field name="air_ticket_policy" required="1" options="{'no_create': True}"
+                                   domain="[('state','=','Approved'),('type','=','annual'),('nationality','in',[nationality_type,'All Nationalities'])]"
+                                   attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                            <field name="number_of_wives"
+                                   attrs="{'invisible':[('marital', '!=', 'married')],'readonly': [('state', 'in', ['closed'])]}"/>
+                            <field name="children"
+                                   attrs="{'invisible':[('marital', '!=', 'married')],'readonly': [('state', 'in', ['closed'])]}"/>
+                        </group>
+                        <group>
+                            <label for="max_child_age" attrs="{'invisible':[('marital', '!=', 'married')]}"/>
+                            <div attrs="{'invisible':[('marital', '!=', 'married')]}">
+                                <field name="max_child_age" class="oe_inline"
+                                       attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                                Years
+                            </div>
+                            <field name="total_relatives" readonly="1"
+                                   attrs="{'invisible':[('marital', '!=', 'married')]}"/>
+                            <field name="give_cash_instead_tickets" required="1"/>
+                            <field name="air_ticket_cash_balance" readonly="1"
+                                   attrs="{'invisible':[('give_cash_instead_tickets', '!=', 'Yes')]}"/>
+                        </group>
+                    </group>
+                </page>
+            </field>
+        </record>
+
+        <!--Countries-->
+        <record model="ir.ui.view" id="view_country_state_form_inherit">
+            <field name="name">res.country.state.form inherit</field>
+            <field name="model">res.country.state</field>
+            <field name="inherit_id" ref="base.view_country_state_form"/>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group" position="after">
+                    <group string="Air ticket average price">
+                        <field name="one_way_price"/>
+                        <field name="return_price"/>
+                    </group>
+                </xpath>
+                <field name="country_id" position="replace">
+                    <field name="country_id" options='{"no_open": True,"no_create": True}'/>
+                </field>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_country_form_inherit">
+            <field name="name">res.country.form inherit</field>
+            <field name="model">res.country</field>
+            <field name="inherit_id" ref="base.view_country_form"/>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <field name="phone_code" position="after">
+                    <field name="one_way_price" groups="hr.group_hr_user"/>
+                    <field name="return_price" groups="hr.group_hr_user"/>
+                </field>
+                <xpath expr="//tree" position="inside">
+                    <field name="one_way_price"/>
+                    <field name="return_price"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="countries_air_ticket_prices_action" model="ir.actions.act_window">
+            <field name="name">Air tickets prices</field>
+            <field name="res_model">res.country</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Click to define a new Country</p>
+            </field>
+        </record>
+        <menuitem id="countries_air_ticket_prices_menu" name="Air tickets prices"
+                  action="countries_air_ticket_prices_action"
+                  parent="saudi_hr_leaves.air_ticket_config_menu" sequence="20"/>
+
+        <record id="hr_employee_view_search" model="ir.ui.view">
+            <field name="name">hr.employee.search.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_filter"/>
+            <field name="arch" type="xml">
+                <field name="job_id" position="after">
+                    <filter name="iqama_120" string="Iqama will be expired within 120 days"
+                            domain="[('air_ticket_cash_allowance', '=', True )]"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</odoo>

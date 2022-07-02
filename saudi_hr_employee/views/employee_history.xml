@@ -1,0 +1,66 @@
+<odoo>
+
+    <data>
+
+        <record id="view_employee_form_" model="ir.ui.view">
+            <field name="name">hr.employee.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="priority" eval="15"/>
+            <field name="arch" type="xml">
+                <button name="toggle_active" position="after">
+                    <button name="open_employee_history" type="object" class="oe_stat_button" icon="fa-list-ul" string="Employee History">
+                        <field name="history_count"  widget="statinfo"/>
+                    </button>
+                </button>
+            </field>
+        </record>
+
+        <record id="employee_department_history_form" model="ir.ui.view">
+            <field name="name">employee.department.history.form</field>
+            <field name="model">employee.department.history</field>
+            <field name="arch" type="xml">
+                <form string="Employee History" create="false" delete="false" edit="false">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="employee_id" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="from_department_id" readonly="1"/>
+                                <field name="to_department_id" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="create_uid" readonly="1"/>
+                                <field name="create_date" readonly="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="employee_department_history_tree" model="ir.ui.view">
+            <field name="name">effective.notice.tree</field>
+            <field name="model">employee.department.history</field>
+            <field name="arch" type="xml">
+                <tree string="Employee History" create="false" delete="false" edit="false">
+                    <field name="employee_id" readonly="1"/>
+                    <field name="from_department_id" readonly="1"/>
+                    <field name="to_department_id" readonly="1"/>
+                    <field name="create_uid" readonly="1"/>
+                    <field name="create_date" readonly="1"/>
+                </tree>
+            </field>
+        </record>
+        <record id="employee_department_history_action" model="ir.actions.act_window">
+            <field name="name">Effective notice</field>
+            <field name="res_model">effective.notice</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_new_employee':1,
+                'default_type': 'New Employee',}
+            </field>
+        </record>
+
+    </data>
+</odoo>

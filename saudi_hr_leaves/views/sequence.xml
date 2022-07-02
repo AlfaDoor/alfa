@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data >
+        <record id="seq_Leave_automatic_allocation" model="ir.sequence">
+            <field name="name">Leave_automatic_allocation</field>
+            <field name="code">Leave.automatic.allocation</field>
+            <field name="prefix"/>
+            <field name="padding">6</field>
+        </record>
+
+
+        <!--Exit Re-entry request-->
+        <record id="seq_leave_reconciliation" model="ir.sequence">
+            <field name="name">Leave Reconciliation</field>
+            <field name="code">hr.leave.reconciliation</field>
+            <field name="prefix">LR</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_national_holiday" model="ir.sequence">
+            <field name="name">National Holiday</field>
+            <field name="code">national.holiday</field>
+            <field name="prefix">NH</field>
+            <field name="padding">5</field>
+        </record>
+        <!-- Sequences for air_tickets_type -->
+        <record id="att_code" model="ir.sequence">
+            <field name="name">ATT Serial Sequence</field>
+            <field name="code">mits_a_t.air_ticket_type</field>
+            <field name="prefix">ATT/</field>
+            <field name="padding">4</field>
+        </record>
+
+        <!-- Sequences for air_tickets_request -->
+        <record id="atr_code" model="ir.sequence">
+            <field name="name">ATR Serial Sequence</field>
+            <field name="code">mits_a_t.air_ticket_request</field>
+            <field name="prefix">ATR/</field>
+            <field name="padding">4</field>
+        </record>
+
+        <!--  Air ticket automatic allocation sequence  -->
+        <record id="sequence_air_ticket_automatic_allocation" model="ir.sequence">
+            <field name="name">air ticket automatic allocation</field>
+            <field name="code">air.ticket.automatic.allocation</field>
+            <field name="prefix"/>
+            <field eval="1" name="number_next"/>
+            <field eval="1" name="number_increment"/>
+            <field name="padding">4</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,24 @@
+<odoo>
+    <data>
+
+           <record model="ir.module.category" id="emp_department_sit">
+			<field name="name">Department Change</field>
+			<field name="description">Allow to change the department of employee</field>
+			<field name="sequence">65</field>
+		</record>
+		<record id="department_allow_group" model="res.groups">
+			<field name="name">Change Employees Department</field>
+			<field name="category_id" ref="hr_customizations.emp_department_sit" />
+		</record>
+
+          <record model="ir.module.category" id="emp_branch_wise_sit">
+			<field name="name">Employee Restriction</field>
+			<field name="description">Allow to excess employee under him</field>
+			<field name="sequence">48</field>
+		</record>
+		<record id="special_allow_group_sit" model="res.groups">
+			<field name="name">Member</field>
+			<field name="category_id" ref="hr_customizations.emp_branch_wise_sit" />
+		</record>
+    </data>
+</odoo>

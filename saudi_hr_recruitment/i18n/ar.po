@@ -1,0 +1,954 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* saudi_hr_recruitment
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.e-20151006\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-12-11 13:59+0000\n"
+"PO-Revision-Date: 2017-12-11 18:10+0300\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar_SY\n"
+"X-Generator: Poedit 2.0.5\n"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:489
+#, python-format
+msgid "%s months, "
+msgstr "%s months, "
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:483
+#, python-format
+msgid "%s years, "
+msgstr "%s years, "
+
+#. module: saudi_hr_recruitment
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+msgid "<span class=\"o_stat_text\">Meetings</span>"
+msgstr "<span class=\"o_stat_text\">Meetings</span>"
+
+#. module: saudi_hr_recruitment
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+msgid ""
+"<span class=\"o_stat_text\">Print</span>\n"
+"                                    <span class=\"o_stat_text\">Interview</span>"
+msgstr ""
+"<span class=\"o_stat_text\">Print</span>\n"
+"                                    <span class=\"o_stat_text\">Interview</span>"
+
+#. module: saudi_hr_recruitment
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+msgid ""
+"<span class=\"o_stat_text\">Start</span>\n"
+"                                    <span class=\"o_stat_text\">Interview</span>"
+msgstr ""
+"<span class=\"o_stat_text\">Start</span>\n"
+"                                    <span class=\"o_stat_text\">Interview</span>"
+
+#. module: saudi_hr_recruitment
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.report_job_offer
+msgid ""
+"<span style=\"font-size:20px;\"><span style=\"font-family: times new roman,times,serif;\">1- السيره الذاتيه<br/>\n"
+"                                    2- صوره شخصيه<br/>\n"
+"                                    3- صوره الخبرات العمليه<br/>\n"
+"                                    4- صوره الشهادات العلميه<br/>\n"
+"                                    5- صوره البطاقه الشخصيه</span></span>"
+msgstr ""
+"<span style=\"font-size:20px;\"><span style=\"font-family: times new roman,times,serif;\">1- السيره الذاتيه<br/>\n"
+"                                    2- صوره شخصيه<br/>\n"
+"                                    3- صوره الخبرات العمليه<br/>\n"
+"                                    4- صوره الشهادات العلميه<br/>\n"
+"                                    5- صوره البطاقه الشخصيه</span></span>"
+
+#. module: saudi_hr_recruitment
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.report_job_offer
+msgid ""
+"<span style=\"font-size:24px;\"><strong><u><span style=\"font-family: times new roman,times,serif;\">تفاصيل عرض عمل<br/>\n"
+"                        Job Offer Specification</span></u></strong></span>"
+msgstr ""
+"<span style=\"font-size:24px;\"><strong><u><span style=\"font-family: times new roman,times,serif;\">تفاصيل عرض عمل<br/>\n"
+"                        Job Offer Specification</span></u></strong></span>"
+
+#. module: saudi_hr_recruitment
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.report_job_offer
+msgid "<strong><span style=\"font-size:20px;\"><span style=\"font-family: times new roman,times,serif;\">1- فتره التجربه: (90) يوما اعتبار من تاريخ المباشره قابله للتجديد</span></span></strong>"
+msgstr "<strong><span style=\"font-size:20px;\"><span style=\"font-family: times new roman,times,serif;\">1- فتره التجربه: (90) يوما اعتبار من تاريخ المباشره قابله للتجديد</span></span></strong>"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_branch_message_needaction
+msgid "Action Needed"
+msgstr "الإجراء المطلوب"
+
+#. module: saudi_hr_recruitment
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+msgid "After Trial Period"
+msgstr "بعد فترة التجربة"
+
+#. module: saudi_hr_recruitment
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+msgid "Answer related job question"
+msgstr "جاوب على الأسئلة المتعلقة بالوظيفة"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model,name:saudi_hr_recruitment.model_hr_applicant
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_document_requirement_applicant_id
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_terms_conditions_applicant_id
+msgid "Applicant"
+msgstr "المتقدمين للوظائف"
+
+#. module: saudi_hr_recruitment
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+msgid "Applicant Arabic Name"
+msgstr "الإسم باللغة الإنجليزية"
+
+#. module: saudi_hr_recruitment
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+msgid "Applicant English Name"
+msgstr "الإسم باللغه العربيه"
+
+#. module: saudi_hr_recruitment
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+msgid "Application Summary"
+msgstr "ملخص عن المتقدم للوظيفه"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_job_arabic_name
+msgid "Arabic name"
+msgstr "الإسم باللغه العربيه"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:447
+#, python-format
+msgid "Attention !! Course Duration cannot be minus"
+msgstr "Attention !! Course Duration cannot be minus"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:471
+#, python-format
+msgid "Attention !! Employment salary cannot be minus"
+msgstr "Attention !! Employment salary cannot be minus"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:269
+#, python-format
+msgid "Attention! Basic Salary After Trial Period cannot be zero"
+msgstr "Attention! Basic Salary After Trial Period cannot be zero"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:267
+#, python-format
+msgid "Attention! Basic Salary During Trial Period cannot be zero"
+msgstr "Attention! Basic Salary During Trial Period cannot be zero"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:265
+#, python-format
+msgid "Attention! contract duration must be not equal zero"
+msgstr "Attention! contract duration must be not equal zero"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:136
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:190
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_basic_salary
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_trial_wage
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+#, python-format
+msgid "Basic Salary"
+msgstr "الراتب الأساسى"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_date_of_birth
+msgid "Birth Date"
+msgstr "تاريخ الميلاد"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:82
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_branch_id
+#, python-format
+msgid "Branch"
+msgstr "الفرع"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_branch_name
+msgid "Branch Arabic Name"
+msgstr "إسم الفرع باللغه العربيه"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_branch_english_name
+msgid "Branch English Name"
+msgstr "إسم الفرع باللغه الانجليزيه"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_branch_manager_id
+msgid "Branch Manager"
+msgstr "مدير الفرع"
+
+#. module: saudi_hr_recruitment
+#: model:ir.actions.act_window,name:saudi_hr_recruitment.hr_branch_action
+#: model:ir.actions.act_window,name:saudi_hr_recruitment.hr_employee_branch_action
+#: model:ir.ui.menu,name:saudi_hr_recruitment.menu_hr_branch
+msgid "Branches"
+msgstr "الفروع"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_building_number
+msgid "Building Number"
+msgstr "رقم المبنى"
+
+#. module: saudi_hr_recruitment
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+msgid "Candidate personal information"
+msgstr "البيانات الشخصيه "
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_city_id
+msgid "City"
+msgstr "المدينة"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:16
+#, python-format
+msgid "Code"
+msgstr "الكود"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:148
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:202
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_commission
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_trial_commission
+#, python-format
+msgid "Commission"
+msgstr "العمولات"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_contract_duration
+msgid "Contract Duration In Months"
+msgstr "مدة العقد بالأشهر"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_country_id
+msgid "Country"
+msgstr "الدولة"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_course_ids
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+msgid "Courses"
+msgstr "الدورات التدريبيه"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_branch_create_uid
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_document_requirement_create_uid
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_terms_conditions_create_uid
+msgid "Created by"
+msgstr "أنشئ بواسطة"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_branch_create_date
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_document_requirement_create_date
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_terms_conditions_create_date
+msgid "Created on"
+msgstr "أنشئ في"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:498
+#, python-format
+msgid ""
+"Data Error! \n"
+" In Employment history Tab. Date to must be less than today date"
+msgstr ""
+"Data Error! \n"
+" In Employment history Tab. Date to must be less than today date"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:496
+#, python-format
+msgid ""
+"Date Error! \n"
+" In Employment history Tab. Date to must be greater than date from."
+msgstr ""
+"Date Error! \n"
+" In Employment history Tab. Date to must be greater than date from."
+
+#. module: saudi_hr_recruitment
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+msgid "Date of Birth"
+msgstr "تاريخ الميلاد"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_birthday_hijri
+msgid "Date of birth (hijri)"
+msgstr "تاريخ الميلاد بالهجرى"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,help:saudi_hr_recruitment.field_hr_branch_message_last_post
+msgid "Date of the last message posted on the record."
+msgstr "تاريخ آخر رسالة في هذا السجل."
+
+#. module: saudi_hr_recruitment
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+msgid "Degree"
+msgstr "الدرجة"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_branch_display_name
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_document_requirement_display_name
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_terms_conditions_display_name
+msgid "Display Name"
+msgstr "طريقة العرض"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_district
+msgid "District"
+msgstr "الحى"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_document_requirements
+msgid "Document"
+msgstr "الملف"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_document_requirement_name
+msgid "Document Name"
+msgstr "إسم الملف"
+
+#. module: saudi_hr_recruitment
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+msgid "Documents"
+msgstr "الوثائق"
+
+#. module: saudi_hr_recruitment
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+msgid "During Trial Period"
+msgstr "خلال فترة التجربة"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model,name:saudi_hr_recruitment.model_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+msgid "Employee"
+msgstr "الموظف"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:37
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_branch_employee_ids
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.hr_branch_form
+#, python-format
+msgid "Employees"
+msgstr "الموظفون"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_employment_ids
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+msgid "Employment History"
+msgstr "التاريخ الوظيفيى"
+
+#. module: saudi_hr_recruitment
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+msgid "Feedback of interviews..."
+msgstr "ردود الفعل من المقابلات..."
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:88
+#: selection:hr.applicant,gender:0
+#, python-format
+msgid "Female"
+msgstr "أنثى"
+
+#. module: saudi_hr_recruitment
+#: selection:hr.applicant,house_allowance_type:0
+#: selection:hr.applicant,phone_allowance_type:0
+#: selection:hr.applicant,transportation_allowance_type:0
+#: selection:hr.applicant,trial_house_allowance_type:0
+#: selection:hr.applicant,trial_phone_allowance_type:0
+#: selection:hr.applicant,trial_transportation_allowance_type:0
+msgid "Fixed"
+msgstr "رقم ثابت"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_branch_message_follower_ids
+msgid "Followers"
+msgstr "المتابعون"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_branch_message_channel_ids
+msgid "Followers (Channels)"
+msgstr "المتابعون ( القنوات )"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_branch_message_partner_ids
+msgid "Followers (Partners)"
+msgstr "المتابعون ( الأفراد )"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:54
+#, python-format
+msgid "Forbidden to duplicate"
+msgstr "Forbidden to duplicate"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:89
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_gender
+#, python-format
+msgid "Gender"
+msgstr "الجنس"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_graduate_year
+msgid "Graduate Year"
+msgstr "سنة التخرج"
+
+#. module: saudi_hr_recruitment
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+msgid "Hijri 'YYYY-MM-DD'"
+msgstr "هجرى يوم-شهر-سنه"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:137
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:138
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:139
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:191
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:192
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:193
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_house_allowance
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_house_allowance_amount
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_house_allowance_type
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_trial_house_allowance
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_trial_house_allowance_amount
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_trial_house_allowance_type
+#, python-format
+msgid "House Allowance"
+msgstr "بدل السكن"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_branch_id
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_document_requirement_id
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_terms_conditions_id
+msgid "ID"
+msgstr "الكود"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,help:saudi_hr_recruitment.field_hr_branch_message_unread
+msgid "If checked new messages require your attention."
+msgstr "إذا حددته، ستتطلب الرسائل الجديدة انتباهك"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,help:saudi_hr_recruitment.field_hr_branch_message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "اذا تم وضع علامة صح. يعنى ذلك ان تلك الرساله مهمه وتحتاج إلى مراجعه"
+
+#. module: saudi_hr_recruitment
+#: selection:hr.applicant,commission:0
+#: selection:hr.applicant,trial_commission:0
+msgid "Illegible"
+msgstr "يستحق"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:146
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:200
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_insurance
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_trial_insurance
+#, python-format
+msgid "Insurance Allowance"
+msgstr "تأمين طبى ؟"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:97
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_iqama_expiry_date
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+#, python-format
+msgid "Iqama Expiry Date"
+msgstr "تاريخ انتهاء الإقامة/الهوية"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_iqama_expiry_date_hijri
+msgid "Iqama Expiry Date (Hijri)"
+msgstr "تاريخ انتهاء الإقامة/الهوية(بالهجرى)"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_iqama_id
+msgid "Iqama ID"
+msgstr "رقم الإقامة / الهوية"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:95
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_iqama_issue_date
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+#, python-format
+msgid "Iqama Issue Date"
+msgstr "تاريخ إصدار الإقامة/الهوية"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_iqama_issue_date_hijri
+msgid "Iqama Issue Date (Hijri)"
+msgstr "تاريخ إصدار الإقامة/الهوية(بالهجرى)"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_iqama_issue_place
+msgid "Iqama Issue Place"
+msgstr "مكان إصدار الإقامة"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_branch_message_is_follower
+msgid "Is Follower"
+msgstr "هو متابع"
+
+#. module: saudi_hr_recruitment
+#: model:ir.actions.report.xml,name:saudi_hr_recruitment.job_offer_report
+msgid "Job Offer Specification"
+msgstr "طباعة العرض الوظيفي"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model,name:saudi_hr_recruitment.model_hr_job
+msgid "Job Position"
+msgstr "المسميات الوظيفيه"
+
+#. module: saudi_hr_recruitment
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.view_hr_job_form_inherit
+msgid "Job Position Arabic name"
+msgstr "المسمي الوظيفي باللغه العربيه"
+
+#. module: saudi_hr_recruitment
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.view_hr_job_form_inherit
+msgid "Job Position English name"
+msgstr "المسمي الوظيفي باللغه الإنجليزية"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:271
+#, python-format
+msgid "Kindly select Department / Applied job before creating employee"
+msgstr "فضلا قم بإختيار الإدارة والوظيفة قبل إنشاء موظف جديد."
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_branch_message_last_post
+msgid "Last Message Date"
+msgstr "تاريخ آخر رسالة"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_branch___last_update
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_document_requirement___last_update
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_terms_conditions___last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_branch_write_uid
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_document_requirement_write_uid
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_terms_conditions_write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_branch_write_date
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_document_requirement_write_date
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_terms_conditions_write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:88
+#: selection:hr.applicant,gender:0
+#, python-format
+msgid "Male"
+msgstr "ذكر"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_marital_status
+msgid "Marital Status"
+msgstr "الحالة الاجتماعية"
+
+#. module: saudi_hr_recruitment
+#: selection:hr.applicant,marital_status:0
+msgid "Married"
+msgstr "متزوج"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_branch_message_ids
+msgid "Messages"
+msgstr "الرسائل"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,help:saudi_hr_recruitment.field_hr_branch_message_ids
+msgid "Messages and communication history"
+msgstr "الرسائل و سجل التواصل"
+
+#. module: saudi_hr_recruitment
+#: selection:hr.applicant,religion:0
+msgid "Muslim"
+msgstr "مسلم"
+
+#. module: saudi_hr_recruitment
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+msgid "National Address"
+msgstr "العنوان الوطنى"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:79
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_nationality_id
+#, python-format
+msgid "Nationality"
+msgstr "الجنسيه"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_nationality_type
+msgid "Nationality type"
+msgstr "نوع الجنسيه"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:316
+#, python-format
+msgid "New Employee %s Hired"
+msgstr "New Employee %s Hired"
+
+#. module: saudi_hr_recruitment
+#: selection:hr.applicant,religion:0
+msgid "Non-Muslim"
+msgstr "غير مسلم"
+
+#. module: saudi_hr_recruitment
+#: selection:hr.applicant,nationality_type:0
+msgid "Non-Saudi"
+msgstr "غير سعدوى"
+
+#. module: saudi_hr_recruitment
+#: selection:hr.applicant,house_allowance_type:0
+#: selection:hr.applicant,phone_allowance_type:0
+#: selection:hr.applicant,transportation_allowance_type:0
+#: selection:hr.applicant,trial_house_allowance_type:0
+#: selection:hr.applicant,trial_phone_allowance_type:0
+#: selection:hr.applicant,trial_transportation_allowance_type:0
+msgid "None"
+msgstr "لا يوجد"
+
+#. module: saudi_hr_recruitment
+#: selection:hr.applicant,commission:0
+#: selection:hr.applicant,trial_commission:0
+msgid "Not Illegible"
+msgstr "لا يستحق"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_branch_note
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.hr_branch_form
+msgid "Notes"
+msgstr "الملاحظات"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_no_child
+msgid "Number Of Child"
+msgstr "عدد التابعين والمرافقين"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_branch_count_employees
+msgid "Number Of Employees"
+msgstr "عدد الموظفين"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_branch_message_needaction_counter
+msgid "Number of Actions"
+msgstr "عدد الإجراءات"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,help:saudi_hr_recruitment.field_hr_branch_message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "عدد الرسائل التي تحتاج إلى إجراءات"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,help:saudi_hr_recruitment.field_hr_branch_message_unread_counter
+msgid "Number of unread messages"
+msgstr "عدد الرسائل الغير مقروؤه"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_offer_date
+msgid "Offer Date"
+msgstr "تاريخ العرض الوظيفيى"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:149
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:203
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_other_allowance
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_trial_other_allowance
+#, python-format
+msgid "Other Allowance"
+msgstr "بدلات أخرى"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:150
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:204
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_other_allowance_name
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_trial_other_allowance_name
+#, python-format
+msgid "Other Allowance Name"
+msgstr "إسم البدلات الأخرى"
+
+#. module: saudi_hr_recruitment
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+msgid "Other Information"
+msgstr "معلومات أخرى"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_branch_parent_id
+msgid "Parent Branch"
+msgstr "الفرع الرئيسي"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:106
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_passport_expiry_date
+#, python-format
+msgid "Passport Expiry Date"
+msgstr "تاريخ انتهاء جواز السفر"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:107
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_passport_expiry_date_hijri
+#, python-format
+msgid "Passport Expiry Date (hijri"
+msgstr "تاريخ انتهاء جواز السفر(هجرى)"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:104
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_passport_issue_date
+#, python-format
+msgid "Passport Issue Date"
+msgstr "تاريخ إصدار جواز السفر"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:105
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_passport_issue_date_hijri
+#, python-format
+msgid "Passport Issue Date (hijri"
+msgstr "تاريخ إصدار جواز السفر(هجرى)"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_passport_no
+msgid "Passport Number"
+msgstr "رقم جواز السفر"
+
+#. module: saudi_hr_recruitment
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+msgid "Passport expiry date"
+msgstr "تاريخ انتهاء جواز السفر"
+
+#. module: saudi_hr_recruitment
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+msgid "Passport issue date"
+msgstr "تاريخ إصدار جواز السفر"
+
+#. module: saudi_hr_recruitment
+#: selection:hr.applicant,house_allowance_type:0
+#: selection:hr.applicant,phone_allowance_type:0
+#: selection:hr.applicant,transportation_allowance_type:0
+#: selection:hr.applicant,trial_house_allowance_type:0
+#: selection:hr.applicant,trial_phone_allowance_type:0
+#: selection:hr.applicant,trial_transportation_allowance_type:0
+msgid "Percentage from Basic"
+msgstr "نسبة من الأساسي"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:143
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:144
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:145
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:197
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:198
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:199
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_phone_allowance
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_phone_allowance_amount
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_phone_allowance_type
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_trial_phone_allowance
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_trial_phone_allowance_amount
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_trial_phone_allowance_type
+#, python-format
+msgid "Phone Allowance"
+msgstr "بدل الإتصالات"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_place_birth
+msgid "Place Of Birth"
+msgstr "مكان الميلاد"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:210
+#, python-format
+msgid "Please Select Name For Other Allowance After Trial Period"
+msgstr "Please Select Name For Other Allowance After Trial Period"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:156
+#, python-format
+msgid "Please Select Name For Other Allowance During Trial Period"
+msgstr "Please Select Name For Other Allowance During Trial Period"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_postal_code
+msgid "Postal Code"
+msgstr "الرقم البريدى"
+
+#. module: saudi_hr_recruitment
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+msgid "Print interview report"
+msgstr "اطبع تقرير المقابلة"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_iqama_profession
+msgid "Profession In Iqama"
+msgstr "المهنه في الإقامه"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_qualification_ids
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+msgid "Qualification"
+msgstr "المؤهلات العلميه"
+
+#. module: saudi_hr_recruitment
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+msgid "Related Partner"
+msgstr "Related Partner"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_religion
+msgid "Religion"
+msgstr "الديانه"
+
+#. module: saudi_hr_recruitment
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+msgid "Required Documents to open a file"
+msgstr "المستندات المطلوبه لفتح ملف وظيفي"
+
+#. module: saudi_hr_recruitment
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+msgid "Salary and allowances"
+msgstr "الراتب والبدلات"
+
+#. module: saudi_hr_recruitment
+#: selection:hr.applicant,nationality_type:0
+msgid "Saudi"
+msgstr "سعودى"
+
+#. module: saudi_hr_recruitment
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+msgid "Schedule interview with this applicant"
+msgstr "حدد موعد لمقابلة المتقدم للعمل"
+
+#. module: saudi_hr_recruitment
+#: selection:hr.applicant,marital_status:0
+msgid "Single"
+msgstr "أعزب"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_street_name
+msgid "Street Name"
+msgstr "إسم الشارع"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_terms_conditions
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_terms_conditions_name
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+msgid "Terms and Conditions"
+msgstr "الشروط و الأحكام"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:151
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:205
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_total
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_trial_total
+#, python-format
+msgid "Total"
+msgstr "الإجمالي"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:140
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:141
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:142
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:194
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:195
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:196
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_transportation_allowance
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_transportation_allowance_amount
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_transportation_allowance_type
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_trial_transportation_allowance
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_trial_transportation_allowance_amount
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_trial_transportation_allowance_type
+#, python-format
+msgid "Transportation Allowance"
+msgstr "بدل المواصلات"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_applicant_trial_period_days
+msgid "Trial Period In Days"
+msgstr "مدة التجربه بالأيام"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_branch_message_unread
+msgid "Unread Messages"
+msgstr "رسائل غير مقروءة"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_branch_message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "عداد الرسائل الغير مقروؤه"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,field_description:saudi_hr_recruitment.field_hr_branch_website_message_ids
+msgid "Website Messages"
+msgstr "رسائل الموقع"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model.fields,help:saudi_hr_recruitment.field_hr_branch_website_message_ids
+msgid "Website communication history"
+msgstr "سجل تواصل الموقع"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:60
+#, python-format
+msgid "You Can not Delete Branch which has employees"
+msgstr "لا يمكن حذف الفرع الذى يحتوى على موظفين"
+
+#. module: saudi_hr_recruitment
+#: code:addons/saudi_hr_recruitment/models/saudi_hr_recruitment.py:321
+#, python-format
+msgid "You must define an Applied Job and a Contact Name for this applicant."
+msgstr "برجاء إختيار الوظيفه المتقدم إليها وإسم المتقدم"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model,name:saudi_hr_recruitment.model_applicant_course
+msgid "applicant.course"
+msgstr "الدورات التدريبيه"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model,name:saudi_hr_recruitment.model_applicant_employment
+msgid "applicant.employment"
+msgstr "التاريخ الوظيفيى"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model,name:saudi_hr_recruitment.model_applicant_qualification
+msgid "applicant.qualification"
+msgstr "المؤهلات العلمية"
+
+#. module: saudi_hr_recruitment
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+msgid "e.g. Call for interview"
+msgstr "مثلا : الاتصال لتحديد موعد المقابله"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model,name:saudi_hr_recruitment.model_hr_branch
+msgid "hr.branch"
+msgstr "الفرع"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model,name:saudi_hr_recruitment.model_hr_document_requirement
+msgid "hr.document.requirement"
+msgstr "المستندات المطلوبه"
+
+#. module: saudi_hr_recruitment
+#: model:ir.model,name:saudi_hr_recruitment.model_hr_terms_conditions
+msgid "hr.terms.conditions"
+msgstr "الشروط والأحكام"
+
+#. module: saudi_hr_recruitment
+#: model:ir.ui.view,arch_db:saudi_hr_recruitment.crm_case_form_view_job
+msgid "planned start working date"
+msgstr "تاريخ الانضمام المتوقع"

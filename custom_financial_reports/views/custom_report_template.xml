@@ -1,0 +1,123 @@
+<odoo>
+    <data>
+
+
+        <record id="paperformat_landscapex" model="report.paperformat">
+            <field name="name">Landscape</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">15</field>
+            <field name="margin_bottom">20</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">10</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="paperformat_portraitx" model="report.paperformat">
+            <field name="name">Portrait</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">15</field>
+            <field name="margin_bottom">20</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">10</field>
+            <field name="dpi">90</field>
+        </record>
+    <!--Reports-->
+    <report id="custom_financial_report_portrait"
+        string="Custom financial report"
+        model="financial.report.config"
+        name="custom_financial_reports.rcf_portrait"
+        file="custom_financial_reports.rcf_portrait"
+        report_type="qweb-pdf"
+        paperformat="custom_financial_reports.paperformat_portraitx"
+        menu="True"/>
+    <report id="custom_financial_report_landscape"
+        string="Custom financial report"
+        model="financial.report.config"
+        name="custom_financial_reports.rcf_landscape"
+        file="custom_financial_reports.rcf_landscape"
+        report_type="qweb-pdf"
+        paperformat="custom_financial_reports.paperformat_landscapex"
+        menu="True"/>
+
+    <template id="rcf_portrait">
+        <t t-call="custom_financial_reports.report_custom_financial"/>
+    </template>
+    <template id="rcf_landscape">
+        <t t-call="custom_financial_reports.report_custom_financial"/>
+    </template>
+
+    <template id="report_custom_financial">
+        <t t-call="web.html_container">
+        <!--<t t-foreach="docs" t-as="o">-->
+        <t t-call="web.internal_layout">
+        <div class="page" style="direction:rtl;font-size:16px;font-family:Arial">
+            <style>
+                .border-table td{
+                    border-bottom:1px solid #eee;
+                    padding:5px;
+                }
+                .border-table thead td{
+                    border-bottom:1px solid #aaa;
+                }
+                .bold td{
+                    font-weight: bold;
+                }
+                .underline td{
+                     text-decoration: underline;
+                }
+                .gray-row{
+                    background-color: #f9f9f9;
+                }
+            </style>
+            <p style="font-size:22px;font-weight: bold;text-decoration: underline; color:#555"><span t-esc="report_name"/></p>
+            <span t-esc="report_name_analytic"/>
+            <t t-set="gray_row" t-value="False"/>
+            <table class="border-table" style="width: 100%; margin-top:20px">
+                <thead>
+                    <tr>
+                        <td/>
+                        <t t-foreach="sorted_x" t-as="name">
+                            <td> <span t-esc="col_names[str(name)]"/> </td>
+                        </t>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="lines" t-as="line">
+                        <tr t-att-class="'%s %s %s'%(line['bold'] and 'bold' or '',line['underline'] and 'underline' or '',gray_row and 'gray-row' or '')"> <!---->
+                            <td t-att-style="'padding-right:%spx' % (line['level'] * 10)"><span t-esc="line['name']"/> </td>
+
+                            <t t-foreach="sorted_x" t-as="col_name">
+                                <t t-set="col_name" t-value="str(col_name)"/>
+                                <td>
+                                    <t t-if="line['show_val']">
+                                        <t t-set="balance" t-value="line['vals'][col_name]['balance']"/>
+                                        <span t-esc="func(balance)"/>
+                                    </t>
+                                </td>
+                            </t>
+                        </tr>
+                        <t t-set="gray_row" t-value="not gray_row"/>
+                    </t>
+                </tbody>
+            </table>
+        </div>
+        </t>
+        <!--</t>-->
+        </t>
+    </template>
+
+
+    </data>
+</odoo>

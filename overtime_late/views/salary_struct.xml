@@ -1,0 +1,41 @@
+<odoo>
+    <data>
+
+        <!-- Overtime-->
+        <record model="hr.salary.rule" id="overtime_salary_rule">
+            <field name="name">Overtime</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="code">OVT</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = payslip.dict.RULE_overtime()</field>
+            <field eval="20" name="sequence"/>
+        </record>
+
+        <!-- Absence-->
+        <record model="hr.salary.rule" id="Abs_salary_rule">
+            <field name="name">Absence / Delay</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="code">ABS</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = payslip.dict.RULE_absence()</field>
+            <field eval="70" name="sequence"/>
+        </record>
+
+
+
+        <!-- Salary Structure -->
+        <record id="saudi_hr_payroll.rz_salary_structure" model="hr.payroll.structure">
+            <field name="name">Salary Structure</field>
+            <field name="code">RZ</field>
+            <field name="parent_id" eval="False"/>
+            <field name="is_default" eval="True"/>
+            <field name="rule_ids" eval="[
+            (4, ref('overtime_late.overtime_salary_rule'), 0,),
+            (4, ref('overtime_late.Abs_salary_rule'), 0,),
+            ]"/>
+        </record>
+
+    </data>
+</odoo>
