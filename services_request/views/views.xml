@@ -1,0 +1,238 @@
+<odoo>
+    <data>
+
+        <record id="service_request_config_form" model="ir.ui.view">
+            <field name="name">service.request.config.form</field>
+            <field name="model">service.request.config</field>
+            <field name="arch" type="xml">
+                <form string="Request for a service Configuration">
+                    <header>
+                        <button name="action_approve" string="Approve" type="object" class="oe_highlight" groups="hr.group_hr_manager" confirm="Are you sure that you want to approve this service type ? "
+                                attrs="{'invisible': [('state', '!=', 'New')]}"/>
+                        <button name="action_set_new" states="Approved" string="Set To New" type="object" class="oe_highlight" groups="hr.group_hr_manager" confirm="Are you sure that you want to set this service type to new ? "/>
+                        <field name="state" widget="statusbar" readonly="1"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_inline oe_stat_button" name="action_request_services" type="object" icon="fa-calender" >
+                                <field string="Performed services" name="service_request_count" widget="statinfo"/>
+                            </button>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="code" readonly="1"/>
+                                <field name="name" required="1" attrs="{'readonly':[('state', '=', 'Approved')]}"/>
+                                <field name="english_name" required="1" attrs="{'readonly':[('state', '=', 'Approved')]}"/>
+                                <field name="active" attrs="{'readonly':[('state', '=', 'Approved')]}" />
+                                <field name="type" required="1" attrs="{'readonly':[('state', '=', 'Approved')]}"/>
+                                <field name="benefit_name" attrs="{'readonly':[('state', '=', 'Approved')]}"/>
+                            </group>
+                            <group>
+                                <field name="attach_doc" attrs="{'readonly':[('state', '=', 'Approved')]}" />
+                                <field name="attach_num" attrs="{'readonly':[('state', '=', 'Approved')],'invisible':[('attach_doc', '=', False)]}"/>
+                                <field name="is_print" attrs="{'readonly':[('state', '=', 'Approved')]}" />
+                                <label for="print_for" attrs="{'invisible':[('is_print', '=', False)]}"/>
+                                <div>
+                                    <field name="print_for" class="oe_inline" attrs="{'readonly':[('state', '=', 'Approved')],'invisible':[('is_print', '=', False)]}"/> Days
+                                </div>
+                                <field name="allow_in_trial" attrs="{'readonly':[('state', '=', 'Approved')]}"/>
+                                <field name="change_bank_info" attrs="{'readonly':[('state', '=', 'Approved')],'invisible':[('type', '!=', 'Salary Transfer Request')]}" />
+                                <field name="responsible_id" attrs="{'readonly':[('state', '=', 'Approved')]}" required="1" options="{'no_create': True}"/>
+                            </group>
+                        </group>
+                        <notebook groups="hr.group_hr_user">
+                            <page string="Service terms and condition">
+                                <field name="terms_condition" attrs="{'readonly':[('state', '=', 'Approved')]}"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="service_request_config_tree" model="ir.ui.view">
+            <field name="name">service.request.config.tree</field>
+            <field name="model">service.request.config</field>
+            <field name="arch" type="xml">
+                <tree string="Request for a service Configuration">
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="english_name"/>
+                    <field name="type"/>
+                    <field name="benefit_name"/>
+                    <field name="attach_doc" />
+                    <field name="attach_num" />
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="service_request_config_search" model="ir.ui.view">
+            <field name="name">service.request.config.search</field>
+            <field name="model">service.request.config</field>
+            <field name="arch" type="xml">
+                <search string="Request for a service Configuration Search">
+                    <filter name="active" string="Active" domain="[('active', '=', True)]"/>
+                    <filter name="inactive" string="Inactive" domain="[('active', '=', False)]"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_service_request_config" model="ir.actions.act_window">
+            <field name="name">Request for a service Configuration</field>
+            <field name="res_model">service.request.config</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem id="menu_service_request_config_root" name="Request for services"  parent="hr.menu_human_resources_configuration" sequence="16"/>
+        <menuitem id="menu_service_request_config" name="Request for a service Configuration"  parent="menu_service_request_config_root" sequence="1"
+                  action="action_service_request_config"/>
+
+        <record id="service_request_form" model="ir.ui.view">
+            <field name="name">service.request.form</field>
+            <field name="model">service.request</field>
+            <field name="arch" type="xml">
+                <form string="Request for a service">
+                    <header>
+                        <button name="action_print" string="Print" type="object" class="oe_highlight" groups="hr.group_hr_user"
+                                attrs="{'invisible': [('show_print', '=', False)]}"/>
+                        <field name="show_print" invisible="1"/>
+                        <field name="show_buttons" invisible="1"/>
+                        <button name="action_start" string="Start Process" type="object" class="oe_highlight"
+                                attrs="{'invisible': ['|',('state', '!=', 'New'),('show_buttons', '=', False)]}"/>
+                        <button name="action_done" string="Done / Service performed" type="object" class="oe_highlight"
+                                attrs="{'invisible': ['|',('state', '!=', 'Process Started'),('show_buttons', '=', False)]}" confirm="Are you sure that service already performed?"/>
+                        <button name="action_refuse" string="Refuse" type="object" class="oe_highlight"
+                                attrs="{'invisible': ['|',('state', '!=', 'New'),('show_buttons', '=', False)]}" confirm="Are you sure that you want to refuse this request ?"/>
+                        <button name="action_set_new" string="Set To New" type="object" class="oe_highlight"
+                                attrs="{'invisible': ['|',('state', 'not in', ['Process Started','Refused']),('show_buttons', '=', False)]}" confirm="Are you sure that you want to set this transaction to new ?"/>
+                        <field name="state" widget="statusbar" readonly="1"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <!--<button type="object" name="open_loan_requests" icon="fa-arrow-left" class="oe_inline oe_stat_button">-->
+                                <!--<field string="Loan / advances Requests" name="count_loan_requests" widget="statinfo"/>-->
+                            <!--</button>-->
+                        </div>
+                        <group>
+                            <group>
+                                <field name="code" readonly="1"/>
+                                <field name="employee_id" required="1" attrs="{'readonly':[('state', '!=', 'New')]}" options="{'no_create': True}"/>
+                                <field name="employee_number" readonly="1"/>
+                                <field name="nationality_type" readonly="1" />
+                                <field name="branch_id" readonly="1" />
+                                <field name="department_id" readonly="1" />
+                                <field name="job_id" readonly="1" />
+                                <field name="country_id" readonly="1" />
+                                <field name="gender" readonly="1" />
+                                <field name="contract_id" readonly="1"/>
+                                <field name="config_id" required="1" options="{'no_create': True}" attrs="{'readonly':[('state', '!=', 'New')]}"/>
+                                <field name="type"  groups="base.group_no_one" readonly="1"/>
+                                <field name="benefit_name" attrs="{'invisible':[('is_benefit', '=', False)],'required':[('is_benefit', '=', True)],'readonly':[('state', '!=', 'New')]}"/>
+                                <field name="benefit_name_english" attrs="{'invisible':[('is_benefit', '=', False)],'required':[('is_benefit', '=', True)],'readonly':[('state', '!=', 'New')]}"/>
+                                <field name="is_benefit" invisible="1"/>
+                            </group>
+                            <group>
+                                <field name="new_bank" attrs="{'invisible':[('type', '!=', 'Salary Transfer Request')],'required':[('type', '=', 'Salary Transfer Request')],'readonly':[('state', '!=', 'New')]}" options="{'no_create': True}"/>
+                                <field name="new_iban_number" attrs="{'invisible':[('type', '!=', 'Salary Transfer Request')],'required':[('type', '=', 'Salary Transfer Request')],'readonly':[('state', 'not in', ['New','Process Started'])]}" />
+                                <field name="current_bank" readonly="1" attrs="{'invisible':[('type', '!=', 'Salary Transfer Request')]}" options="{'no_create': True}"/>
+                                <field name="current_account_number" readonly="1" attrs="{'invisible':[('type', '!=', 'Salary Transfer Request')]}" options="{'no_create': True}"/>
+                                <field name="has_bank_loan" readonly="1" attrs="{'invisible':[('type', '!=', 'Salary Transfer Request')]}" options="{'no_create': True}"/>
+
+                                <field name="loan_bank_name" readonly="1" attrs="{'invisible':['|',('has_bank_loan', '=', False),('type', '!=', 'Salary Transfer Request')]}" options="{'no_create': True}"/>
+                                <field name="loan_bank_amount" readonly="1" attrs="{'invisible':['|',('has_bank_loan', '=', False),('type', '!=', 'Salary Transfer Request')]}" options="{'no_create': True}"/>
+                                <field name="loan_bank_date" readonly="1" attrs="{'invisible':['|',('has_bank_loan', '=', False),('type', '!=', 'Salary Transfer Request')]}" options="{'no_create': True}"/>
+                                <field name="loan_bank_note" readonly="1" attrs="{'invisible':['|',('has_bank_loan', '=', False),('type', '!=', 'Salary Transfer Request')]}" options="{'no_create': True}"/>
+                            </group>
+                        </group>
+                        <notebook >
+                            <page string="Attachments">
+                                <group>
+                                    <field name="attachment_ids" nolabel="1" attrs="{'readonly':[('state', '!=', 'New')]}">
+                                        <tree editable="bottom">
+                                            <field name="name" required="1"/>
+                                            <field name="file_name" invisible="1" />
+                                            <field name="file" required="1" filename="file_name"/>
+                                            <field name="note"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Service terms and condition">
+                                <field name="terms_condition" readonly="1"/>
+                            </page>
+                            <page string="Approvals">
+                                <group>
+                                    <field name="create_uid" readonly="1"/>
+                                    <field name="create_date" readonly="1"/>
+                                    <field name="started_by" readonly="1"/>
+                                    <field name="started_on" readonly="1"/>
+                                    <field name="done_by" readonly="1"/>
+                                    <field name="done_on" readonly="1"/>
+                                    <field name="printed_by" readonly="1"/>
+                                    <field name="printed_on" readonly="1"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="service_request_tree" model="ir.ui.view">
+            <field name="name">service.request.tree</field>
+            <field name="model">service.request</field>
+            <field name="arch" type="xml">
+                <tree string="Request for a service">
+                    <field name="code"/>
+                    <field name="employee_id"/>
+                    <field name="department_id"/>
+                    <field name="job_id"/>
+                    <field name="type"/>
+                    <field name="benefit_name" />
+                    <field name="benefit_name_english" />
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_service_request" model="ir.actions.act_window">
+            <field name="name">Request for a service</field>
+            <field name="res_model">service.request</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem id="menu_service_request_root" name="Services"  parent="saudi_hr_employee.menu_employee_parent" sequence="3"/>
+        <menuitem id="menu_service_request" name="Request for a service"  parent="menu_service_request_root" sequence="1"
+                  action="action_service_request"/>
+
+
+        <record id="request_service_view_employee_form" model="ir.ui.view">
+            <field name="name">hr.employee.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="priority" eval="12"/>
+            <field name="arch" type="xml">
+                <div name="button_box" position="inside">
+                    <button class="oe_inline oe_stat_button" name="action_request_services" type="object" icon="fa-calender" >
+                        <field string="Request for a service" name="service_request_count" widget="statinfo"/>
+                    </button>
+                </div>
+            </field>
+        </record>
+
+    </data>
+</odoo>

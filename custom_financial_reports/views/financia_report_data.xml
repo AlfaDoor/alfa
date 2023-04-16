@@ -1,0 +1,974 @@
+<odoo>
+    <data noupdate="1">
+        <record id="income_statement_report" model="financial.report.config">
+            <field name="name">قــــــائـــمــــــة الــــــدخـــــــل</field>
+            <field name="direction">rtl</field>
+            <field name="type">date_range</field>
+            <field name="use_analytic_account_in_name" eval="True"/>
+        </record>
+        <record id="balance_sheet_report" model="financial.report.config">
+            <field name="name">قـــائـــمـــة الـــمـــركـــز الـــمـــالــى</field>
+            <field name="direction">rtl</field>
+            <field name="type">no_date_range</field>
+            <field name="use_analytic_account_in_name" eval="False"/>
+        </record>
+        <record id="cash_flow_report" model="financial.report.config">
+            <field name="name">قـائـمـة الـتـدفـقـات الـنـقـديـه</field>
+            <field name="direction">rtl</field>
+            <field name="type">date_range</field>
+            <field name="use_analytic_account_in_name" eval="False"/>
+        </record>
+
+        <!--BALANCE SHEET-->
+
+        <record id="assets_1" model="financial.report.config.line">
+            <field name="financial_report_config_id" eval="ref('balance_sheet_report')"/>
+            <field name="name">الموجودات</field>
+            <field name="code">TA1</field>
+            <field name="formula">balance = _('CA1').balance + _('NCA1').balance</field>
+            <field name="level" eval="1"/>
+            <field name="sequence" eval="1"/>
+            <field name="label_top" eval=""/>
+            <field name="label_top_bold" eval="True"/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval=""/>
+            <field name="has_total_end" eval="True"/>
+            <field name="total_end_name">إجــــمــــالى الموجودات</field>
+            <field name="separate_after_section" eval="True"/>
+        </record>
+
+        <record id="current_assets_1" model="financial.report.config.line">
+            <field name="name">الموجودات المتداولة</field>
+            <field name="code">CA1</field>
+            <field name="parent_id" ref="assets_1"/>
+            <field name="sequence" eval="1"/>
+            <field name="formula">balance = _('BA1').balance + _('REC1').balance + _('OTH_REC1').balance + _('GOV_INV1').balance</field>
+            <field name="level" eval="1"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval="True"/>
+            <field name="has_total_line" eval=""/>
+            <field name="has_total_end" eval="True"/>
+            <field name="total_end_name">إجــــمــــالى الموجودات المتداولة</field>
+        </record>
+
+        <record id="cash_1" model="financial.report.config.line">
+            <field name="name">النقديه و ما فى حكمها</field>
+            <field name="code">BA1</field>
+            <field name="parent_id" ref="current_assets_1"/>
+            <field name="sequence" eval="1"/>
+            <field name="formula">balance = sum.debit - sum.credit</field>
+            <field name="domain">[('account_id.user_type_id.code', '=', '012')]</field>
+            <field name="level" eval="2"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+        </record>
+
+        <record id="receivables_1" model="financial.report.config.line">
+            <field name="name">ذمم مدينه</field>
+            <field name="code">REC1</field>
+            <field name="parent_id" ref="current_assets_1"/>
+            <field name="sequence" eval="2"/>
+            <field name="formula">balance = sum.balance</field>
+            <field name="domain">[('account_id.user_type_id.code', 'in', [ '011', '017' ])]</field>
+            <field name="level" eval="2"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+        </record>
+
+        <record id="othr_debits_1" model="financial.report.config.line">
+            <field name="name">أرصدة مدينه أخرى</field>
+            <field name="code">OTH_REC1</field>
+            <field name="parent_id" ref="current_assets_1"/>
+            <field name="sequence" eval="3"/>
+            <field name="formula">balance = sum.balance</field>
+            <field name="domain">[[ 'account_id.user_type_id.code', '=', '04' ]]</field>
+            <field name="level" eval="2"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+        </record>
+
+        <record id="inv_gov_1" model="financial.report.config.line">
+            <field name="name">استثمارات فى سندات حكوميه</field>
+            <field name="code">GOV_INV1</field>
+            <field name="parent_id" ref="current_assets_1"/>
+            <field name="sequence" eval="4"/>
+            <field name="formula">balance = sum.balance</field>
+            <field name="domain">[[ 'account_id.user_type_id.code', '=', '06' ]]</field>
+            <field name="level" eval="2"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+        </record>
+
+        <record id="non_current_assets" model="financial.report.config.line">
+            <field name="name">الموجودات الغير متداوله</field>
+            <field name="code">NCA1</field>
+            <field name="parent_id" ref="assets_1"/>
+            <field name="formula">balance = _('COM_INV1').balance + _('FA1').balance</field>
+            <field name="level" eval="1"/>
+            <field name="sequence" eval="2"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval="True"/>
+            <field name="has_total_line" eval=""/>
+            <field name="has_total_end" eval="True"/>
+            <field name="total_end_name">إجــــــمـــــالى الموجودات الغير متداوله</field>
+        </record>
+
+        <record id="fixed_assets_1" model="financial.report.config.line">
+            <field name="name">الاصول الثابته</field>
+            <field name="code">FA1</field>
+            <field name="parent_id" ref="non_current_assets"/>
+            <field name="sequence" eval="1"/>
+            <field name="formula">balance = sum.balance</field>
+            <field name="domain">[['account_id.user_type_id.code', 'in', ['07', '018']]]</field>
+            <field name="level" eval="2"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+        </record>
+
+        <record id="COM_INVx_1" model="financial.report.config.line">
+            <field name="name">إستثمارات فى حصص شركات</field>
+            <field name="code">COM_INV1</field>
+            <field name="parent_id" ref="non_current_assets"/>
+            <field name="formula">balance = sum.balance</field>
+            <field name="domain">[('account_id.user_type_id.code', '=', '05')]</field>
+            <field name="level" eval="2"/>
+            <field name="sequence" eval="2"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+        </record>
+
+
+        <record id="liabilities_1" model="financial.report.config.line">
+            <field name="financial_report_config_id" eval="ref('balance_sheet_report')"/>
+            <field name="name">الــمــطــاــوبــــات</field>
+            <field name="code">L1</field>
+            <field name="formula">balance = _('CL1').balance + _('NON-CURRENT-LIABILITIES').balance + _('ASD1').balance</field>
+            <field name="level" eval="1"/>
+            <field name="sequence" eval="2"/>
+            <field name="label_top" eval=""/>
+            <field name="label_top_bold" eval="True"/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval=""/>
+            <field name="has_total_end" eval="True"/>
+            <field name="total_end_name">إجـــــمـــــالى الــمــطــاــوبــــات</field>
+        </record>
+
+        <record id="current_liabilities_1" model="financial.report.config.line">
+            <field name="name">الــمــطــاــوبــــات المتداوله</field>
+            <field name="code">CL1</field>
+            <field name="parent_id" ref="liabilities_1"/>
+            <field name="formula">balance = _('PAY1').balance + _('OTHR_CL1').balance</field>
+            <field name="domain"></field>
+            <field name="level" eval="1"/>
+            <field name="sequence" eval="1"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval="True"/>
+            <field name="has_total_line" eval=""/>
+            <field name="has_total_end" eval="True"/>
+            <field name="total_end_name">إجــــمـــــالى الــمــطــاــوبــــات المتداوله</field>
+        </record>
+
+        <record id="trade_payable_1" model="financial.report.config.line">
+            <field name="name">ذمم دائنه تجاريه</field>
+            <field name="code">PAY1</field>
+            <field name="parent_id" ref="current_liabilities_1"/>
+            <field name="sequence" eval="1"/>
+            <field name="formula">balance = - sum.balance</field>
+            <field name="domain">[['account_id.user_type_id.code', '=', '014']]</field>
+            <field name="level" eval="2"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+        </record>
+
+        <record id="other_current_liabilities_1" model="financial.report.config.line">
+            <field name="name">الــمــطــاــوبــــات المتداوله الأخرى</field>
+            <field name="code">OTHR_CL1</field>
+            <field name="parent_id" ref="current_liabilities_1"/>
+            <field name="formula">balance = -sum.balance</field>
+            <field name="domain">[['account_id.user_type_id.code', '=', '08']]</field>
+            <field name="level" eval="2"/>
+            <field name="sequence" eval="2"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+        </record>
+
+        <record id="non_current_assets_1" model="financial.report.config.line">
+            <field name="name">الــمــطــاــوبــــات الغير متداولة</field>
+            <field name="code">NON-CURRENT-LIABILITIES</field>
+            <field name="parent_id" ref="liabilities_1"/>
+            <field name="sequence" eval="2"/>
+            <field name="formula">balance = _('EOS_P1').balance + _('LTL_1').balance</field>
+            <field name="domain"></field>
+            <field name="level" eval="1"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval="True"/>
+            <field name="has_total_line" eval=""/>
+            <field name="has_total_end" eval="True"/>
+            <field name="total_end_name">إجـــــمـــــالى الــمــطــاــوبــــات الغير متداولة</field>
+        </record>
+
+        <record id="eos_p_1" model="financial.report.config.line">
+            <field name="name">مخصص مكافأة نهاية الخدمه</field>
+            <field name="code">EOS_P1</field>
+            <field name="parent_id" ref="non_current_assets_1"/>
+            <field name="formula">balance= -sum.balance</field>
+            <field name="domain">[['account_id.user_type_id.code', '=', '016']]</field>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="3"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+            <field name="separate_after_section" eval=""/>
+            <field name="budget_item_ids" eval=""/>
+            <field name="distribute" eval=""/>
+        </record>
+
+        <record id="ltl_1" model="financial.report.config.line">
+            <field name="name">قروض طويلة الاجل</field>
+            <field name="code">LTL_1</field>
+            <field name="parent_id" ref="non_current_assets_1"/>
+            <field name="formula">balance= -sum.balance</field>
+            <field name="domain">[['account_id.user_type_id.code', '=', '019']]</field>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="3"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+            <field name="separate_after_section" eval=""/>
+            <field name="budget_item_ids" eval=""/>
+            <field name="distribute" eval=""/>
+        </record>
+
+        <record id="equity_1" model="financial.report.config.line">
+            <field name="name">حـقـوق الـمـلـكـيـة</field>
+            <field name="code">ASD1</field>
+            <field name="parent_id" ref="liabilities_1"/>
+            <field name="formula">balance = _('ASDF1').balance + _('NET_PERIOD_PROFIT1').balance</field>
+            <field name="domain"></field>
+            <field name="sequence" eval="3"/>
+            <field name="level" eval="1"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval="True"/>
+            <field name="has_total_line" eval=""/>
+            <field name="has_total_end" eval="True"/>
+            <field name="total_end_name">إجــــمـــــالى حـقـوق الـمـلـكـيـة</field>
+        </record>
+
+        <record id="shareholders_equity_1" model="financial.report.config.line">
+            <field name="name">حقوق المساهمين</field>
+            <field name="code">ASDF1</field>
+            <field name="parent_id" ref="equity_1"/>
+            <field name="sequence" eval="1"/>
+            <field name="formula">balance = -sum.balance</field>
+            <field name="domain">[['account_id.user_type_id.code', '=', '010']]</field>
+            <field name="level" eval="2"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+        </record>
+
+        <record id="net_period_profit_1" model="financial.report.config.line">
+            <field name="name">صافى ربح الفتره</field>
+            <field name="code">NET_PERIOD_PROFIT1</field>
+            <field name="parent_id" ref="equity_1"/>
+            <field name="sequence" eval="2"/>
+            <field name="formula">balance = -sum.balance #TOTAL_INC.balance - TOTAL_E1.balance</field>
+            <field name="domain">[('account_id.user_type_id.code', 'in', [ '02', '01', '03', '015', '09'])]</field>
+            <field name="level" eval="2"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+        </record>
+
+        <!-- Profit & Loss -->
+
+        <record id="net_profit" model="financial.report.config.line">
+            <field name="financial_report_config_id" eval="income_statement_report"/>
+            <field name="name">صــافــــى الــــدخـــــــل</field>
+            <field name="code">NEP2</field>
+            <field name="parent_id" ref=""/>
+            <field name="formula">balance = _('NET_PROFIT2').balance
+budgeted = _('NET_PROFIT2').budgeted
+budget_v = budgeted and round((balance-budgeted) / budgeted, 2) or 0
+            </field>
+            <field name="domain"></field>
+            <field name="level" eval="1"/>
+            <field name="sequence" eval="1"/>
+            <field name="label_top" eval=""/>
+            <field name="label_top_bold" eval="True"/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval=""/>
+            <field name="has_total_end" eval="True"/>
+            <field name="total_end_name">صــافــــى الــــدخـــــــل</field>
+        </record>
+
+        <record id="gross_profit_2" model="financial.report.config.line">
+            <field name="name">إجــمــــالـــى الــــربــــح</field>
+            <field name="code">GRP2</field>
+            <field name="parent_id" ref="net_profit"/>
+            <field name="formula">balance = _('INC2').balance - _('COS2').balance
+budgeted = _('INC2').budgeted - _('COS2').budgeted
+budget_v = budgeted and round((balance-budgeted) / budgeted, 2) or 0
+            </field>
+            <field name="domain">[('account_id.user_type_id.code', '=', '02'), '|', '|', '|', ('analytic_account_id.final_code', 'ilike',
+                '133'),('analytic_account_id.final_code', 'ilike', '143'),('analytic_account_id.final_code', 'ilike',
+                '17300'),('analytic_account_id.final_code', 'ilike', '1731'),]
+            </field>
+            <field name="level" eval="1"/>
+            <field name="sequence" eval="0"/>
+            <field name="label_top" eval=""/>
+            <field name="label_top_bold" eval="True"/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval=""/>
+            <field name="has_total_end" eval="True"/>
+            <field name="total_end_name">إجــمــــالـــى الــــربــــح</field>
+            <field name="separate_after_section" eval=""/>
+            <field name="budget_item_ids" eval=""/>
+            <field name="distribute" eval=""/>
+        </record>
+
+        <record id="total_revenue_2" model="financial.report.config.line">
+            <field name="name">الايرادات</field>
+            <field name="code">INC2</field>
+            <field name="parent_id" ref="gross_profit_2"/>
+            <field name="formula">balance = sum.credit -sum.debit
+budgeted = sum.budgeted
+budget_v = budgeted and round((balance-budgeted) / budgeted, 2) or 0
+            </field>
+            <field name="domain">[('account_id.user_type_id.code', '=', '02')]
+            </field>
+            <field name="level" eval="1"/>
+            <field name="sequence" eval="1"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+            <field name="separate_after_section" eval=""/>
+            <field name="distribute" eval=""/>
+        </record>
+
+        <record id="cost_of_good_sold_2" model="financial.report.config.line">
+            <field name="name">تكلفة الايرادات</field>
+            <field name="code">COS2</field>
+            <field name="parent_id" ref="gross_profit_2"/>
+            <field name="formula">balance = sum.debit - sum.credit
+budgeted = sum.budgeted
+budget_v = budgeted and round((balance-budgeted) / budgeted, 2) or 0
+            </field>
+            <field name="domain">[ ('account_id.user_type_id.code', '=', '015' ), '|', '|', '|', ('analytic_account_id.final_code', 'ilike',
+                '133'),('analytic_account_id.final_code', 'ilike', '143'),('analytic_account_id.final_code', 'ilike',
+                '17300'),('analytic_account_id.final_code', 'ilike', '1731'),]
+            </field>
+            <field name="level" eval="1"/>
+            <field name="sequence" eval="3"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+            <field name="separate_after_section" eval=""/>
+            <field name="budget_item_ids" eval=""/>
+            <field name="distribute" eval=""/>
+        </record>
+
+        <record id="P_OP2" model="financial.report.config.line">
+            <field name="name">الربح من العمليات</field>
+            <field name="code">P_OP2</field>
+            <field name="parent_id" ref="net_profit"/>
+            <field name="formula">balance =_('GRP2').balance - _('GNRL_EX2').balance
+budgeted = _('GRP2').budgeted - _('GNRL_EX2').budgeted
+budget_v = budgeted and round((balance-budgeted) / budgeted, 2) or 0
+            </field>
+            <field name="domain"></field>
+            <field name="level" eval="1"/>
+            <field name="sequence" eval="2"/>
+            <field name="label_top" eval=""/>
+            <field name="label_top_bold" eval="True"/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval=""/>
+            <field name="has_total_end" eval="True"/>
+            <field name="total_end_name">الربح من العمليات</field>
+            <field name="separate_after_section" eval=""/>
+            <field name="budget_item_ids" eval=""/>
+            <field name="distribute" eval=""/>
+        </record>
+
+        <record id="GNRL_EX2" model="financial.report.config.line">
+            <field name="name">مصروفات عموميه</field>
+            <field name="code">GNRL_EX2</field>
+            <field name="parent_id" ref="P_OP2"/>
+            <field name="formula">balance = sum.debit - sum.credit
+budgeted = sum.budgeted
+budget_v = budgeted and round((balance-budgeted) / budgeted, 2) or 0
+            </field>
+            <field name="domain">[('account_id.user_type_id.code', '=', '015'), '|', '|', '|', '|', '|', '|', '|', '|', '|', '|','|',
+('analytic_account_id.final_code', 'ilike', '11100'),('analytic_account_id.final_code', 'ilike', '11110'),('analytic_account_id.final_code',
+'ilike', '11111'),('analytic_account_id.final_code', 'ilike', '11120'),('analytic_account_id.final_code', 'ilike',
+'13311130'),('analytic_account_id.final_code', 'ilike', '11140'),('analytic_account_id.final_code', 'ilike',
+'122'),('analytic_account_id.final_code', 'ilike', '153'),('analytic_account_id.final_code', 'ilike', '163'),('analytic_account_id.final_code',
+'ilike', '17320'),('analytic_account_id.final_code', 'ilike', '17330'),('analytic_account_id.final_code', 'ilike', '136'),]
+            </field>
+            <field name="level" eval="1"/>
+            <field name="sequence" eval="0"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+            <field name="separate_after_section" eval=""/>
+            <field name="budget_item_ids" eval=""/>
+            <field name="distribute" eval="True"/>
+        </record>
+
+        <record id="NET_B_TAX2" model="financial.report.config.line">
+            <field name="name">صافى الربح قبل الزكاه</field>
+            <field name="code">NET_B_TAX2</field>
+            <field name="parent_id" ref="net_profit"/>
+            <field name="formula">balance = _('P_OP2').balance + _('I_INV2').balance + _('O_INC2').balance
+budgeted = _('P_OP2').budgeted +_('I_INV2').budgeted - _('O_INC2').budgeted
+budget_v = budgeted and round((balance-budgeted) / budgeted, 2) or 0
+            </field>
+            <field name="domain"></field>
+            <field name="level" eval="1"/>
+            <field name="sequence" eval="3"/>
+            <field name="label_top" eval=""/>
+            <field name="label_top_bold" eval="True"/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval=""/>
+            <field name="has_total_end" eval="True"/>
+            <field name="total_end_name">صافى الربح قبل الزكاه</field>
+            <field name="budget_item_ids" eval=""/>
+            <field name="distribute" eval=""/>
+        </record>
+
+        <record id="O_INC2" model="financial.report.config.line">
+            <field name="name">ايرادات اخرى</field>
+            <field name="code">O_INC2</field>
+            <field name="parent_id" ref="NET_B_TAX2"/>
+            <field name="formula">balance = sum.credit - sum.debit
+budgeted = sum.budgeted
+budget_v = budgeted and round((balance-budgeted) / budgeted, 2) or 0
+            </field>
+            <field name="domain">[('account_id.user_type_id.code', '=', '03')]</field>
+            <field name="level" eval="1"/>
+            <field name="sequence" eval="0"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+            <field name="separate_after_section" eval=""/>
+            <field name="budget_item_ids" eval=""/>
+            <field name="distribute" eval=""/>
+        </record>
+
+        <record id="I_INV2" model="financial.report.config.line">
+            <field name="name">ارباح استثمارات</field>
+            <field name="code">I_INV2</field>
+            <field name="parent_id" ref="NET_B_TAX2"/>
+            <field name="formula">balance = sum.credit - sum.debit
+budgeted = sum.budgeted
+budget_v = budgeted and round((balance-budgeted) / budgeted, 2) or 0
+            </field>
+            <field name="domain">[ ('account_id.user_type_id.code', '=', '01') ]</field>
+            <field name="level" eval="1"/>
+            <field name="sequence" eval="0"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+            <field name="separate_after_section" eval=""/>
+            <field name="budget_item_ids" eval=""/>
+            <field name="distribute" eval=""/>
+        </record>
+
+        <record id="NET_PROFIT_2" model="financial.report.config.line">
+            <field name="name">صافى ربح الشركه</field>
+            <field name="code">NET_PROFIT2</field>
+            <field name="parent_id" ref="net_profit"/>
+            <field name="formula">balance = _('NET_B_TAX2').balance - _('TAX2').balance
+budgeted = _('NET_B_TAX2').budgeted- _('TAX2').budgeted
+budget_v = budgeted and round((balance-budgeted) / budgeted, 2) or 0
+            </field>
+            <field name="domain">[ ('account_id.user_type_id.code', '=', '09') ]</field>
+            <field name="level" eval="1"/>
+            <field name="sequence" eval="4"/>
+            <field name="label_top" eval=""/>
+            <field name="label_top_bold" eval="True"/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+            <field name="separate_after_section" eval=""/>
+            <field name="budget_item_ids" eval=""/>
+            <field name="distribute" eval=""/>
+        </record>
+
+        <record id="TAX2" model="financial.report.config.line">
+            <field name="name">الزكاه</field>
+            <field name="code">TAX2</field>
+            <field name="parent_id" ref="NET_PROFIT_2"/>
+            <field name="formula">balance = sum.balance</field>
+            <field name="domain">[ ('account_id.user_type_id.code', '=', '09') ]</field>
+            <field name="level" eval="1"/>
+            <field name="sequence" eval="0"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+            <field name="separate_after_section" eval=""/>
+            <field name="budget_item_ids" eval=""/>
+            <field name="distribute" eval=""/>
+        </record>
+
+        <!--CASH FLOW-->
+
+        <record id="operational_activities_3" model="financial.report.config.line">
+            <field name="financial_report_config_id" eval="cash_flow_report"/>
+            <field name="name">الأنشطة التشغيليه</field>
+            <field name="code">operational_activities_3</field>
+            <field name="formula">balance = _('cash_from_operation_3').balance + _('paid_eoc_3').balance + _('paid_eoc_3').balance</field>
+            <field name="domain"></field>
+            <field name="level" eval="1"/>
+            <field name="sequence" eval="0"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval="True"/>
+            <field name="label_top_underline" eval="True"/>
+            <field name="has_total_line" eval=""/>
+            <field name="has_total_end" eval="True"/>
+            <field name="total_end_name">صافى النقد من الأنشطة التشغيلية</field>
+        </record>
+
+        <record id="income_before_zakat_3" model="financial.report.config.line">
+            <field name="parent_id" ref="operational_activities_3"/>
+            <field name="name">صافى الربح قبل الزكاة</field>
+            <field name="code">income_before_zakat_3</field>
+            <field name="formula">balance = _('NET_B_TAX2').balance</field>
+            <field name="domain"></field>
+            <field name="level" eval="1"/>
+            <field name="sequence" eval="1"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+        </record>
+
+        <record id="changes_3" model="financial.report.config.line">
+            <field name="parent_id" ref="operational_activities_3"/>
+            <field name="name">تعديلات عن :</field>
+            <field name="code">changes_3</field>
+            <field name="formula">balance = _('DEPRECIATION').balance# - _('asset_sale_profit_3').balance + _('EOS_3').balance - _('inv_profit_3').balance
+            </field>
+            <field name="domain"></field>
+            <field name="level" eval="2"/>
+            <field name="sequence" eval="2"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval=""/>
+            <field name="has_total_end" eval=""/>
+        </record>
+
+        <record id="DEPRECIATION_3" model="financial.report.config.line">
+            <field name="parent_id" ref="changes_3"/>
+            <field name="name">إستهلاك</field>
+            <field name="code">DEPRECIATION</field>
+            <field name="formula">balance = sum.debit - sum.credit</field>
+            <field name="domain">[['account_id.final_code', 'in', ['331', '332', '333','334' ]]]</field>
+            <field name="level" eval="3"/>
+            <field name="sequence" eval="1"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+        </record>
+
+        <record id="asset_sale_profit_3" model="financial.report.config.line">
+            <field name="financial_report_config_id" eval=""/>
+            <field name="name">ربح بيع اصول ثابته</field>
+            <field name="code">asset_sale_profit_3</field>
+            <field name="parent_id" ref="changes_3"/>
+            <field name="formula">balance = sum.debit - sum.credit</field>
+            <field name="domain"></field>
+            <field name="level" eval="3"/>
+            <field name="sequence" eval="2"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+        </record>
+
+        <record id="eos_3" model="financial.report.config.line">
+            <field name="name">مكافأة نهاية الخدمه</field>
+            <field name="code">EOS_3</field>
+            <field name="parent_id" ref="changes_3"/>
+            <field name="formula">balance = sum.debit - sum.credit</field>
+            <field name="domain">[['account_id.final_code', 'in', ['310',]]]</field>
+            <field name="level" eval="3"/>
+            <field name="sequence" eval="3"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+        </record>
+
+        <record id="inv_profit_3" model="financial.report.config.line">
+            <field name="name">أرباح استثمار</field>
+            <field name="code">inv_profit_3</field>
+            <field name="parent_id" ref="changes_3"/>
+            <field name="formula">balance = sum.debit - sum.credit</field>
+            <field name="domain"></field>
+            <field name="level" eval="3"/>
+            <field name="sequence" eval="4"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+        </record>
+
+        <record id="changes_in_capital_3" model="financial.report.config.line">
+            <field name="parent_id" ref="operational_activities_3"/>
+            <field name="name">التغيرات فى رأس المال العامل :</field>
+            <field name="code">changes_in_capital_3</field>
+            <field name="formula">balance = _('receivable_3').balance + _('othr_receivable_3').balance + _('accrued_expenses_3').balance + _('accrued_expenses_3').balance
+            </field>
+            <field name="domain"></field>
+            <field name="level" eval="2"/>
+            <field name="sequence" eval="3"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval=""/>
+            <field name="has_total_end" eval=""/>
+        </record>
+
+        <record id="receivable_3" model="financial.report.config.line">
+            <field name="name">ذمم مدينة</field>
+            <field name="code">receivable_3</field>
+            <field name="parent_id" ref="changes_in_capital_3"/>
+            <field name="formula">balance = sum.debit - sum.credit</field>
+            <field name="domain">[['account_id.user_type_id.code', 'in', ['017',]]]</field>
+            <field name="level" eval="3"/>
+            <field name="sequence" eval="1"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+        </record>
+
+        <record id="othr_receivable_3" model="financial.report.config.line">
+            <field name="name">أرصده مدينه أخرى</field>
+            <field name="code">othr_receivable_3</field>
+            <field name="parent_id" ref="changes_in_capital_3"/>
+            <field name="formula">balance = sum.debit - sum.credit</field>
+            <field name="domain">[['account_id.user_type_id.code', 'in', ['04',]]]</field>
+            <field name="level" eval="3"/>
+            <field name="sequence" eval="2"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+        </record>
+
+        <record id="accrued_expenses_3" model="financial.report.config.line">
+            <field name="name">مصاريف مستحقه و مطلوبات اخرى</field>
+            <field name="code">accrued_expenses_3</field>
+            <field name="parent_id" ref="changes_in_capital_3"/>
+            <field name="formula">balance = sum.credit - sum.debit</field>
+            <field name="domain">[['account_id.final_code', 'in', ['21145',]]]</field>
+            <field name="level" eval="3"/>
+            <field name="sequence" eval="3"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+        </record>
+
+        <record id="cash_from_operation_3" model="financial.report.config.line">
+            <field name="name">النقد من العمليات</field>
+            <field name="code">cash_from_operation_3</field>
+            <field name="parent_id" ref="changes_in_capital_3"/>
+            <field name="formula">balance = _('income_before_zakat_3').balance + _('changes_3').balance + _('changes_in_capital_3').balance</field>
+            <field name="domain">[['account_id.final_code', 'in', ['21145',]]]</field>
+            <field name="level" eval="2"/>
+            <field name="sequence" eval="4"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+        </record>
+
+        <record id="paid_eoc_3" model="financial.report.config.line">
+            <field name="name">مكافأة نهاية الخدمه مدفوعه</field>
+            <field name="code">paid_eoc_3</field>
+            <field name="parent_id" ref="operational_activities_3"/>
+            <field name="formula">balance = sum.debit</field>
+            <field name="domain">[['account_id.final_code', 'in', ['2121',]]]</field>
+            <field name="level" eval="3"/>
+            <field name="sequence" eval="3"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+        </record>
+
+        <record id="paid_zakat_3" model="financial.report.config.line">
+            <field name="name">زكاة مدفوعه</field>
+            <field name="code">paid_eoc_3</field>
+            <field name="parent_id" ref="operational_activities_3"/>
+            <field name="formula">balance = sum.debit</field>
+            <field name="domain">[['account_id.final_code', 'in', ['21172',]]]</field>
+            <field name="level" eval="3"/>
+            <field name="sequence" eval="3"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+        </record>
+
+        <!--CASH FLOW ( INVESTMENT ACTIVITIES )-->
+        <record id="inv_activities_3" model="financial.report.config.line">
+            <field name="financial_report_config_id" ref="cash_flow_report"/>
+            <field name="name">الانشطه الاستثماريه</field>
+            <field name="code">inv_activities_3</field>
+            <field name="formula">balance = _('plus_fixed_assets_3').balance + _('paid_asset_sale_3').balance + _('minus_inv_gov_bond_3').balance + _('received_inv_profit_3').balance</field>
+            <field name="domain"></field>
+            <field name="level" eval="1"/>
+            <field name="sequence" eval="2"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval="True"/>
+            <field name="label_top_underline" eval="True"/>
+            <field name="has_total_line" eval=""/>
+            <field name="has_total_end" eval="True"/>
+            <field name="total_end_name">صافى النقد من الانشطه الاستثماريه</field>
+        </record>
+
+        <record id="plus_fixed_assets_3" model="financial.report.config.line">
+            <field name="parent_id" ref="inv_activities_3"/>
+            <field name="name">اضافة ممتلكات و معدات</field>
+            <field name="code">plus_fixed_assets_3</field>
+            <field name="formula">balance = - sum.debit</field>
+            <field name="domain">[['account_id.user_type_id.code','in', ['07', ]]]</field>
+            <field name="level" eval="2"/>
+            <field name="sequence" eval="1"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+        </record>
+
+        <record id="paid_asset_sale_3" model="financial.report.config.line">
+            <field name="parent_id" ref="inv_activities_3"/>
+            <field name="name">المتحصل من بيع ممتلكات و معدات</field>
+            <field name="code">paid_asset_sale_3</field>
+            <field name="formula">balance = sum.credit</field>
+            <field name="domain">[['account_id.user_type_id.code','in', ['07', ]]]</field>
+            <field name="level" eval="2"/>
+            <field name="sequence" eval="2"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+        </record>
+
+        <record id="minus_inv_gov_bond_3" model="financial.report.config.line">
+            <field name="parent_id" ref="inv_activities_3"/>
+            <field name="name">استبعاد استثمارات فى سندات حكوميه محليه</field>
+            <field name="code">minus_inv_gov_bond_3</field>
+            <field name="formula">balance = sum.credit</field>
+            <field name="domain">[['account_id.final_code','in', ['1211', ]]]</field>
+            <field name="level" eval="2"/>
+            <field name="sequence" eval="3"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+        </record>
+
+        <record id="received_inv_profit_3" model="financial.report.config.line">
+            <field name="parent_id" ref="inv_activities_3"/>
+            <field name="name">ارباح استثمارات مستلمه</field>
+            <field name="code">received_inv_profit_3</field>
+            <field name="formula">balance = sum.credit - sum.debit</field>
+            <field name="domain">[['account_id.final_code', 'in', ['441', '442']]]</field>
+            <field name="level" eval="2"/>
+            <field name="sequence" eval="4"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+        </record>
+
+        <!--CASH FLOW ( FINANCE ACTIVITIES )-->
+
+        <record id="finance_activity_3" model="financial.report.config.line">
+            <field name="financial_report_config_id" ref="cash_flow_report"/>
+            <field name="name">الانشطه التمويليه</field>
+            <field name="code">finance_activity_3</field>
+            <field name="formula">balance =  _('dividends_paid_3').balance </field>
+            <field name="domain"></field>
+            <field name="level" eval="1"/>
+            <field name="sequence" eval="3"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval="True"/>
+            <field name="label_top_underline" eval="True"/>
+            <field name="has_total_line" eval=""/>
+            <field name="has_total_end" eval="True"/>
+            <field name="total_end_name">صاقى النقد من الانشطة التمويليه</field>
+        </record>
+
+        <record id="dividends_paid_3" model="financial.report.config.line">
+            <field name="parent_id" ref="finance_activity_3"/>
+            <field name="name">توزيعات أرباح مدفوعه</field>
+            <field name="code">dividends_paid_3</field>
+            <field name="formula">balance = - sum.debit</field>
+            <field name="domain">[['account_id.final_code', 'in', ['223']]]</field>
+            <field name="level" eval="1"/>
+            <field name="sequence" eval="2"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+        </record>
+
+        <record id="net_change_id_cash_equivalent_3" model="financial.report.config.line">
+            <field name="financial_report_config_id" ref="cash_flow_report"/>
+            <field name="parent_id" ref=""/>
+            <field name="name">صافى التغير فى نقد و مافى حكمة</field>
+            <field name="code">net_change_id_cash_equivalent_3</field>
+            <field name="formula">balance = _('operational_activities_3').balance + _('inv_activities_3').balance + _('finance_activity_3').balance </field>
+            <field name="domain"></field>
+            <field name="level" eval="1"/>
+            <field name="sequence" eval="4"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval="True"/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+        </record>
+
+        <record id="begin_cash_equivalent_3" model="financial.report.config.line">
+            <field name="financial_report_config_id" ref="cash_flow_report"/>
+            <field name="name">نقد و ما فى حكمه فى بداية الفتره</field>
+            <field name="code">begin_cash_equivalent_3</field>
+            <field name="formula">balance = sum.debit - sum.credit </field>
+            <field name="domain">[['account_id.user_type_id.code', 'in', ['012',]]]</field>
+            <field name="level" eval="1"/>
+            <field name="sequence" eval="4"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval=""/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+        <field name="date_type">begin</field>
+        </record>
+
+        <record id="end_cash_equivalent_3" model="financial.report.config.line">
+            <field name="financial_report_config_id" ref="cash_flow_report"/>
+            <field name="name">نقد و ما فى حكمه فى نهاية الفترة</field>
+            <field name="code">end_cash_equivalent_3</field>
+            <field name="formula">balance = _('net_change_id_cash_equivalent_3').balance +_('begin_cash_equivalent_3').balance  </field>
+            <field name="domain"></field>
+            <field name="level" eval="1"/>
+            <field name="sequence" eval="4"/>
+            <field name="label_top" eval="True"/>
+            <field name="label_top_bold" eval="True"/>
+            <field name="label_top_underline" eval=""/>
+            <field name="has_total_line" eval="True"/>
+            <field name="has_total_end" eval=""/>
+            <field name="total_end_name"></field>
+        <field name="date_type">begin</field>
+        </record>
+    </data>
+
+</odoo>

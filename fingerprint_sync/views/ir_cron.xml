@@ -1,0 +1,20 @@
+<odoo>
+    <data>
+
+        <record id="ir_cron_sync_finger_print" model="ir.cron">
+            <field name="name">Sync Fingerprint</field>
+            <field eval="True" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">15</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+            <field eval="'fingerprint.device'" name="model"/>
+            <field name="model_id" ref="fingerprint_sync.model_fingerprint_device"/>
+            <field eval="'sync_all'" name="function"/>
+            <field eval="'()'" name="args"/>
+        </record>
+
+    </data>
+</odoo>
+

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="account_view_account_form_extend_parent" model="ir.ui.view">
+		<field name="name">account.move.form</field>
+		<field name="model">account.move</field>
+		<field name="inherit_id" ref="account.view_move_form" />
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='line_ids']//tree//field[@name='account_id']" position="attributes">
+				<attribute name="domain">[('company_id', '=', parent.company_id), ('deprecated', '=', False),('internal_type','!=','view')]</attribute>
+			</xpath>
+		</field>
+	</record>
+	
+	<record id="account_view_account_journal_form_extend_parent" model="ir.ui.view">
+		<field name="name">account.journal.form</field>
+		<field name="model">account.journal</field>
+		<field name="inherit_id" ref="account.view_account_journal_form" />
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='default_debit_account_id']" position="attributes">
+				<attribute name="domain">[('deprecated', '=', False),('internal_type','!=','view')]</attribute>
+			</xpath>
+			<xpath expr="//field[@name='default_credit_account_id']" position="attributes">
+				<attribute name="domain">[('deprecated', '=', False),('internal_type','!=','view')]</attribute>
+			</xpath>
+		</field>
+	</record>
+	
+	<record id="account_view_partner_property_form_extend_parent" model="ir.ui.view">
+		<field name="name">res.partner.form</field>
+		<field name="model">res.partner</field>
+		<field name="inherit_id" ref="account.view_partner_property_form" />
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='property_account_receivable_id']" position="attributes">
+				<attribute name="domain">[('internal_type', '=', 'receivable'), ('deprecated', '=', False),('internal_type','!=','view')]</attribute>
+			</xpath>
+			<xpath expr="//field[@name='property_account_payable_id']" position="attributes">
+				<attribute name="domain">[('internal_type', '=', 'payable'), ('deprecated', '=', False),('internal_type','!=','view')]</attribute>
+			</xpath>
+		</field>
+	</record>
+	
+</odoo>

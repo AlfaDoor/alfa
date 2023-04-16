@@ -1,0 +1,82 @@
+<?xml version="1.0" ?>
+<odoo>
+
+    <!-- Mail template are declared in a NOUPDATE block
+         so users can freely customize/delete them -->
+    <data noupdate="1">
+
+        <record id="email_template_purchase_order_confirm" model="mail.template">
+            <field name="name">Confirm Purchase Order: Send PO</field>
+            <field name="model_id" ref="purchase_request.model_purchase_order"/>
+            <field name="subject">Confirm Purchase Order (Ref ${object.name or 'n/a' })</field>
+            <field name="email_from">${object.user_id.email_formatted |safe}</field>
+            <field name="partner_to">${object.partner_id.id}</field>
+            <field name="email_cc">CTannous@rekeep.com,% if object.first_email:${object.first_email},% endif % if object.second_email:${object.second_email},% endif % if object.third_email:${object.third_email},% endif % if object.fourth_email:${object.fourth_email}% endif</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Dear ${object.partner_id.name}
+                        % if object.partner_id.parent_id:
+                            (${object.partner_id.parent_id.name})
+                        % endif
+                        <br/><br/>
+                        Here is in attachment a purchase order <strong>${object.name}</strong>
+                        % if object.partner_ref:
+                            with reference: ${object.partner_ref}
+                        % endif
+                        amounting in <strong>${format_amount(object.amount_total, object.currency_id)}</strong>
+                        from ${object.company_id.name}.
+                        <br/><br/>
+                        If you have any questions, please do not hesitate to contact us.
+                        <br/><br/>
+                        Best regards,
+                    </p>
+                </div>
+            </field>
+            <field name="report_template" ref="purchase.action_report_purchase_order"/>
+            <field name="report_name">PO_${(object.name or '').replace('/','_')}</field>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="user_signature" eval="False"/>
+            <field name="auto_delete" eval="True"/>
+        </record>
+
+        <record id="email_template_purchase_order_reject" model="mail.template">
+            <field name="name">Reject Purchase Order: Send PO</field>
+            <field name="model_id" ref="purchase_request.model_purchase_order"/>
+            <field name="subject">Rejected Purchase Order (Ref ${object.name or 'n/a' })</field>
+            <field name="email_from">${object.user_id.email_formatted |safe}</field>
+            <field name="email_to">% if object.first_email:${object.first_email},% endif % if object.second_email:${object.second_email},% endif % if object.third_email:${object.third_email},% endif % if object.fourth_email:${object.fourth_email}% endif
+            </field>
+            <field name="email_cc">CTannous@rekeep.com</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Dear ${object.partner_id.name}
+                        % if object.partner_id.parent_id:
+                            (${object.partner_id.parent_id.name})
+                        % endif
+                        <br/><br/>
+                        Here is in attachment a purchase order <strong>${object.name}</strong>
+                        % if object.partner_ref:
+                            with reference: ${object.partner_ref}
+                        % endif
+                        amounting in <strong>${format_amount(object.amount_total, object.currency_id)}</strong>
+                        from ${object.company_id.name} has been rejected.
+                        <br/><br/>
+                        Because of <strong>(${object.reject_reason})</strong>.
+                        <br/><br/>
+                        If you have any questions, please do not hesitate to contact us.
+                        <br/><br/>
+                        Best regards,
+                    </p>
+                </div>
+            </field>
+            <field name="report_template" ref="purchase.action_report_purchase_order"/>
+            <field name="report_name">PO_${(object.name or '').replace('/','_')}</field>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="user_signature" eval="False"/>
+            <field name="auto_delete" eval="True"/>
+        </record>
+
+    </data>
+</odoo>

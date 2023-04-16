@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+   <record id="hr_loan_batches_form" model="ir.ui.view">
+        <field name="name">batch.attendance.form</field>
+        <field name="model">loan.batches</field>
+        <field name="arch" type="xml">
+            <form string="Loan Batches">
+            <header>
+                <button name="action_payroll_officer_approve" string="Payroll Officer Approval" type="object" class="oe_highlight" groups="hr.group_hr_manager,saudi_hr_employee.group_loan_officer_approve"
+                        attrs="{'invisible': [('state', '!=', 'new')]}"
+                        confirm="Are you sure that you want to approve this loan / salary in advance?"/>
+                <button name="action_hr_loan_batch_approve" string="Hr Manager Approve" type="object" class="oe_highlight" groups="hr.group_hr_manager,saudi_hr_employee.group_loan_hr_manager_approve"
+                        attrs="{'invisible': [('state', '!=', 'payroll_officer_approval')]}"
+                        confirm="Are you sure that you want to approve this loan / salary in advance?"/>
+                <button name="action_batch_financial_approve" string="Financial Manager Approve" type="object" class="oe_highlight"
+                        groups="account.group_account_manager,saudi_hr_employee.group_loan_financial_approve" states="hr_manager_approve"
+                        confirm="Are you sure that you want to approve this loan / salary in advance?"/>
+                <button name="action_batch_gm_approve" string="CEO / GM approval" type="object" class="oe_highlight" groups="basic_hr.group_hr_ceo,saudi_hr_employee.group_loan_ceo_approval"
+                        states="financial_manager_approve" confirm="Are you sure that you want to approve this loan / salary in advance?"/>
+                <button name="action_batch_refuse" states="gm_approve" string="Reverse loans – salary in advance" type="object"
+                        class="oe_highlight" groups="hr.group_hr_manager,account.group_account_manager,saudi_hr_employee.group_loan_reverse"
+                        confirm="Are you sure that you want to reverse this loan / salary in advance."/>
+                <button name="action_refuse_confirm_batch" states="new,payroll_officer_approval,hr_manager_approve,financial_manager_approve" string="Refuse" type="object"
+                        class="oe_highlight" groups="hr.group_hr_manager,account.group_account_manager,saudi_hr_employee.group_loan_refuse"
+                        confirm="Are you sure that you want to refuse this loan / salary in advance."/>
+                <button name="%(action_hr_loan_batch_by_employees)d" type="action" string="Generate Loans" attrs="{'invisible':[('state','!=','new')]}" class="oe_highlight"/>
+                <field name="state" widget="statusbar" statusbar_visible="new,payroll_officer_approval,hr_manager_approve,financial_manager_approve,gm_approve,loan_fully_paid,refused"/>
+            </header>
+            <sheet>
+                <label for="name" class="oe_edit_only"/>
+                <h1>
+                    <field name="name" attrs="{'required':[('state','=','new')]}"/>
+                </h1>
+                <group>
+                <group>
+                    <label for="date_start" string="Period"/>
+                     <div>
+                           <field name="date_start" attrs="{'required':[('state','=','new')]}" class="oe_inline"/> - <field name="date_end" class="oe_inline" attrs="{'required':[('state','=','new')]}"/>
+                     </div>
+                </group>
+                    <group></group>
+                </group>
+                <separator string="Loan Requests"/>
+                <field name="loan_ids"/>
+            </sheet>
+                <div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers"
+							groups="base.group_user" />
+						<field name="message_ids" widget="mail_thread" />
+					</div>
+            </form>
+        </field>
+    </record>
+
+    <record id="lan_batches_view_tree" model="ir.ui.view">
+        <field name="name">loan.batches.tree</field>
+        <field name="model">loan.batches</field>
+        <field name="arch" type="xml">
+            <tree string="Loan Batches">
+                <field name="name"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="laon_batch_view_kanban" model="ir.ui.view">
+        <field name="name">loan.batch.kanban</field>
+        <field name="model">loan.batches</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile">
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_content oe_kanban_global_click">
+                            <div class="row">
+                                <div class="col-6">
+                                    <strong><field name="name"/></strong>
+                                </div>
+                                <div class="col-6">
+                                    <span class="float-right badge badge-secondary">
+                                        <field name="state"/>
+                                    </span>
+                                </div>
+                                <div class="col-12">
+                                    <span>
+                                        <field name="date_start"/> - <field name="date_end"/>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="action_hr_loan_batch" model="ir.actions.act_window">
+        <field name="name">Loan Batches</field>
+        <field name="res_model">loan.batches</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,kanban,form</field>
+    </record>
+
+    <menuitem action="action_hr_loan_batch" id="menu_ht_loan_batch_batches" parent="base.menu_loans_root"
+              sequence="-3" string="Loan Batches"/>
+  </data>
+</odoo>

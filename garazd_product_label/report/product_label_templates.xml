@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="label_57x35">
+        <style>
+            .table1{
+            table-layout: fixed;
+            width:150px;
+            height:55px;
+            }
+        </style>
+        <table class="table1">
+            <tr height="155px" style="border:0;margin:0;padding:0;">
+			
+                <td class="col-xs-4 text-center" style="border:0;margin:0;padding:0;">
+                    <div style="overflow:hidden; font-weight:bold; font-size:14px; height:30px !important; width: 285px !important; padding: 0px 33px 0; line-height: 1.1;">
+                        <span t-field="label.product_id.name"/>
+                       
+                    </div>
+                   
+                    <div t-if="label.product_id.default_code" style="width: 100%; padding: 0; margin: 0; font-size: 14px;font-weight:bold;text-align:center;position:relative; left:55px;">
+                        <span t-field="label.product_id.default_code"/>
+                    </div>
+                    <div t-if="label.product_id.barcode" class="text-center align-middle" style="margin: 0; padding: 0px 8px; height: 35px;width:250px;font-size: 13px;text-align:center;position:relative; left:10px;">
+                        <t t-if="label.wizard_id.humanreadable" t-set="show_code" t-value="1"/>
+                        <t t-else="" t-set="show_code" t-value="0" />
+                        <img alt="Barcode"
+                             t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s&amp;humanreadable=%s' % ('Code128', label.product_id.barcode, 600, 100, show_code)"
+                             style="overflow: hidden; width: 100%; height: 100%;"/>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </template>
+
+
+    <template id="report_product_label_57x35_template">
+        <t t-call="web.html_container">
+            <t t-call="web.basic_layout">
+                <t t-set="count" t-value="0" />
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <t t-foreach="docs" t-as="label">
+                        <t t-set="qty" t-value="1" />
+                        <t t-if="label.qty">
+                            <t t-set="qty" t-value="label.qty" />
+                        </t>
+                        <t t-foreach="list(range(qty))" t-as="index_qty">
+                            <div t-if="count % 21 == 0" style="page-break-after:always;"/>
+                            <div t-if="count % 3 == 0" style="clear:both;"/>
+                            <div>
+                                <t t-call="garazd_product_label.label_57x35"/>
+                            </div>
+                            <t t-set="count" t-value="count+1" />
+                        </t>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <!-- Template for package barcode -->
+
+    <template id="label_package_57x35">
+        <style>
+            .table2{
+            table-layout: fixed;
+            width:150px;
+            height:55px;
+            }
+        </style>
+        <table class="table2">
+            <tr height="155px" style="border:0;margin:0;padding:0;">
+                <td class="col-xs-4 text-center" style="border:0;margin:0;padding:0;">
+                    <div style="overflow:hidden; font-weight:bold; font-size:14px; height:25px !important; width: 280px !important; padding: 0px 8px 0; line-height: 1.1;">
+                        <span t-field="package.package_id.name"/>
+                    </div>
+                    <div t-if="package.package_id.total_quantity" style="width: 100%; padding-bottom:5px; margin: 0; font-size: 14px;font-weight:bold;text-align:center;position:relative; left:55px;">
+                        Quantity: <span t-field="package.package_id.total_quantity"/>
+                    </div>
+                    <div t-if="package.package_id.name" class="text-center align-middle" style="margin: 0; padding: 0 3px; height: 35px;width:250px;font-size: 16px;text-align:center;position:relative; left:10px;">
+                        <t t-if="package.wizard_package_id.humanreadable" t-set="show_code" t-value="1"/>
+                        <t t-else="" t-set="show_code" t-value="0" />
+                        <img alt="Barcode"
+                             t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s&amp;humanreadable=%s' % ('Code128', package.package_id.name, 600, 100, show_code)"
+                             style="overflow: hidden; width: 100%; height: 100%;"/>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </template>
+
+    <template id="report_package_label_57x35_template">
+        <t t-call="web.html_container">
+            <t t-call="web.basic_layout">
+                <t t-set="count" t-value="0" />
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <t t-foreach="docs" t-as="package">
+                        <t t-set="qty" t-value="1" />
+                        <t t-if="package.qty">
+                            <t t-set="qty" t-value="package.qty" />
+                        </t>
+                        <t t-foreach="list(range(qty))" t-as="index_qty">
+                            <div t-if="count % 21 == 0" style="page-break-after:always;"/>
+                            <div t-if="count % 3 == 0" style="clear:both;"/>
+                            <div>
+                                <t t-call="garazd_product_label.label_package_57x35"/>
+                            </div>
+                            <t t-set="count" t-value="count+1" />
+                        </t>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+
+
+</odoo>

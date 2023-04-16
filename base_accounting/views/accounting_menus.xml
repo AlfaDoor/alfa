@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="account.menu_finance_entries" model="ir.ui.menu">
+            <field name="name">General ledger</field>
+            <field name="groups_id" eval="[(5,),(4,ref('account.group_account_user'),False)]"/>
+        </record>
+        <!--Fixed Assets menus-->
+<!--        <menuitem id="fixed_assets_menu" name="Fixed assets" parent="account.menu_finance" sequence="4"/>-->
+<!--        <menuitem id="fixed_assets_reporting" parent="fixed_assets_menu" name="Reporting" sequence="120"/>-->
+<!--        <record model="ir.ui.menu" id="account_asset.menu_action_account_asset_asset_form">-->
+<!--            <field name="parent_id" ref="base_accounting.fixed_assets_menu"/>-->
+<!--        </record>-->
+<!--        <record model="ir.ui.menu" id="account_asset.menu_action_account_asset_asset_list_normal_purchase">-->
+<!--            <field name="parent_id" ref="base_accounting.fixed_assets_menu"/>-->
+<!--        </record>-->
+<!--        <record model="ir.ui.menu" id="account_asset.menu_asset_depreciation_confirmation_wizard">-->
+<!--            <field name="parent_id" ref="base_accounting.fixed_assets_menu"/>-->
+<!--            <field name="groups_id" eval="[(5,)]"/>-->
+<!--        </record>-->
+<!--        <record model="ir.ui.menu" id="account_asset.menu_action_asset_asset_report">-->
+<!--            <field name="parent_id" ref="base_accounting.fixed_assets_reporting"/>-->
+<!--            <field name="name">Assets analysis</field>-->
+<!--        </record>-->
+        <!--Deferred Revenues menus-->
+<!--        <menuitem id="deferred_revenues_menu" name="Deferred Revenues" parent="account.menu_finance" sequence="4"/>-->
+<!--        <menuitem id="deferred_revenues_reporting_menu" name="Reporting" parent="deferred_revenues_menu" sequence="124"/>-->
+<!--        <record model="ir.ui.menu" id="account_deferred_revenue.menu_action_asset_revenue_report">-->
+<!--            <field name="parent_id" ref="base_accounting.deferred_revenues_reporting_menu"/>-->
+<!--        </record>-->
+<!--        <record model="ir.ui.menu" id="account_deferred_revenue.menu_recognition_depreciation_confirmation_wizard">-->
+<!--            <field name="parent_id" ref="base_accounting.deferred_revenues_menu"/>-->
+<!--            <field name="groups_id" eval="[(5,)]"/>-->
+<!--        </record>-->
+<!--        <record model="ir.ui.menu" id="account_deferred_revenue.menu_action_account_revenue_recognition">-->
+<!--            <field name="parent_id" ref="base_accounting.deferred_revenues_menu"/>-->
+<!--        </record>-->
+<!--        <record model="ir.ui.menu" id="account_deferred_revenue.menu_action_account_asset_asset_list_normal_sale">-->
+<!--            <field name="parent_id" ref="base_accounting.deferred_revenues_menu"/>-->
+<!--        </record>-->
+        <!--Others-->
+        <!--<menuitem id="other_finance_menu" name="Other" parent="account.menu_finance" sequence="4" groups="account.group_account_user"/>-->
+        <!--<record model="ir.ui.menu" id="payment.finance_payment_menu">-->
+            <!--<field name="parent_id" ref="base_accounting.other_finance_menu"/>-->
+        <!--</record>-->
+        <!--Currencies-->
+<!--        <record model="ir.ui.menu" id="base.menu_action_currency_form">-->
+<!--            <field name="parent_id" ref="account.menu_config_multi_currency"/>-->
+<!--        </record>-->
+        <!--Analytic accounts-->
+<!--        <menuitem id="analytic_accounts_gl_menu" name="Analytic Accounts reports" sequence="30" parent="account.menu_finance_entries" groups="base.group_no_one"/>-->
+<!--        <record model="ir.ui.menu" id="account.menu_analytic_accounting">-->
+<!--            <field name="parent_id" ref="account.menu_finance_entries"/>-->
+<!--            <field name="sequence" eval="26"/>-->
+<!--        </record>-->
+<!--        <record model="ir.ui.menu" id="account.menu_action_analytic_account_tree2">-->
+<!--            <field name="parent_id" ref="base_accounting.analytic_accounts_gl_menu"/>-->
+<!--        </record>-->
+<!--        <record model="ir.ui.menu" id="account.menu_action_analytic_lines_tree">-->
+<!--            <field name="parent_id" ref="base_accounting.analytic_accounts_gl_menu"/>-->
+<!--        </record>-->
+
+        <record model="ir.ui.view" id="view_company_inherit_form">
+            <field name="name">res.company.form.inherit</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="model">res.company</field>
+            <field name="arch" type="xml">
+                <field name="currency_id" position="after">
+                    <field name="transfer_account_id"/>
+                </field>
+            </field>
+        </record>
+        <menuitem name="Banks" id="banks_menu" action="base.action_res_bank_form" parent="account.account_account_menu" sequence="5"/>
+    </data>
+</odoo>

@@ -1,0 +1,39 @@
+<odoo>
+	<data>
+
+		<!-- Wizard form open when change department -->
+
+		<record id="deprtment_chng_view_ga" model="ir.ui.view">
+			<field name="name">department.change.view</field>
+			<field name="model">department.new</field>
+			<field name="arch" type="xml">
+				<form>
+					<group>
+
+						<field name="current_department" string="Current Department"
+							options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}" />
+						<field name="new_department" string="Current Department"
+							options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}" />
+
+					</group>
+					<footer>
+						<button name="change_department" type="object" string="Change"
+							class="oe_highlight" />
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<!-- Action for Change Department -->
+
+		<record id="change_depetment_act"
+			model="ir.actions.act_window">
+			<field name="name">Change Department</field>
+			<field name="res_model">department.new</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+
+	</data>
+</odoo>

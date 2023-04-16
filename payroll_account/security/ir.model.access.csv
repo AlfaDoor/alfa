@@ -1,0 +1,10 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+
+access_salary_details,all salary.details,model_salary_details,,1,1,1,1
+access_hr_loans_loan_advance,all hr_loans.loan_advance,model_hr_loans_loan_advance,,1,1,1,1
+access_loan_advance_request,all loan.advance.request,model_loan_advance_request,,1,1,1,1
+access_hr_branch,all hr_branch,model_hr_branch,,1,1,1,1
+access_applicant_qualification,all applicant.qualification,model_applicant_qualification,,1,1,1,1
+access_applicant_employment,all applicant_employment,model_applicant_employment,,1,1,1,1
+access_hr_qualifications,all hr.qualifications,model_hr_qualifications,,1,1,1,1
+access_hr_management,all hr_management,model_hr_management,,1,1,1,1

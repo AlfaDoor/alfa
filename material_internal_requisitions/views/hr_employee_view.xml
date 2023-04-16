@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<data>
+ <!--<record id="inv_validate_form_inherit" model="ir.ui.view">
+            <field name="name">form.validate.view</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_invoice_open']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_invoice_sent']" position="after">
+                    <button name="action_invoice_open" type="object" states="draft" string="Validate" class="oe_highlight o_invoice_validate" groups="material_internal_requisitions.validate_inv_group"/>
+                </xpath>
+            </field>
+        </record>-->
+
+		<!--<record id="inv_validate_form_bill_inherit" model="ir.ui.view">
+            <field name="name">form.validate.bill.view</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_invoice_open']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_invoice_draft']" position="before">
+                    <button name="action_invoice_open" type="object" states="draft" string="Validate" class="oe_highlight" groups="material_internal_requisitions.validate_inv_group"/>
+                </xpath>
+            </field>
+        </record>-->
+
+
+		<record id="internal_requisition_employee_form_view"
+			model="ir.ui.view">
+			<field name="name">hr.employee.form.view</field>
+			<field name="model">hr.employee</field>
+			<field name="inherit_id" ref="hr.view_employee_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//notebook/page[@name='hr_settings']"
+					position="after">
+					<page name="ir_settings" string="Requisition Settings">
+						<group>
+							<group>
+								<field name="desti_loca_id" />
+								<!--<field name="fixed_asset_desti_loca_id" />-->
+							</group>
+						</group>
+					</page>
+				</xpath>
+			</field>
+		</record>
+
+		<record id="internal_requisition_department_form_view"
+			model="ir.ui.view">
+			<field name="name">hr.department.form.view</field>
+			<field name="model">hr.department</field>
+			<field name="inherit_id" ref="hr.view_department_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='parent_id']" position="after">
+					<field name="desti_loca_id" />
+				</xpath>
+			</field>
+		</record>
+	<!--	<record id="inherit_product_form_ga"
+			model="ir.ui.view">
+			<field name="name">product.form.view.2</field>
+			<field name="model">product.template</field>
+			<field name="inherit_id" ref="product.product_template_only_form_view" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='categ_id']" position="before">
+					<field name="is_fixed_asset" />
+				</xpath>
+			</field>
+		</record>-->
+	</data>
+</odoo>

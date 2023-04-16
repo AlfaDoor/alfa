@@ -1,0 +1,27 @@
+<odoo>
+	<data>
+
+		<!-- Group for credit %age allow -->
+
+		<record model="ir.module.category" id="credit_allow">
+			<field name="name">Sale Approvals</field>
+			<field name="description">Sale Credit Amount Approvals</field>
+			<field name="sequence">21</field>
+		</record>
+
+		<record id="allow_maximum_discount" model="res.groups">
+			<field name="name">Allow Maximum Discount</field>
+			<field name="category_id" ref="sale_restrictions.credit_allow" />
+		</record>
+		<record id="allow_credit_sale" model="res.groups">
+			<field name="name">Allow Credit Sale</field>
+			<field name="category_id" ref="sale_restrictions.credit_allow" />
+		</record>
+		<record id="group_allow_min_slae" model="res.groups">
+			<field name="name">Allow Sale Min Sale Price</field>
+			<field name="category_id" ref="sale_restrictions.credit_allow" />
+		</record>
+
+
+	</data>
+</odoo>

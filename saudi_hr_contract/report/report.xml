@@ -1,0 +1,313 @@
+<odoo>
+    <data>
+
+        <report
+            id="contract_print"
+            string="Print Contract (PDF)"
+            model="hr.contract"
+            report_type="qweb-pdf"
+            name="saudi_hr_contract.contract_print_template"
+            file="saudi_hr_contract.contract_print_template"
+        />
+
+        <template id="contract_print_template">
+            <t t-call="web.html_container">
+                <style>
+                    .main-table tr td{
+                        border: 1px solid #6f6f6f;
+                        padding: 5px;
+                        vertical-align: top;
+                    }
+                    .eng-td{
+                        text-align: left;
+                        width:50%;
+                        direction: ltr;
+                    }
+                </style>
+                <t t-foreach="docs" t-as="o">
+                    <h1 style="text-align: center;">عقد عمل موظف<br/>Employment Contract</h1>
+                        <table style="width:100%;direction:rtl;margin-top: 50px;" class="main-table">
+                            <tr>
+                                <td>
+                                    أبرم هذا العقد بتاريخ : <span t-field="o.contract_date"/> م <br/>
+                                    فيما بين كل من: <span t-field="o.print_config_id.company_name_ar"/><br/>
+                                    وعنوانها: <span t-field="o.print_config_id.address_ar"/><br/>
+                                    ويمثلها في التوقيع على هذا العقد <span t-field="o.print_config_id.represented_position_ar"/><br/>
+                                    <span t-field="o.print_config_id.represented_ar"/><br/>
+                                     والمسماة فيما يلي (الطرف الأول)<br/>
+                                    وبين السيد/ة: <span t-field="o.employee_id.name"/><br/>
+                                    رقم هوية وطنية/ اقامة:  <span t-field="o.employee_id.identification_id"/> <br/>
+                                    جواز سفر رقم:<br/>
+                                    البريد الالكتروني   <span t-field="o.employee_id.personal_email"/> :<br/>
+                                     والمسمى فيما يلي (لطرف الثاني).<br/>
+    اتفق الطرفان وهما بكامل الأهلية المعتبرة شرعا من حرية واختيار وبطوع إرادتهما على أن يعمل الطرف الثاني لدى الطرف الأول و مباشرة الأعمال التي يكلف بها بما يتناسب مع قدراته العلمية و العملية، و الفنية، وفقاً لاحتياجات العمل وبما لا يتعارض مع الضوابط المنصوص عليها في المواد (الثامنة والخمسون ،التاسعة والخمسون ،الستون) من نظام العمل.                                </td>
+                                <td class="eng-td">
+                                    Contract entered into this date on: <span t-field="o.contract_date"/> <br/>
+                                    Between: <span t-field="o.print_config_id.company_name_en"/><br/>
+                                    Located in <span t-field="o.print_config_id.address_en"/><br/>
+                                    Represented in the signing of this contract by the <span t-field="o.print_config_id.represented_position_en"/> <span t-field="o.print_config_id.represented_en"/><br/>
+                                    Herein known as (First Party)<br/>
+                                    And Mr./Mrs.: <span t-field="o.employee_id.employee_english_name"/> <br/>
+                                    National/Iqama ID No. <span t-field="o.employee_id.identification_id"/><br/>
+                                    Passport No.<br/>
+                                    Email:   <span t-field="o.employee_id.personal_email"/><br/>
+                                    Herein referred to as: (Second Party)<br/>
+                                    Whereas the First Party wishes to hire the Second Party to work for him, under his supervision, and under his sponsorship, and given his side of the practical experience and academic qualifications to qualify for the undertaking of this position. Both parties have agreed under their own freewill and choice to implement the provisions of this contract and according to the following conditions:<br/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    1. التوظيف ومسمى الوظيفة:<br/><br/>
+                                    وافق الطرف الأول على تعيين الطرف الثاني – القابل لذلك بوظيفة <span t-field="o.job_name_ar"/> بالعمل لديه .<br/>
+                                </td>
+                                <td class="eng-td">
+                                    1 - Employment and Job Title:<br/><br/>
+                                    The First Party agrees to employ the Second Party with the latter’s agreement as <span t-field="o.job_name_en"/> to work for the former.<br/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    2. مباشرة العمل:<br/><br/>
+                                    لقد اتفق الطرفان على أن الطرف الثاني قد باشر / سيباشر عمله فعليا لدى الطرف الأول بتاريخ  <span t-field="o.contract_date"/> م
+                                    وهو تاريخ بداية العلاقة الوظيفية بدء سريان هذا العقد<br/>
+                                </td>
+                                <td class="eng-td">
+                                    2 - Joining Date<br/><br/>
+                                    Both parties have agreed that the Second Party actually starts/ will start work for the First Party on <span t-field="o.contract_date"/> making this date the date this contract takes effect.<br/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    3. شروط تنفيذ عقد العمل:<br/> <br/>
+                                    يخضع تنفيذ بنود هذا العقد في جميع الحالات للشروط المبينة أدناه بحيث يعتبر لاغياً في حال عدم توفر أياً منها:<br/>
+                                    نجاح الطرف الثاني في اجتياز الفحص الطبي الذي يعينه الطرف الأول.<br/>
+                                    تسلم الطرف الثاني لعمله لدى الطرف الأول في موعد أقصاه 30 يوما من تاريخ توقيع هذا العقد أو خلال الفترة التي يتفق الطرفان عليها في حينه.<br/>
+                                    حصول الطرف الأول على تأشيرة عمل للطرف في حال التعاقد مع الطرف الثاني خارج سوق العمل السعودي.<br/>
+                                </td>
+                                <td class="eng-td">
+                                    3 - Conditions for Implementing Employment Contract<br/><br/>
+                                    Implementation of the articles of this contract under all circumstances are based on meeting the conditions below and the contract will be considered voided if any of them are not fulfilled:<br/>
+                                    The Second Party successfully passes the medical examination prescribed by the First Party.<br/>
+                                    The taking over by the Second Party of his work for the First Party within a maximum period of 30 days from the contract signing date, or within a period agreed upon by both parties.<br/>
+                                    The First Party obtaining a Work Permit for the Second Party in accordance with the regulations in force in Saudi Arabia (for non-Saudis only)<br/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    6. مكان العمل وطبيعته:<br/><br/>
+                                    يحق للطرف الأول نقل الطرف الثاني في أي وقت إلى أي جهة داخل المملكة العربية السعودية يمارس فيها الطرف الأول نشاطه حسب ما تقتضي مصلحة العمل.<br/>
+                                </td>
+                                <td class="eng-td">
+                                    6 - Work Location<br/><br/>
+                                    The First Party reserves the right to transfer the Second Party at any time to any area in the Kingdom of Saudi Arabia where the First Party operates in line with work requirements<br/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    4. مدة عقد العمل:<br/><br/>
+                                    أ- يسري مفعول هذا العقد لمدة سنة ميلادية واحدة تبدأ من تاريخ مباشرة الطرف الثاني عمله كما هو محدد في البند رقم 2 من هذا العقد. وتجدد لمدةٍ، أو لمددٍ مماثلة.<br/>
+                                    ب- يتم تجديد هذا العقد لمدة مماثلة أو لمدد أخرى مماثلة ما لم يُشعر أحد الطرفين الآخر خطياً بعدم رغبته في التجديد قبل ثلاثين يوماً من تاريخ انتهاء العقد". وفي كل الأحوال يستمر العمل بهذا العقد بعد انتهائه بين الطرفين حتى يتم تامين البديل المناسب من الطرف الأول بحد أقصى )30( ثلاثين يوما".<br/>
+                                </td>
+                                <td class="eng-td">
+                                    4–Duration of Employment Contract<br/><br/>
+                                    A. This contract’s duration is for one Gregorian year effective from the date the Second Party starts work as indicated in the Clause No. 2.<br/>
+                                    B. This contract may be renewed for a similar period or other similar periods through a written agreement between both parties.<br/>
+                                     In any case, the contract will remain effective after expiration until a suitable replacement becomes available from the First Party within a maximum time frame of (30) days.<br/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    5. فترة التجربة:<br/>
+                                    أ- بما لا يخالف المادتين (54،53) من نظام العمل، وافق الطرف الثاني على العمل لدى الطرف الأول تحت الاختبار لمدة ٩٠ يوم قابلة للتمديد ل ٩٠ يوم أخرى بإتفاق الطرفين تبدأ من تاريخ التحاقه فعليا بالعمل بتاريخ بداية العلاقة الوظيفية، فان ثبت عدم صلاحيته للعمل اعتبر عقد العمل مفسوخا من تلقاء نفسه بإشعار خطي مسبق دون أي أعباء مالية. <br/>
+                                    ب- كما يجوز للطرف الأول إعادة وضع الطرف الثاني تحت الاختبار في حال نقله إلى وظيفة أخرى على الا تتجاوز مدة التجربة في المرتين ١٨٠ يوما.<br/>
+                                </td>
+                                <td class="eng-td">
+                                    5- Probationary period<br/>
+                                    A. In accordance with articles (54,53) of the labor law, the Second Party agrees to work for the First Party for a probationary period of 90 days commencing from the date of actually joining work on . If it is found that the Second Party is unfit to perform the assigned job, the contract will be rescinded in writing without any financial liability<br/>
+                                    B. The First Party may renew the probationary period of the Second Party in case of a transfer to another job position as it shouldn't exceed 180 days in both positions.<br/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    7. الراتب الأساسي وبدل السكن والبدلات الأخرى:<br/><br/>
+                                   يدفع الطرف الأول للطرف الثاني في نهاية كل شهر ميلادي طوال سريان هذا العقد لقاء قيامة بواجباته ومراعاة شروطه راتبا ً شاملا جميع البدلات و قدره ) <span t-field="o.total"/> ريال( اعتبارا ً من تاريخ مباشرة الطرف الثاني للعمل كما هو موضح في المادة 2 من هذا العقد يدفع الطرف الأول للطرف الثاني بدل سكن شهري في حال لم يتم تأمين سكن للموظف من طرف الشركة. وفق سياسات الموارد البشرية المعمولة بها لدى الطرف الأول <br/>
+                                   الاجر الاساسي : <span t-field="o.basic_salary"/> ريال سعودي<br/>
+                                   بدل السكن : <span t-field="o.house_allowance_amount"/> ريال سعودي<br/>
+                                  بدل المواصلات :  <span t-field="o.transportation_allowance_amount"/> ريال سعودي<br/>
+                                    يلتزم الطرف الأول بتسجيل الطرف الثاني لدى المؤسسة العامة للتأمينات الاجتماعية، وسداد الاشتراكات حسب أنظمتها<br/>
+                                </td>
+                                <td class="eng-td">
+                                    7 - Basic Salary &#38; Housing Allowance<br/><br/>
+                                    The First Party will pay the Second Party at the end of each month under this contract, assuming the latter undergoes their responsibilities and meets conditions, a Total salary of ( <span t-field="o.total"/> SAR) starting from the first working day of the Second Party as indicated in the clause 2 of this contract.<br/>
+                                    The First Party will pay the Second Party a monthly housing allowance in accordance to the Company policies.<br/>
+                                    Basic Salary : <span t-field="o.basic_salary"/> SR<br/>
+                                    Housing Allowance : <span t-field="o.house_allowance_amount"/> SR <br/>
+                                    Transportation: <span t-field="o.transportation_allowance_amount"/> SR <br/>
+                                    The first party is obliged to register the second party with the General Organization for Social Insurance, and to pay subscriptions according to its regulations<br/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    8. أيام وساعات العمل:<br/><br/>
+                                    تحدد أيام العمل العادية بــــ.6 أيام في الأسبوع ،وتحدد ساعات العمل بـــ9 يومياً ، و يدفع الطرف الاول للطرف الثاني اجرا اضافيا عن ساعات العمل الاضافية يوازي اجر ساعة عمل واحدة ويشترط موافقة الطرف الاول على الدوام الاضافي<br/>
+                                </td>
+                                <td class="eng-td">
+                                    8– Working Days<br/><br/>
+                                    Business days are (6) days per week; Business Hours shall be (9) hours per day. And the first party will pay additional wage for over time working hours which is equivalent to one time the normal working hour.<br/><br/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    9. الإجازة السنوية:<br/><br/>
+                                   يستحق الطرف الثاني إجـازة إعتيادية مدتها <span t-field="o.annual_leave_policy.days_in_year"/> يــــــــوماً تستحق بعد مرور سنتين من العمل المتواصل   وعلى الطرف الثاني أن يتقدم بطلب التمتع بهذه الإجازة قبل موعدها 90 يوما على الأقل ويتولى الطرف الأول وحده تحديد تاريخ بدايتها وفق ما تسمح به ظروف العمل. <br/>
+                                </td>
+                                <td class="eng-td">
+                                    9 - Annual Vacation
+The second party deserves a regular leave of <span t-field="o.annual_leave_policy.days_in_year"/> days, which is due after the passage of two years of continuous work. The second party must submit an application to enjoy this leave at least 90 days in advance, and the first party alone will determine the date of its commencement, as permitted by the working conditions.<br/>                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    10. العناية الصحية:<br/><br/>
+                                    يوفر الطرف الأول للطرف الثاني العناية الصحية وفقا للسياسة المتبعة لدى الشركة في هذا الشأن<br/>
+                                    يتحمل الطرف الأول رسوم (استقدام الطرف الثاني)/(نقل خدماته إلية)،ورسوم الإقامة ،ورخصة العمل ،وتجديدهما،وما يترتب على تأخر ذلك من غرامات ،ورسوم تغير المهنة ،والخروج والعودة ،وتذكرة عودة الطرف الأول إلى موطنة -بالوسيلة التي قدم بها –بعد انتهاء العلاقة بين الطرفين.<br/>
+                                    في حالة وفاة الموظف يلتزم الطرف الاول بنفقات تجهيز جثمان الطرف الثاني،ونقله إلى الجهة التي ابرم فيها العقد،او استقدم العامل منها،ما لم يدفن بموافقة ذويه داخل المملكة ،او تلتزم المؤسسه العامة للتأمينات الاجتماعية بذلك<br/>
+                                </td>
+                                <td class="eng-td">
+                                    10- Medical Care<br/><br/>
+                                    The First Party shall provide the Second Party with medical insurance in accordance with Saudi Arabian company's policy.<br/>
+                                    The first party shall pay the fees of The Employee’s Recruitment/ Service Transfer, Work License and Work Permit and their Renewal, and accumulated fines due to their delay, Profession change fees, Exit- Reentry Visa, ticket for The second Party return to his homeland upon End of Service.<br/>
+                                    In case of The Employee’s death, The first party shall pay the expenses of Preparations and Travelling of The Employee’s remains to his homeland, unless if approved by his relatives to bury him in Saudi Arabia- or, GOSI shall bear the expense.<br/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    11. التزامات الطرف الثاني:<br/><br/>
+                                    يتحمل الطرف الثاني كافة أنواع الحسومات التي يتوجب على الطرف الأول إجراؤها على دخل الطرف الثاني تطبيقا ً لأنظمة التأمينات الاجتماعية وغيرها من الأنظمة التي قد تصدرها السلطات السعودية من وقت لأخر<br/>
+                                    1. أن ينجز العمل الموكل إليه ،وفقاً لأصول المهنة ،و وفق تعليمات الطرف الأول ،إذا لم يكن في هذه التعليمات ما يخالف العقد ،أو النظام ،أو الآداب العامه ،ولم يكن في تنفيذها ما يعرضه للخطر.<br/>
+                                    2. أن يعتني عناية كافية بالأدوات ،والمهمات المسنده إليه ،والخامات المملوكه للطرف الأول ،والموضوعة تحت تصرفه ،أو التي تكون في عهدته ،وأن يعيد إلى الطرف الأول المواد غير المستهلكه .<br/>
+                                    3. أن يقدم كل عون، ومساعدة دون أن يشترط لذلك أجراً أضافياً في حالات الأخطار التي تهدد سلامة مكان العمل،أو الأشخاص العاملين فيه<br/>
+                                    4. أن يخضع وفقاً لطلب الطرف الأول للفحوص الطبية التي يرغب في إجرائها عليه قبل الالتحاق بالعمل ،أو أثناءه للتحقيق من خلوه من الأمراض المهنية ،او السارية .<br/>
+                                    5. يلتزم الطرف الثاني بحسن السلوك ،والأخلاق أثناء العمل ،وفي جميع الأوقات يلتزم الطرف بالأنظمة ،والأعراف ،والعادات ،والآداب المرعية في المملكه العربية السعوديه ،وكذلك القواعد ،واللوائح ،والتعليمات المعمول بها لدى الطرف الأول ،ويتحمل كافة الغرامات المالية الناتجة عن مخالفته لتلك الأنظمة .<br/>
+                                </td>
+                                <td class="eng-td">
+                                    11- The Second Party Obligation<br/><br/>
+                                    The Second Party shall bear all withholdings which the First Party is required to make from the Second Party’s income pursuant to Social Insurance and other applicable Regulations which may be issued from time to time by the Saudi authorities.<br/>
+                                    1) The Second Party shall accomplish his assignments, according to the profession principals and according with The Company’s instructions, only if these instructions do not contradict with this Contract, Law and/ or Public Conduct and would not endanger The Employee.<br/>
+                                    2) The second Party shall care for The Company’s tools, equipment, and services that are under his action or custody.<br/>
+                                    3) The second Party shall cooperate and assist without conditioning additional wage in the case of threats on the safety of the workplace and/ or employees in workplace.<br/>
+                                    4) The second Party shall comply with The Company’s request for the relevant medical tests to be conducted before joining work to ensure his fitness and his health are free from any professional or current diseases.<br/>
+                                    5) The second Party shall commit good conduct and morale during work. He shall, in all times, comply with rules, customs and traditions in Saudi Arabia, in addition to rules and regulations applied in workplace- The second Party shall bear all financial fines resulted from violation of the above.<br/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    12. إنهاء عقد العمل<br/><br/>
+                                   - يحق لأي من الطرفين إنهاء هذا العقد على النحو التالي: <br/>
+                                    أ- ينتهي العقد بانتهاء مدته في خال كان العقد محدد المدة  أو بإتفاق خطي بين الطرفين.<br/>
+                                   ب- مًن جانب الطرف الأول وذلك بإعطاء الطرف الثاني إنذارا خطيا بالإنهاء يسبق تاريخ الإنهاء بـ 60 يوم. <br/>
+                                   ت- من جانب الطرف الثاني وذلك بإعطاء الطرف الأول إنذارا خطيا بذلك يسبق الإنهاء بشهرين أو يدفع بدل إنذار للطرف الأول يعادل اجمالي أجر شهرين للموظف. <br/>
+                                   ث- من جانب الطرف الأول دون إنذار ودون دفع بدل إنذار أو أية مكافأة أو تعويض في أي وقت وذلك في الحالات الواردة في نظام العمل بالمملكة المادة )80 من نظام العمل السعودي( أوفي حال إخلاله بأي بند من بنود هذا العقد أو الإخلال بأي من شروطه أو واجباته أو التزاماته أو قيوده أو عدم صلاحيته للعمل أو ثبوت تقديمه لمعلومات أو مستندات مزيفه أو غير صحيحة عندما تقدم لطلب الوظيفة. <br/>
+    ج- إذا انتهت علاقة العمل مع الطرف الثاني يدفع الطرف الأول مكافأة نهاية الخدمة عن مدة خدمة الطرف الثاني وبحسب ما جاء في المواد )84 و85( من نظام العمل السعودي وعلى أساس أخر اجر تقاضاه ويتخذ الراتب الإجمالي أساس لحساب المكافأة ولا يدخل في حساب الأجر أي عمولات او نسب او مكافآت او بدلات يتم دفعها للطرف الثاني خلال فترة عملة.                                <br/>
+                                </td>
+                                <td class="eng-td">
+                                    12- Termination of Employment<br/><br/>
+                                    Either party may terminate this agreement as per the following:<br/>
+                                    A. This contract will expire by the end of its period term OR by common approval of termination- with written approval from The Employee.<br/>
+                                    B. By the First Party if it is decided that the Second Party is no longer suitable for employment or is redundant with relation to work requirements. Such termination shall be effective by means of giving the Second Party a 60 days prior written notice of termination.<br/>
+                                    C. By the Second Party by means of a two months prior written termination notice, or by payment of two months gross salary in lieu of such a notice.<br/>
+                                    D. By the First Party, without prior notice or payment in lieu of notice or compensation or termination indemnity, at any time for cases specified in the Saudi Labor Law under Article (80) or a violation stated for in the by-laws of the Company, in case he fails to abide by the terms and conditions of this Agreement or it is proved that the Employee has provided false information or forged document on hiring him.<br/>
+                                    E. If the working relationship ended with the second party, first party will pay full indemnity for the duration based on last monthly gross salary exclude any commissions or bonuses or allowances paid to the second party during the duration.<br/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    13. التقييد بالأنظمة والتعليمات:<br/><br/>
+                                    يلتزم الطرف الثاني بأن يخضع لجميع الأنظمة الحكومية السارية المفعول في المملكة ولا يحق له أن يعمل بأجر أو بدون أجر لدى أية جهة أخرى، أو في أي عمل تجاري أخر كما يلتزم الطرف الثاني بالتقيد بالتعليمات التي يصدرها الطرف الأول وفقاً لسياسة الشركة، والالتزام بجميع اللوائح المعتمدة بالشركة والإرشادات المنظمة للعمل من ان لأخر وأن يسلك طريقا يجلب ما هو مشين لنفسه أو للطرف الأول. وبموجب هذا العقد يقر الموظف بأنه قد أطلع على كافة لوائح ونظام العمل لدى الشركة.<br/>
+                                </td>
+                                <td class="eng-td">
+                                    13 - Compliance with Instructions, Laws, and Regulations<br/><br/>
+                                    The Second Party undertakes to comply and abide by all Government Laws and Regulations in effect in Saudi Arabia. The Second Party shall not directly or indirectly engage in any other employment, with or without wages, with any other party or other commercial business. Furthermore, the Second Party undertakes to comply with all directives from the First Party based on Company policies, in addition to compliance with all the approved Chamber polices and Organizational guidelines in order to not bring shame to him or the First Party.<br/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    14. انطباق الأنظمة السعودية:<br/><br/>
+                                    يخضع تفسير وتنفيذ هذا العقد حصراً لنظام العمل والعمال الساري المفعول في المملكة العربية السعودية ولكافة أنظمة المملكة التي تتعلق بذلك، وكذلك ما تضعه الشركة من لوائح ونظم جزءا لا يتجزأ من هذا العقد ومكملا له. وتختص هيئة تسوية الخلافات المنصوص عليها بنظام العمل السعودي بمدينة الرياض وحدها بالفصل في أي نزاع ينشأ بين الشركة والموظف بشأن تنفيذ هذا العقد، وتعتبر القرارات الصادرة عنها نهائية وملزمة للطرفين. هذا وينطبق نظام العمل والعمال السعودي على جميع الأمور التي لم يرد عنها نص صريح في هذا العقد.<br/>
+                                </td>
+                                <td class="eng-td">
+                                    14 –Saudi Governing Laws<br/><br/>
+                                    The interpretation and implementation of this Contract is exclusively subject to the Saudi Labor Regulations and to all other Saudi Regulations in force. All disputes that might arise in connection herewith shall be settled by the competent Saudi authorities whose decisions and findings shall be final and binding on both parties hereto. Provisions of the Saudi Labor Law shall apply in all matters relating to the employment hereunder not specifically mentioned herein.<br/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    15. التقويم المتبع:<br/><br/>
+                                    يتبع التقويم الميلادي في حساب جميع المدد المنصوص عنها في هذا العقد وإثباتاً لما تقدم وقع الطرفان هذا العقد في التاريخ المبين في أوله أعلاه.<br/>
+                                </td>
+                                <td class="eng-td">
+                                    15 - Applicable Calendar:<br/><br/>
+                                    Follows the Gregorian calendar in the calculation of all the periods stipulated in this contract and witness whereof the parties signed this contract on the date indicated above.<br/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    16. عدم جواز أداء أعمال للغير:<br/><br/>
+                                    يلتزم الطرف الثاني بعدم العمل لدى الغير بالمملكة العربية السعودية أثناء سريان هذا العقد بشكل مباشر أو غير مباشر باجر أو بدون اجر بما في ذلك أيام الإجازات، وإذا ثبت للطرف الأول اشتغال الطرف الثاني لدى الغير على النحو الموضح بعالية، فانه يحق له في هذا الحالة فسخ العقد، كما يتعهد الطرف الثاني بعدم العمل منفردا او عند الغير في أي مجال منافس أو مماثل لمجال عمله الحالي أو أيا من مجالات عمل الطرف الأول وذلك لمدة سنتين كاملتين من تاريخ إخلاء طرفه إلا بموافقة خطية من قبل الطرف الأول.<br/>
+                                </td>
+                                <td class="eng-td">
+                                    16 - The Inability to Work for Other Entities:<br/><br/>
+                                    Second party is obliged not to work with other entities in Saudi Arabia during the term of this contract, either directly or indirectly, with or without wages, including vacation days, and if it is proved to the First Party of operation of the Second Party to Third Parties as described above, the First Party has the right in this situation to void this contract. Also, the second party prevents to work with any competitor company or institution worked in the same fields or activities for a period of two years from the contract termination unless the written consent of the first party.<br/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    17. المحافظة على السرية وحقوق الملكية الفكرية: -<br/><br/>
+                                    إن جميع المعلومات والبيانات والرسومات والوثائق ومعلومات مستخدمين المنصات والكلمات السرية وغيرها من الأمور ذات الإتباط التي قام الطرف الثاني بإعدادها او استخدامها لأجل ً ً تنفيذ الخدمات والأعمال محل العقد
+                                    تعد ملكا خالصا للطرف الأول بما في ذلك حقوق النشر، ويحظر على الطرف الثاني استخدامها إلا فيما له علاقة بتنفيذ الخدمات والأعمال، كما أن جميع المعلومات والبيانات والرسومات
+                                    والوثائق الخاصة باًلطرف الأول والتي قد تكون بحوزة الطرف الثاني أو يكون مطلعا عليها تظل ملكا ً خالصا ً للطرف الأول ومحظور على الطرف الثاني إستخدامها إلا فيما له علاقة بتنفيذ الخدمات
+                                    والأعمال محل العقد. يلتزم الطرف الثاني بالمحافظة على أسرار الطرف الأول التي قد يطلع عليها وعدم إفشاء أي معلومات ترد إليه بسبب وظيفته أو أثناء
+                                    العمل لديه وذلك لمدة سنتين تاليتين بعد تركه العمل لديه. كما يلتزم بالامتناع عن افشاء مثل هذه المعلومات السرية لأي طرف آخر بدون موافقة كتابية
+                                    مسبقة من الطرف الاول وعليه أيضا أن يقوم بحماية مثل هذه المعلومات السرية من الافشاءات الغير متعمدة لطرف خارجي بنفس العناية والجهد الذي يستخدمه لحماية معلوماته
+    الخاصة والسرية. أن يتأكد الطرف الثاني ان جميع الحقوق الملكية الفكرية محفوظة بملكيتها وسريتها للطرف الأول وحده. وفى حال مخالفة ذلك يتحمل وحده المسئولية القانونية المترتبة على ذلك.                                <br/>
+                                </td>
+                                <td class="eng-td">
+                                    17 –Preservation of confidentiality and Intellectual Property Rights:<br/><br/>
+                                    All information, data, graphics and documents، user names &#38; passwords and other related things that the Second Party has prepared or used for the implementation of services and work within this contract are the exclusive property of the First Party, including distribution rights. The Second Party is prohibited from other usage except as to the implementation of services and works. In addition, all information, data and graphics and documentation for the First Party, which may be in possession or viewed by the Second Party, remain the exclusive property of the First Party and the Second Party is prohibited to use them except for the implementation of their work and services within this contract.<br/>
+                                    Second Party shall maintain the secrets of the First Party of which they have knowledge, and non-disclosure of any information provided to him with relation to his job or during work and for a period of two years after leaving the organization.<br/>
+                                    The Second Party shall also refrain from disclosing such confidential information to any Third Party without the prior written consent of the First Party. Furthermore, the Second Party must protect the confidentiality of such information from non-intentional disclosures to an External Party with the same care and effort which he uses to protect his private and confidential information. The second party must also ensure that all intellectual property rights are reserved in ownership<br/>
+                                    confidentiality of the First Party alone. In case of violation, the Second Party will bear the sole legal responsibility.<br/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    18. عدد النسخ والإخطارات والإشعارات <br/><br/>
+                                    تتم الإخطارات ،و الإشعارات بين الطرفين كتابة على العنوان الموضح في صدر العقد عن طريق البريد المسجل،او البريد الممتاز ،او البريد الالكتروني لكلٍ من الطرفين ،ويلتزم كل طرف بإشعار الطرف الآخر خطياً في حال تغيره للعنوان الخاص به ،أو تغيير البريد الالكتروني ،وإلا اعتبر العنوان او البريد الالكتروني المدونان أعلاه،هما المعمول بهما نظاماً.<br/>
+    حرر هذا العقد من نسختين أصليتين باللغة العربية والإنجليزية والنسخة العربية هي المعتمدة عند حدوث أي خلاف بين الطرفين بيد كل طرف نسخة للعمل بموجبها                                 <br/>
+                                </td>
+                                <td class="eng-td">
+                                    18- Number of Copies:<br/><br/>
+                                    Notifications and notifications between the two parties should be made in writing at the address indicated at the beginning of the contract by registered mail, or excellent mail, or email for each of the parties, and each party is obligated to notify the other party in writing in the event that it changes its address, or change the email, otherwise The address or email noted above are considered valid.<br/>
+                                    This contract was compiled with two original copies written in the both Arabic and English. The Arabic version is the approved version in the event of a dispute between both parties. Each party receives a physical copy to abide by.<br/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    الطرف الأول (<span t-field="o.print_config_id.company_name_ar"/>)<br/>
+                                    <span t-field="o.print_config_id.represented_position_ar"/>
+                                    <span t-field="o.print_config_id.represented_ar"/><br/><br/><br/><br/>
+                                    الطرف الثاني(الموظف)<br/>
+                                    <span t-field="o.employee_id.name"/><br/><br/>
+                                </td>
+                                <td class="eng-td">
+                                    First Party (<span t-field="o.print_config_id.company_name_en"/>)<br/>
+                                    <span t-field="o.print_config_id.represented_position_en"/> <span t-field="o.print_config_id.represented_en"/><br/><br/><br/><br/>
+                                    Second Party (Employee)<br/>
+                                    <span t-field="o.employee_id.employee_english_name"/><br/><br/><br/><br/>
+                                </td>
+                            </tr>
+                        </table>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

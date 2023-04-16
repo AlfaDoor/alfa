@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_employee_working.days,employee working.days,overtime_late.model_working_days,base.group_user,1,1,0,0
+access_employee_attendance_report,employee attendance.report,overtime_late.model_attendance_report,,1,1,1,1
+access_change_working_hours,change_working_hours all,overtime_late.model_change_working_hours,,1,1,1,1
+access_hr_excuse,hr_excuse all,overtime_late.model_hr_excuse,,1,1,1,1
+access_overtime_assignment,hr_excuse all,overtime_late.model_overtime_assignment,,1,1,1,1
+access_employee_sheet_report_employee,employee_sheet_report all,overtime_late.model_employee_sheet_report,base.group_user,1,0,0,0
+access_employee_sheet_report_officer,employee_sheet_report_employee officer,overtime_late.model_employee_sheet_report,hr.group_hr_user,1,1,1,1
+access_payroll_sheet_report_officer,payroll_sheet_report officer,overtime_late.model_payroll_sheet_report,hr.group_hr_user,1,1,1,1

@@ -1,0 +1,31 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_loans_advances,access Loans Advances,model_hr_loans_loan_advance,hr.group_hr_user,1,1,1,1
+access_loans_advances,access Loans Advances,model_hr_loans_loan_advance,,1,0,0,0
+access_loans_advances_request,access Loans Advances Requests,model_loan_advance_request,base.group_user,1,1,1,1
+access_loans_advances_request,access Loans Advances Requests,model_loan_advance_request,,1,1,1,0
+access_employee_absence_line,employee_absence_line,model_employee_absence_line,,1,1,1,0
+access_deduction_violation_category,deduction_violation_category,model_deduction_violation_category,,1,1,1,1
+access_deduction_violation_category,deduction_violation_category,model_deduction_violation_category,,1,1,1,1
+access_deduction_violation_type,deduction_violation_type,model_deduction_violation_type,,1,1,1,1
+access_employee_deductions_payment,employee_deductions_payment,model_employee_deductions_payment,,1,1,1,1
+access_employee_deductions_violations,employee_deductions_violations,model_employee_deductions_violations,,1,1,1,1
+access_deduction_type_attaches,deduction_type_attaches,model_deduction_type_attaches,,1,1,1,1
+access_deductions_violations_attaches,deductions_violations_attaches,model_deductions_violations_attaches,,1,1,1,1
+access_confirm_other_action,confirm_other_action,model_confirm_other_action,,1,1,1,1
+access_contract_paid_violation,contract_paid_violation,model_contract_paid_violation,,1,1,1,1
+access_loan_advance_request_attaches,loan_advance_request_attaches,model_loan_advance_request_attaches,,1,1,1,1
+access_hr_contract_loan_payment,hr_contract_loan_payment,model_hr_contract_loan_payment,,1,1,1,1
+access_loan_installment,loan_installment,model_loan_installment,,1,1,1,1
+access_loan_installment_payment,loan_installment_payment,model_loan_installment_payment,,1,1,1,1
+access_loan_installment_attaches,loan_installment_attaches,model_loan_installment_attaches,,1,1,1,1
+access_hr_loans_config_settings,hr_loans_config_settings,model_hr_loans_config_settings,,1,1,1,1
+access_hr_reward_type,hr_reward_type,model_hr_reward_type,,1,1,1,1
+access_hr_employee_rewards,hr_employee_rewards,model_hr_employee_rewards,,1,1,1,1
+access_rewards_type_attaches,rewards_type_attaches,model_rewards_type_attaches,,1,1,1,1
+access_employee_reward_attaches,employee_reward_attaches,model_employee_reward_attaches,,1,1,1,1
+access_contract_paid_rewards,contract_paid_rewards,model_contract_paid_rewards,,1,1,1,1
+
+
+
+
+

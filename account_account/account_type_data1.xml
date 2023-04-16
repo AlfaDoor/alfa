@@ -1,0 +1,540 @@
+<odoo>
+    <data>
+        <record model="account.account.type" id="account.data_account_type_receivable">
+            <field name="name">Receivable</field>
+            <field name="arabic_name">الذمم والمدينون</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">102</field>
+            <field name="location">current_asset</field>
+            <field name="type">Receivable</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account.data_account_type_payable">
+            <field name="name">Accounts Payable</field>
+            <field name="arabic_name">دمم دائنه وموردين</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">301</field>
+            <field name="location">Current liabilities</field>
+            <field name="type">Payable</field>
+            <field name="debit_credit">credit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_17">
+            <field name="name">Warehouse</field>
+            <field name="arabic_name">المخازن والمستودعات</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">103</field>
+            <field name="location">current_asset</field>
+            <field name="type">other</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account.data_account_type_liquidity">
+            <field name="name">Bank and Cash</field>
+            <field name="arabic_name">النقديه والبنوك</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">101</field>
+            <field name="location">current_asset</field>
+            <field name="type">liquidity</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account.data_account_type_current_assets">
+            <field name="name">Other current_assets</field>
+            <field name="arabic_name">أصول متداوله أخرى</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">106</field>
+            <field name="location">current_asset</field>
+            <field name="type">other</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account.data_account_type_non_current_assets">
+            <field name="name">Cars and Other Vechiles</field>
+            <field name="arabic_name">السيارات والمركبات الأخرى</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">204</field>
+            <field name="location">Non-current_asset</field>
+            <field name="type">other</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account.data_account_type_prepayments">
+            <field name="name">Prepaid Expenses</field>
+            <field name="arabic_name">مصروفات مدفوعه مقدما</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">104</field>
+            <field name="location">current_asset</field>
+            <field name="type">other</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account.data_account_type_fixed_assets">
+            <field name="name">Other fixed assets</field>
+            <field name="arabic_name">أصول ثابته أخرى</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">208</field>
+            <field name="location">Non-current_asset</field>
+            <field name="type">other</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account.data_account_type_current_liabilities">
+            <field name="name">Other current liabilities</field>
+            <field name="arabic_name">التزامات متداوله اخرى</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">305</field>
+            <field name="location">Current liabilities</field>
+            <field name="type">other</field>
+            <field name="debit_credit">credit</field>
+        </record>
+        <record model="account.account.type" id="account.data_account_type_non_current_liabilities">
+            <field name="name">Other non-current liabilities</field>
+            <field name="arabic_name">التزامات اخرى طويلة الأجل</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">404</field>
+            <field name="location">Non-current liabilities</field>
+            <field name="type">other</field>
+            <field name="debit_credit">credit</field>
+        </record>
+        <record model="account.account.type" id="account.data_account_type_equity">
+            <field name="name">capital</field>
+            <field name="arabic_name">رأس المال</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">501</field>
+            <field name="location">Equity</field>
+            <field name="type">other</field>
+            <field name="debit_credit">credit</field>
+        </record>
+        <record model="account.account.type" id="account.data_unaffected_earnings">
+            <field name="name">Current Year Earnings</field>
+            <field name="arabic_name">ارباح السنه</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">503</field>
+            <field name="location">Equity</field>
+            <field name="type">other</field>
+            <field name="debit_credit">credit</field>
+        </record>
+        <record model="account.account.type" id="account.data_account_type_other_income">
+            <field name="name">Other Income</field>
+            <field name="arabic_name">ايرادات أخرى</field>
+            <field name="include_initial_balance" eval="False"/>
+            <field name="code">602</field>
+            <field name="location">Income</field>
+            <field name="type">other</field>
+            <field name="debit_credit">credit</field>
+        </record>
+        <record model="account.account.type" id="account.data_account_type_revenue">
+            <field name="name">Sales Revenue</field>
+            <field name="arabic_name">ايرادات المبيعات</field>
+            <field name="include_initial_balance" eval="False"/>
+            <field name="code">601</field>
+            <field name="location">Income</field>
+            <field name="type">other</field>
+            <field name="debit_credit">credit</field>
+        </record>
+        <record model="account.account.type" id="account.data_account_type_depreciation">
+            <field name="name">Depreciation Expenses</field>
+            <field name="arabic_name">مصاريف الاهلاك</field>
+            <field name="include_initial_balance" eval="False"/>
+            <field name="code">708</field>
+            <field name="location">Expenses</field>
+            <field name="type">other</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account.data_account_type_expenses">
+            <field name="name">Other operational expenses</field>
+            <field name="arabic_name">مصروفات تشغيلية اخرى</field>
+            <field name="include_initial_balance" eval="False"/>
+            <field name="code">711</field>
+            <field name="location">Expenses</field>
+            <field name="type">other</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account.data_account_type_direct_costs">
+            <field name="name">Cost of goods sold</field>
+            <field name="arabic_name">تكلفة البضاعه المباعه</field>
+            <field name="include_initial_balance" eval="False"/>
+            <field name="code">701</field>
+            <field name="location">Expenses</field>
+            <field name="type">other</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_19">
+            <field name="name">Short Term Investments</field>
+            <field name="arabic_name">استثمارات قصيرة الأجل</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">105</field>
+            <field name="location">current_asset</field>
+            <field name="type">other</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_21">
+            <field name="name">Short Term Loans To Others</field>
+            <field name="arabic_name">قروض قصيرة الأجل مقدمه للغير</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">107</field>
+            <field name="location">current_asset</field>
+            <field name="type">other</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_22">
+            <field name="name">Non-Financial Custody ( Short term )</field>
+            <field name="arabic_name">عهد غير ماليه قصيرة الأجل</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">108</field>
+            <field name="location">current_asset</field>
+            <field name="type">other</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_23">
+            <field name="name">Financial Custody ( Short Term )</field>
+            <field name="arabic_name">عهد ماليه قصيرة الأجل</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">109</field>
+            <field name="location">current_asset</field>
+            <field name="type">Receivable</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_24">
+            <field name="name">Long Term investments</field>
+            <field name="arabic_name">استثمارات طويلة الأجل</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">201</field>
+            <field name="location">Non-current_asset</field>
+            <field name="type">other</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_25">
+            <field name="name">Land and non-Depreciated Assets</field>
+            <field name="arabic_name">الأراضى والأصول الأخرى الغير قابله للإهلاك</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">202</field>
+            <field name="location">Non-current_asset</field>
+            <field name="type">other</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_26">
+            <field name="name">Buildings</field>
+            <field name="arabic_name">المبانى</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">203</field>
+            <field name="location">Non-current_asset</field>
+            <field name="type">other</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_28">
+            <field name="name">Machines and Equipmets</field>
+            <field name="arabic_name">الألات والمعدات</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">205</field>
+            <field name="location">Non-current_asset</field>
+            <field name="type">other</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_29">
+            <field name="name">Computers and It devices</field>
+            <field name="arabic_name">كمبيوتر واجهزة تقنيه</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">206</field>
+            <field name="location">Non-current_asset</field>
+            <field name="type">other</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_30">
+            <field name="name">Furniture and Decorations</field>
+            <field name="arabic_name">اثاث وديكورات</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">207</field>
+            <field name="location">Non-current_asset</field>
+            <field name="type">other</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_32">
+            <field name="name">Intangible assets</field>
+            <field name="arabic_name">أصول غير ملموسه</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">209</field>
+            <field name="location">Non-current_asset</field>
+            <field name="type">other</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_33">
+            <field name="name">Long term receivables</field>
+            <field name="arabic_name">ذمم ومدينون طويلة الأجل</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">210</field>
+            <field name="note">تستخدم فى حالة اذا كان من المتوقع استلام مبالغ نقديه من العملاء او الموظفين خلال فتره
+                تزيد عن سنه
+            </field>
+            <field name="location">Non-current_asset</field>
+            <field name="type">Receivable</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_34">
+            <field name="name">Long Term Loans To others</field>
+            <field name="arabic_name">قروض طويلة الاجل طرف الغير</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">211</field>
+            <field name="location">Non-current_asset</field>
+            <field name="type">Receivable</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_35">
+            <field name="name">Wages payable</field>
+            <field name="arabic_name">أجور مستحقة الدفع</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">302</field>
+            <field name="location">Current liabilities</field>
+            <field name="type">Payable</field>
+            <field name="debit_credit">credit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_36">
+            <field name="name">Unearned revenues ( cash in advance )</field>
+            <field name="arabic_name">ارباح غير محققه . دفعات مقدمه</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">303</field>
+            <field name="location">Current liabilities</field>
+            <field name="type">other</field>
+            <field name="debit_credit">credit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_37">
+            <field name="name">Current maturity of long term debts</field>
+            <field name="arabic_name">نصيب السنه من القروض طويلة الأجل</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">304</field>
+            <field name="location">Current liabilities</field>
+            <field name="type">other</field>
+            <field name="debit_credit ">credit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_38">
+            <field name="name">Short-term allowances</field>
+            <field name="arabic_name">مخصصات قصيرة الاجل</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">306</field>
+            <field name="location">Current liabilities</field>
+            <field name="type">other</field>
+            <field name="debit_credit">credit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_39">
+            <field name="name">Warranty allowances</field>
+            <field name="arabic_name">مخصصات الضمان</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">310</field>
+            <field name="location">Current liabilities</field>
+            <field name="type">other</field>
+            <field name="debit_credit">credit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_40">
+            <field name="name">Long term Accounts payable</field>
+            <field name="arabic_name">حسابات دفع طويلة الاجل</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">401</field>
+            <field name="location">Non-current liabilities</field>
+            <field name="type">Payable</field>
+            <field name="debit_credit">credit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_41">
+            <field name="name">End of services Liabilities</field>
+            <field name="arabic_name">مستحقات نهاية الخدمه</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">402</field>
+            <field name="location">Non-current liabilities</field>
+            <field name="type">other</field>
+            <field name="debit_credit">credit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_42">
+            <field name="name">Long term loans</field>
+            <field name="arabic_name">قروض من الغير طويلة الأجل</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">403</field>
+            <field name="location">Non-current liabilities</field>
+            <field name="type">other</field>
+            <field name="debit_credit">credit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_43">
+            <field name="name">Partners withdrawals</field>
+            <field name="arabic_name">مسحوبات الشركاء</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">502</field>
+            <field name="location">Equity</field>
+            <field name="type">other</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_44">
+            <field name="name">Discounts from suppliers</field>
+            <field name="arabic_name">خصومات مكتسبه من الموردين</field>
+            <field name="include_initial_balance" eval="False"/>
+            <field name="code">606</field>
+            <field name="location">Income</field>
+            <field name="type">other</field>
+            <field name="debit_credit">credit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_45">
+            <field name="name">Sales discount and allowances</field>
+            <field name="arabic_name">خصومات ممنوحه للعملاء</field>
+            <field name="include_initial_balance" eval="False"/>
+            <field name="code">702</field>
+            <field name="location">Expenses</field>
+            <field name="type">other</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_46">
+            <field name="name">Sales salaries and commission</field>
+            <field name="arabic_name">رواتب وعمولات رجال البيع</field>
+            <field name="include_initial_balance" eval="False"/>
+            <field name="code">703</field>
+            <field name="location">Expenses</field>
+            <field name="type">other</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_47">
+            <field name="name">marketing expenses</field>
+            <field name="arabic_name">مصاريف تسويقيه</field>
+            <field name="include_initial_balance" eval="False"/>
+            <field name="code">704</field>
+            <field name="location">Expenses</field>
+            <field name="type">other</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_48">
+            <field name="name">Travel expenses</field>
+            <field name="arabic_name">مصاريف انتقالات</field>
+            <field name="include_initial_balance" eval="False"/>
+            <field name="code">705</field>
+            <field name="location">Expenses</field>
+            <field name="type">other</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_49">
+            <field name="name">Advertising expenses</field>
+            <field name="arabic_name">مصاريف دعايه واعلان</field>
+            <field name="include_initial_balance" eval="False"/>
+            <field name="code">706</field>
+            <field name="location">Expenses</field>
+            <field name="type">other</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_50">
+            <field name="name">Administration salaries</field>
+            <field name="arabic_name">رواتب الإداريين</field>
+            <field name="include_initial_balance" eval="False"/>
+            <field name="code">707</field>
+            <field name="location">Expenses</field>
+            <field name="type">other</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_51">
+            <field name="name">Office supply expenses</field>
+            <field name="arabic_name">مصروفات مكتبية</field>
+            <field name="include_initial_balance" eval="False"/>
+            <field name="code">709</field>
+            <field name="location">Expenses</field>
+            <field name="type">other</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_53">
+            <field name="name">Miscellaneous expenses</field>
+            <field name="arabic_name">المصاريف النثريه</field>
+            <field name="include_initial_balance" eval="False"/>
+            <field name="code">710</field>
+            <field name="location">Expenses</field>
+            <field name="type">other</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_54">
+            <field name="name">Gains From Assets Disposal</field>
+            <field name="arabic_name">أرباح بيع أصول ثابته</field>
+            <field name="include_initial_balance" eval="False"/>
+            <field name="code">604</field>
+            <field name="location">Income</field>
+            <field name="type">other</field>
+            <field name="debit_credit">credit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_55">
+            <field name="name">Gains from change in currencies rates</field>
+            <field name="arabic_name">أرباح التغير فى سعر العملات</field>
+            <field name="include_initial_balance" eval="False"/>
+            <field name="code">605</field>
+            <field name="location">Income</field>
+            <field name="type">other</field>
+            <field name="debit_credit">credit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_56">
+            <field name="name">losses From Assets Disposal</field>
+            <field name="arabic_name">خسائر بيع الأصول الثابته</field>
+            <field name="include_initial_balance" eval="False"/>
+            <field name="code">712</field>
+            <field name="location">Expenses</field>
+            <field name="type">other</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_57">
+            <field name="name">Losses from change in currencies rates</field>
+            <field name="arabic_name">خسائر ناتجه عن التغير فى أسعار العملات</field>
+            <field name="include_initial_balance" eval="False"/>
+            <field name="code">713</field>
+            <field name="location">Expenses</field>
+            <field name="type">other</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_58">
+            <field name="name">Main Account</field>
+            <field name="arabic_name">حساب رئيسى</field>
+            <field name="include_initial_balance" eval="False"/>
+            <field name="code">0</field>
+            <field name="note">الحسابات الرئيسيه هى تلك الحسابات التى لا يتم تسجيل عليها أى معاملات . مثل حساب الأصول
+                الثابته . حساب الميزانيه . قائمة الدخل .... وغيرها.
+            </field>
+            <field name="location">Temporary accounts</field>
+            <field name="type">Main account</field>
+            <field name="debit_credit">Temporary</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_59">
+            <field name="name">Temporary Accounts</field>
+            <field name="arabic_name">حسابات وسيطه أو مؤقته</field>
+            <field name="include_initial_balance" eval="False"/>
+            <field name="code">00</field>
+            <field name="note">الحسابات الوسيطه .. يتم استخدامها بشكل مؤقت لتسجيل بعض المعاملات . مثلا فى حالاتاستلام
+                البضاعه فى المخازن . قد يتم توسيط حساب البضاعه فى الطريق لحين استلام البضاعه فعلا فى المخازن
+            </field>
+            <field name="location">Temporary accounts</field>
+            <field name="type">Temporary accounts</field>
+            <field name="debit_credit">Temporary</field>
+        </record>
+        <record model="account.account.type"
+                id="account_account.data_account_type_Current_maturity_of_long_term_debits">
+            <field name="name">Current maturity of long term debits</field>
+            <field name="arabic_name">استحقاقات الفتره الحاليه من الديون طويله الاجل</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">311</field>
+            <field name="location">Current liabilities</field>
+            <field name="type">other</field>
+            <field name="debit_credit">credit</field>
+        </record>
+        <record model="account.account.type" id="account_account.data_account_type_EOC_Liabilities">
+            <field name="name">EOC Liabilities for current year</field>
+            <field name="arabic_name">مستحقات نهاية الخدمه للسنه الحاليه</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">312</field>
+            <field name="note">تستخدم لتسجيل المبالغ التى يجب سدادها للموظفين التى تنهتى خدمتهم خلال العام . سواء كان
+                سبب نهاية الخدمه استقاله او تجديد للعقد.
+            </field>
+            <field name="location">Current liabilities</field>
+            <field name="type">other</field>
+            <field name="debit_credit">credit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_105">
+            <field name="name">Long Term Prepaid Expenses</field>
+            <field name="arabic_name">مصروفات مقدمه طويلة الأجل</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">212</field>
+            <field name="location">Non-current_asset</field>
+            <field name="type">other</field>
+            <field name="debit_credit">debit</field>
+        </record>
+        <record model="account.account.type" id="account_account_type_106">
+            <field name="name">Accumulated Depreciation</field>
+            <field name="arabic_name">مجمع اهلاك الأصول الثابته</field>
+            <field name="include_initial_balance" eval="True"/>
+            <field name="code">213</field>
+            <field name="location">Non-current_asset</field>
+            <field name="type">other</field>
+            <field name="debit_credit">credit</field>
+        </record>
+
+    </data>
+</odoo>

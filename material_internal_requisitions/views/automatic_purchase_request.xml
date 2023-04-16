@@ -1,0 +1,71 @@
+<odoo>
+	<data>
+		<record model="ir.ui.view"
+			id="requisition_procurement_tree_purchase_request">
+			<field name="name">requisition.procurement.tree.purchase.request
+			</field>
+			<field name="model">requisition.procurement</field>
+			<field name="arch" type="xml">
+				<tree editable="top">
+
+					<field name="date" readonly="1"/>
+					<field name="product_id" readonly="1"/>
+					<field name="product_qty" readonly="1"/>
+					<field name="requisition_id" readonly="1" />
+					<field name="purchase_request_id" readonly="1"/>
+					<field name='remarks' readonly="1"/>
+					<field name="status" readonly="1" />
+				</tree>
+			</field>
+		</record>
+
+		<record id="procurement_sequence" model="ir.sequence">
+			<field name="name">Procurement</field>
+			<field name="code">procurement_sequence</field>
+			<field name="prefix">SR</field>
+			<field name="number_next">1</field>
+			<field name="number_increment">1</field>
+			<field name="padding">5</field>
+		</record>
+
+		<!--<record id="procurement_sequence" model="ir.sequence">-->
+			<!--<field name="name">Procurement</field>-->
+			<!--<field name="code">procurement_sequence</field>-->
+			<!--<field name="prefix">PR-</field>-->
+			<!--<field name="padding">3</field>-->
+		<!--</record>-->
+
+
+		<record id="action_requisition_procurement"
+			model="ir.actions.act_window">
+			<field name="name">Procurement</field>
+			<field name="res_model">requisition.procurement</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree</field>
+		</record>
+
+		<menuitem id="requisition_procurement_menu"
+			name="Procurement" action="action_requisition_procurement"
+			parent="stock.menu_stock_root" />
+
+		<record model="ir.ui.view"
+			id="wizard_create_purchase_form_view_1">
+			<field name="name">wizard.create.purchase</field>
+			<field name="model">wizard.create.purchase</field>
+			<field name="arch" type="xml">
+				<form>
+					<footer>
+						<button string="Create Purchase Request" type="object"
+							name="create_purchase_request" class="oe_highlight" />
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<act_window id="wizard_create_purchase_form_view"
+			name="Purchase Request" src_model="requisition.procurement"
+			res_model="wizard.create.purchase" view_mode="form" target="new"
+			key2="client_action_multi" />
+
+	</data>
+</odoo>

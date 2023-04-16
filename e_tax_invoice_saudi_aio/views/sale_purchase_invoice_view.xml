@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_arabic_fonts"  inherit_id="web.assets_common">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" type="text/css" href="/e_tax_invoice_saudi_aio/static/src/css/style.css"/>
+        </xpath>
+    </template>
+    
+    <record model="ir.ui.view" id="view_tax_invoice_form">
+        <field name="name">tax.invoice.form.inherit</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date_invoice']" position="after">
+                <field name="invoice_date_supply"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_company_form_etir">
+        <field name="name">tax.invoice.res.company.inherit</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='currency_id']" position="after">
+                <field name="building_no"/>
+                <field name="additional_no"/>
+                <field name="other_seller_id"/>
+            </xpath>
+            <xpath expr="//group[@name='social_media']" position="before">
+                <group>
+                    <field name="arabic_name"/>
+                    <label for="arabic_street" string="Arabic Address"/>
+                    <div class="o_address_format">
+                        <field name="arabic_street" placeholder="Arabic Street..." class="o_address_street"/>
+                        <field name="arabic_street2" placeholder="Arabic Street 2..." class="o_address_street"/>
+                        <field name="arabic_city" placeholder="Arabic City" class="o_address_city"/>
+                        <field name="arabic_state" class="o_address_state" placeholder="Arabic State" options="{&quot;no_open&quot;: True}"/>
+                        <field name="arabic_zip" placeholder="Arabic ZIP" class="o_address_zip"/>
+                        <field name="arabic_country" placeholder="Arabic Country" class="o_address_country" options="{&quot;no_open&quot;: True}"/>
+                    </div>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_partner_form_etir">
+        <field name="name">tax.invoice.res.partner.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="building_no"/>
+                <field name="additional_no"/>
+                <field name="other_seller_id"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

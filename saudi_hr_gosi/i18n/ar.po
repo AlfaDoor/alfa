@@ -1,0 +1,300 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* saudi_hr_gosi
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.e-20151006\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-12-11 13:56+0000\n"
+"PO-Revision-Date: 2017-12-11 18:24+0300\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar_SY\n"
+"X-Generator: Poedit 2.0.5\n"
+
+#. module: saudi_hr_gosi
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_hr_payslip_rule_absence_deducted
+msgid "Absence Deductions"
+msgstr "Absence Deductions"
+
+#. module: saudi_hr_gosi
+#: model:ir.ui.view,arch_db:saudi_hr_gosi.view_country_form_base_inherit
+msgid "Address format..."
+msgstr "تنسيق العنوان  ..."
+
+#. module: saudi_hr_gosi
+#: selection:gosi.calc,gosi_calc_based_on:0
+#: selection:hr.contract,gosi_calc_based_on:0
+#: selection:res.country,gosi_calc_based_on:0
+msgid "Basic Salary"
+msgstr "الراتب الأساسى"
+
+#. module: saudi_hr_gosi
+#: selection:gosi.calc,gosi_calc_based_on:0
+#: selection:hr.contract,gosi_calc_based_on:0
+#: selection:res.country,gosi_calc_based_on:0
+msgid "Basic Salary + House allowance"
+msgstr "أساسى + بدل السكن"
+
+#. module: saudi_hr_gosi
+#: selection:gosi.calc,gosi_calc_based_on:0
+#: selection:hr.contract,gosi_calc_based_on:0
+#: selection:res.country,gosi_calc_based_on:0
+msgid "Basic Salary + House allowance + transportation"
+msgstr "أساسى + بدل سكن + بدل المواصلات"
+
+#. module: saudi_hr_gosi
+#: selection:gosi.calc,gosi_calc_based_on:0
+#: selection:hr.contract,gosi_calc_based_on:0
+#: selection:res.country,gosi_calc_based_on:0
+msgid "Basic salary + House + transportation + phone"
+msgstr "أساسى + بدل السكن + يدل المواصلات + بدل الهاتف"
+
+#. module: saudi_hr_gosi
+#: model:ir.ui.view,arch_db:saudi_hr_gosi.view_country_form_inherit
+msgid "Cities"
+msgstr "المدن"
+
+#. module: saudi_hr_gosi
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_gosi_calc_company_amount
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_hr_contract_company_amount
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_res_country_company_amount
+msgid "Company amount"
+msgstr "حصة الشركه"
+
+#. module: saudi_hr_gosi
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_gosi_calc_company_share
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_hr_contract_company_share
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_res_country_company_share
+msgid "Company share"
+msgstr "حصة الشركة من التأمينات الإجتماعيه"
+
+#. module: saudi_hr_gosi
+#: code:addons/saudi_hr_gosi/models/saudi_hr_gosi.py:72
+#, python-format
+msgid "Company share should be more than zero !"
+msgstr "Company share should be more than zero !"
+
+#. module: saudi_hr_gosi
+#: model:ir.model,name:saudi_hr_gosi.model_hr_contract
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_gosi_calc_contract_id
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_hr_contract_contract_id
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_res_country_contract_id
+msgid "Contract"
+msgstr "العقد"
+
+#. module: saudi_hr_gosi
+#: model:ir.model,name:saudi_hr_gosi.model_res_country
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_gosi_calc_country_id
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_hr_contract_country_id
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_res_country_country_id
+msgid "Country"
+msgstr "الدولة"
+
+#. module: saudi_hr_gosi
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_gosi_calc_create_uid
+msgid "Created by"
+msgstr "أنشئ بواسطة"
+
+#. module: saudi_hr_gosi
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_gosi_calc_create_date
+msgid "Created on"
+msgstr "أنشئ في"
+
+#. module: saudi_hr_gosi
+#: code:addons/saudi_hr_gosi/models/saudi_hr_gosi.py:95
+#, python-format
+msgid ""
+"Data Error!!\n"
+"                You configured your system that there is a GOSI for this nationality.  So ( Gosi for salary ) can not be zero!!"
+msgstr ""
+"Data Error!!\n"
+"                You configured your system that there is a GOSI for this nationality.  So ( Gosi for salary ) can not be zero!!"
+
+#. module: saudi_hr_gosi
+#: code:addons/saudi_hr_gosi/models/saudi_hr_gosi.py:89
+#, python-format
+msgid ""
+"Data Error!! \n"
+"                It is not logic that the amount which you will deduct from this employee is greater than 100%, please review your data."
+msgstr ""
+"Data Error!! \n"
+"                It is not logic that the amount which you will deduct from this employee is greater than 100%, please review your data."
+
+#. module: saudi_hr_gosi
+#: selection:gosi.calc,who_will_pay:0 selection:hr.contract,who_will_pay:0
+#: selection:res.country,who_will_pay:0
+msgid "Deduct from employee and from company"
+msgstr "جزء على الموظف وجزء على الشركه"
+
+#. module: saudi_hr_gosi
+#: selection:gosi.calc,who_will_pay:0 selection:hr.contract,who_will_pay:0
+#: selection:res.country,who_will_pay:0
+msgid "Deduct full Gosi amount from employee salary"
+msgstr "يتحمل الموظف كامل قيمة التأمينات الإجتماعية"
+
+#. module: saudi_hr_gosi
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_gosi_calc_display_name
+msgid "Display Name"
+msgstr "طريقة العرض"
+
+#. module: saudi_hr_gosi
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_gosi_calc_employee_amount
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_hr_contract_employee_amount
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_res_country_employee_amount
+msgid "Employee amount"
+msgstr "حصة الموظف"
+
+#. module: saudi_hr_gosi
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_gosi_calc_employee_share
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_hr_contract_employee_share
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_res_country_employee_share
+msgid "Employee share"
+msgstr "حصة الموظف من التأمينات الإجتماعيه"
+
+#. module: saudi_hr_gosi
+#: model:ir.ui.view,arch_db:saudi_hr_gosi.hr_contract_view_form_inherit
+msgid "GOSI - Air tickets"
+msgstr "التأمينات الإجتماعية - تذاكر الطيران"
+
+#. module: saudi_hr_gosi
+#: model:ir.ui.view,arch_db:saudi_hr_gosi.hr_contract_tree_leaves
+msgid "GOSI Company"
+msgstr "حصة الشركة من التأمينات الإجتماعيه"
+
+#. module: saudi_hr_gosi
+#: model:ir.ui.view,arch_db:saudi_hr_gosi.hr_contract_tree_leaves
+msgid "GOSI Employee"
+msgstr "حصة الموظف من التأمينات الإجتماعيه"
+
+#. module: saudi_hr_gosi
+#: model:ir.ui.view,arch_db:saudi_hr_gosi.hr_contract_view_form_inherit
+msgid "GOSI for this Employee"
+msgstr "التأمينات الإجتماعيه للموظف"
+
+#. module: saudi_hr_gosi
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_gosi_calc_gosi_for_this
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_hr_contract_gosi_for_this
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_res_country_gosi_for_this
+msgid "GOSI for this nationality"
+msgstr "التأمينات الإجتماعيه لهذه الجنسيه"
+
+#. module: saudi_hr_gosi
+#: model:ir.ui.view,arch_db:saudi_hr_gosi.hr_contract_view_form_inherit
+#: model:ir.ui.view,arch_db:saudi_hr_gosi.view_country_form_inherit
+msgid "Gosi Calculation"
+msgstr "حساب التأمينات الإجتماعيه"
+
+#. module: saudi_hr_gosi
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_gosi_calc_gosi_calc_based_on
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_hr_contract_gosi_calc_based_on
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_res_country_gosi_calc_based_on
+msgid "Gosi Calculation based on"
+msgstr "يتم حساب التأمينات الإجتماعيه بناءُ على"
+
+#. module: saudi_hr_gosi
+#: model:ir.model,name:saudi_hr_gosi.model_gosi_calc
+msgid "Gosi calc"
+msgstr "حساب التأمينات الإجتماعيه"
+
+#. module: saudi_hr_gosi
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_gosi_calc_id
+msgid "ID"
+msgstr "المعرف"
+
+#. module: saudi_hr_gosi
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_gosi_calc___last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: saudi_hr_gosi
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_gosi_calc_write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: saudi_hr_gosi
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_gosi_calc_write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: saudi_hr_gosi
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_gosi_calc_manual_gosi_salary
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_hr_contract_manual_gosi_salary
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_res_country_manual_gosi_salary
+msgid "Manual Gosi Salary"
+msgstr "راتب الموظف لغرض احتساب التأمينات ( يدويا )"
+
+#. module: saudi_hr_gosi
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_gosi_calc_minimum_gosi_salary
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_hr_contract_minimum_gosi_salary
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_res_country_minimum_gosi_salary
+msgid "Minimum Gosi Salary"
+msgstr "الحد الأدنى لراتب الموظف في التأمينات الإجتماعيه"
+
+#. module: saudi_hr_gosi
+#: selection:gosi.calc,gosi_for_this:0 selection:hr.contract,gosi_for_this:0
+#: selection:res.country,gosi_for_this:0
+msgid "No"
+msgstr "لا"
+
+#. module: saudi_hr_gosi
+#: selection:gosi.calc,who_will_pay:0 selection:hr.contract,who_will_pay:0
+#: selection:res.country,who_will_pay:0
+msgid "No deductions from employee salary (The company will pay the full Gosi amount)"
+msgstr "تتحمل الشركه كامل قيمة التأمينات الإجتماعيه"
+
+#. module: saudi_hr_gosi
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_res_country_note
+#: model:ir.ui.view,arch_db:saudi_hr_gosi.view_country_form_inherit
+msgid "Notes"
+msgstr "الملاحظات"
+
+#. module: saudi_hr_gosi
+#: selection:gosi.calc,gosi_calc_based_on:0
+#: selection:hr.contract,gosi_calc_based_on:0
+#: selection:res.country,gosi_calc_based_on:0
+msgid "Other amount (will be defined manually in employee contract)"
+msgstr "مبلغ أخر( سوف يتم تحديد ذلك المبلغ في عقد الموظف)"
+
+#. module: saudi_hr_gosi
+#: model:ir.model,name:saudi_hr_gosi.model_hr_payslip
+msgid "Pay Slip"
+msgstr "مسير الرواتب"
+
+#. module: saudi_hr_gosi
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_gosi_calc_salary_for_gosi
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_hr_contract_salary_for_gosi
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_res_country_salary_for_gosi
+msgid "Salary for GOSI"
+msgstr "الراتب الذى سيتم احتساب التأمينات له"
+
+#. module: saudi_hr_gosi
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_gosi_calc_start_gosi_payslip_date
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_hr_contract_start_gosi_payslip_date
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_res_country_start_gosi_payslip_date
+msgid "Start include GOSI in Payslip from"
+msgstr "يبدأ إدراج الموظف في التأمينات الاجتماعية إعتبارا من"
+
+#. module: saudi_hr_gosi
+#: selection:gosi.calc,gosi_calc_based_on:0
+#: selection:hr.contract,gosi_calc_based_on:0
+#: selection:res.country,gosi_calc_based_on:0
+msgid "Total salary"
+msgstr "الراتب الإجمالى"
+
+#. module: saudi_hr_gosi
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_gosi_calc_who_will_pay
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_hr_contract_who_will_pay
+#: model:ir.model.fields,field_description:saudi_hr_gosi.field_res_country_who_will_pay
+msgid "Who will pay the GOSI"
+msgstr "من سيقوم بتحمل التأمينات الإجتماعية"
+
+#. module: saudi_hr_gosi
+#: selection:gosi.calc,gosi_for_this:0 selection:hr.contract,gosi_for_this:0
+#: selection:res.country,gosi_for_this:0
+msgid "Yes"
+msgstr "نعم"

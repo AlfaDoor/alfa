@@ -1,0 +1,375 @@
+<odoo>
+    <data>
+
+        <!--<record model="ir.ui.view" id="invoice_form_inheritx">-->
+            <!--<field name="name">account.invoice.inherit</field>-->
+            <!--<field name="inherit_id" ref="account.invoice_form"/>-->
+            <!--<field name="model">account.invoice</field>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<field name="partner_id" position="after">-->
+                    <!--&lt;!&ndash;<field name="event_id"/>&ndash;&gt;-->
+                <!--</field>-->
+            <!--</field>-->
+        <!--</record>-->
+
+        <record model="ir.ui.view" id="view_move_line_tree_inherit">
+            <field name="name">account.move.line.inherit</field>
+            <field name="inherit_id" ref="account.view_move_line_tree"/>
+            <field name="model">account.move.line</field>
+            <field name="arch" type="xml">
+                <field name="credit" position="after">
+                    <field name="balance" sum="Balance"/>
+                    <field name="is_customer" invisible="1"/>
+                    <field name="is_vendor" invisible="1"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_account_move_line_filter_inherit">
+            <field name="name">account.move.line.inherit</field>
+            <field name="inherit_id" ref="account.view_account_move_line_filter"/>
+            <field name="model">account.move.line</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <xpath expr="//separator" position="after">
+                    <filter name="assets" string="Assets" domain="[('account_id.user_type_id.location','in',['current_asset', 'non_current_asset'])]" />
+                    <filter name="liabilities" string="Liabilities" domain="[('account_id.user_type_id.location','in',['current_liabilities', 'non_current_liabilities', 'equity'])]" />
+                    <filter name="income" string="Income" domain="[('account_id.user_type_id.location','in',['income'])]" />
+                    <filter name="expenses" string="Expenses" domain="[('account_id.user_type_id.location','in',['expense'])]" />
+                    <separator/>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_account_move_line_pivot">
+            <field name="name">account.move.line.pivot</field>
+            <field name="model">account.move.line</field>
+            <field name="arch" type="xml">
+                <pivot string="Journal items">
+                    <field name="account_id" type="row"/>
+                    <field name="debit" type="measure"/>
+                    <field name="credit" type="measure"/>
+                    <field name="balance" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_account_form_inherit">
+            <field name="name">account.account.form.inherit</field>
+            <field name="inherit_id" ref="account.view_account_form"/>
+            <field name="model">account.account</field>
+            <field name="arch" type="xml">
+                <xpath expr="//form" position="replace">
+                    <form string="Account">
+                   <sheet>
+                       <group>
+                           <group>
+                             <field name="name"/>
+                            <field name="arabic_name"/>
+                            <label for="parent_id" class="oe_inline"/>
+                            <div class="oe_inline">
+                                <field name="parent_id" options="{'no_create':True}" context="{'view':True}" domain="[('type','=','view'),('id','!=',id)]"
+                                       class="oe_inline"/>
+                                --
+                                <field name="code_main" readonly="1" attrs="{'invisible':[('code_main','=',False)]}"
+                                       class="oe_inline"/>
+                            </div>
+                            <!--<field name="code"/>-->
+                             <field name="code" placeholder="code"/>
+                            <field name="final_code" readonly="1"/>
+                            <label for="user_type_id" class="oe_inline"/>
+                            <div class="oe_inline">
+                                <field name="user_type_id" options="{'no_create':True}" class="oe_inline"/>
+                                --
+                                <field name="type" readonly="1" class="oe_inline"/>
+                            </div>
+                            <field name="level" readonly="1"/>
+                            <field name="include_initial_balance" readonly="1"/>
+                            <field name="location" readonly="1"/>
+                            <field name="debit_credit" readonly="1"/>
+                             <!--<field name="user_type_id" widget="selection"/>-->
+
+                             <field name="tax_ids" widget="many2many_tags"/>
+                             <field name="tag_ids" widget="many2many_tags" domain="[('applicability', '!=', 'taxes')]" context="{'default_applicability': 'accounts'}"/>
+                             <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+                             <field name="currency_id" options="{'no_create': True}" groups="base.group_multi_currency"/>
+                             <field name="internal_type" invisible="1" readonly="1"/>
+                             <label for="reconcile"/>
+                             <div>
+                                <field name="reconcile"/>
+                                <button name="action_open_reconcile" class="oe_link" type="object" string=" -&gt; Reconcile" attrs="{'invisible': [('reconcile', '=', False)]}"/>
+                             </div>
+                             <field name="deprecated"/>
+                            <field name="debit" readonly="1"/>
+                            <field name="credit" readonly="1"/>
+                            <field name="balance" readonly="1"/>
+                            <field name="all_parents" readonly="1" invisible="1"/>
+                            <field name="all_childes" readonly="1" invisible="1"/>
+                            <field name="active"/>
+                           </group>
+                           <group>
+                               <div class="row">
+                                   <div class="col-md-11 col-md-offset-1 col-sm-12 no-margin-top" style="background-color: #eee">
+                                       <p class="text-center" style="font-weight: bold;">How account type affects your reports?</p>
+                                       <div class="col-md-6 col-sm-6">
+                                           <div class="oe_account_help">
+                                                <p class="oe_account_font_help text-center">Profit &amp; Loss</p>
+                                                <p class="oe_account_font_help oe_account_font_title">Income</p>
+                                                <p class="oe_account_font_help oe_account_font_title">Less Cost of Revenue</p>
+                                                <p class="oe_account_font_help" style="color: grey;border-top: 2px solid;border-bottom: 2px solid;">GROSS PROFIT</p>
+                                                <p class="oe_account_font_help oe_account_font_title">Plus Other Income</p>
+                                                <p class="oe_account_font_help oe_account_font_title">Less Expenses</p>
+                                                <p class="oe_account_font_help oe_account_font_content">Expenses</p>
+                                                <p class="oe_account_font_help oe_account_font_content">Depreciation</p>
+                                                <p class="oe_account_font_help" style="color: grey;border-top: 2px solid;border-bottom: 2px solid;">NET PROFIT</p>
+                                                <div style="position: relative; width: 250px; height: 277px;" id="layer">
+                                                   <div style="position: relative; left: 0px; top: 0px; visibility: visible; width: 250px; height: 277px;">
+                                                     <svg pointer-events="none" overflow="auto" width="712.5" height="265" viewBox="-4 -4 712.5 265" style="position: relative; top: -4px; left: -4px; overflow: auto; visibility: visible; width: 400.5px; height: 265px;">
+                                                       <defs>
+                                                         <marker id="arrow" markerWidth="70" markerHeight="70" refx="10" refy="6" orient="auto">
+                                                             <path d="M2,1 L2,12 L10,6 L2,1" stroke="rgb(173,216,230)" fill="rgb(173,216,230)"/>
+                                                         </marker>
+                                                       </defs>
+                                                       <path pointer-events="visiblePainted" shape-rendering="auto" d="M 150 -110 q 270 100 150 150 t 160 120" fill="none" stroke-dasharray="8,3" stroke="rgb(173,216,230)" stroke-linecap="butt" stroke-width="4" stroke-opacity="1" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)" fill-opacity="1" style="marker-end: url(#arrow);">
+                                                       </path>
+                                                     </svg>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </div>
+                                       <div class="col-md-6 col-sm-6">
+                                           <div class="oe_account_help">
+                                               <p class="oe_account_font_help text-center">Balance Sheet</p>
+                                               <p class="oe_account_font_help oe_account_font_title" style="color: grey;">Current Assets</p>
+                                               <p class="oe_account_font_help oe_account_font_content">Receivable Accounts</p>
+                                               <p class="oe_account_font_help oe_account_font_content">Prepayments</p>
+                                               <p class="oe_account_font_help oe_account_font_title">Plus Bank</p>
+                                               <p class="oe_account_font_help oe_account_font_title">Plus Fixed Assets</p>
+                                               <p class="oe_account_font_help oe_account_font_title">Plus Non-Current Assets</p>
+                                               <p class="oe_account_font_help" style="color: grey;border-top: 2px solid;border-bottom: 2px solid;">TOTAL ASSETS</p>
+                                               <p class="oe_account_font_help oe_account_font_title">Less Current Liabilities</p>
+                                               <p class="oe_account_font_help oe_account_font_title">Less Payable Accounts</p>
+                                               <p class="oe_account_font_help oe_account_font_title">Less Non-Current Liabilities</p>
+                                               <p class="oe_account_font_help" style="color: grey;border-top: 2px solid;border-bottom: 2px solid;">NET ASSETS</p>
+                                               <p class="oe_account_font_help oe_account_font_title">Equity</p>
+                                               <p class="oe_account_font_help oe_account_font_title">Plus Net Profit</p>
+                                               <p class="oe_account_font_help" style="color: grey;border-top: 2px solid;border-bottom: 2px solid;">TOTAL EQUITY</p>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </group>
+                       </group>
+                    <notebook>
+                        <page string="Childes">
+                            <group string="Childes">
+                                <field name="child_ids" readonly="0" nolabel="1"/>
+                            </group>
+                        </page>
+                        <page string="Journal Entries">
+                            <group string="Journal Entries">
+                                <field name="account_move_ids" readonly="0" nolabel="1"/>
+                            </group>
+                            <group>
+                                <field name="count_moves"/>
+                            </group>
+                        </page>
+                        <page string="Journal Items">
+                            <group string="Journal Items">
+                                <field name="account_move_line_ids" readonly="0" nolabel="1"/>
+                            </group>
+                            <group>
+                                <field name="count_moves_lines"/>
+                            </group>
+                        </page>
+                    </notebook>
+
+                    </sheet>
+                </form>
+                </xpath>
+                <!--<field name="name" position="after">-->
+                    <!--<field name="arabic_name"/>-->
+                    <!--<label for="parent_id" class="oe_inline"/>-->
+                    <!--<div class="oe_inline">-->
+                        <!--<field name="parent_id" options="{'no_create':True}" context="{'view':True}" domain="[('type','=','view'),('id','!=',id)]"-->
+                               <!--class="oe_inline"/>-->
+                        <!--&#45;&#45;-->
+                        <!--<field name="code_main" readonly="1" attrs="{'invisible':[('code_main','=',False)]}"-->
+                               <!--class="oe_inline"/>-->
+                    <!--</div>-->
+                    <!--<field name="code"/>-->
+                    <!--<field name="level" readonly="1"/>-->
+                    <!--<field name="final_code" readonly="1"/>-->
+                    <!--<field name="include_initial_balance" readonly="1"/>-->
+                    <!--<field name="location" readonly="1"/>-->
+                    <!--<field name="debit_credit" readonly="1"/>-->
+                <!--</field>-->
+                <!--<field name="code" position="replace"/>-->
+                <!--<field name="user_type_id" position="replace">-->
+                    <!--<label for="user_type_id" class="oe_inline"/>-->
+                    <!--<div class="oe_inline">-->
+                        <!--<field name="user_type_id" options="{'no_create':True}" class="oe_inline"/>-->
+                        <!--&#45;&#45;-->
+                        <!--<field name="type" readonly="1" class="oe_inline"/>-->
+                    <!--</div>-->
+                <!--</field>-->
+                <!--<field name="deprecated" position="after">-->
+                    <!--<field name="debit" readonly="1"/>-->
+                    <!--<field name="credit" readonly="1"/>-->
+                    <!--<field name="balance" readonly="1"/>-->
+                    <!--<field name="all_parents" readonly="1" invisible="1"/>-->
+                    <!--<field name="all_childes" readonly="1" invisible="1"/>-->
+                    <!--<field name="active"/>-->
+                <!--</field>-->
+                <!--<sheet position="inside">-->
+                    <!--<notebook>-->
+                        <!--<page string="Childes">-->
+                            <!--<group string="Childes">-->
+                                <!--<field name="child_ids" readonly="0" nolabel="1"/>-->
+                            <!--</group>-->
+                        <!--</page>-->
+                        <!--<page string="Journal Entries">-->
+                            <!--<group string="Journal Entries">-->
+                                <!--<field name="account_move_ids" readonly="0" nolabel="1"/>-->
+                            <!--</group>-->
+                            <!--<group>-->
+                                <!--<field name="count_moves"/>-->
+                            <!--</group>-->
+                        <!--</page>-->
+                        <!--<page string="Journal Items">-->
+                            <!--<group string="Journal Items">-->
+                                <!--<field name="account_move_line_ids" readonly="0" nolabel="1"/>-->
+                            <!--</group>-->
+                            <!--<group>-->
+                                <!--<field name="count_moves_lines"/>-->
+                            <!--</group>-->
+                        <!--</page>-->
+                    <!--</notebook>-->
+                <!--</sheet>-->
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_account_list_inherit">
+            <field name="name">account.account.list.inherit</field>
+            <field name="model">account.account</field>
+            <field name="inherit_id" ref="account.view_account_list"/>
+            <field name="arch" type="xml">
+                <field name="code" position="after">
+                    <field name="final_code"/>
+                </field>
+                <field name="name" position="after">
+                    <field name="arabic_name"/>
+                </field>
+                <field name="user_type_id" position="after">
+                    <field name="level"/>
+                    <!--<field name="user_type_id"/>-->
+                    <!--<field name="location"/>-->
+                    <field name="debit_credit"/>
+                    <field name="tag_ids" widget="many2many_tags"/>
+                    <!--<field name="reconcile"/>-->
+                    <field name="deprecated"/>
+                    <field name="debit"/>
+                    <field name="credit"/>
+                    <field name="balance"/>
+                    <field name="type" invisible="1"/>
+                </field>
+                <tree position="attributes">
+                    <attribute name="default_order">final_code</attribute>
+                    <attribute name="decoration-success">type == 'view'</attribute>
+                </tree>
+                <field name="code" position="replace"/>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_account_search_inherit">
+            <field name="name">account.account.search.inherit</field>
+            <field name="model">account.account</field>
+            <field name="inherit_id" ref="account.view_account_search"/>
+            <field name="arch" type="xml">
+                <filter context="{'group_by':'user_type_id'}" position="after">
+                    <filter name="parent" string="Parent" domain="" context="{'group_by':'parent_id'}"/>
+                </filter>
+                 <field name="name" position="replace">
+                     <field name="name" filter_domain="['|', ('name','ilike',self), ('final_code','=like',self)]" string="Account"/>
+                 </field>
+            </field>
+        </record>
+        <!--Accounting Dashboard Menu -->
+        <record model="ir.ui.menu" id="account.menu_board_journal_1">
+            <field name="sequence">1</field>
+        </record>
+
+        <!--Pivot chart of account-->
+        <record id="account_pivot_view" model="ir.ui.view">
+            <field name="name">account.account.pivot</field>
+            <field name="model">account.account</field>
+            <field name="arch" type="xml">
+                <pivot string="Chart of account">
+                    <!--<field name="parent_id" type="measure"/>&lt;!&ndash; pivot&ndash;&gt;-->
+                    <!--<field name="type" type="row"/>-->
+                </pivot>
+            </field>
+        </record>
+        <record id="account.action_account_form" model="ir.actions.act_window">
+            <field name="view_mode">tree,form,pivot</field>
+        </record>
+
+        <!--Hierarchy chart of account-->
+        <record model="ir.ui.view" id="view_account_list_hierarchy">
+            <field name="name">account.account.list.inherit</field>
+            <field name="model">account.account</field>
+            <field name="field_parent">child_ids</field>
+            <field name="arch" type="xml">
+                <tree string="Chart of accounts" default_order="final_code" >
+                    <field name="final_code" />
+                    <field name="name" />
+                    <field name="arabic_name"/>
+                    <field name="user_type_id" />
+                    <field name="level"/>
+                    <field name="debit"/>
+                    <field name="credit"/>
+                    <field name="balance"/>
+                    <field name="type" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="account_account_hierarchy" model="ir.actions.act_window">
+            <field name="name">Accounts Hierarchy</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.account</field>
+            <field name="domain">[['parent_id','=',False]]</field>
+            <field name="view_type">tree</field>
+            <field name="view_id" ref="view_account_list_hierarchy"/>
+        </record>
+
+<!--        <record id="hr_employee_action_subordinate_hierachy_mutli" model="ir.values">-->
+<!--            <field name="name">Subordinate Hierarchy</field>-->
+<!--            <field name="model_id" ref="base.model_res_partner"/>-->
+<!--            <field name="value" eval="'ir.actions.act_window,' + str(ref('account_account.account_account_hierarchy'))"/>-->
+<!--            <field name="key">action</field>-->
+<!--            <field name="key2">client_action_multi</field>-->
+<!--            <field name="model">account.account</field>-->
+<!--        </record>-->
+        <menuitem id="account_account_hierarchy_menu" parent="account.menu_finance_entries" action="account_account_hierarchy" sequence="21"/>
+    </data>
+    <data>
+        <record model="ir.ui.view" id="view_move_form_inherit">
+            <field name="name">account.move.form.inherit</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="model">account.move</field>
+            <field name="arch" type="xml">
+                <header   position="inside">
+                    <button name="random_journal_entries" string="Random Journal Entries" type="object" groups="base.group_no_one" invisible="1"/>
+                </header>
+                <xpath expr="//tree/field[@name='account_id']" position="attributes">
+                    <attribute name="options">{'no_create': True}</attribute>
+                </xpath>
+                <field name="journal_id" position="attributes">
+                    <attribute name="options">{'no_open': False}</attribute>
+                </field>
+                <!--<field name="date_maturity" position="after">-->
+                    <!--<field name="tag_ids" widget="many2many_tags" domain="[['account_id','=',account_id]]" context="{'default_account_id':account_id}"/>-->
+                <!--</field>-->
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,918 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* saudi_hr_contract
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.e-20151006\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-12-11 13:58+0000\n"
+"PO-Revision-Date: 2017-12-11 17:16+0300\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: ar_SY\n"
+"X-Generator: Poedit 2.0.5\n"
+
+#. module: saudi_hr_contract
+#: code:addons/saudi_hr_contract/models/hr_contract.py:118
+#, python-format
+msgid "%s days"
+msgstr "%s days"
+
+#. module: saudi_hr_contract
+#: code:addons/saudi_hr_contract/models/hr_contract.py:116
+#, python-format
+msgid "%s months, "
+msgstr "%s months, "
+
+#. module: saudi_hr_contract
+#: code:addons/saudi_hr_contract/models/hr_contract.py:114
+#, python-format
+msgid "%s years, "
+msgstr "%s years, "
+
+#. module: saudi_hr_contract
+#: model:ir.ui.view,arch_db:saudi_hr_contract.hr_contract_form_inherit
+msgid "Accounting"
+msgstr "الحسابات"
+
+#. module: saudi_hr_contract
+#: code:addons/saudi_hr_contract/models/hr_contract.py:28
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_active
+#: model:ir.ui.view,arch_db:saudi_hr_contract.hr_contract_view_search
+#, python-format
+msgid "Active"
+msgstr "نشط"
+
+#. module: saudi_hr_contract
+#: model:ir.ui.view,arch_db:saudi_hr_contract.hr_contract_form_inherit
+msgid "After Trial Period"
+msgstr "بعد فترة التجربة"
+
+#. module: saudi_hr_contract
+#: code:addons/saudi_hr_contract/models/hr_contract.py:177
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_basic_salary
+#: model:ir.ui.view,arch_db:saudi_hr_contract.hr_contract_form_inherit
+#, python-format
+msgid "Basic Salary"
+msgstr "الراتب الأساسى"
+
+#. module: saudi_hr_contract
+#: code:addons/saudi_hr_contract/models/hr_contract.py:189
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_commission
+#, python-format
+msgid "Commission"
+msgstr "العمولات"
+
+#. module: saudi_hr_contract
+#: code:addons/saudi_hr_contract/models/hr_contract.py:245
+#, python-format
+msgid ""
+"Configuration Error!\n"
+"Contract end date must be greater than contract start date."
+msgstr ""
+"Configuration Error!\n"
+"Contract end date must be greater than contract start date."
+
+#. module: saudi_hr_contract
+#: code:addons/saudi_hr_contract/models/hr_contract.py:242
+#, python-format
+msgid ""
+"Configuration Error!\n"
+"Trial period start date must be less than trial period end date."
+msgstr ""
+"Configuration Error!\n"
+"Trial period start date must be less than trial period end date."
+
+#. module: saudi_hr_contract
+#: code:addons/saudi_hr_contract/models/hr_contract.py:238
+#, python-format
+msgid ""
+"Configuration Error!\n"
+"We found that there is another active contract for the same employee."
+msgstr ""
+"Configuration Error!\n"
+"We found that there is another active contract for the same employee."
+
+#. module: saudi_hr_contract
+#: model:ir.model,name:saudi_hr_contract.model_hr_contract
+msgid "Contract"
+msgstr "العقد"
+
+#. module: saudi_hr_contract
+#: model:ir.ui.view,arch_db:saudi_hr_contract.hr_contract_form_inherit
+msgid "Contract Duration"
+msgstr "مدة العقد"
+
+#. module: saudi_hr_contract
+#: model:ir.actions.act_window,name:saudi_hr_contract.action_hr_contract
+#: model:ir.ui.menu,name:saudi_hr_contract.hr_menu_contract_root
+#: model:ir.ui.view,arch_db:saudi_hr_contract.contract_graph
+#: model:ir.ui.view,arch_db:saudi_hr_contract.contract_pivot
+#: model:ir.ui.view,arch_db:saudi_hr_contract.hr_contract_view_tree_inherit
+msgid "Contracts"
+msgstr "العقود"
+
+#. module: saudi_hr_contract
+#: code:addons/saudi_hr_contract/models/hr_contract.py:67
+#, python-format
+msgid ""
+"Data Error !!\n"
+" Renew each must be a positive number with no decimal value!"
+msgstr ""
+"Data Error !!\n"
+" Renew each must be a positive number with no decimal value!"
+
+#. module: saudi_hr_contract
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_duration_months
+msgid "Duration In Months"
+msgstr "المده بالأشهر"
+
+#. module: saudi_hr_contract
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_duration_type
+msgid "Duration Type"
+msgstr "نوع مدة العقد"
+
+#. module: saudi_hr_contract
+#: model:ir.ui.view,arch_db:saudi_hr_contract.hr_contract_form_inherit
+msgid "During Trial Period"
+msgstr "خلال فترة التجربة"
+
+#. module: saudi_hr_contract
+#: model:ir.model,name:saudi_hr_contract.model_hr_employee
+msgid "Employee"
+msgstr "الموظف"
+
+#. module: saudi_hr_contract
+#: code:addons/saudi_hr_contract/models/hr_contract.py:14
+#, python-format
+msgid "Employee English Name"
+msgstr "اسم الموظف باللغه الانجليزية"
+
+#. module: saudi_hr_contract
+#: code:addons/saudi_hr_contract/models/hr_contract.py:15
+#, python-format
+msgid "Employee Number"
+msgstr "الرقم الوظيفى"
+
+#. module: saudi_hr_contract
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_employee_eng_name
+msgid "Employee arabic name"
+msgstr "إسم الموظف باللغه العربيه"
+
+#. module: saudi_hr_contract
+#: selection:hr.contract,house_allowance_type:0
+#: selection:hr.contract,phone_allowance_type:0
+#: selection:hr.contract,transportation_allowance_type:0
+#: selection:hr.contract,trial_house_allowance_type:0
+#: selection:hr.contract,trial_phone_allowance_type:0
+#: selection:hr.contract,trial_transportation_allowance_type:0
+msgid "Fixed"
+msgstr "رقم ثابت"
+
+#. module: saudi_hr_contract
+#: code:addons/saudi_hr_contract/models/hr_contract.py:179
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_house_allowance
+#, python-format
+msgid "House Allowance"
+msgstr "بدل السكن"
+
+#. module: saudi_hr_contract
+#: code:addons/saudi_hr_contract/models/hr_contract.py:180
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_house_allowance_amount
+#, python-format
+msgid "House Allowance amount"
+msgstr "قيمة بدل السكن"
+
+#. module: saudi_hr_contract
+#: code:addons/saudi_hr_contract/models/hr_contract.py:178
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_house_allowance_type
+#, python-format
+msgid "House Allowance type"
+msgstr "نوع بدل السكن"
+
+#. module: saudi_hr_contract
+#: model:ir.model.fields,help:saudi_hr_contract.field_hr_contract_end_reminder
+msgid "If = 3, this mean that your system will send a notification and Email to the employee and HR manager to re-check the contract renewing 3 months before the end of contractual year."
+msgstr "If = 3, this mean that your system will send a notification and Email to the employee and HR manager to re-check the contract renewing 3 months before the end of contractual year."
+
+#. module: saudi_hr_contract
+#: selection:hr.contract,commission:0 selection:hr.contract,trial_commission:0
+msgid "Illegible"
+msgstr "لا يستحق"
+
+#. module: saudi_hr_contract
+#: selection:hr.contract,duration_type:0
+msgid "Limited Time Contract"
+msgstr "عقد محدد المدة"
+
+#. module: saudi_hr_contract
+#: model:ir.ui.view,arch_db:saudi_hr_contract.hr_contract_form_inherit
+msgid "Lock"
+msgstr "إغلاق العقد"
+
+#. module: saudi_hr_contract
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_locked
+msgid "Locked"
+msgstr "تم إغلاق العقد"
+
+#. module: saudi_hr_contract
+#: selection:hr.contract,marital:0
+msgid "Married"
+msgstr "متزوج"
+
+#. module: saudi_hr_contract
+#: code:addons/saudi_hr_contract/models/hr_contract.py:187
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_insurance
+#, python-format
+msgid "Medical Insurance Covered"
+msgstr "تأمين طبى"
+
+#. module: saudi_hr_contract
+#: selection:hr.contract,house_allowance_type:0
+#: selection:hr.contract,phone_allowance_type:0
+#: selection:hr.contract,transportation_allowance_type:0
+#: selection:hr.contract,trial_house_allowance_type:0
+#: selection:hr.contract,trial_phone_allowance_type:0
+#: selection:hr.contract,trial_transportation_allowance_type:0
+msgid "None"
+msgstr "لا يوجد"
+
+#. module: saudi_hr_contract
+#: selection:hr.contract,commission:0 selection:hr.contract,trial_commission:0
+msgid "Not Illegible"
+msgstr "لا يستحق"
+
+#. module: saudi_hr_contract
+#: code:addons/saudi_hr_contract/models/hr_contract.py:72
+#, python-format
+msgid "Not allowed to change this contract because your HR manager already locked the contract. If you think that there is any data error in the contract which requires corrections, kindly contact with HR manager. he have the access rights to unlock the contract."
+msgstr "Not allowed to change this contract because your HR manager already locked the contract. If you think that there is any data error in the contract which requires corrections, kindly contact with HR manager. he have the access rights to unlock the contract."
+
+#. module: saudi_hr_contract
+#: model:ir.ui.view,arch_db:saudi_hr_contract.hr_contract_form_inherit
+msgid "Notes"
+msgstr "الملاحظات"
+
+#. module: saudi_hr_contract
+#: model:ir.ui.view,arch_db:saudi_hr_contract.hr_contract_form_inherit
+msgid "Other"
+msgstr "أخرى"
+
+#. module: saudi_hr_contract
+#: model:ir.ui.view,arch_db:saudi_hr_contract.hr_contract_form_inherit
+msgid "Other Advantages"
+msgstr "مميزات عينيه أخرى"
+
+#. module: saudi_hr_contract
+#: code:addons/saudi_hr_contract/models/hr_contract.py:41
+#: code:addons/saudi_hr_contract/models/hr_contract.py:190
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_other_allowance
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_trial_other_allowance
+#, python-format
+msgid "Other Allowance"
+msgstr "بدلات أخرى"
+
+#. module: saudi_hr_contract
+#: code:addons/saudi_hr_contract/models/hr_contract.py:42
+#: code:addons/saudi_hr_contract/models/hr_contract.py:191
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_other_allowance_name
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_trial_other_allowance_name
+#, python-format
+msgid "Other Allowance Name"
+msgstr "إسم البدلات الأخرى"
+
+#. module: saudi_hr_contract
+#: model:ir.ui.view,arch_db:saudi_hr_contract.hr_contract_form_inherit
+msgid "Other Information"
+msgstr "معلومات أخرى"
+
+#. module: saudi_hr_contract
+#: selection:hr.contract,house_allowance_type:0
+#: selection:hr.contract,phone_allowance_type:0
+#: selection:hr.contract,transportation_allowance_type:0
+#: selection:hr.contract,trial_house_allowance_type:0
+#: selection:hr.contract,trial_phone_allowance_type:0
+#: selection:hr.contract,trial_transportation_allowance_type:0
+msgid "Percentage from Basic"
+msgstr "نسبة من الراتب الأساسى"
+
+#. module: saudi_hr_contract
+#: code:addons/saudi_hr_contract/models/hr_contract.py:184
+#: code:addons/saudi_hr_contract/models/hr_contract.py:185
+#: code:addons/saudi_hr_contract/models/hr_contract.py:186
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_phone_allowance
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_phone_allowance_amount
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_phone_allowance_type
+#, python-format
+msgid "Phone Allowance"
+msgstr "بدل الإتصالات"
+
+#. module: saudi_hr_contract
+#: code:addons/saudi_hr_contract/models/hr_contract.py:197
+#, python-format
+msgid "Please Select Name For Other Allowance After Trial Period"
+msgstr "Please Select Name For Other Allowance After Trial Period"
+
+#. module: saudi_hr_contract
+#: code:addons/saudi_hr_contract/models/hr_contract.py:138
+#, python-format
+msgid "Please Select Name For Other Allowance During Trial Period"
+msgstr "Please Select Name For Other Allowance During Trial Period"
+
+#. module: saudi_hr_contract
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_total_contract_remaining
+msgid "Remaining before expiry"
+msgstr "الأيام المتبقيه قبل انتهاء العقد"
+
+#. module: saudi_hr_contract
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_end_reminder
+msgid "Reminder To Review Before End On Contractual Year"
+msgstr "تذكير بالمراجعه قبل انتهاء السنه التعاقديه"
+
+#. module: saudi_hr_contract
+#: code:addons/saudi_hr_contract/models/hr_contract.py:261
+#, python-format
+msgid "Salary , House , Transportation , Other and Phone Allowances can not be minus"
+msgstr "الراتب الأساسي - بدل السكن وباقى البدلات لا يمكن أن تكون رقما سالبا"
+
+#. module: saudi_hr_contract
+#: model:ir.ui.view,arch_db:saudi_hr_contract.hr_contract_form_inherit
+msgid "Salary and Allowances"
+msgstr "الراتب والبدلات"
+
+#. module: saudi_hr_contract
+#: selection:hr.contract,marital:0
+msgid "Single"
+msgstr "أعزب"
+
+#. module: saudi_hr_contract
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_marital
+msgid "Single / Married"
+msgstr "أعزب / متزوج"
+
+#. module: saudi_hr_contract
+#: code:addons/saudi_hr_contract/models/hr_contract.py:43
+#: code:addons/saudi_hr_contract/models/hr_contract.py:192
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_total
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_trial_total
+#, python-format
+msgid "Total"
+msgstr "الإجمالي"
+
+#. module: saudi_hr_contract
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_last_active_duration
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_total_contract_duration
+msgid "Total Contract Duration"
+msgstr "إجمالي مدة العقد"
+
+#. module: saudi_hr_contract
+#: code:addons/saudi_hr_contract/models/hr_contract.py:181
+#: code:addons/saudi_hr_contract/models/hr_contract.py:182
+#: code:addons/saudi_hr_contract/models/hr_contract.py:183
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_transportation_allowance
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_transportation_allowance_amount
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_transportation_allowance_type
+#, python-format
+msgid "Transportation Allowance"
+msgstr "بدل المواصلات"
+
+#. module: saudi_hr_contract
+#: code:addons/saudi_hr_contract/models/hr_contract.py:39
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_trial_insurance
+#, python-format
+msgid "Trial Medical Insurance Covered"
+msgstr "التأمين الطبي مغطى خلال فترة التجربه"
+
+#. module: saudi_hr_contract
+#: model:ir.ui.view,arch_db:saudi_hr_contract.hr_contract_form_inherit
+msgid "Trial Period Duration"
+msgstr "مدة التجربة"
+
+#. module: saudi_hr_contract
+#: selection:hr.contract,duration_type:0
+msgid "Unlimited Time Contract"
+msgstr "عقد غير محدد المدة"
+
+#. module: saudi_hr_contract
+#: model:ir.ui.view,arch_db:saudi_hr_contract.hr_contract_form_inherit
+msgid "Unlock"
+msgstr "إلغاء إغلاق العقد"
+
+#. module: saudi_hr_contract
+#: model:ir.ui.view,arch_db:saudi_hr_contract.hr_contract_form_inherit
+msgid "Visa information"
+msgstr "بيانات التأشيرة"
+
+#. module: saudi_hr_contract
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_employee_number
+msgid "employee number"
+msgstr "الرقم الوظيفي"
+
+#. module: saudi_hr_contract
+#: code:addons/saudi_hr_contract/models/hr_contract.py:29
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_trial_wage
+#, python-format
+msgid "trial Basic Salary"
+msgstr "الراتب الأساسى خلال فترة التجربه"
+
+#. module: saudi_hr_contract
+#: code:addons/saudi_hr_contract/models/hr_contract.py:40
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_trial_commission
+#, python-format
+msgid "trial Commission"
+msgstr "العمولات"
+
+#. module: saudi_hr_contract
+#: code:addons/saudi_hr_contract/models/hr_contract.py:30
+#: code:addons/saudi_hr_contract/models/hr_contract.py:31
+#: code:addons/saudi_hr_contract/models/hr_contract.py:32
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_trial_house_allowance
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_trial_house_allowance_amount
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_trial_house_allowance_type
+#, python-format
+msgid "trial House Allowance"
+msgstr "بدل السكن"
+
+#. module: saudi_hr_contract
+#: code:addons/saudi_hr_contract/models/hr_contract.py:36
+#: code:addons/saudi_hr_contract/models/hr_contract.py:37
+#: code:addons/saudi_hr_contract/models/hr_contract.py:38
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_trial_phone_allowance
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_trial_phone_allowance_amount
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_trial_phone_allowance_type
+#, python-format
+msgid "trial Phone Allowance"
+msgstr "بدل الاتصالات"
+
+#. module: saudi_hr_contract
+#: code:addons/saudi_hr_contract/models/hr_contract.py:33
+#: code:addons/saudi_hr_contract/models/hr_contract.py:34
+#: code:addons/saudi_hr_contract/models/hr_contract.py:35
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_trial_transportation_allowance
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_trial_transportation_allowance_amount
+#: model:ir.model.fields,field_description:saudi_hr_contract.field_hr_contract_trial_transportation_allowance_type
+#, python-format
+msgid "trial Transportation Allowance"
+msgstr "بدل المواصلات"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_message_needaction
+msgid "Action Needed"
+msgstr "الإجراء المطلوب"
+
+#. module: hr_contract
+#: model:ir.model,name:hr_contract.model_base_action_rule
+msgid "Action Rules"
+msgstr "قواعد الاجراء"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_advantages
+msgid "Advantages"
+msgstr "مميزات"
+
+#. module: hr_contract
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_form
+msgid "Advantages..."
+msgstr "مزايا ..."
+
+#. module: hr_contract
+#: model:ir.model.fields,help:hr_contract.field_hr_contract_wage
+msgid "Basic Salary of the employee"
+msgstr "الراتب الأساسي للموظف"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_employee_vehicle
+msgid "Company Vehicle"
+msgstr "سيارة الشركة"
+
+#. module: hr_contract
+#: model:ir.model,name:hr_contract.model_hr_contract
+msgid "Contract"
+msgstr "العقد"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_name
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_form
+msgid "Contract Reference"
+msgstr "مرجع العقد"
+
+#. module: hr_contract
+#: model:ir.model,name:hr_contract.model_hr_contract_type
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_type_id_4127
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_type_name
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_type_view_form
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_type_view_search
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_type_view_tree
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_search
+msgid "Contract Type"
+msgstr "نوع العقد"
+
+#. module: hr_contract
+#: model:ir.actions.act_window,name:hr_contract.action_hr_contract_type
+#: model:ir.ui.menu,name:hr_contract.hr_menu_contract_type
+msgid "Contract Types"
+msgstr "أنواع العقود"
+
+#. module: hr_contract
+#: model:mail.message.subtype,description:hr_contract.mt_contract_pending
+#: model:mail.message.subtype,description:hr_contract.mt_department_contract_pending
+msgid "Contract about to expire"
+msgstr "العقد سينتهى قريبا"
+
+#. module: hr_contract
+#: model:mail.message.subtype,description:hr_contract.mt_contract_close
+msgid "Contract expired"
+msgstr "انتهت مدةالعقد"
+
+#. module: hr_contract
+#: model:mail.message.subtype,name:hr_contract.mt_department_contract_pending
+msgid "Contract to Renew"
+msgstr "تجديد العقد"
+
+#. module: hr_contract
+#: model:ir.actions.act_window,name:hr_contract.act_hr_employee_2_hr_contract
+#: model:ir.actions.act_window,name:hr_contract.action_hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_employee_contract_ids
+#: model:ir.model.fields,field_description:hr_contract.field_hr_employee_contracts_count
+#: model:ir.ui.menu,name:hr_contract.hr_menu_contract
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_search
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_tree
+#: model:ir.ui.view,arch_db:hr_contract.hr_hr_employee_view_form2
+msgid "Contracts"
+msgstr "العقود"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_create_uid
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_type_create_uid
+msgid "Created by"
+msgstr "أنشئ بواسطة"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_create_date
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_type_create_date
+msgid "Created on"
+msgstr "أنشئ في"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_employee_contract_id
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_form
+#: model:ir.ui.view,arch_db:hr_contract.hr_hr_employee_view_form2
+msgid "Current Contract"
+msgstr "Current Contract"
+
+#. module: hr_contract
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_search
+msgid "Current Employee"
+msgstr "Current Employee"
+
+#. module: hr_contract
+#: model:ir.model.fields,help:hr_contract.field_hr_contract_message_last_post
+msgid "Date of the last message posted on the record."
+msgstr "تاريخ آخر رسالة في هذا السجل."
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_department_id
+msgid "Department"
+msgstr "الإداره"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_display_name
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_type_display_name
+msgid "Display Name"
+msgstr "طريقة العرض"
+
+#. module: hr_contract
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_form
+msgid "Duration"
+msgstr "المدة"
+
+#. module: hr_contract
+#: model:ir.model,name:hr_contract.model_hr_employee
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_employee_id
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_search
+msgid "Employee"
+msgstr "الموظف"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_date_end
+msgid "End Date"
+msgstr "تاريخ الإنتهاء"
+
+#. module: hr_contract
+#: constraint:hr.contract:0
+msgid "Error! Contract start-date must be less than contract end-date."
+msgstr "خطأ! تاريخ بدء العقد يجب أن يكون قبل تاريخ انتهاء العقد."
+
+#. module: hr_contract
+#: selection:hr.contract,state:0
+#: model:mail.message.subtype,name:hr_contract.mt_contract_close
+msgid "Expired"
+msgstr "Expired"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_message_follower_ids
+msgid "Followers"
+msgstr "المتابعون"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_message_channel_ids
+msgid "Followers (Channels)"
+msgstr "المتابعون ( القنوات )"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_message_partner_ids
+msgid "Followers (Partners)"
+msgstr "المتابعون ( الأفراد )"
+
+#. module: hr_contract
+#: model:ir.model.fields,help:hr_contract.field_hr_contract_type_sequence
+msgid "Gives the sequence when displaying a list of Contract."
+msgstr "Gives the sequence when displaying a list of Contract."
+
+#. module: hr_contract
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_search
+msgid "Group By"
+msgstr "تجميع حسب"
+
+#. module: hr_contract
+#: model:ir.actions.server,name:hr_contract.contract_set_as_close
+msgid "HR Contract: set as close"
+msgstr "HR Contract: set as close"
+
+#. module: hr_contract
+#: model:ir.actions.server,name:hr_contract.contract_set_as_pending
+msgid "HR Contract: set as pending"
+msgstr "HR Contract: set as pending"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_employee_vehicle_distance
+msgid "Home-Work Dist."
+msgstr "المنزل / العمل"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_id
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_type_id
+msgid "ID"
+msgstr "المعرف"
+
+#. module: hr_contract
+#: model:ir.model.fields,help:hr_contract.field_hr_contract_message_unread
+msgid "If checked new messages require your attention."
+msgstr "إذا حددته، ستتطلب الرسائل الجديدة انتباهك"
+
+#. module: hr_contract
+#: model:ir.model.fields,help:hr_contract.field_hr_contract_message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "اذا تم وضع علامة صح. يعنى ذلك ان تلك الرساله مهمه وتحتاج إلى مراجعه"
+
+#. module: hr_contract
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_search
+msgid "Important Messages"
+msgstr "Important Messages"
+
+#. module: hr_contract
+#: model:ir.model.fields,help:hr_contract.field_hr_employee_vehicle_distance
+msgid "In kilometers"
+msgstr "في الكيلومترات"
+
+#. module: hr_contract
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_form
+msgid "Information"
+msgstr "المعلومات"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_message_is_follower
+msgid "Is Follower"
+msgstr "هو متابع"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_employee_manager
+msgid "Is a Manager"
+msgstr "هو مدير"
+
+#. module: hr_contract
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_search
+msgid "Job"
+msgstr "الوظيفه"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_job_id
+msgid "Job Title"
+msgstr "المسمى الوظيفي"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_message_last_post
+msgid "Last Message Date"
+msgstr "تاريخ آخر رسالة"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract___last_update
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_type___last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_type_write_uid
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_type_write_date
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: hr_contract
+#: model:ir.model.fields,help:hr_contract.field_hr_employee_contract_id
+msgid "Latest contract of the employee"
+msgstr "اخر عقد للموظفين"
+
+#. module: hr_contract
+#: model:ir.ui.view,arch_db:hr_contract.hr_hr_employee_view_form2
+msgid "Medical Exam"
+msgstr "فحص طبي"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_employee_medic_exam
+msgid "Medical Examination Date"
+msgstr "تاريخ الفحص الطبي"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_message_ids
+msgid "Messages"
+msgstr "الرسائل"
+
+#. module: hr_contract
+#: model:ir.model.fields,help:hr_contract.field_hr_contract_message_ids
+msgid "Messages and communication history"
+msgstr "الرسائل و سجل التواصل"
+
+#. module: hr_contract
+#: selection:hr.contract,state:0
+msgid "New"
+msgstr "جديد"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_notes
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_form
+msgid "Notes"
+msgstr "الملاحظات"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_message_needaction_counter
+msgid "Number of Actions"
+msgstr "عدد الإجراءات"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_employee_children
+msgid "Number of Children"
+msgstr "عدد الاطفال"
+
+#. module: hr_contract
+#: model:ir.model.fields,help:hr_contract.field_hr_contract_message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "عدد الرسائل التي تحتاج إلى إجراءات"
+
+#. module: hr_contract
+#: model:ir.model.fields,help:hr_contract.field_hr_contract_message_unread_counter
+msgid "Number of unread messages"
+msgstr "عدد الرسائل الغير مقروؤه"
+
+#. module: hr_contract
+#: model:ir.filters,name:hr_contract.contract_open
+msgid "Open Contracts"
+msgstr "Open Contracts"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_employee_place_of_birth
+msgid "Place of Birth"
+msgstr "مكان الميلاد"
+
+#. module: hr_contract
+#: selection:hr.contract,state:0
+msgid "Running"
+msgstr "جاري"
+
+#. module: hr_contract
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_form
+msgid "Salary and Advantages"
+msgstr "الراتب و البدلات"
+
+#. module: hr_contract
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_search
+msgid "Search Contract"
+msgstr "البحث في العقد"
+
+#. module: hr_contract
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_type_view_search
+msgid "Search Contract Type"
+msgstr "البحث بنوع العقد"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_type_sequence
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_type_view_search
+msgid "Sequence"
+msgstr "المسلسل"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_date_start
+msgid "Start Date"
+msgstr "تاريخ البدء"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_state
+msgid "Status"
+msgstr "الحالة"
+
+#. module: hr_contract
+#: model:ir.model.fields,help:hr_contract.field_hr_contract_state
+msgid "Status of the contract"
+msgstr "حالة العقد"
+
+#. module: hr_contract
+#: selection:hr.contract,state:0
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_search
+#: model:mail.message.subtype,name:hr_contract.mt_contract_pending
+msgid "To Renew"
+msgstr "للتجديد"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_trial_date_end
+msgid "Trial End Date"
+msgstr "تاريخ انتهاء المحاولة"
+
+#. module: hr_contract
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_form
+msgid "Trial Period Duration"
+msgstr "مدة التجربة"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_trial_date_start
+msgid "Trial Start Date"
+msgstr "تاريخ بدء المحاولة"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_message_unread
+msgid "Unread Messages"
+msgstr "رسائل غير مقروءة"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "عداد الرسائل الغير مقروؤه"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_base_action_rule_trg_date_resource_field_id
+msgid "Use employee work schedule"
+msgstr "Use employee work schedule"
+
+#. module: hr_contract
+#: model:ir.model.fields,help:hr_contract.field_base_action_rule_trg_date_resource_field_id
+msgid "Use the user's working schedule."
+msgstr "Use the user's working schedule."
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_visa_expire
+msgid "Visa Expire Date"
+msgstr "تاريخ انتهاء التأشيرة"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_visa_no
+msgid "Visa No"
+msgstr "رقم التأشيرة"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_wage
+msgid "Wage"
+msgstr "الاجور"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_website_message_ids
+msgid "Website Messages"
+msgstr "رسائل الموقع"
+
+#. module: hr_contract
+#: model:ir.model.fields,help:hr_contract.field_hr_contract_website_message_ids
+msgid "Website communication history"
+msgstr "سجل تواصل الموقع"
+
+#. module: hr_contract
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_form
+msgid "Work Permit"
+msgstr "تصريح عمل"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_permit_no
+msgid "Work Permit No"
+msgstr "رقم تصريح العمل"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_working_hours
+msgid "Working Schedule"
+msgstr "جدول العمل"

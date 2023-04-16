@@ -1,0 +1,110 @@
+<odoo>
+    <data>
+
+        <!--    Inherit View   -->
+        <record model="ir.ui.view" id="view_partner_property_form_inherit">
+            <field name="name">res.partner inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="account.view_partner_property_form"/>
+            <field name="arch" type="xml">
+                <field name="property_account_receivable_id" position="attributes">
+                    <attribute name="domain">[['internal_type','in',['receivable','payable','liquidity']]]</attribute>
+                </field>
+                <field name="property_account_payable_id" position="attributes">
+                    <attribute name="domain">[['internal_type','in',['receivable','payable','liquidity']]]</attribute>
+                </field>
+            </field>
+        </record>
+
+        <!--    Inherit Customer invoice View   -->
+        <record model="ir.ui.view" id="invoice_form_inherit">
+            <field name="name">account.invoice inherit</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[2]/group/group/field[@name='account_id']" position="replace"/>
+                <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='account_id']" position="replace">
+                    <field domain="[('type', '!=','view')]" name="account_id"/>
+                </xpath>
+                <field name="partner_id" position="after">
+                    <field domain="[('type', 'in',['receivable','payable','liquidity'])]" name="account_id"/>
+                </field>
+                <field name="partner_id" position="attributes">
+                    <attribute name="options">{'no_create':True}</attribute>
+                </field>
+                <field name="account_id" position="attributes">
+                    <attribute name="options">{'no_create':True}</attribute>
+                </field>
+                <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='product_id']" position="attributes">
+                    <attribute name="options">{'no_create':True}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='account_id']" position="attributes">
+                    <attribute name="options">{'no_create':True}</attribute>
+                </xpath>
+                <xpath expr="//notebook/page[2]/group/group/field[@name='name']" position="replace"/>
+                <field name="date_invoice" position="before">
+                    <field name="name"/>
+                </field>
+
+            </field>
+        </record>
+
+        <!--    Inherit Vendor invoice View   -->
+        <record model="ir.ui.view" id="invoice_supplier_form_inherit">
+            <field name="name">account.invoice inherit</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='account_id']" position="replace">
+                    <field domain="[('type', '!=','view')]" name="account_id"/>
+                </xpath>
+
+                <field name="partner_id" position="attributes">
+                    <attribute name="options">{'no_create':True}</attribute>
+                </field>
+                <field name="account_id" position="attributes">
+                    <attribute name="options">{'no_create':True}</attribute>
+                </field>
+                <field name="user_id" position="attributes">
+                    <attribute name="options">{'no_create':True}</attribute>
+                </field>
+                <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='product_id']" position="attributes">
+                    <attribute name="options">{'no_create':True}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='account_id']" position="attributes">
+                    <attribute name="options">{'no_create':True}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='account_analytic_id']" position="attributes">
+                    <attribute name="options">{'no_create':True}</attribute>
+                </xpath>
+                <xpath expr="//notebook/page[2]//field[@name='name']" position="replace"/>
+                <field name="origin" position="before">
+                    <field name="name"/>
+                </field>
+            </field>
+        </record>
+        <!--  Inherit Vendor invoice View  -->
+        <record model="ir.ui.view" id="view_invoice_supplier_purchase_form_inherit">
+            <field name="name">account.invoice.form inherit</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="purchase.view_invoice_supplier_purchase_form"/>
+            <field name="arch" type="xml">
+                <field name="purchase_id" position="attributes">
+                    <attribute name="options">{'no_create':True}</attribute>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_invoice_asset_purchase_form_inherit">
+            <field name="name">account.invoice.form inherit</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account_asset.view_invoice_asset_category"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='asset_category_id']" position="attributes">
+                    <attribute name="options">{'no_create':True}</attribute>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,31 @@
+<odoo>
+    <data>
+        <menuitem id="leaves_settings_menu" name="leaves Settings" parent="hr_holidays.menu_hr_holidays_root" sequence="150"/>
+        <menuitem id="leaves_config_menu" name="leaves configuration" parent="saudi_hr_leaves.leaves_settings_menu" sequence="5"/>
+        <menuitem id="air_ticket_menu" name="Air tickets" parent="hr_holidays.menu_hr_holidays_root" sequence="90"/>
+        <menuitem id="air_ticket_config_menu" name="Air ticket configuration" parent="saudi_hr_leaves.leaves_settings_menu" sequence="10"/>
+        <menuitem id="leaves_general_settings_menu" name="General Settings" parent="saudi_hr_leaves.leaves_settings_menu" sequence="11"/>
+
+        <record model="ir.ui.menu" id="hr_holidays.menu_hr_holidays_my_leaves">
+            <field name="name">Leaves</field>
+        </record>
+        <record model="ir.ui.menu" id="hr_holidays.menu_open_allocation">
+            <field name="parent_id" ref="saudi_hr_leaves.leaves_config_menu"/>
+        </record>
+<!--        FIXME: to be uncommented V12.0-->
+<!--        <record model="ir.ui.menu" id="hr_holidays.menu_open_ask_holidays_new">-->
+<!--            <field name="action" ref="saudi_hr_leaves.open_ask_holidays"/>-->
+<!--            <field name="sequence" eval="15"/>-->
+<!--        </record>-->
+<!--        <record model="ir.ui.menu" id="hr_holidays.menu_hr_holidays_report">-->
+<!--            <field name="name">Leave reports</field>-->
+<!--        </record>-->
+<!--        <record model="ir.ui.menu" id="hr_holidays.menu_hr_holidays_configuration">-->
+<!--            <field name="parent_id" ref="saudi_hr_leaves.leaves_config_menu"/>-->
+<!--        </record>-->
+<!--        <record model="ir.ui.menu" id="hr_holidays.menu_hr_holidays_approvals">-->
+<!--            <field name="active" eval="True"/>-->
+<!--            <field name="groups_id" eval="[(5,),(4,ref('base.group_no_one'),False)]"/>-->
+<!--        </record>-->
+    </data>
+</odoo>

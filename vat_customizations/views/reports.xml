@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- QWeb Reports -->
+        <report
+            id="uae_vat_return_new"
+            model="uae.vat.return"
+            string="VAT Report New"
+            report_type="qweb-pdf"
+            name="vat_customizations.report_vat_customizations_uae_vat_return"
+            file="vat_customizations.report_vat_customizations_uae_vat_return"
+        />
+
+    </data>
+</odoo>

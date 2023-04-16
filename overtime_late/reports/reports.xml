@@ -1,0 +1,22 @@
+<odoo>
+    <data>
+
+
+        <report
+            id="action_excuse_report"
+            model="payroll.sheet.report"
+            string="Excuse Report"
+            report_type="xlsx"
+            name="overtime_late.report_excuse"
+            file="overtime_late.report_excuse"/>
+
+        <report
+            id="action_timesheet_report"
+            model="payroll.sheet.report"
+            string="Sheet Report"
+            report_type="xlsx"
+            name="overtime_late.report_sheet"
+            file="overtime_late.report_sheet"/>
+
+    </data>
+</odoo>

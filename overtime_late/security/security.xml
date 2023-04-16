@@ -1,0 +1,109 @@
+<odoo>
+    <data>
+
+    <record id="confirm_excuse" model="res.groups">
+        <field name="name">Can confirm any excuse</field>
+        <field name="comment">the user will be able to confirm any Excuse.</field>
+    </record>
+    <!--   Working days   -->
+    <record model="ir.rule" id="employee_his_working_day">
+        <field name="name">Employee see working days</field>
+        <field name="model_id" ref="overtime_late.model_working_days"/>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+        <field name="domain_force">['|','|','|',('employee_id.user_id','=', user.id),
+            ('employee_id.parent_id.user_id', '=', user.id),
+            ('employee_id.department_id.manager_id.user_id', '=', user.id),
+            ('employee_id.management_id.manager_id.user_id', '=', user.id),]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record model="ir.rule" id="hr_officer_see_all_working_days">
+        <field name="name">HR officer see all working days</field>
+        <field name="model_id" ref="overtime_late.model_working_days"/>
+        <field name="groups" eval="[(4, ref('hr.group_hr_user'))]"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+    <!--    Excuse   -->
+    <record model="ir.rule" id="employee_his_excuse_rule">
+        <field name="name">Employee see his ُExcuse</field>
+        <field name="model_id" ref="overtime_late.model_hr_excuse"/>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+        <field name="domain_force">['|','|','|',('employee_id.user_id','=', user.id),
+            ('employee_id.parent_id.user_id', '=', user.id),
+            ('employee_id.department_id.manager_id.user_id', '=', user.id),
+            ('employee_id.management_id.manager_id.user_id', '=', user.id),]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record model="ir.rule" id="hr_officer_see_all_excuse">
+        <field name="name">HR officer see all Excuses</field>
+        <field name="model_id" ref="overtime_late.model_hr_excuse"/>
+        <field name="groups" eval="[(4, ref('hr.group_hr_user'))]"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+    <!--    Overtime   -->
+    <record model="ir.rule" id="employee_his_overtime_rule">
+        <field name="name">Employee see his Overtime</field>
+        <field name="model_id" ref="overtime_late.model_overtime_assignment"/>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+        <field name="domain_force">['|','|','|',('employee_id.user_id','=', user.id),
+            ('employee_id.parent_id.user_id', '=', user.id),
+            ('employee_id.department_id.manager_id.user_id', '=', user.id),
+            ('employee_id.management_id.manager_id.user_id', '=', user.id),]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record model="ir.rule" id="hr_officer_all_overtime">
+        <field name="name">HR officer see all overtime</field>
+        <field name="model_id" ref="overtime_late.model_overtime_assignment"/>
+        <field name="groups" eval="[(4, ref('hr.group_hr_user'))]"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+    <!--   Employee Attendance report   -->
+    <record model="ir.rule" id="employee_his_att_report_rule">
+        <field name="name">Employee see his Attendance report</field>
+        <field name="model_id" ref="overtime_late.model_employee_sheet_report"/>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+        <field name="domain_force">['|','|','|',('employee_id.user_id','=', user.id),
+            ('employee_id.parent_id.user_id', '=', user.id),
+            ('employee_id.department_id.manager_id.user_id', '=', user.id),
+            ('employee_id.management_id.manager_id.user_id', '=', user.id),]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record model="ir.rule" id="hr_officer_see_all_att_report">
+        <field name="name">HR officer see all attendance report</field>
+        <field name="model_id" ref="overtime_late.model_employee_sheet_report"/>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    </data>
+</odoo>

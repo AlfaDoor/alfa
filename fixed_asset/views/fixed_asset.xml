@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Inherit fixed asset form View   -->
+        <record model="ir.ui.view" id="view_account_asset_category_form_inherit">
+            <field name="name">account.asset.category.form inherit</field>
+            <field name="model">account.asset.category</field>
+            <field name="inherit_id" ref="account_asset.view_account_asset_category_form"/>
+            <field name="arch" type="xml">
+                <field name="account_asset_id" position="attributes">
+                    <attribute name="domain">[['deprecated', '=', False]]</attribute>
+                </field>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_account_asset_asset_form_inherit">
+            <field name="name">account.asset.asset.form inherit</field>
+            <field name="model">account.asset.asset</field>
+            <field name="inherit_id" ref="account_asset.view_account_asset_asset_form"/>
+            <field name="arch" type="xml">
+                <field name="date" position="before">
+                    <field name="purchase_price"/>
+                    <field name="purchase_date"/>
+                    <field name="last_depreciation"/>
+                </field>
+                <button name="set_to_close" position="replace"/>
+                <notebook position="inside">
+                    <page string="Sale / Disposal asset">
+                        <group>
+                            <group>
+                                <field name="sell_price"/>
+                                <field name="cash_account_id" attrs="{'invisible':[('sell_price','=',0)], 'required':[('sell_price','!=',0)]}"/>
+                                <field name="loss_profit_amount"/>
+                                <field name="profit_account_id"/>
+                                <field name="close_move_id" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="total_depreciation"/>
+                            </group>
+                        </group>
+                        <button name="set_to_close" states="open" string="Sell or Dispose" type="object" class="oe_highlight"
+                                congfirm="Are you sure you want to close this asset"/>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+<!--        <record model="ir.ui.view" id="view_account_asset_revenue_form_inherit">-->
+<!--            <field name="name">account_deferred_revenue.form inherit</field>-->
+<!--            <field name="model">account.asset.asset</field>-->
+<!--            <field name="inherit_id" ref="account_deferred_revenue.view_account_asset_revenue_form"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <field name="type" position="after">-->
+<!--                    <field name="analytic_account_id"/>-->
+<!--                    <field name="invoice_line_id" groups="base.group_no_one"/>-->
+<!--                </field>-->
+<!--            </field>-->
+<!--        </record>-->
+
+    </data>
+</odoo>

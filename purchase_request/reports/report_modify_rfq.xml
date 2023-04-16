@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data>
+    <!-- Inherit quotation report (from module sale) -->
+    <template id="report_rfq_inherit" inherit_id="purchase.report_purchasequotation_document">
+    <!-- Finds the first table with as class table table-condensed and gives the ability to modify it
+	 This will replace everything withing tr (including tr)-->
+    
+    <xpath expr="//table[@class='table table-sm']//thead//tr//th[1]" position="before">
+    	<th><strong>Serial#</strong></th>
+    </xpath>
+    <xpath expr="//table[@class='table table-sm']//tbody//tr" position="before">
+    	<t t-set="i" t-value="1" />
+    </xpath>
+    <xpath expr="//table[@class='table table-sm']//tbody//tr//td[1]" position="before">
+    	<td>
+            <span t-esc="i"/> 
+        </td>
+        <t t-set="i" t-value="i+1"/>
+    </xpath>
+    
+    
+    </template>
+</data>

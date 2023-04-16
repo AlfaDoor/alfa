@@ -1,0 +1,1064 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* saudi_hr_employee
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.e-20151006\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-12-11 13:58+0000\n"
+"PO-Revision-Date: 2017-12-11 17:40+0300\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar_SY\n"
+"X-Generator: Poedit 2.0.5\n"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_company_policy_message_needaction
+msgid "Action Needed"
+msgstr "الإجراء المطلوب"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_relative_search
+msgid "Age less than 18"
+msgstr "العمر أقل من 18"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_relative_search
+msgid "Age more than 18"
+msgstr "العمر أكثر من 18"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_form
+msgid "Air-Tickets & Relatives"
+msgstr "تذاكر الطيران - التابعين"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_course_applicant_id
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_employment_applicant_id
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_qualification_applicant_id
+msgid "Applicant"
+msgstr "المتقدمين للوظائف"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_department_arabic_name
+msgid "Arabic name"
+msgstr "الإسم باللغه العربيه"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_course_attachment
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_employment_attachment
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_qualification_attachment
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_job_attachments_ids
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_hr_job_form_inherit
+msgid "Attachments"
+msgstr "المُرفقات"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_employee_bic
+msgid "Bank account Code"
+msgstr "كود البنك"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_employee_bank_account_number
+msgid "Bank account number"
+msgstr "رقم الحساب المصرفي"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_employee_Bank_name_id
+msgid "Bank name"
+msgstr "إسم البنك"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.menu,name:saudi_hr_employee.menu_action_res_bank
+msgid "Banks"
+msgstr "البنوك"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.hr_employee_view_search
+msgid "Branch"
+msgstr "الفرع"
+
+#. module: saudi_hr_employee
+#: selection:employee.relative,type:0
+msgid "Brother"
+msgstr "أخ"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_qualification_name
+msgid "Certifications Name"
+msgstr "إسم الشهاده"
+
+#. module: saudi_hr_employee
+#: model:ir.actions.act_window,name:saudi_hr_employee.action_city
+#: model:ir.ui.menu,name:saudi_hr_employee.menu_city
+msgid "Cities"
+msgstr "المدن"
+
+#. module: saudi_hr_employee
+#: code:addons/saudi_hr_employee/models/hr.py:99
+#, python-format
+msgid "Commission"
+msgstr "العمولات"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_department_list_hierarchy
+msgid "Companies"
+msgstr "الشركات"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.hr_employee_view_search
+msgid "Company"
+msgstr "الشركة"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_employment_name
+msgid "Company Name"
+msgstr "اسم الشركة"
+
+#. module: saudi_hr_employee
+#: model:ir.actions.act_window,name:saudi_hr_employee.action_hr_company_policy
+#: model:ir.ui.menu,name:saudi_hr_employee.menu_company_policy
+msgid "Company Policy"
+msgstr "سياسة الشركة"
+
+#. module: saudi_hr_employee
+#: code:addons/saudi_hr_employee/models/hr.py:442
+#, python-format
+msgid "Configuration error!! ‫‪The‬‬ ‫‪calculations‬‬ ‫‪mustn’t‬‬ ‫‪contains‬‬ ‫‪a‬‬ ‫‪value‬‬ ‫‪equal‬‬ ‫‪to‬‬ ‫‪zero‬‬"
+msgstr "Configuration error!! ‫‪The‬‬ ‫‪calculations‬‬ ‫‪mustn’t‬‬ ‫‪contains‬‬ ‫‪a‬‬ ‫‪value‬‬ ‫‪equal‬‬ ‫‪to‬‬ ‫‪zero"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_form
+msgid "Contract Data"
+msgstr "بيانات العقد"
+
+#. module: saudi_hr_employee
+#: model:ir.actions.act_window,name:saudi_hr_employee.action_country
+#: model:ir.ui.menu,name:saudi_hr_employee.menu_country
+msgid "Countries"
+msgstr "الدول"
+
+#. module: saudi_hr_employee
+#: model:ir.model,name:saudi_hr_employee.model_res_country
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_employment_country_id
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_qualification_country_id
+msgid "Country"
+msgstr "الدولة"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_res_country_arabic_name
+msgid "Country Arabic Name"
+msgstr "اسم الدولة باللغه العربية"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_res_country_custom
+msgid "Country English Name"
+msgstr "إسم الدولة باللغة الانجليزية"
+
+#. module: saudi_hr_employee
+#: model:ir.model,name:saudi_hr_employee.model_res_country_state
+msgid "Country state"
+msgstr "المدينة"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_course_name
+msgid "Course Name"
+msgstr "إسم الدورة"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_course_desc
+msgid "Course description"
+msgstr "وصف الدورة"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_form
+msgid "Courses"
+msgstr "الدورات التدريبية"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_course_create_uid
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_employment_create_uid
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_qualification_create_uid
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_employee_relative_create_uid
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_company_policy_create_uid
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_qualifications_create_uid
+msgid "Created by"
+msgstr "أنشئ بواسطة"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_course_create_date
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_employment_create_date
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_qualification_create_date
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_employee_relative_create_date
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_company_policy_create_date
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_qualifications_create_date
+msgid "Created on"
+msgstr "أنشئ في"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_employee_relative_current_age
+msgid "Current Age"
+msgstr "العمر الحالى"
+
+#. module: saudi_hr_employee
+#: selection:hr.employee,employee_type:0
+msgid "Current Employee"
+msgstr "موظف حالي"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_employment_date_from
+msgid "Date From"
+msgstr "التاريخ من"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_employee_relative_date_of_birth
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_relative_form
+msgid "Date Of Birth"
+msgstr "تاريخ الميلاد"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_employee_relative_date_of_birth_18
+msgid "Date Of Birth Blus 18"
+msgstr "تاريخ الميلاد +18"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_employment_date_to
+msgid "Date To"
+msgstr "التاريخ إلى"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_form
+msgid "Date of Birth"
+msgstr "تاريخ الميلاد"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_employee_relative_birthday_hijri
+msgid "Date of birth (hijri)"
+msgstr "تاريخ الميلاد بالهجرى"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,help:saudi_hr_employee.field_hr_company_policy_message_last_post
+msgid "Date of the last message posted on the record."
+msgstr "تاريخ آخر رسالة في هذا السجل."
+
+#. module: saudi_hr_employee
+#: selection:employee.relative,type:0
+msgid "Daughter"
+msgstr "إبنه"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_company_policy_days_in_month
+msgid "Days In Month"
+msgstr "عدد الأيام في الشهر"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_company_policy_days_in_year
+msgid "Days In Year"
+msgstr "عدد الأيام في السنه"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.hr_employee_view_search
+msgid "Department"
+msgstr "الإدارة"
+
+#. module: saudi_hr_employee
+#: model:ir.actions.act_window,name:saudi_hr_employee.department_hierarchy
+#: model:ir.ui.menu,name:saudi_hr_employee.department_hierarchy_menu
+#: model:ir.ui.menu,name:saudi_hr_employee.department_hierarchy_menu_main
+msgid "Department Hierarchy"
+msgstr "الهيكل التنظيمى للشركة"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.menu,name:saudi_hr_employee.menu_config_department
+#: model:ir.ui.menu,name:saudi_hr_employee.menu_department_parent
+msgid "Departments"
+msgstr "الإدارات"
+
+#. module: saudi_hr_employee
+#: model:ir.actions.act_window,name:saudi_hr_employee.action_department_list
+msgid "Depatments"
+msgstr "الإدارات"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_course_display_name
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_employment_display_name
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_qualification_display_name
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_employee_relative_display_name
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_company_policy_display_name
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_qualifications_display_name
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_job_attachment_display_name
+msgid "Display Name"
+msgstr "طريقة العرض"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_form
+msgid "Driving License Expiry Date"
+msgstr "تاريخ انتهاء رخصة القيادة"
+
+#. module: saudi_hr_employee
+#: code:addons/saudi_hr_employee/models/hr.py:627
+#, python-format
+msgid "Duplicate not allowed in this window"
+msgstr "تم إيقاف الاستنساخ في هذه الشاشة"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_course_duration
+msgid "Duration In Months"
+msgstr "المدة بالأشهر"
+
+#. module: saudi_hr_employee
+#: code:addons/saudi_hr_employee/models/hr.py:46
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_employee_education_degree
+#, python-format
+msgid "Education Degree"
+msgstr "درجة التعليم"
+
+#. module: saudi_hr_employee
+#: model:ir.model,name:saudi_hr_employee.model_hr_company_policy
+msgid "Email Thread"
+msgstr "المحادثة البريدية"
+
+#. module: saudi_hr_employee
+#: model:ir.model,name:saudi_hr_employee.model_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_course_employee_id
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_employment_employee_id
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_qualification_employee_id
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_employee_relative_employee_id
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_relative_search
+msgid "Employee"
+msgstr "الموظف"
+
+#. module: saudi_hr_employee
+#: code:addons/saudi_hr_employee/models/hr.py:35
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_employee_employee_code
+#, python-format
+msgid "Employee Code"
+msgstr "كود الموظف"
+
+#. module: saudi_hr_employee
+#: code:addons/saudi_hr_employee/models/hr.py:33
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_employee_employee_english_name
+#, python-format
+msgid "Employee English Name"
+msgstr "إسم الموظف باللغه الإنجليزيه"
+
+#. module: saudi_hr_employee
+#: code:addons/saudi_hr_employee/models/hr.py:34
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_employee_employee_number
+#, python-format
+msgid "Employee Number"
+msgstr "الرقم الوظيفي"
+
+#. module: saudi_hr_employee
+#: model:ir.actions.act_window,name:saudi_hr_employee.action_employee_relative
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_relative_form
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_relative_search
+msgid "Employee Relative"
+msgstr "التابعين والمرافقين"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.menu,name:saudi_hr_employee.menu_employee_relative
+msgid "Employee Relatives"
+msgstr "التابعين والمرافين"
+
+#. module: saudi_hr_employee
+#: sql_constraint:hr.employee:0
+msgid "Employee code must be unique!"
+msgstr "كود الموظف غير قابل للتكرار"
+
+#. module: saudi_hr_employee
+#: sql_constraint:hr.employee:0
+msgid "Employee english name must be unique!"
+msgstr "إسم الموظف باللغه الإنجليزية غير قابل للتكرار!"
+
+#. module: saudi_hr_employee
+#: sql_constraint:hr.employee:0
+msgid "Employee name must be unique!"
+msgstr "إسم الموظف غير قابل للتكرار!"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_form
+msgid "Employee number"
+msgstr "الرقم الوظيفي"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_employee_employee_type
+msgid "Employee type"
+msgstr "نوع الموظف"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_form
+msgid "Employee's Arabic Name"
+msgstr "اسم الموظف باللغه العربيه"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_form
+msgid "Employee's English Name"
+msgstr "إسم الموظف باللغه الانجليزيه"
+
+#. module: saudi_hr_employee
+#: code:addons/saudi_hr_employee/models/hr.py:332
+#: code:addons/saudi_hr_employee/models/hr.py:483
+#: code:addons/saudi_hr_employee/models/hr.py:511
+#: model:ir.ui.menu,name:saudi_hr_employee.menu_employee_parent
+#: model:ir.ui.view,arch_db:saudi_hr_employee.employee_graph
+#: model:ir.ui.view,arch_db:saudi_hr_employee.employee_pivot
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_tree_inherit
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_res_country_custom
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_res_country_state_custom
+#, python-format
+msgid "Employees"
+msgstr "الموظفون"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_form
+msgid "Employment History"
+msgstr "التاريخ الوظيفي"
+
+#. module: saudi_hr_employee
+#: selection:applicant.course,grade:0 selection:applicant.qualification,grade:0
+msgid "Excellent"
+msgstr "إمتياز"
+
+#. module: saudi_hr_employee
+#: selection:employee.relative,type:0
+msgid "Father"
+msgstr "أب"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_job_attachment_file
+msgid "File"
+msgstr "الملف"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_company_policy_message_follower_ids
+msgid "Followers"
+msgstr "المتابعون"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_company_policy_message_channel_ids
+msgid "Followers (Channels)"
+msgstr "المتابعون ( القنوات )"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_company_policy_message_partner_ids
+msgid "Followers (Partners)"
+msgstr "المتابعون ( الأفراد )"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.hr_employee_view_search
+msgid "Gender"
+msgstr "الجنس"
+
+#. module: saudi_hr_employee
+#: selection:applicant.course,grade:0 selection:applicant.qualification,grade:0
+msgid "Good"
+msgstr "جيد"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_course_grade
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_qualification_grade
+msgid "Graduation Grade"
+msgstr "سنة التخرج"
+
+#. module: saudi_hr_employee
+#: code:addons/saudi_hr_employee/models/hr.py:47
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_course_year
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_qualification_year
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_employee_graduation_year
+#, python-format
+msgid "Graduation Year"
+msgstr "سنة التخرج"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.hr_employee_view_search
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_relative_search
+msgid "Group By"
+msgstr "تجميع حسب"
+
+#. module: saudi_hr_employee
+#: model:ir.model,name:saudi_hr_employee.model_hr_department
+msgid "HR Department"
+msgstr "قسم الموارد البشريه"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_form
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_relative_form
+msgid "Hijri 'YYYY-MM-DD'"
+msgstr "هجرى يوم-شهر-سنة"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_course_id
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_employment_id
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_qualification_id
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_employee_relative_id
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_company_policy_id
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_qualifications_id
+msgid "ID"
+msgstr "الكود"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,help:saudi_hr_employee.field_hr_company_policy_message_unread
+msgid "If checked new messages require your attention."
+msgstr "إذا حددته، ستتطلب الرسائل الجديدة انتباهك"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,help:saudi_hr_employee.field_hr_company_policy_message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "اذا تم وضع علامة صح. يعنى ذلك ان تلك الرساله مهمه وتحتاج إلى مراجعه"
+
+#. module: saudi_hr_employee
+#: code:addons/saudi_hr_employee/models/hr.py:38
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_employee_relative_iqama_expiry_date
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_employee_iqama_expiry_date
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_form
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_relative_form
+#, python-format
+msgid "Iqama Expiry Date"
+msgstr "تاريخ انتهاء الإقامة/الهوية"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_employee_relative_iqama_expiry_date_hijri
+msgid "Iqama Expiry Date (Hijri)"
+msgstr "تاريخ انتهاء الإقامة/الهوية"
+
+#. module: saudi_hr_employee
+#: code:addons/saudi_hr_employee/models/hr.py:36
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_employee_relative_iqama_issue_date
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_employee_iqama_issue_date
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_form
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_relative_form
+#, python-format
+msgid "Iqama Issue Date"
+msgstr "تاريخ إصدار الإقامة/الهوية"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_employee_relative_iqama_issue_date_hijri
+msgid "Iqama Issue Date (Hijri)"
+msgstr "تاريخ إصدار الإقامة/هجرى"
+
+#. module: saudi_hr_employee
+#: code:addons/saudi_hr_employee/models/hr.py:40
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_employee_iqama_issue_place
+#, python-format
+msgid "Iqama Issue Place"
+msgstr "مكان إصدار الاقامه/الهوية"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_employee_relative_iqama_number
+msgid "Iqama Number"
+msgstr "رقم الإقامة/الهوية"
+
+#. module: saudi_hr_employee
+#: sql_constraint:hr.employee:0
+msgid "Iqama must be unique!"
+msgstr "رقم الإقامة / الهوية غير قابل للتكرار"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.hr_employee_view_search
+msgid "Iqama will be expired within 120 days"
+msgstr "الإقامات التي ستنتهى خلال 120 يوم"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.hr_employee_view_search
+msgid "Iqama will be expired within 45 days"
+msgstr "الإقامات التي ستنتهى خلال 45  يوم"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.hr_employee_view_search
+msgid "Iqama will be expired within 60 days"
+msgstr "الإقامات التي ستنتهى خلال 60  يوم"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.hr_employee_view_search
+msgid "Iqama will be expired within 90"
+msgstr "الإقامات التي ستنتهى خلال 90  يوم"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_company_policy_message_is_follower
+msgid "Is Follower"
+msgstr "هو متابع"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_res_country_is_saudi
+msgid "Is Saudi"
+msgstr "سعودي الجنسية ؟"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_job_attachment_job_id
+#: model:ir.ui.view,arch_db:saudi_hr_employee.hr_employee_view_search
+msgid "Job"
+msgstr "الوظيفه"
+
+#. module: saudi_hr_employee
+#: model:ir.model,name:saudi_hr_employee.model_job_attachment
+msgid "Job Attachment"
+msgstr "مرفقات الوظيفة"
+
+#. module: saudi_hr_employee
+#: code:addons/saudi_hr_employee/models/hr.py:303
+#, python-format
+msgid "Job Must belongs to selected department‬‬"
+msgstr "يجب أن تكون الوظيفه في نفس الإدارة التي تم إختيارها"
+
+#. module: saudi_hr_employee
+#: model:ir.model,name:saudi_hr_employee.model_hr_job
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_employment_job
+msgid "Job Position"
+msgstr "المسمي الوظيفي"
+
+#. module: saudi_hr_employee
+#: code:addons/saudi_hr_employee/models/hr.py:346
+#: model:ir.ui.menu,name:saudi_hr_employee.menu_config_jobs
+#, python-format
+msgid "Jobs"
+msgstr "الوظائف"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_company_policy_message_last_post
+msgid "Last Message Date"
+msgstr "تاريخ آخر رسالة"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_course___last_update
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_employment___last_update
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_qualification___last_update
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_employee_relative___last_update
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_company_policy___last_update
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_qualifications___last_update
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_job_attachment___last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_course_write_uid
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_employment_write_uid
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_qualification_write_uid
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_employee_relative_write_uid
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_company_policy_write_uid
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_qualifications_write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_course_write_date
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_employment_write_date
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_qualification_write_date
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_employee_relative_write_date
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_company_policy_write_date
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_qualifications_write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.hr_company_policy_form
+msgid "Loans and Advances Request"
+msgstr "طلب سلفه / راتب مقدم"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_form
+msgid "Lock"
+msgstr "إغلاق الموظف"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.hr_employee_view_search
+msgid "Manager"
+msgstr "المدير"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.hr_employee_view_search
+msgid "Marital status"
+msgstr "الحالة الإجتماعية"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_company_policy_message_ids
+msgid "Messages"
+msgstr "الرسائل"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,help:saudi_hr_employee.field_hr_company_policy_message_ids
+msgid "Messages and communication history"
+msgstr "الرسائل و سجل التواصل"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_company_policy_months_in_year
+msgid "Months In Year"
+msgstr "عدد الأشهر في السنه"
+
+#. module: saudi_hr_employee
+#: selection:employee.relative,type:0
+msgid "Mother"
+msgstr "أم"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_job_attachment_name
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_form
+msgid "Name"
+msgstr "الاسم"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_form
+msgid "National Address"
+msgstr "العنوان الوظنى"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.hr_employee_view_search
+msgid "Nationality"
+msgstr "الجنسية"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_employee_nationality_type
+#: model:ir.ui.view,arch_db:saudi_hr_employee.hr_employee_view_search
+msgid "Nationality type"
+msgstr "نوع الجنسيه"
+
+#. module: saudi_hr_employee
+#: selection:hr.employee,employee_type:0
+msgid "New employee"
+msgstr "موظف جديد"
+
+#. module: saudi_hr_employee
+#: selection:hr.employee,nationality_type:0
+msgid "Non-Saudi"
+msgstr "غير سعودى"
+
+#. module: saudi_hr_employee
+#: code:addons/saudi_hr_employee/models/hr.py:253
+#, python-format
+msgid "Not allowed to change any data in Employee file  because your HR manager already locked Employee file. If you think that there is any data error in this window which requires corrections, kindly contact with HR manager. he have the access rights to unlock this window."
+msgstr "Not allowed to change any data in Employee file  because your HR manager already locked Employee file. If you think that there is any data error in this window which requires corrections, kindly contact with HR manager. he have the access rights to unlock this window."
+
+#. module: saudi_hr_employee
+#: code:addons/saudi_hr_employee/models/hr.py:323
+#, python-format
+msgid "Not allowed to delete this Department, because there is some sub-departments under this department."
+msgstr "Not allowed to delete this Department, because there is some sub-departments under this department."
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_course_note
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_employment_note
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_qualification_note
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_employee_relative_notes
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_job_attachment_note
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_relative_form
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_hr_job_form_inherit
+msgid "Notes"
+msgstr "الملاحظات"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_department_count_employees
+msgid "Number Of Employees"
+msgstr "عدد الموظفين"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_department_count_jobs
+msgid "Number Of Jobs"
+msgstr "عدد الوظائف"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_employee_number_relatives
+msgid "Number Of Relatives"
+msgstr "عدد التابعين والمرافقين"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_company_policy_message_needaction_counter
+msgid "Number of Actions"
+msgstr "عدد الإجراءات"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,help:saudi_hr_employee.field_hr_company_policy_message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "عدد الرسائل التي تحتاج إلى إجراءات"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,help:saudi_hr_employee.field_hr_company_policy_message_unread_counter
+msgid "Number of unread messages"
+msgstr "عدد الرسائل الغير مقروؤه"
+
+#. module: saudi_hr_employee
+#: selection:employee.relative,type:0
+msgid "Other"
+msgstr "أخرى"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_form
+msgid "Other Information"
+msgstr "معلومات أخرى"
+
+#. module: saudi_hr_employee
+#: code:addons/saudi_hr_employee/models/hr.py:44
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_employee_relative_passport_expiry_date
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_employee_passport_expiry_date
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_relative_form
+#, python-format
+msgid "Passport Expiry Date"
+msgstr "تاريخ انتهاء جواز السفر"
+
+#. module: saudi_hr_employee
+#: code:addons/saudi_hr_employee/models/hr.py:45
+#: code:addons/saudi_hr_employee/models/hr.py:545
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_employee_relative_passport_expiry_date_hijri
+#, python-format
+msgid "Passport Expiry Date (hijri"
+msgstr "تاريخ انتهاء جواز السفر بالهجرى"
+
+#. module: saudi_hr_employee
+#: code:addons/saudi_hr_employee/models/hr.py:42
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_employee_relative_passport_issue_date
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_employee_passport_issue_date
+#, python-format
+msgid "Passport Issue Date"
+msgstr "تاريخ إصدار جواز السفر"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_employee_relative_passport_issue_date_hijri
+msgid "Passport Issue Date (Hijri)"
+msgstr "تاريخ إصدار جواز السفر بالهجرى"
+
+#. module: saudi_hr_employee
+#: code:addons/saudi_hr_employee/models/hr.py:43
+#, python-format
+msgid "Passport Issue Date (hijri"
+msgstr "تاريخ إصدار جواز السفر بالهجرى"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_employee_relative_passport_number
+msgid "Passport Number"
+msgstr "رقم جواز السفر"
+
+#. module: saudi_hr_employee
+#: sql_constraint:hr.employee:0
+msgid "Passport Number must be unique!"
+msgstr "رقم جواز السفر غير قابل للتكرار"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_form
+msgid "Passport expiry date"
+msgstr "تاريخ انتهاء جواز السفر"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_form
+msgid "Passport issue date"
+msgstr "تاريخ إصدار جواز السفر"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_form
+msgid "Personal Information"
+msgstr "المعلومات الشخصية"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_employment_phone
+msgid "Phone Number"
+msgstr "رقم الهاتف"
+
+#. module: saudi_hr_employee
+#: selection:applicant.course,grade:0 selection:applicant.qualification,grade:0
+msgid "Poor"
+msgstr "ضعيف"
+
+#. module: saudi_hr_employee
+#: code:addons/saudi_hr_employee/models/hr.py:41
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_employee_iqama_profession
+#, python-format
+msgid "Profession in Iqama"
+msgstr "المهنه في الإقامه"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_employee_qualification_id
+msgid "Qualification"
+msgstr "المؤهلات العلميه"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_qualifications_name
+msgid "Qualification name"
+msgstr "إسم المؤهل"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_form
+msgid "Qualifications"
+msgstr "المؤهلات العلمية"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_employment_reference
+msgid "Reference Person"
+msgstr "شخص يمكن التواصل معه"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_form
+msgid "Relation"
+msgstr "درجة القرابه"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_employee_relative_arabic_name
+msgid "Relative Arabic Name"
+msgstr "إسم المرافق باللغه العربيه"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_employee_relative_name
+msgid "Relative English Name"
+msgstr "إسم المرافق باللغه الانجليزيه"
+
+#. module: saudi_hr_employee
+#: code:addons/saudi_hr_employee/models/hr.py:268
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_employee_relatives
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_form
+#, python-format
+msgid "Relatives"
+msgstr "المرافقين والتابعين"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.hr_employee_view_search
+msgid "Religon"
+msgstr "الديانه"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_employment_salary
+msgid "Salary"
+msgstr "الراتب"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_form
+msgid "Salary Information"
+msgstr "بيانات الراتب"
+
+#. module: saudi_hr_employee
+#: selection:hr.employee,nationality_type:0
+msgid "Saudi"
+msgstr "سعودي"
+
+#. module: saudi_hr_employee
+#: selection:employee.relative,type:0
+msgid "Sister"
+msgstr "أخت"
+
+#. module: saudi_hr_employee
+#: selection:employee.relative,type:0
+msgid "Son"
+msgstr "إبن"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_employee_relative_ticket_start_date
+msgid "Start Date To Calc Air Tickets"
+msgstr "تاريخ بداية إحتساب تذاكر الطيران"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_res_country_state_arabic_name
+msgid "State Arabic Name"
+msgstr "إسم المدينه باللغه العربيه"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_res_country_custom
+msgid "State English Name"
+msgstr "إسم المدينه باللغه الإنجليزيه"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.hr_employee_view_search
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_form
+msgid "Supervisor"
+msgstr "المشرف"
+
+#. module: saudi_hr_employee
+#: code:addons/saudi_hr_employee/models/hr.py:100
+#, python-format
+msgid "Total"
+msgstr "الإجمالى"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_employment_duration
+msgid "Total Duration"
+msgstr "إجمالي المدة"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_employee_relative_type
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_relative_search
+msgid "Type"
+msgstr "النوع"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_applicant_qualification_school
+msgid "University - School Name"
+msgstr "إسم الجامعة / المدرسة"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_form
+msgid "Unlock"
+msgstr "إلغاء الإغلاق"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_company_policy_message_unread
+msgid "Unread Messages"
+msgstr "رسائل غير مقروءة"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_company_policy_message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "عداد الرسائل الغير مقروؤه"
+
+#. module: saudi_hr_employee
+#: selection:applicant.course,grade:0 selection:applicant.qualification,grade:0
+msgid "Very Good"
+msgstr "جيد جدا"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_company_policy_website_message_ids
+msgid "Website Messages"
+msgstr "رسائل الموقع"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,help:saudi_hr_employee.field_hr_company_policy_website_message_ids
+msgid "Website communication history"
+msgstr "سجل تواصل الموقع"
+
+#. module: saudi_hr_employee
+#: selection:employee.relative,type:0
+msgid "Wife / Husband"
+msgstr "زوجة / زوج"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_employee_year_of_qualification
+msgid "Year Qualif."
+msgstr "سنة التخرج"
+
+#. module: saudi_hr_employee
+#: model:ir.ui.view,arch_db:saudi_hr_employee.view_employee_form
+msgid "Years"
+msgstr "السنوات"
+
+#. module: saudi_hr_employee
+#: model:ir.model,name:saudi_hr_employee.model_applicant_course
+msgid "applicant.course"
+msgstr "الدورات التدريبية"
+
+#. module: saudi_hr_employee
+#: model:ir.model,name:saudi_hr_employee.model_applicant_employment
+msgid "applicant.employment"
+msgstr "الخبرات الوظيفيه"
+
+#. module: saudi_hr_employee
+#: model:ir.model,name:saudi_hr_employee.model_applicant_qualification
+msgid "applicant.qualification"
+msgstr "المؤهلات العلمية"
+
+#. module: saudi_hr_employee
+#: model:ir.model,name:saudi_hr_employee.model_employee_relative
+msgid "employee.relative"
+msgstr "التابعين والمرافقين"
+
+#. module: saudi_hr_employee
+#: model:ir.model,name:saudi_hr_employee.model_hr_qualifications
+msgid "hr.qualifications"
+msgstr "المؤهلات العليمه"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_job_attachment_url
+msgid "url"
+msgstr "رابط الموقع"
+
+#. module: saudi_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_employee.field_hr_company_policy_name
+msgid "‫‪Policy‬‬ ‫‪description‬‬"
+msgstr "وصف السياسة"

@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+view_loan_batches,loan.batches,model_loan_batches,hr.group_hr_manager,1,1,1,1
+view_loan_batches,loan.batches,model_loan_batches,base.group_user,1,1,1,1
+view_loan_bank_report,loan.bank.report,model_loan_bank_report,hr.group_hr_manager,1,1,1,1
+view_loan_bank_report,loan.bank.report,model_loan_bank_report,base.group_user,1,1,1,1
+view_loan_report_line,loan.report.line,model_loan_report_line,hr.group_hr_manager,1,1,1,1
+view_loan_report_line,loan.report.line,model_loan_report_line,base.group_user,1,1,1,1

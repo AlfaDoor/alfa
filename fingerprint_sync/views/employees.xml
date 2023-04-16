@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+
+    <!--    Inherit View   -->
+    <record model="ir.ui.view" id="view_employee_form_inherit">
+        <field name="name">hr.employee inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <field name="department_id" position="after">
+                <field name="fingerprint_no" placeholder="Employee finger print number"/>
+            </field>
+        </field>
+    </record>
+    </data>
+</odoo>

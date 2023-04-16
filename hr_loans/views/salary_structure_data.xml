@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Deductions / Violations-->
+        <record model="hr.salary.rule" id="deduction_salary_rule">
+            <field name="name">Deductions / Violations</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="code">DEDUCT</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = payslip.dict.violation_deduction_rule() #payslip.deduct_this_month_ * -1</field>
+            <field eval="58" name="sequence"/>
+        </record>
+        <!--Loan Deducted-->
+        <record model="hr.salary.rule" id="loan_salary_rule">
+            <field name="name">Loan Deducted</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="code">LOAN</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = payslip.dict.loan_deduction_rule() #payslip.deduct_this_month * -1</field>
+            <field eval="54" name="sequence"/>
+        </record>
+        <!--Rewards-->
+        <record model="hr.salary.rule" id="rewards_salary_rule">
+            <field name="name">Employee Rewards</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="code">REWARD</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = payslip.dict.rewards_rule() #payslip.reward_pay_this_month</field>
+            <field eval="62" name="sequence"/>
+        </record>
+        <!--  -->
+        <record model="hr.salary.rule" id="absence_salary_rule">
+            <field name="name">Absence Deduction</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="code">ABSENCE</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = payslip.net_absence_deduction * -1</field>
+            <field eval="59" name="sequence"/>
+        </record>
+        <record id="saudi_hr_payroll.rz_salary_structure" model="hr.payroll.structure">
+            <field name="rule_ids" eval="[
+            (4, ref('hr_loans.deduction_salary_rule')),
+            (4, ref('hr_loans.loan_salary_rule')),
+            (4, ref('hr_loans.rewards_salary_rule')),
+            (4, ref('hr_loans.absence_salary_rule')),
+            ]"/>
+        </record>
+
+    </data>
+
+    <!--TODO: To remove following tree tags-->
+    <data>
+        <!--Salary rule Category ( DED )-->
+        <record id="DEDUCT" model="hr.salary.rule.category">
+            <field name="name">Total deduction</field>
+            <field name="code">DEDUCT</field>
+        </record>
+        <!--Total Deduction-->
+        <record id="hr_rule_total_deductions" model="hr.salary.rule">
+            <field name="name">Total deductions</field>
+            <field name="code">DED</field>
+            <field name="category_id" ref="hr_loans.DEDUCT"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = categories.DED</field>
+            <field name="sequence" eval="13"/>
+        </record>
+        <!--Total Gross-->
+        <record id="hr_rule_gross" model="hr.salary.rule">
+            <field name="name">Gross</field>
+            <field name="sequence" eval="11"/>
+            <field name="code">GROSS</field>
+            <field name="category_id" ref="hr_payroll.GROSS"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = categories.BASIC + categories.ALW</field>
+        </record>
+    </data>
+</odoo>

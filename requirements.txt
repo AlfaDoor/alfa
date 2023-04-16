@@ -1,0 +1,2 @@
+hijri-converter==2.1.0
+num2words==0.5.10

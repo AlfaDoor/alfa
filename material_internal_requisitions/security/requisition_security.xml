@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="1">
+		<!-- group -->
+		<record id="group_requisiton_users" model="res.groups">
+			<field name="name">See All Employees</field>
+		</record>
+		<record id="group_requisition_user" model="res.groups">
+			<field name="name">Requisition User</field>
+			<field name="implied_ids"
+				eval="[(4, ref('stock.group_stock_user'))]" />
+		</record>
+
+		<record id="group_requisition_manager" model="res.groups">
+			<field name="name">Requisition Manager</field>
+			<field name="implied_ids"
+				eval="[(4, ref('group_requisition_user'))]" />
+		</record>
+
+		<record id="group_requisition_department" model="res.groups">
+			<field name="name">Department Manager</field>
+			<field name="implied_ids" eval="[(4, ref('base.group_user'))]" />
+		</record>
+
+		<record id="requisition_own_rule" model="ir.rule">
+			<field name="name">Employee Own</field>
+			<field name="model_id" ref="model_internal_requisition" />
+			<field name="domain_force">[('request_emp.user_id','=', user.id)]</field>
+			<field name="groups" eval="[(4, ref('base.group_user'))]" />
+		</record>
+
+		<record id="requisition_line_employee_rule" model="ir.rule">
+			<field name="name">Employee Requistion Lines</field>
+			<field name="model_id" ref="model_requisition_line" />
+			<field name="domain_force">[('requisition_id.request_emp.user_id','=',user.id)]
+			</field>
+			<field name="groups"
+				eval="[(4, ref('material_internal_requisitions.group_requisition_user')),(4, ref('material_internal_requisitions.group_requisition_department'))]" />
+		</record>
+
+		<record id="requisition_all_rule" model="ir.rule">
+			<field name="name">Requisitions All</field>
+			<field name="model_id" ref="model_internal_requisition" />
+			<field name="domain_force">[(1,'=',1)]</field>
+			<field name="groups"
+				eval="[(4, ref('material_internal_requisitions.group_requisition_user')),(4, ref('material_internal_requisitions.group_requisition_department'))]" />
+		</record>
+
+		<record id="requisition_line_all_rule" model="ir.rule">
+			<field name="name">Requisitions Line All</field>
+			<field name="model_id" ref="model_requisition_line" />
+			<field name="domain_force">[(1,'=',1)]</field>
+			<field name="groups"
+				eval="[(4, ref('material_internal_requisitions.group_requisition_user')),(4, ref('material_internal_requisitions.group_requisition_department'))]" />
+		</record>
+               <!--  <record model="ir.module.category" id="val_inv_group">
+			<field name="name">Invoice Validate</field>
+			<field name="description">Allow member to validate invoices</field>
+			<field name="sequence">47</field>
+		</record>
+		<record id="validate_inv_group" model="res.groups">
+			<field name="name">Member</field>
+			<field name="category_id" ref="material_internal_requisitions.val_inv_group" />
+		</record>-->
+
+	</data>
+</odoo>

@@ -1,0 +1,1276 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* saudi_hr_leaves
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.e-20151006\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-12-12 12:45+0000\n"
+"PO-Revision-Date: 2017-12-12 15:54+0300\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: ar_SY\n"
+"X-Generator: Poedit 2.0.5\n"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.company_share_validate_wizard_form
+msgid ""
+") months in his air ticket balance.\n"
+"                        <br/>\n"
+"                        This means that the employee will full pay for this air ticket, also this means that the air ticket balance for this employee ("
+msgstr ""
+") months in his air ticket balance.\n"
+"                        <br/>\n"
+"                        This means that the employee will full pay for this air ticket, also this means that the air ticket balance for this employee ("
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.company_share_validate_wizard_form
+msgid "), Company share is zero, the employee have("
+msgstr "), Company share is zero, the employee have("
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_automatic_allocation_message_needaction
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_allocation_message_needaction
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_message_needaction
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_type_message_needaction
+msgid "Action Needed"
+msgstr "الإجراء المطلوب"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_allocation_adjusted_date
+msgid "Adjusted date"
+msgstr "تاريخ بدابة العمل"
+
+#. module: saudi_hr_leaves
+#: model:ir.actions.act_window,name:saudi_hr_leaves.air_ticket_automatic_allocation_action
+#: model:ir.model,name:saudi_hr_leaves.model_air_ticket_automatic_allocation
+#: model:ir.ui.menu,name:saudi_hr_leaves.air_ticket_automatic_allocation_menu
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.air_ticket_automatic_allocation_form
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.air_ticket_automatic_allocation_tree
+msgid "Air Ticket Automatic Allocation"
+msgstr "توزيع تذاكر الطيران تلقائياً"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.hr_employee_view_search
+msgid "Air Ticket Balance"
+msgstr "رصيد تذاكر الطيران"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_details_request_id
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_air_ticket_details
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_request_form
+msgid "Air Ticket Details"
+msgstr "تفاصيل تذاكر الطيران"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_type_policy_name
+msgid "Air Ticket Policy Name"
+msgstr "إسم سياسة تذاكر الطيران"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_details_ticket_price
+msgid "Air Ticket Price"
+msgstr "سعر تذاكر الطيران"
+
+#. module: saudi_hr_leaves
+#: model:ir.actions.act_window,name:saudi_hr_leaves.action_tickets_request
+#: model:ir.ui.menu,name:saudi_hr_leaves.menu_tickets_request
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_request_form
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_request_tree
+msgid "Air Ticket Request"
+msgstr "طلب تذاكر الطيران"
+
+#. module: saudi_hr_leaves
+#: model:ir.actions.act_window,name:saudi_hr_leaves.action_tickets_type
+#: model:ir.ui.menu,name:saudi_hr_leaves.menu_tickets_type
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_type_form
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_type_search
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_type_tree
+msgid "Air Ticket Types"
+msgstr "أنواع تذاكر الطيران"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_request_reason
+msgid "Air Ticket request reason"
+msgstr "سبب طلب تذكرة الطيران"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_type_type
+msgid "Air ticket Type"
+msgstr "نوع تذاكر الطيران"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_hr_employee_air_ticket_balance
+msgid "Air ticket allocation balance"
+msgstr "رصد تذاكر الطيران الذى تم توزيعه"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_allocation_air_ticket_auto_allocation_id
+msgid "Air ticket automatic allocation"
+msgstr "توزيع تذاكر الطيران تلقائياً"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.view_country_state_form_inherit
+msgid "Air ticket average price"
+msgstr "متوسط تكلفه تذاكر الطيران"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.view_employee_form_leave_inherit
+msgid "Air ticket balance"
+msgstr "رصيد تذاكر الطيران"
+
+#. module: saudi_hr_leaves
+#: model:ir.actions.act_window,name:saudi_hr_leaves.air_ticket_balance_allocation_action
+#: model:ir.model,name:saudi_hr_leaves.model_air_ticket_balance_allocation
+#: model:ir.ui.menu,name:saudi_hr_leaves.air_ticket_balance_allocation_menu
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.air_ticket_balance_allocation_form
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.air_ticket_balance_allocation_tree
+msgid "Air ticket balance allocation"
+msgstr "توزيع رصيد تذاكر الطيران"
+
+#. module: saudi_hr_leaves
+#: model:ir.model,name:saudi_hr_leaves.model_air_ticket_balance_attachment
+msgid "Air ticket balance allocation Attachment"
+msgstr "المرفقات"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_type_air_ticket_class
+msgid "Air ticket class"
+msgstr "درجة تذكرة الطيران"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_allocation_air_ticket_request_id
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_attachment_air_ticket_request_id
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_validate_wizard_air_ticket_request_id
+msgid "Air ticket request"
+msgstr "طلب تذكره الطيران"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_type_air_ticket_request_ids
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_type_form
+msgid "Air ticket requests"
+msgstr "طلبات تذاكر الطيران"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_ticket_total_price
+msgid "Air ticket total price"
+msgstr "إجمالى تكلفة تذاكر الطيران"
+
+#. module: saudi_hr_leaves
+#: model:ir.model,name:saudi_hr_leaves.model_air_ticket_type
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_air_ticket_type
+msgid "Air ticket type"
+msgstr "نوع تذكرة الطيران"
+
+#. module: saudi_hr_leaves
+#: model:ir.actions.act_window,name:saudi_hr_leaves.countries_air_ticket_prices_action
+#: model:ir.ui.menu,name:saudi_hr_leaves.countries_air_ticket_prices_menu
+msgid "Air tickets prices"
+msgstr "سعر تذاكر الطيران"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_details_airlines
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_details_return_airlines
+msgid "Airlines"
+msgstr "خطوط الطيران"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_automatic_allocation_allocate_till_date
+msgid "Allocate till this date"
+msgstr "قم بتوزيع الرصيد حتى تاريخ"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_allocation_allocated_balance
+msgid "Allocated balance"
+msgstr "الرصيد الذى تم توزيعه"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_allocation_allocated_date
+msgid "Allocated date"
+msgstr "تاريخ التوزيع"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.request,relatives_tickets:0
+#: selection:air.ticket.type,relatives_tickets:0
+msgid "Allow tickets for relatives"
+msgstr "يسمح بتذاكر الطيران للأقارب"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_hr_leave_allow_to_request_air_ticket
+msgid "Allow to request air ticket"
+msgstr "يسمح بطلب تذكرة طيران"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_hr_leave_type_allow_tickets_for_leave
+msgid "Allow to request air ticket for this leave"
+msgstr "يسمح بطلب تذكرة طيران لهذه الأجازه"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_hr_leave_type_allowed_air_ticket_id
+msgid "Allowed air ticket"
+msgstr "تذكرة الطيران المسموح بها"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.type,type:0
+msgid "Annual"
+msgstr "سنوياً"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_air_ticket_policy
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_hr_contract_air_ticket_policy
+msgid "Annual Air Ticket Policy"
+msgstr "سياسة تذاكر الطيران"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.request,request_type:0
+msgid "Annual air ticket"
+msgstr "تذكرة طيران سنويه"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_hr_leave_annual_air_ticket_policy_id
+msgid "Annual air ticket policy"
+msgstr "سياسة تذاكر الطيران"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_type_form
+msgid "Approve"
+msgstr "تصديق"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.type,state:0
+msgid "Approved"
+msgstr "تمت الموافقه"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_request_form
+msgid "Are you sure that you reviewed this air ticket request?"
+msgstr "هل أنت متأكد من أنك قمت بمراجعة نوع تذاكر الطيران ؟"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_request_form
+msgid "Are you sure that you want to approve this air ticket request?"
+msgstr "هل أنت متأكد من رغبتك في تأكيد طلب تذاكر الطيران الحالى؟"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_type_form
+msgid "Are you sure that you want to approve this air ticket type?"
+msgstr "هل أنت متأكد من رغبتك في تأكيد نوع تذاكر الطيران؟"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_request_form
+msgid "Are you sure that you want to refuse this air ticket request?"
+msgstr "هل أنت متأكد من رغبتك في رفض طلب تذاكر الطيران الحالى؟"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_request_form
+msgid "Are you sure that you want to set this air ticket request to new?"
+msgstr "هل أنت متأكد من رغبتك في بدء الإجراءات من جديد ؟"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_type_form
+msgid "Are you sure that you want to set this air ticket type to new?"
+msgstr "هل أنت متأكد من رغبتك في بدء الإجراءات من جديد ؟"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_allocation_attachment_ids
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_attachment_ids
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.air_ticket_balance_allocation_form
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_request_form
+msgid "Attachments"
+msgstr "المُرفقات"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_request_form
+msgid "Attention,                                 The purpose from this button is to re-load employee air ticket balance. Employee balance may change if you refresh data"
+msgstr "Attention,                                 The purpose from this button is to re-load employee air ticket balance. Employee balance may change if you refresh data"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.skip_validate_wizard_form
+msgid "Back to the request"
+msgstr "العوده إلى المعامله"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_automatic_allocation_allocation_ids
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.air_ticket_automatic_allocation_form
+msgid "Balance allocations"
+msgstr "توزيع الرصيد"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.type,air_ticket_class:0
+msgid "Business Class"
+msgstr "درجة رجال الأعمال"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_hr_leave_can_request_exit_rentry
+msgid "Can Request for Exit and Re-entry"
+msgstr "يستطيع طلب خروج وعوده"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_type_can_request_exit_rentry
+msgid "Can request For Exist and R-entry"
+msgstr "يستطيع طلب خروج وعوده؟"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.request,i_want_to:0
+msgid "Cash"
+msgstr "نقداً"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.request,employee_share_method:0
+msgid "Cash & bank transfer"
+msgstr "نقدى / حواله بنكيه"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_cash_allowed
+msgid "Cash allowed"
+msgstr "يسمح بالبدل النقدى"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_hr_employee_city_id
+msgid "City"
+msgstr "المدينة"
+
+#. module: saudi_hr_leaves
+#: model:ir.actions.act_window,help:saudi_hr_leaves.air_ticket_automatic_allocation_action
+msgid "Click to define a new Air Ticket Automatic Allocation"
+msgstr "قم بالضغط على انشاء للقيام بتوزيع رصيد تذاكر الطيران اوتوماتيكيا"
+
+#. module: saudi_hr_leaves
+#: model:ir.actions.act_window,help:saudi_hr_leaves.air_ticket_balance_allocation_action
+msgid "Click to define a new Air ticket balance allocation"
+msgstr "قم بالضغط على انشاء لإعطاء الموظف الرصيد الافتتاحى من تذاكر الطيران"
+
+#. module: saudi_hr_leaves
+#: model:ir.actions.act_window,help:saudi_hr_leaves.countries_air_ticket_prices_action
+msgid "Click to define a new Country"
+msgstr "قم بالضغط على انشاء لإضافة دولة جديدة"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_company_share
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_validate_wizard_company_share
+msgid "Company share"
+msgstr "حصة الشركه"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.company_share_validate_wizard_form
+msgid "Company share validate ?"
+msgstr "تأكيد حصة الشركه ؟"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.air_ticket_automatic_allocation_form
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.air_ticket_balance_allocation_form
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.company_share_validate_wizard_form
+msgid "Confirm"
+msgstr "تأكيد"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.automatic.allocation,state:0
+#: selection:air.ticket.balance.allocation,state:0
+msgid "Confirmed"
+msgstr "تم التأكيد"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_automatic_allocation_confirmed_uid
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_allocation_confirmed_uid
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_confirmed_by
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.air_ticket_automatic_allocation_form
+msgid "Confirmed by"
+msgstr "تم التأكيد بواسطة"
+
+#. module: saudi_hr_leaves
+#: model:ir.model,name:saudi_hr_leaves.model_hr_contract
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_contract_id
+msgid "Contract"
+msgstr "العقد"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_contract_leave_policy
+msgid "Contract leave policy"
+msgstr "سياسة الشركه في الأجازات السنويه"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_contract_type_equal_leave_type
+msgid "Contract leave policy equal leave type"
+msgstr "سياسة الأجازات فى العقد تساوى نوع الاجازه الحالى"
+
+#. module: saudi_hr_leaves
+#: model:ir.model,name:saudi_hr_leaves.model_res_country
+msgid "Country"
+msgstr "الدولة"
+
+#. module: saudi_hr_leaves
+#: model:ir.model,name:saudi_hr_leaves.model_res_country_state
+msgid "Country state"
+msgstr "الولاية أو المنطقة في الدولة"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_hr_leave_create_air_ticket_request
+msgid "Create air ticket request for this leave"
+msgstr "انشاء تذكرة طيران لطلب الأجازه الحالي"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_allocation_auto_create
+msgid "Created automatically"
+msgstr "تم الانشاء تلقائيا من النظام"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_automatic_allocation_create_uid
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_allocation_create_uid
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_attachment_create_uid
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_details_create_uid
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_attachment_create_uid
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_create_uid
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_type_create_uid
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_validate_wizard_create_uid
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.air_ticket_automatic_allocation_form
+msgid "Created by"
+msgstr "أنشئ بواسطة"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_automatic_allocation_create_date
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_allocation_create_date
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_attachment_create_date
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_details_create_date
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_attachment_create_date
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_create_date
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_type_create_date
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_validate_wizard_create_date
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.air_ticket_automatic_allocation_form
+msgid "Created on"
+msgstr "أنشئ في"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_request_form
+msgid "Data review"
+msgstr "مراجعة البيانات"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.request,state:0
+msgid "Data reviewed"
+msgstr "تمت مراجعة البيانات"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,help:saudi_hr_leaves.field_air_ticket_automatic_allocation_message_last_post
+#: model:ir.model.fields,help:saudi_hr_leaves.field_air_ticket_balance_allocation_message_last_post
+#: model:ir.model.fields,help:saudi_hr_leaves.field_air_ticket_request_message_last_post
+#: model:ir.model.fields,help:saudi_hr_leaves.field_air_ticket_type_message_last_post
+msgid "Date of the last message posted on the record."
+msgstr "تاريخ آخر رسالة في هذا السجل."
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_details_departure_airport
+msgid "Departure airport"
+msgstr "مطار المغادره"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_details_departure_date
+msgid "Departure date"
+msgstr "تاريخ المغادره"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.request,request_reason:0
+msgid "Deputation / business trip"
+msgstr "إنتداب / رحلة عمل"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_description
+msgid "Description"
+msgstr "الوصف"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_automatic_allocation_display_name
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_allocation_display_name
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_attachment_display_name
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_details_display_name
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_attachment_display_name
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_display_name
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_type_display_name
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_validate_wizard_display_name
+msgid "Display Name"
+msgstr "طريقة العرض"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.company_share_validate_wizard_form
+msgid "Do you want to confirm?"
+msgstr "هل ترغب في التأكيد؟"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_type_number_of_months
+msgid "Each"
+msgstr "كل"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.type,air_ticket_class:0
+msgid "Economic Class"
+msgstr "الدرجه الإقتصاديه"
+
+#. module: saudi_hr_leaves
+#: model:ir.model,name:saudi_hr_leaves.model_air_ticket_request
+msgid "Email Thread"
+msgstr "المحادثة البريدية"
+
+#. module: saudi_hr_leaves
+#: model:ir.model,name:saudi_hr_leaves.model_hr_employee
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_allocation_employee_id
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.air_ticket_balance_allocation_search
+msgid "Employee"
+msgstr "الموظف"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.hr_contract_form_air_tickets
+msgid "Employee & Relative tickets"
+msgstr "تذاكر الموظف & التابعين"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_request_form
+msgid "Employee Old Air tickets"
+msgstr "تذاكر الطيران القديمه التي تخص نفس الموظف"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.request,reserve_ticket_for:0
+msgid "Employee and his relatives"
+msgstr "الموظف والتابعين"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_employee_nationality
+msgid "Employee nationality"
+msgstr "جنسية الموظف"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.request,reserve_ticket_for:0
+msgid "Employee only"
+msgstr "الموظف فقط"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_employee_share
+msgid "Employee share"
+msgstr "حصة الموظف من التأمينات الإجتماعيه"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_employee_share_method
+msgid "Employee share payment method"
+msgstr "طرقة سداد حصة الموظف"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_attachment_file
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_attachment_file
+msgid "File"
+msgstr "الملف"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_request_form
+msgid "Final approve"
+msgstr "الموافقه النهائيه"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.request,request_reason:0
+msgid "Final exit"
+msgstr "خروج نهائى"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.type,air_ticket_class:0
+msgid "First Class"
+msgstr "الدرجه الأولى"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_details_flight_number
+msgid "Flight number"
+msgstr "رقم الرحله"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_automatic_allocation_message_follower_ids
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_allocation_message_follower_ids
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_message_follower_ids
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_type_message_follower_ids
+msgid "Followers"
+msgstr "المتابعون"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_automatic_allocation_message_channel_ids
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_allocation_message_channel_ids
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_message_channel_ids
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_type_message_channel_ids
+msgid "Followers (Channels)"
+msgstr "المتابعون ( القنوات )"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_automatic_allocation_message_partner_ids
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_allocation_message_partner_ids
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_message_partner_ids
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_type_message_partner_ids
+msgid "Followers (Partners)"
+msgstr "المتابعون ( الأفراد )"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_type_frequency_air_ticket
+msgid "Frequency Air Ticket"
+msgstr "تكرار تذاكر الطيران"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.air_ticket_balance_allocation_search
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_type_search
+msgid "Group By"
+msgstr "تجميع حسب"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_i_want_to
+msgid "I want to"
+msgstr "أنا أريد"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_automatic_allocation_id
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_allocation_id
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_attachment_id
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_details_id
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_attachment_id
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_id
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_type_id
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_validate_wizard_id
+msgid "ID"
+msgstr "المعرف"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,help:saudi_hr_leaves.field_air_ticket_automatic_allocation_message_unread
+#: model:ir.model.fields,help:saudi_hr_leaves.field_air_ticket_balance_allocation_message_unread
+#: model:ir.model.fields,help:saudi_hr_leaves.field_air_ticket_request_message_unread
+#: model:ir.model.fields,help:saudi_hr_leaves.field_air_ticket_type_message_unread
+msgid "If checked new messages require your attention."
+msgstr "إذا حددته، ستتطلب الرسائل الجديدة انتباهك"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,help:saudi_hr_leaves.field_air_ticket_automatic_allocation_message_needaction
+#: model:ir.model.fields,help:saudi_hr_leaves.field_air_ticket_balance_allocation_message_needaction
+#: model:ir.model.fields,help:saudi_hr_leaves.field_air_ticket_request_message_needaction
+#: model:ir.model.fields,help:saudi_hr_leaves.field_air_ticket_type_message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "اذا تم وضع علامة صح. يعنى ذلك ان تلك الرساله مهمه وتحتاج إلى مراجعه"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_type_form
+msgid "In Months"
+msgstr "بالأشهر"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_automatic_allocation_message_is_follower
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_allocation_message_is_follower
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_message_is_follower
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_type_message_is_follower
+msgid "Is Follower"
+msgstr "هو متابع"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_attachment_air_ticket_balance_id
+msgid "Job"
+msgstr "الوظيفه"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_hr_employee_last_reconciliation_date
+msgid "Last  Air Ticket Reconciliation Date"
+msgstr "اخر تاريخ تسوية تذاكر الطيران"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_automatic_allocation_message_last_post
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_allocation_message_last_post
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_message_last_post
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_type_message_last_post
+msgid "Last Message Date"
+msgstr "تاريخ آخر رسالة"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_automatic_allocation___last_update
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_allocation___last_update
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_attachment___last_update
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_details___last_update
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request___last_update
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_attachment___last_update
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_type___last_update
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_validate_wizard___last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_automatic_allocation_write_uid
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_allocation_write_uid
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_attachment_write_uid
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_details_write_uid
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_attachment_write_uid
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_write_uid
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_type_write_uid
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_validate_wizard_write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_automatic_allocation_write_date
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_allocation_write_date
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_attachment_write_date
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_details_write_date
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_attachment_write_date
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_write_date
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_type_write_date
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_validate_wizard_write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_allocation_last_allocation_date
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_allocation_last_allocation_date_
+msgid "Last allocation date"
+msgstr "اخر تاريخ توزيع"
+
+#. module: saudi_hr_leaves
+#: model:ir.model,name:saudi_hr_leaves.model_hr_leave
+msgid "Leave"
+msgstr "الأجازة"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_leave_request
+msgid "Leave Request"
+msgstr "طلب الاجازة"
+
+#. module: saudi_hr_leaves
+#: model:ir.model,name:saudi_hr_leaves.model_hr_leave_type
+msgid "Leave Type"
+msgstr "نوع الاجازة"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_leave_request_type_id
+msgid "Leave request type"
+msgstr "نوع طلب الأجازه"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_request_form
+msgid "Leave requests"
+msgstr "طلبات الاجازات"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_leave_from
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_leave_to
+msgid "Leave start"
+msgstr "بداية الأجازه"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_request_form
+msgid "Leave start / End date"
+msgstr "تاريخ بداية / نهاية الأجازه"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_hr_leave_air_ticket_id
+msgid "Linked Air-Ticket"
+msgstr "طلب تذكرة الطيران المرتبطه مع هذه المعامله"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_linked_exit_rentry_id
+msgid "Linked exit Re-entry"
+msgstr "طلب الخروج والعوده المرتبط مع هذه المعامله"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_request_form
+msgid "Linked exit and re-entry"
+msgstr "طلب الخروج والعوده المرتبط مع هذه المعامله"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_request_form
+msgid "Loan request"
+msgstr "طلب سلفه"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_type_maximum_accumulated_balance
+msgid "Maximum accumulated balance"
+msgstr "الحد الأقصى لتراكم رصيد التذاكر"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_automatic_allocation_message_ids
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_allocation_message_ids
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_message_ids
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_type_message_ids
+msgid "Messages"
+msgstr "الرسائل"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,help:saudi_hr_leaves.field_air_ticket_automatic_allocation_message_ids
+#: model:ir.model.fields,help:saudi_hr_leaves.field_air_ticket_balance_allocation_message_ids
+#: model:ir.model.fields,help:saudi_hr_leaves.field_air_ticket_request_message_ids
+#: model:ir.model.fields,help:saudi_hr_leaves.field_air_ticket_type_message_ids
+msgid "Messages and communication history"
+msgstr "الرسائل و سجل التواصل"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.air_ticket_balance_allocation_form
+msgid "Months"
+msgstr "أشهر"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.company_share_validate_wizard_form
+msgid ""
+"Months ) will not change after approving this request. Later on, the employee can request for another air tickets if his balance meets\n"
+"                        the minimum requirements for this air ticket policy.\n"
+"                        <br/>\n"
+"                        <br/>"
+msgstr ""
+"Months ) will not change after approving this request. Later on, the employee can request for another air tickets if his balance meets\n"
+"                        the minimum requirements for this air ticket policy.\n"
+"                        <br/>\n"
+"                        <br/>"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_attachment_name
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_attachment_name
+msgid "Name"
+msgstr "الاسم"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_type_nationality
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_hr_contract_nationality
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_type_search
+msgid "Nationality"
+msgstr "الجنسيه"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_hr_contract_nationality_type
+msgid "Nationality type"
+msgstr "نوع الجنسيه"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.request,relatives_tickets:0
+#: selection:air.ticket.type,relatives_tickets:0
+msgid "Never allow tickets for relatives"
+msgstr "لا يسمح بتذاكر الطيران للمرافقين"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.automatic.allocation,state:0
+#: selection:air.ticket.balance.allocation,state:0
+#: selection:air.ticket.type,state:0
+msgid "New"
+msgstr "جديد"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.request,state:0
+msgid "New request"
+msgstr "طلب جديد"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.request,cash_allowed:0
+#: selection:air.ticket.type,can_request_exit_rentry:0
+#: selection:air.ticket.type,give_cash_instead_tickets:0
+#: selection:hr.leave,create_air_ticket_request:0
+#: selection:hr.leave.type,allow_tickets_for_leave:0
+msgid "No"
+msgstr "لا"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.type,nationality:0
+msgid "Non-Saudi"
+msgstr "غير السعوديين"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.type,type:0
+msgid "Non-annual"
+msgstr "غير سنويه"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.type,frequency_air_ticket:0
+msgid "Not allowed"
+msgstr "غير مسموح"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_automatic_allocation_note
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_allocation_note
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_attachment_note
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_attachment_note
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_note
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.air_ticket_automatic_allocation_form
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.air_ticket_balance_allocation_form
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_request_form
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_type_form
+msgid "Notes"
+msgstr "الملاحظات"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_automatic_allocation_message_needaction_counter
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_allocation_message_needaction_counter
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_message_needaction_counter
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_type_message_needaction_counter
+msgid "Number of Actions"
+msgstr "عدد الإجراءات"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,help:saudi_hr_leaves.field_air_ticket_automatic_allocation_message_needaction_counter
+#: model:ir.model.fields,help:saudi_hr_leaves.field_air_ticket_balance_allocation_message_needaction_counter
+#: model:ir.model.fields,help:saudi_hr_leaves.field_air_ticket_request_message_needaction_counter
+#: model:ir.model.fields,help:saudi_hr_leaves.field_air_ticket_type_message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "عدد الرسائل التي تحتاج إلى إجراءات"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_number_of_relatives
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_type_number_of_relatives
+msgid "Number of relatives"
+msgstr "عدد التابعين"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_type_air_ticket_request_count
+msgid "Number of requests"
+msgstr "عدد الطلبات"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,help:saudi_hr_leaves.field_air_ticket_automatic_allocation_message_unread_counter
+#: model:ir.model.fields,help:saudi_hr_leaves.field_air_ticket_balance_allocation_message_unread_counter
+#: model:ir.model.fields,help:saudi_hr_leaves.field_air_ticket_request_message_unread_counter
+#: model:ir.model.fields,help:saudi_hr_leaves.field_air_ticket_type_message_unread_counter
+msgid "Number of unread messages"
+msgstr "عدد الرسائل الغير مقروؤه"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_old_tickets_request_ids
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_request_form
+msgid "Old air tickets"
+msgstr "تذاكر الطيران القديمه"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.type,frequency_air_ticket:0
+msgid "One time per contract"
+msgstr "مره واحده كل عقد"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.details,ticket_type:0
+msgid "One way"
+msgstr "ذهاب فقط"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_res_country_one_way_price
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_res_country_state_one_way_price
+msgid "One way price"
+msgstr "سعر تذكرة الطيران-ذهاب فقط"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.request,request_reason:0
+#: selection:air.ticket.request,request_type:0
+msgid "Other"
+msgstr "أخرى"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_request_form
+msgid "Other information"
+msgstr "بيانات أخرى"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_allocation_reason
+msgid "Reason"
+msgstr "السبب"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_request_form
+msgid "Refresh data"
+msgstr "تحديث البيانات"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_request_form
+msgid "Refuse"
+msgstr "رفض"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.request,state:0
+msgid "Refused"
+msgstr "تم الرفض"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.company_share_validate_wizard_form
+msgid "Reject"
+msgstr "رفض"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_details_relation
+msgid "Relation"
+msgstr "العلاقه"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_relatives_tickets
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_type_relatives_tickets
+msgid "Relatives Tickets"
+msgstr "تذاكر المرافقين"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.request,reserve_ticket_for:0
+msgid "Relatives only"
+msgstr "المرافقين فقط"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_request_type
+msgid "Request Type"
+msgstr "نوع الطلب"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_request_date
+msgid "Request date"
+msgstr "Request date"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.request,i_want_to:0
+msgid "Reserve a ticket through company"
+msgstr "حجز تذاكر الطيران عن طريق الشركه"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_reserve_ticket_for
+msgid "Reserve ticket for"
+msgstr "حجز تذكرة الطيران لــ"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.details,ticket_type:0
+msgid "Return"
+msgstr "ذهاب وعوده"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_details_return_flight_number
+msgid "Return Flight number"
+msgstr "رقم رحلة العوده"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_details_return_airport
+msgid "Return airport"
+msgstr "مطار العوده"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_details_return_date
+msgid "Return date"
+msgstr "تاريخ العوده"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_res_country_return_price
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_res_country_state_return_price
+msgid "Return price"
+msgstr "سعر تذكرة العوده"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.air_ticket_balance_allocation_form
+msgid "Reverse Allocation"
+msgstr "إلغاء توزيع رصيد تذاكر الطيران"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_reviewed_by
+msgid "Reviewed by"
+msgstr "تمت المراجعه بواسطة"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.skip_validate_wizard_form
+msgid "SKIP VALIDATIONS AND APPROVE THIS TICKET"
+msgstr "تخطى إجراءات النظام والموافقه على تذاكر الطيران"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.type,nationality:0
+msgid "Saudi"
+msgstr "سعوديين"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_details_check_box
+msgid "Select"
+msgstr "اختر"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_request_form
+msgid "Set to new"
+msgstr "البدء من جديد"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_skip_valid_approve_req
+msgid "Skip system Validation And approve this request"
+msgstr "تخطى إجراءات النظام والموافقه على تذاكر الطيران"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.skip_validate_wizard_form
+msgid "Skip validate ?"
+msgstr "تحطى الموافقات؟"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_automatic_allocation_state
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_allocation_state
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_state
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_type_state
+msgid "Status"
+msgstr "الحالة"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.hr_employee_view_search
+msgid "Supervisor"
+msgstr "المشرف"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.request,employee_share_method:0
+msgid "The company will pay instead of employee + Create a deduction"
+msgstr "سوف تقوم الشركه بالسداد بدلا من الموظف + انشاء سلفه بنفس المبلغ"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_type_months_to_request_air_ticket
+msgid "The employee is allowed to request air ticket if his balance is greater than"
+msgstr "يسمح للموظف بطلب تذكرة طيران إذا كان رصيده أكبر من"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_details_ticket_type
+msgid "Ticket type"
+msgstr "نوع التذكره"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_validate_wizard_total_price
+msgid "Total air ticket price"
+msgstr "إجمالي تكلفة تذاكر الطيران"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_travel_date
+msgid "Travel date"
+msgstr "تاريخ السفر"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_type_search
+msgid "Type"
+msgstr "النوع"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.type,frequency_air_ticket:0
+msgid "Unlimited air tickets based on request condition"
+msgstr "رصيد غير محدود من تذاكر الطيران"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_automatic_allocation_message_unread
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_allocation_message_unread
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_message_unread
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_type_message_unread
+msgid "Unread Messages"
+msgstr "رسائل غير مقروءة"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_automatic_allocation_message_unread_counter
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_allocation_message_unread_counter
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_message_unread_counter
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_type_message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "عداد الرسائل الغير مقروؤه"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.company_share_validate_wizard_form
+msgid "We found that the air ticket total price is ("
+msgstr "We found that the air ticket total price is ("
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.skip_validate_wizard_form
+msgid ""
+"We found that you requested from your system to skip any validations and approve this Air Ticket request, we highly recommend not to\n"
+"                            select to skip system validations and let your system to decide whether to accept or reject the air ticket request."
+msgstr ""
+"برجاء الإنتباه !\n"
+"لقد طلبتم من النظام ألا يقوم بقبول طلب تذكرة الطيران الحالي دون التأكد من استحقاق الموظف لتذكرة الطيران. برجاء الانتباه أثناء استخدام تلك الأداه حيث من المفضل ان تترك تلك المهمه للنظام."
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_automatic_allocation_website_message_ids
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_balance_allocation_website_message_ids
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_website_message_ids
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_type_website_message_ids
+msgid "Website Messages"
+msgstr "رسائل الموقع"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,help:saudi_hr_leaves.field_air_ticket_automatic_allocation_website_message_ids
+#: model:ir.model.fields,help:saudi_hr_leaves.field_air_ticket_balance_allocation_website_message_ids
+#: model:ir.model.fields,help:saudi_hr_leaves.field_air_ticket_request_website_message_ids
+#: model:ir.model.fields,help:saudi_hr_leaves.field_air_ticket_type_website_message_ids
+msgid "Website communication history"
+msgstr "سجل تواصل الموقع"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.hr_contract_form_air_tickets
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_type_form
+msgid "Years"
+msgstr "السنوات"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.request,cash_allowed:0
+#: selection:air.ticket.type,can_request_exit_rentry:0
+#: selection:air.ticket.type,give_cash_instead_tickets:0
+#: selection:hr.leave,create_air_ticket_request:0
+#: selection:hr.leave.type,allow_tickets_for_leave:0
+msgid "Yes"
+msgstr "نعم"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_reason_detail
+msgid "air ticket request reason"
+msgstr "سبب طلب تذكرة الطيران"
+
+#. module: saudi_hr_leaves
+#: model:ir.model,name:saudi_hr_leaves.model_air_ticket_details
+msgid "air.ticket.details"
+msgstr "تفاصيل تذاكر الطيران"
+
+#. module: saudi_hr_leaves
+#: model:ir.model,name:saudi_hr_leaves.model_air_ticket_request_attachment
+msgid "air.ticket.request.attachment"
+msgstr "المرفقات"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_type_give_cash_instead_tickets
+msgid "allow to give cash to employees instead of tickets"
+msgstr "السماح بطلب قيمة تذاكر الطيران نقدا"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_automatic_allocation_code
+msgid "code"
+msgstr "الكود"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.request,state:0
+msgid "final Approved"
+msgstr "الموافقه النهائيه"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_id_
+msgid "id"
+msgstr "الكود"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.request,request_reason:0
+msgid "leave"
+msgstr "أجازه"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.view_employee_form_leave_inherit
+msgid "leaves balance"
+msgstr "رصيد الأجازات"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.type,frequency_air_ticket:0
+msgid "one time each"
+msgstr "مره واحده كل"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.skip_validate_wizard_form
+msgid "or"
+msgstr "أو"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_can_request_exit_rentry
+msgid "request For Exist and R-entry"
+msgstr "طلب خروج وعوده"
+
+#. module: saudi_hr_leaves
+#: model:ir.ui.view,arch_db:saudi_hr_leaves.tickets_type_form
+msgid "set to new"
+msgstr "بدء الإجراءات من جديد"
+
+#. module: saudi_hr_leaves
+#: model:ir.model,name:saudi_hr_leaves.model_validate_wizard
+msgid "validate.wizard"
+msgstr "شاشة التأكيد"
+
+#. module: saudi_hr_leaves
+#: model:ir.model.fields,field_description:saudi_hr_leaves.field_air_ticket_request_wait
+msgid "wait"
+msgstr "إنتظر"
+
+#. module: saudi_hr_leaves
+#: selection:air.ticket.type,nationality:0
+msgid "‫All Nationalities‬‬"
+msgstr "جميع الجنسيات"

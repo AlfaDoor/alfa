@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_uae_vat_return">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.internal_layout">
+                    <div class="page">
+                    <h3 class="text-center">VAT Return</h3>
+                    <div class="row text-center">
+                        <div>
+                            <strong>From</strong> <span t-field="o.start_date"/>
+                            <strong>to </strong><span t-field="o.end_date"/>
+                        </div>
+                    </div>
+                    <h4 class="text-center">Sales Tax</h4>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr class="text-center" style="background-color:#68465f!important;color:white">
+                                <th>Tax Name</th>
+                                <th>Taxable Sales</th>
+                                <th>Tax Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody class="invoice_tbody">
+                            <tr t-foreach="o.return_line_ids" t-as="line">
+                                <t t-if="line.scope == 'Sale'"><td><span t-field="line.name"/></td></t>
+                                <t t-if="line.scope == 'Sale'"><td><span t-field="line.base_amount"/></td></t>
+                                <t t-if="line.scope == 'Sale'"><td><span t-field="line.tax_amount"/></td></t>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="clearfix">
+                        <div id="total" class="row">
+                            <div class="col-xs-4 pull-right">
+                                <table class="table table-condensed" style="min-width: 250px;max-width: 400px;">
+                                    <tr class="border-black" style="border-bottom:1px solid #dddddd;">
+                                        <td><strong>Taxable sales</strong></td>
+                                        <td class="text-right">
+                                            <span t-field="o.total_taxable_sales_in_period_before_tax"/>
+                                        </td>
+                                    </tr>
+                                    <tr class="border-black" style="border-bottom:1px solid #dddddd;">
+                                        <td><strong>Total Tax</strong></td>
+                                        <td class="text-right">
+                                            <span t-field="o.total_collected_on_sales"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="text-center">Purchase Tax</h4>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr class="text-center" style="background-color:#68465f!important;color:white">
+                                <th>Tax Name</th>
+                                <th>Taxable Purchase</th>
+                                <th>Tax Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody class="invoice_tbody">
+                            <tr t-foreach="o.return_line_ids" t-as="line">
+                                <t t-if="line.scope == 'Purchase'"><td><span  t-field="line.name"/></td></t>
+                                <t t-if="line.scope == 'Purchase'"><td><span t-field="line.base_amount"/></td></t>
+                                <t t-if="line.scope == 'Purchase'"><td><span t-field="line.tax_amount"/></td></t>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="clearfix">
+                        <div id="total" class="row">
+                            <div class="col-xs-4 pull-right">
+                                <table class="table table-condensed" style="min-width: 250px;max-width: 400px;">
+                                    <tr class="border-black" style="border-bottom:1px solid #dddddd;">
+                                        <td><strong>Taxable Purchase</strong></td>
+                                        <td class="text-right">
+                                            <span t-field="o.total_taxable_purchase_in_period_before_tax"/>
+                                        </td>
+                                    </tr>
+                                      <tr class="border-black" style="border-bottom:1px solid #dddddd;">
+                                            <td><strong>Total Tax</strong></td>
+                                            <td class="text-right">
+                                                <span t-field="o.total_collected_on_purchase"/>
+                                            </td>
+                                        </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div><br/>
+                    <div class="clearfix">
+                        <div id="total" class="row">
+                            <div class="col-xs-4 pull-right">
+                                <table class="table table-condensed" style="min-width: 250px;max-width: 400px;">
+                                    <tr class="border-black" style="border-bottom:1px solid #dddddd;">
+                                        <td><strong>Total Payable</strong></td>
+                                        <td class="text-right">
+                                            <span t-field="o.total_payable"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <template id="report_uae_vat_return_format">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.internal_layout">
+                        <div class="page">
+                        <div class="row text-center">
+                            <div>
+                                <strong>From</strong> <span t-field="o.start_date"/>
+                                <strong>to </strong><span t-field="o.end_date"/>
+                            </div>
+                        </div>
+                        <table class="table mb32"  style="table-layout:auto">
+                            <thead>
+                                <tr>
+                                    <th class="text-left" style="color:#5178D0;font-size: 47px;" colspan="3">VAT Return Form</th>
+                                    <th class="text-center" style="color:#5178D0;">Amount<br/>
+                                    (BHD)</th>
+                                    <th class="text-center" style="color:#5178D0;">Adjustment
+                                    <br/>(BHD)</th>
+                                    <th class="text-center" style="color:#5178D0;">VAT Amount
+                                        <br/>(BHD)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="invoice_tbody">
+                                <tr>
+                                    <td rowspan="7" style="background-color:#5178D0;vertical-align:middle;"><span style="white-space: nowrap;-webkit-writing-mode: vertical-rl;-ms-writing-mode: tb-rl;writing-mode: vertical-rl;padding: 10%;transform: rotate(180deg);font-size: 43px;color: white;">VAT on Sales</span></td>
+                                    <td class="text-right"><span style="background:#5178D0;border-radius: 0.8em;-moz-border-radius: 0.8em;-webkit-border-radius: 0.8em;color: #ffffff;display: inline-block;font-weight: bold;line-height: 1.6em;margin-right: 15px;text-align: center;width: 1.6em;">1</span></td>
+                                    <td>Standard rated sales</td>
+                                    <td class="text-right" style="border: 2px solid #b8a8a8;"><span t-field="o.sales_in_form"/></td>
+                                    <td class="text-right" style="border: 2px solid #b8a8a8;"><span/></td>
+                                    <td class="text-right" style="border: 2px solid #b8a8a8;"><span t-field="o.sales_tax_in_form"/></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right"><span style="background: #5178D0;border-radius: 0.8em;-moz-border-radius: 0.8em;-webkit-border-radius: 0.8em;color: #ffffff;display: inline-block;font-weight: bold;line-height: 1.6em;margin-right: 15px;text-align: center;width: 1.6em;">2</span></td>
+                                    <td>Sales to registered taxpayers in other GCC States</td>
+                                    <td style="border: 2px solid #b8a8a8;"></td>
+                                    <td class="text-right" style="border: 2px solid #b8a8a8;"><span/></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right"><span style="background: #5178D0;border-radius: 0.8em;-moz-border-radius: 0.8em;-webkit-border-radius: 0.8em;color: #ffffff;display: inline-block;font-weight: bold;line-height: 1.6em;margin-right: 15px;text-align: center;width: 1.6em;">3</span></td>
+                                    <td>Sales subject to domestic reverse charge mechanism</td>
+                                    <td style="border: 2px solid #b8a8a8;" class="text-right"><span t-field="o.domestic_sales"/></td>
+                                    <td class="text-right" style="border: 2px solid #b8a8a8;"><span/></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right"><span style="background: #5178D0;border-radius: 0.8em;-moz-border-radius: 0.8em;-webkit-border-radius: 0.8em;color: #ffffff;display: inline-block;font-weight: bold;line-height: 1.6em;margin-right: 15px;text-align: center;width: 1.6em;">4</span></td>
+                                    <td>Zero rated domestic sales</td>
+                                    <td style="border: 2px solid #b8a8a8;" class="text-right"><span t-field="o.zero_rated_sales"/></td>
+                                    <td class="text-right" style="border: 2px solid #b8a8a8;"><span/></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right"><span style="background: #5178D0;border-radius: 0.8em;-moz-border-radius: 0.8em;-webkit-border-radius: 0.8em;color: #ffffff;display: inline-block;font-weight: bold;line-height: 1.6em;margin-right: 15px;text-align: center;width: 1.6em;">5</span></td>
+                                    <td>Exports</td>
+                                    <td style="border: 2px solid #b8a8a8;" class="text-right"><span t-field="o.export_sales"/></td>
+                                    <td class="text-right" style="border: 2px solid #b8a8a8;"><span/></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right"><span style="background: #5178D0;border-radius: 0.8em;-moz-border-radius: 0.8em;-webkit-border-radius: 0.8em;color: #ffffff;display: inline-block;font-weight: bold;line-height: 1.6em;margin-right: 15px;text-align: center;width: 1.6em;">6</span></td>
+                                    <td >Exempt sales</td>
+                                    <td style="border: 2px solid #b8a8a8;" class="text-right"><span t-field="o.exempt_sales"/></td>
+                                    <td class="text-right" style="border: 2px solid #b8a8a8;"><span/></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right"><span style="background: #5178D0;border-radius: 0.8em;-moz-border-radius: 0.8em;-webkit-border-radius: 0.8em;color: #ffffff;display: inline-block;font-weight: bold;line-height: 1.6em;margin-right: 15px;text-align: center;width: 1.6em;">7</span></td>
+                                    <td>Total sales</td>
+                                    <td style="border: 2px solid #b8a8a8;" class="text-right"><span t-field="o.total_sales_in_form"/></td>
+                                    <td  style="border: 2px solid #b8a8a8;"></td>
+                                    <td  style="border: 2px solid #b8a8a8;"  class="text-right"><span t-field="o.sales_tax_in_form"/></td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="6" style="background-color:#5178D0;vertical-align:middle;"><span style="white-space: nowrap;-webkit-writing-mode: vertical-rl;-ms-writing-mode: tb-rl;writing-mode: vertical-rl;padding: 10%;transform: rotate(180deg);font-size: 43px;color: white;">VAT on Purchases</span></td>
+                                    <td class="text-right"><span style="background: #5178D0;border-radius: 0.8em;-moz-border-radius: 0.8em;-webkit-border-radius: 0.8em;color: #ffffff;display: inline-block;font-weight: bold;line-height: 1.6em;margin-right: 15px;text-align: center;width: 1.6em;">8</span></td>
+                                    <td>Standard rated domestic purchases</td>
+                                    <td class="text-right" style="border: 2px solid #b8a8a8;"><span t-field="o.total_purchase_without_import"/></td>
+                                    <td style="border: 2px solid #b8a8a8;"></td>
+                                    <td class="text-right" style="border: 2px solid #b8a8a8;"><span t-field="o.total_purchase_tax_without_import"/></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right"><span style="background: #5178D0;border-radius: 0.8em;-moz-border-radius: 0.8em;-webkit-border-radius: 0.8em;color: #ffffff;display: inline-block;font-weight: bold;line-height: 1.6em;margin-right: 15px;text-align: center;width: 1.6em;">9</span></td>
+                                    <td>Import subject to VAT either paid at customs or deferred</td>
+                                    <td class="text-right" style="border: 2px solid #b8a8a8;"><span t-field="o.total_reverse_charge_goods_declared"/></td>
+                                    <td style="border: 2px solid #b8a8a8;"></td>
+                                    <td class="text-right" style="border: 2px solid #b8a8a8;"><span t-field="o.total_reverse_charge_goods"/></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right"><span style="background: #5178D0;border-radius: 0.8em;-moz-border-radius: 0.8em;-webkit-border-radius: 0.8em;color: #ffffff;display: inline-block;font-weight: bold;line-height: 1.6em;margin-right: 15px;text-align: center;width: 1.6em;">10</span></td>
+                                    <td>Import subject to VAT accounted for through reverse charge mechanism</td>
+                                    <td class="text-right"  style="border: 2px solid #b8a8a8;"></td>
+                                    <td style="border: 2px solid #b8a8a8;"></td>
+                                    <td class="text-right"  style="border: 2px solid #b8a8a8;"></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right"><span style="background: #5178D0;border-radius: 0.8em;-moz-border-radius: 0.8em;-webkit-border-radius: 0.8em;color: #ffffff;display: inline-block;font-weight: bold;line-height: 1.6em;margin-right: 15px;text-align: center;width: 1.6em;">11</span></td>
+                                    <td>Purchase subject to domestic reverse charge mechanism</td>
+                                    <td class="text-right"  style="border: 2px solid #b8a8a8;"><span t-field="o.domestic_purchases"/></td>
+                                    <td style="border: 2px solid #b8a8a8;"></td>
+                                    <td class="text-right"  style="border: 2px solid #b8a8a8;"><span t-field="o.domestic_purchases_tax"/></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right"><span style="background: #5178D0;border-radius: 0.8em;-moz-border-radius: 0.8em;-webkit-border-radius: 0.8em;color: #ffffff;display: inline-block;font-weight: bold;line-height: 1.6em;margin-right: 15px;text-align: center;width: 1.6em;">12</span></td>
+                                    <td>Purchase from non registered suppliers, zero rated/ exempt purchases</td>
+                                    <td class="text-right"  style="border: 2px solid #b8a8a8;"></td>
+                                    <td class="text-right"  style="border: 2px solid #b8a8a8;"></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right"><span style="background: #5178D0;border-radius: 0.8em;-moz-border-radius: 0.8em;-webkit-border-radius: 0.8em;color: #ffffff;display: inline-block;font-weight: bold;line-height: 1.6em;margin-right: 15px;text-align: center;width: 1.6em;">13</span></td>
+                                    <td>Total Purchases</td>
+                                    <td  style="border: 2px solid #b8a8a8;" class="text-right"><span t-field="o.total_purchase_in_form"/></td>
+                                    <td  style="border: 2px solid #b8a8a8;"></td>
+                                    <td  style="border: 2px solid #b8a8a8;" class="text-right"><span t-field="o.total_purchase_tax_in_form"/></td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="4"/>
+                                    <td class="text-right"><span style="background: #5178D0;border-radius: 0.8em;-moz-border-radius: 0.8em;-webkit-border-radius: 0.8em;color: #ffffff;display: inline-block;font-weight: bold;line-height: 1.6em;margin-right: 15px;text-align: center;width: 1.6em;">14</span></td>
+                                    <td>Total VAT due for current period </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td  style="border: 2px solid #b8a8a8;" class="text-right"><span t-field="o.total_payable"/></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right"><span style="background: #5178D0;border-radius: 0.8em;-moz-border-radius: 0.8em;-webkit-border-radius: 0.8em;color: #ffffff;display: inline-block;font-weight: bold;line-height: 1.6em;margin-right: 15px;text-align: center;width: 1.6em;">15</span></td>
+                                    <td>Corrections from previous period(between BHD+5000)</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td  style="border: 2px solid #b8a8a8;"></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right"><span style="background: #5178D0;border-radius: 0.8em;-moz-border-radius: 0.8em;-webkit-border-radius: 0.8em;color: #ffffff;display: inline-block;font-weight: bold;line-height: 1.6em;margin-right: 15px;text-align: center;width: 1.6em;">16</span></td>
+                                    <td>VAT credit carried forward from previous period(s)</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td  style="border: 2px solid #b8a8a8;"></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right"><span style="background: #5178D0;border-radius: 0.8em;-moz-border-radius: 0.8em;-webkit-border-radius: 0.8em;color: #ffffff;display: inline-block;font-weight: bold;line-height: 1.6em;margin-right: 15px;text-align: center;width: 1.6em;">17</span></td>
+                                    <td>Net VAT due(or reclaimed)</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td  style="border: 2px solid #b8a8a8;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+</odoo>

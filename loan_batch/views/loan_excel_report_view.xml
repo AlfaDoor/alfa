@@ -1,0 +1,72 @@
+<odoo>
+    <data>
+
+       	<record id="view_loan_bank_report_form" model="ir.ui.view">
+		<field name="name">Loan Report</field>
+		<field name="model">loan.bank.report</field>
+		<field name="arch" type="xml">
+			<form>
+				<header>
+					<button name="generate_xls_report" type="object" string="Generate Report"
+						class="oe_highlight" />
+				</header>
+
+				<sheet>
+					<group colspan="4" col="4">
+						<field name="date_from" />
+						<field name="date_to" />
+					</group>
+
+					<group>
+					<group>
+						<field name="sponsor" widget="many2many_tags" required='1' options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}" />
+					</group>
+					<group>
+					</group>
+					</group>
+
+					<group>
+						<field name="name_r" colspan="4" invisible="1" />
+						<field name="report" filename="name_r" colspan="4" />
+					</group>
+
+
+					<group>
+						<button name="generate_loan_report_lines" type="object" string="Generate Report Lines"
+							class="oe_highlight" />
+					</group>
+
+					
+					<group>
+						<field name="loan_report_line_id" nolabel="1">
+							<tree create="false">
+								<field name="sno" string="S.No"/>
+								<field name="employee_iqama" string="Employee ID/Iqama"/>
+								<field name="employee_account_no" string="Employee Account No/IBAN"/>
+								<field name="employee_id" stirng="Employee Name" />
+								<field name="bank_code" string="Bank Code"/>
+								<field name="basic_sal" string="Basic Salary"/>
+								<field name="house_allowance" string="Housing Allowance"/>
+								<field name="other_allowance" string="Other Allowance"/>
+								<field name="deductions" string="Deductions"/>
+								<field name="total_amount" string="Total amount"/>
+							</tree>
+						</field>
+					</group>
+				</sheet>
+			</form>
+
+		</field>
+	</record>
+<record id="action_laon_bank_report" model="ir.actions.act_window">
+		<field name="name">Loan Report</field>
+		<field name="res_model">loan.bank.report</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">form</field>
+	   <field name="view_id" ref="view_loan_bank_report_form" />
+
+	</record>
+<menuitem id="menu_loan_report" name="Reporting" parent="base.menu_loans_root" sequence="30"/>
+		<menuitem id="menu_loan_report_child" name="Loan Report" action="action_laon_bank_report" parent="menu_loan_report" />
+  </data>
+</odoo>

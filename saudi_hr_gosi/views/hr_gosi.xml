@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!--    Inherit Countries View   -->
+        <record model="ir.ui.view" id="hr_contract_view_form_inherit">
+            <field name="name">hr.contract.form inherit</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="saudi_hr_contract.hr_contract_form_inherit"/>
+            <field name="arch" type="xml">
+                <page name="salary_allowance" position="after">
+                    <page name="gosi" string="GOSI">
+                        <group string="Gosi Calculation">
+                            <group>
+                                <field name="gosi_for_this" string="GOSI for this Employee" required="1" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                            </group>
+                        </group>
+                        <group attrs="{'invisible':[['gosi_for_this','!=','yes']]}">
+                            <group>
+                                <field name="gosi_number" />
+                                <field name="gosi_calc_based_on" attrs="{'required':[['gosi_for_this','=','yes']],'readonly': [('state', 'in', ['closed'])]}"/>
+                                <field name="who_will_pay" attrs="{'required':[['gosi_for_this','=','yes']],'readonly': [('state', 'in', ['closed'])]}"/>
+                                <label for="company_share"/>
+                                <div>
+                                    <field name="company_share" attrs="{'readonly':['|' ,['who_will_pay','=','employee_salary'],('state', 'in', ['closed'])]}" class="oe_inline"/>
+                                    <span attrs="{'invisible':[['who_will_pay','=','employee_salary']]}">%</span>
+                                </div>
+                                <label for="employee_share"/>
+                                <div>
+                                    <field name="employee_share" attrs="{'readonly':['|' ,['who_will_pay','=','company'],('state', 'in', ['closed'])]}" class="oe_inline"/>
+                                    <span attrs="{'invisible':[['who_will_pay','=','company']]}">%</span>
+                                </div>
+                                <field name="minimum_gosi_salary" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                            </group>
+                            <group>
+                                <field name="manual_gosi_salary" attrs="{'readonly': [('state', 'in', ['closed'])]}"/>
+                                <field name="salary_for_gosi"/>
+                                <field name="employee_amount"/>
+                                <field name="company_amount"/>
+                                <field name="start_gosi_payslip_date" attrs="{'readonly':['|' ,['gosi_for_this','!=','yes'],('state', 'in', ['closed'])]}"/>
+                            </group>
+                        </group>
+                    </page>
+                </page>
+            </field>
+        </record>
+
+        <!--Inherit Contract-->
+        <record id="hr_contract_tree_leaves" model="ir.ui.view">
+            <field name="name">hr.contract.tree.leaves</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="saudi_hr_contract.hr_contract_view_tree_inherit"/>
+            <field name="arch" type="xml">
+                <field name="total" position="after">
+                    <field name="employee_share" string="GOSI Employee" groups="hr.group_hr_manager"/>
+                    <field name="company_share" string="GOSI Company" groups="hr.group_hr_manager"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</odoo>

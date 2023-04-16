@@ -1,0 +1,7 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_eos_reason_attachment_all,eos_reason_attachment all,saudi_hr_eos.model_eos_reason_attachment,base.group_user,1,1,1,1
+access_eos_reason_officer,eos_reason_attachment officer,saudi_hr_eos.model_eos_reason,group_eos_officer,1,1,1,1
+access_eos_motivation_officer,eos_motivation officer,saudi_hr_eos.model_eos_motivation,group_eos_officer,1,1,1,1
+access_employee_eos_all,employee_eos_all,saudi_hr_eos.model_employee_eos,base.group_user,1,1,1,1
+access_employee_eos_payment_deduction_all,employee_eos_payment_deduction_all,saudi_hr_eos.model_employee_eos_payment_deduction,,1,1,1,1
+access_employee_deductions_payment_all,employee_deductions_payment_all,saudi_hr_eos.model_employee_deductions_payment,,1,1,1,1

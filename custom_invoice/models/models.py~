@@ -1,0 +1,33 @@
+# -*- coding: utf-8 -*-
+
+from odoo import models, fields, api
+from odoo.addons import decimal_precision as dp
+from odoo import api, fields, models, _
+from odoo.exceptions import UserError, AccessError, ValidationError
+
+#----------------------------------#
+#   CHART OF ACCOUNTS              #
+#----------------------------------#
+
+class CoaAccount(models.Model):
+    _inherit = "account.account"
+
+    @api.multi
+    def action_account_coa(self):
+        id2 = self.env.ref(
+            'coa.last_coa_view')
+        account_name = self.search(
+            [('name', '!=', self.name),
+             ('user_type_id', '=', self.user_type_id.id)],
+            order='create_date DESC', limit=1 )
+        return {
+            'view_type': 'tree',
+            'view_mode': 'tree',
+            'res_model': 'account.account',
+            'views': [(id2.id, 'tree')],
+            'view_id': False,
+            'type': 'ir.actions.act_window',
+            'target': '',
+            'domain': "[('id','in',["+','.join(map(str,account_name.ids))+"])]",
+            }
+

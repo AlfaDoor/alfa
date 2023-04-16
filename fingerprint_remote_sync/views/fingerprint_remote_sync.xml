@@ -1,0 +1,261 @@
+<odoo>
+    <data>
+
+        <!-- Top menu item -->
+        <menuitem name="Fingerprint Setting" id="fingerprint_remote_sync.menu_root" web_icon="fingerprint_remote_sync,static/description/icon.png"/>
+        <menuitem name="Configuration" id="fingerprint_remote_sync.configuration" parent="fingerprint_remote_sync.menu_root" sequence="15"/>
+
+        <!--Fingerprint Devices-->
+        <!--Form view-->
+        <record model="ir.ui.view" id="fingerprint_device_form">
+            <field name="name">fingerprint.device form</field>
+            <field name="model">fingerprint.device</field>
+            <field name="arch" type="xml">
+                <form string="Fingerprint device">
+                    <header>
+                        <button string="manual sync data" name="sync" type="object" confirm="Are you sure you want to manual sync ?"/>
+                        <button string="Update users" name="update_users" type="object" confirm="Are you sure you want to update users ?"/>
+                        <button string="Restart device" name="restart" type="object" confirm="Are you sure you want to restart the device ?"/>
+                    </header>
+                    <sheet>
+                        <!--Smart button-->
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" type="object" groups="base.group_no_one" class="oe_stat_button" icon="fa-archive">
+                                <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
+                            </button>
+                            <button type="object" name="get_fingerprint_atts" class="oe_inline oe_stat_button" icon="fa-tasks">
+                                <field name="attendance_count" widget="statinfo" string="Attendances"/>
+                            </button>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="name" required="1"/>
+                                <field name="ip" required="1"/>
+                                <field name="port" required="1"/>
+                            </group>
+                            <group>
+                                <field name="timeout" required="1"/>
+                                <field name="firmware_version" readonly="1"/>
+                                <field name="last_datetime"/>
+                                <button string="Test connection" name="testConn" type="object"/>
+                            </group>
+                        </group>
+                        <notebook col="4">
+                            <page string="Users">
+                                <group string="Users">
+                                    <field name="user_ids" nolabel="1">
+                                        <tree editable="bottom">
+                                            <field name="uid" string="UID (x)"/>
+                                            <field name="user_id"/>
+                                            <field name="name"/>
+                                            <field name="privilege"/>
+                                            <field name="password"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Status Configuration">
+                                <group string="Status Configuration">
+                                    <field name="status_config_ids" nolabel="1">
+                                        <tree editable="bottom">
+                                            <field name="status" required="1"/>
+                                            <field name="action" required="1"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <group>
+                                        <button string="update action states" name="update_actions" type="object"/>
+                                    </group>
+                                    <group>
+                                        <field name="action_code"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--Tree View-->
+        <record model="ir.ui.view" id="fingerprint_device_tree">
+            <field name="name">fingerprint.device tree</field>
+            <field name="model">fingerprint.device</field>
+            <field name="arch" type="xml">
+                <tree string="Fingerprint device" decoration-muted="(not active)">
+                    <field name="name"/>
+                    <field name="ip"/>
+                    <field name="port"/>
+                    <field name="timeout"/>
+                    <field name="firmware_version"/>
+                    <field name="last_datetime"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+        <!--Search View-->
+        <record model="ir.ui.view" id="fingerprint_device_filter">
+            <field name="name">fingerprint.device filter</field>
+            <field name="model">fingerprint.device</field>
+            <field name="arch" type="xml">
+                <search string="Fingerprint device">
+                    <filter string="All" name="all" domain="['|',('active','=',True), ('active', '=', False)]"/>
+                </search>
+            </field>
+        </record>
+        <!--Action-->
+        <record model="ir.actions.act_window" id="fingerprint_device_action">
+            <field name="name">Fingerprint device</field>
+            <field name="res_model">fingerprint.device</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_all': 1}</field>
+        </record>
+        <!--Menu item-->
+        <menuitem
+                id="fingerprint_device_menu"
+                name="Fingerprint device"
+                parent="fingerprint_remote_sync.configuration"
+                action="fingerprint_device_action"
+                sequence="1"/>
+
+        <!--Fingerprint data-->
+        <!--Form view-->
+        <record model="ir.ui.view" id="fingerprint_data_form">
+            <field name="name">fingerprint.data form</field>
+            <field name="model">fingerprint.data</field>
+            <field name="arch" type="xml">
+                <form string="Fingerprint data" create="false" edit="false" delete="false">
+                    <sheet>
+                        <group>
+                            <field name="fingerprint_id"/>
+                            <field name="employee_no"/>
+                            <field name="date"/>
+                        </group>
+                        <group>
+                            <field name="action_device"/>
+                            <field name="action"/>
+                            <field name="done"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--Tree View-->
+        <record model="ir.ui.view" id="fingerprint_data_tree">
+            <field name="name">fingerprint.data tree</field>
+            <field name="model">fingerprint.data</field>
+            <field name="arch" type="xml">
+                <tree string="Fingerprint data" decoration-muted="(not done)" create="false" edit="false" delete="false">
+                    <field name="fingerprint_id"/>
+                    <field name="employee_no"/>
+                    <field name="date"/>
+                    <field name="action_device"/>
+                    <field name="action"/>
+                    <field name="done"/>
+                    <field name="missing"/>
+
+                </tree>
+            </field>
+        </record>
+        <!--Search View-->
+        <record model="ir.ui.view" id="fingerprint_data_filter">
+            <field name="name">fingerprint.data filter</field>
+            <field name="model">fingerprint.data</field>
+            <field name="arch" type="xml">
+                <search string="Fingerprint data">
+
+                </search>
+            </field>
+        </record>
+        <!--Action-->
+        <record model="ir.actions.act_window" id="fingerprint_data_action">
+            <field name="name">Fingerprint data</field>
+            <field name="res_model">fingerprint.data</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+        </record>
+        <!--Menu item-->
+        <menuitem
+                id="fingerprint_data_menu"
+                name="Fingerprint data"
+                parent="fingerprint_remote_sync.menu_root"
+                action="fingerprint_data_action"
+                sequence="20"/>
+
+        <!--Remote servers-->
+        <!--Form view-->
+        <record model="ir.ui.view" id="remote_server_form">
+            <field name="name">remote.server form</field>
+            <field name="model">remote.server</field>
+            <field name="arch" type="xml">
+                <form string="Remote servers">
+                    <header>
+                        <button name="test_connection" type="object" string="Test Server"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <!--Smart button-->
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" type="object" groups="base.group_no_one" class="oe_stat_button" icon="fa-archive">
+                                <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
+                            </button>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="name" required="1"/>
+                                <field name="url" required="1"/>
+                                <field name="db" required="1"/>
+                            </group>
+                            <group>
+                                <field name="user" required="1"/>
+                                <field name="password" required="1" password="True"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--Tree View-->
+        <record model="ir.ui.view" id="remote_server_tree">
+            <field name="name">remote.server tree</field>
+            <field name="model">remote.server</field>
+            <field name="arch" type="xml">
+                <tree string="Remote servers">
+                    <field name="name"/>
+                    <field name="url"/>
+                    <field name="db"/>
+                    <field name="user"/>
+                    <field name="state"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+        <!--Search View-->
+        <record model="ir.ui.view" id="remote_server_filter">
+            <field name="name">remote.server filter</field>
+            <field name="model">remote.server</field>
+            <field name="arch" type="xml">
+                <search string="Remote servers">
+                    <filter string="All" name="all" domain="['|',('active','=',True), ('active', '=', False)]"/>
+                </search>
+            </field>
+        </record>
+        <!--Action-->
+        <record model="ir.actions.act_window" id="remote_server_action">
+            <field name="name">Remote servers</field>
+            <field name="res_model">remote.server</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_all': 1}</field>
+        </record>
+        <!--Menu item-->
+        <menuitem
+                id="remote_server_menu"
+                name="Remote servers"
+                parent="fingerprint_remote_sync.configuration"
+                action="remote_server_action"
+                sequence="30"/>
+    </data>
+</odoo>

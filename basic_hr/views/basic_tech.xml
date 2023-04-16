@@ -1,0 +1,53 @@
+<odoo>
+    <data>
+
+
+        <record model="ir.ui.view" id="view_groups_tree">
+            <field name="name">res.groups.tree inherit</field>
+            <field name="model">res.groups</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="full_name"/>
+                    <field name="xxx_id"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="view_groups_form_inherit">
+            <field name="name">res.groups.form inherit</field>
+            <field name="model">res.groups</field>
+            <field name="inherit_id" ref="base.view_groups_form"/>
+            <field name="arch" type="xml">
+                <field name="share" position="after">
+                    <field name="xxx_id" readonly="1"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="edit_menu_inherit">
+            <field name="name">ir.ui.menu.tree inherit</field>
+            <field name="model">ir.ui.menu</field>
+            <field name="inherit_id" ref="base.edit_menu"/>
+            <field name="arch" type="xml">
+                <field name="complete_name" position="after">
+                    <field name="xxx_id"  />
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="edit_menuedit_menu_access_inherit">
+            <field name="name">ir.ui.menu.form inherit</field>
+            <field name="model">ir.ui.menu</field>
+            <field name="inherit_id" ref="base.edit_menu_access"/>
+            <field name="arch" type="xml">
+                <field name="sequence" position="after">
+                    <field name="xxx_id" />
+                </field>
+            </field>
+        </record>
+
+
+
+    </data>
+</odoo>

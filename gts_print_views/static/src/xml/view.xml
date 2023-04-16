@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<template>
+
+    <templates id="template" xml:space="preserve">
+        <t t-name="WebExportTreeViewXls">
+            <div class="o_cp_sidebar btn-group btn-group-sm">
+                <button class="btn btn-default export_treeview_xls" type="button" title="Export xls">
+                    <i t-translation="off" class="fa fa-file-excel-o"></i>
+                </button>
+            </div>
+        </t>
+    </templates>
+
+    <t t-name="WebExportTreeViewPDF">
+       <t t-jquery="button.o_button_import" t-operation="after">
+
+        <button class="btn btn-default export_treeview_pdf" type="button" title="Export Pdf">
+        Export Pdf
+        </button>
+       </t>
+    </t>
+
+     <t t-extend="FormView.buttons">
+        <t t-jquery="div.o_form_buttons_view" t-operation="append">
+            <button type="button" id="create_pdf" class="btn btn-sm btn-success">
+                Print
+                <span class="fa fa-print"></span>
+            </button>
+        </t>
+    </t>
+
+    <!-- extend ListView widget -->
+
+    <t t-extend="ListView.buttons">
+        <t t-jquery="div.o_list_buttons" t-operation="append">
+            <button type="button" id="create_pdf" class="btn btn-sm btn-success">
+                Print
+                <span class="fa fa-print"></span>
+            </button>
+        </t>
+    </t>
+
+    <!-- extend PivotView widget -->
+
+  <t t-extend="PivotView.buttons">
+       <t t-jquery="button.o_pivot_download" t-operation="inner">
+           <div class="btn-group-sm">
+                <button type="button" id="create_pdf" class="btn btn-sm btn-success">
+                Export Pdf
+                <span class="fa fa-print"></span>
+            </button>
+           </div>
+
+        </t>
+    </t>
+    <t t-extend="CalendarView.buttons">
+        <t t-jquery="div.o_calendar_buttons" t-operation="append"><button type="button" id="create_pdf" class="btn btn-sm btn-success">
+                Export Pdf
+                <span class="fa fa-print"/></button>
+        </t>
+    </t>
+
+     <t t-name="DialogMessage">
+           <b> Header message For Report</b>
+            <input id="hero-demo" autofocus="" type="text" name="q"
+                   placeholder="Input message here to print on report" class="form-control" autocomplete="off"/>
+            <br/><br/>
+          <a>
+               <input class="btn oe_link o_event_pdf_button"
+                      style="text-align: center; width:95px; background-color: darkcyan; color: white;"
+                      id="test" value="Print PDF" type="button"></input>
+             </a>
+             <b>Or</b>
+             <a> <input style="text-align: center; width:55px; background-color: darkcyan; color: white;"
+                        class="btn oe_link button_cancel" value="Cancel" type="button"></input> </a>
+    </t>
+</template>

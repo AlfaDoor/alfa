@@ -1,0 +1,945 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+<!--        <record id="hr_holidays.view_employee_form_leave_inherit" model="ir.ui.view">-->
+<!--            <field name="priority" eval="10"/>-->
+<!--        </record>-->
+        <record id="hr_contract.hr_hr_employee_view_form2" model="ir.ui.view">
+            <field name="priority" eval="13"/>
+        </record>
+
+        <record id="view_company_form" model="ir.ui.view">
+            <field name="name">hr.company.form</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <label for="name" position="before">
+                    <label for="arabic_name" class="oe_edit_only"/>
+                    <h1>
+                        <field name="arabic_name"/>
+                    </h1>
+                </label>
+            </field>
+        </record>
+
+        <record id="view_employee_form" model="ir.ui.view">
+            <field name="name">hr.employee.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="priority" eval="15"/>
+            <field name="arch" type="xml">
+                   <xpath expr="//page[@name='personal_information']/group/group[@name='work_permit']/field[@name='visa_no']" position="after">
+                    <field name="visa_type" />
+                </xpath>
+                <xpath expr="//field[@name='address_id']" position="before">
+                    <field name="joining_date"/>
+                </xpath>
+
+                <xpath expr="//field[@name='tz']" position="after">
+                    <field name="employee_status" options="{'no_quick_create': True, 'no_create_edit' : True}"/>
+                </xpath>
+
+                 <xpath expr="//page[@name='personal_information']/group/group[@name='work_permit']/field[@name='visa_expire']" position="attributes">
+                     <attribute name="invisible">1</attribute>
+                </xpath>
+<xpath expr="//page[@name='personal_information']/group/group[@name='work_permit']/field[@name='permit_no']" position="after">
+                 <label for="visa_expire" string="Visa Expiry Date" />
+                <div>
+                    <field name="visa_expire" class="oe_inline" groups="hr.group_hr_user" placeholder="Visa Expire Date"/>
+                    &#160;&#160;=&#160;&#160;
+                    <field name="visa_expire_date_hijri" class="oe_inline" groups="hr.group_hr_user" placeholder="Hijri 'YYYY-MM-DD'"/>
+                </div>
+</xpath>
+                <xpath expr="//page[@name='personal_information']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
+
+                <field name="birthday" position="replace">
+                    <label for="birthday"/>
+                    <div>
+                        <field name="birthday" class="oe_inline" placeholder="Date of Birth"/>
+                        &#160;&#160;=&#160;&#160;
+                        <field name="birthday_hijri" class="oe_inline" placeholder="Hijri 'YYYY-MM-DD'"/>
+                    </div>
+                    <label for="current_age"/>
+                    <div>
+                        <field name="current_age"/>
+                        Years
+                    </div>
+
+                </field>
+                <form position="inside">
+                    <group>
+                        <field name="approved_record" invisible="1"/>
+                    </group>
+                </form>
+                <sheet position="attributes">
+                    <attribute name="attrs">{'invisible': [('approved_record', '=', False)]}</attribute>
+                </sheet>
+                <button name="toggle_active" position="replace">
+                    <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive"
+                            groups="saudi_hr_employee.group_employee_archive">
+                        <field name="active" widget="boolean_button"
+                               options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
+                    </button>
+                </button>
+                <field name="parent_id" position="replace">
+                    <field name="parent_id" domain="[('manager','=',True),('id','!=',id)]"
+                           options="{'no_create': True}"/>
+                </field>
+                <div name="button_box" position="inside">
+                    <button class="oe_inline oe_stat_button" name="open_relatives" type="object" icon="fa-ticket">
+                        <field string="Relatives" name="count_relatives" widget="statinfo"/>
+                    </button>
+                </div>
+                <div name="button_box" position="attributes">
+                    <attribute name='groups'>base.group_user</attribute>
+                </div>
+                <field name="department_id" position="replace">
+                    <field name="branch_id" options="{'no_create': True}" required="1"/>
+                    <field name="department_id" on_change="onchange_department_id(department_id)" required="1"
+                           options="{'no_create': True}"/>
+                    <field name="department_manager" readonly="1"/>
+                    <field name="management_id"/>
+                    <field name="management_manager_id"/>
+                    <field name="coach_id"/>
+                    <field name="sponsor_id" string="Sponsor ID"/>
+                </field>
+
+                <label for="name" position="replace"/>
+                <sheet position="before">
+                    <header>
+                        <button name="confirm_data" type="object" class="oe_highlight" string="Confirm Employee Data"
+                                groups="saudi_hr_employee.group_employee_confirm_data"
+                                attrs="{'invisible': [('data_confirmed', '=', True)]}"
+                                confirm="Are you sure that you want to confirm employee data ?"/>
+                        <button name="toggle_locked" type="object" class="oe_highlight" string="Lock"
+                                groups="saudi_hr_employee.group_employee_lock_data"
+                                attrs="{'invisible': [('locked', '=', True)]}" context="{'button_toggle' : True}"/>
+                        <button name="toggle_locked" type="object" class="oe_highlight" string="Unlock"
+                                groups="saudi_hr_employee.group_employee_unlock_data"
+                                attrs="{'invisible': [('locked', '=', False)]}" context="{'button_toggle' : True}"/>
+                        <button name="%(change_depetment_act)d" type="action" class="oe_highlight" string="Change Departmet"
+                            context="{'button_toggle' : True}" groups="saudi_hr_employee.department_allow_group" />
+
+                        <field name="locked" invisible="1"/>
+                    </header>
+                </sheet>
+                <xpath expr="//h1" position="replace">
+                    <div class="oe_title">
+                        <label for="name" string="Name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" placeholder="Employee's Arabic Name"/>
+                            <br/>
+                            <field name="employee_english_name" placeholder="Employee's English Name"/>
+                        </h1>
+                        <label for="name" string="Employee number" class="oe_edit_only"/>
+                        <div>
+                            <field name="employee_number" required="1"/>
+                        </div>
+                    </div>
+                </xpath>
+
+
+                <field name="marital" position="replace">
+                    <field name="marital" required="1"/>
+                </field>
+                <field name="category_ids" position="replace"/>
+                <field name="coach_id" position="replace">
+                    <field name="coach_id" string="Supervisor" options="{'no_create': True}"/>
+                    <!--<field name="employee_code" readonly="1"/>-->
+                    <field name="data_confirmed" groups="base.group_no_one"/>
+                </field>
+                <field name="work_phone" position="after">
+                    <field name="extension_no"/>
+                    <field name="category_ids" widget="many2many_tags"
+                           options="{'color_field': 'color', 'no_create_edit': True}" placeholder="e.g. Part Time"
+                           groups="hr.group_hr_user"/>
+                </field>
+                <xpath expr="//group[@name='active_group']/../.." position="before">
+                    <page name="relatives" string="Air-Tickets &amp; Relatives">
+                        <field name="relatives" attrs="{'invisible': [('marital', '=', 'single')]}">
+                            <tree create="false">
+                                <field name="name"/>
+                                <field name="arabic_name"/>
+                                <field name="type" string="Relation"/>
+                                <field name="iqama_number"/>
+                                <field name="iqama_expiry_date"/>
+                                <field name="current_age"/>
+                            </tree>
+                        </field>
+                        <group>
+                            <field name="number_relatives" attrs="{'invisible': [('marital', '=', 'single')]}"/>
+                        </group>
+                    </page>
+                </xpath>
+                <xpath expr="//group[@name='active_group']/../.." position="attributes">
+                    <attribute name='string'>Other Information</attribute>
+                </xpath>
+                <field name="identification_id" position="replace"/>
+                <xpath expr="//group[@name='active_group']/../.." position="inside">
+                    <group>
+                        <group string="Salary Information">
+                            <field name="lock_bank_info" invisible="1"/>
+                            <field name="salary_paid" attrs ="{'readonly':[('lock_bank_info','=',True)]}"/>
+                            <field name="Bank_name_id" options="{'no_create': True}"
+                                   attrs="{'invisible': [('salary_paid', '!=', 'Bank')],'readonly':[('lock_bank_info','=',True)]}"/>
+                            <field name="bank_account_number" attrs="{'invisible': [('salary_paid', '!=', 'Bank')],'readonly':[('lock_bank_info','=',True)]}"/>
+                            <field name="iban_number" attrs="{'invisible': [('salary_paid', '!=', 'Bank')],'readonly':[('lock_bank_info','=',True)]}"/>
+                            <!--Bank Code:-->
+                            <!--<field name="bic" class="oe_inline" readonly="1"/>-->
+                            <!--<label for="bank_account_id"/>-->
+                            <!--<div>-->
+                            <!---->
+                            <!--</div>-->
+                            <button name="lock_bank_data" class="oe_highlight" string="Lock" type="object" attrs="{'invisible':[('lock_bank_info','=',True)]}"/>
+                            <button name="un_lock_bank_data" class="oe_highlight" string="Unlock" type="object" attrs="{'invisible':[('lock_bank_info','=',False)]}" groups="basic_hr.group_hr_ceo"/>
+                        </group>
+                        <group>
+                            <field name="address_home_id" context="{'show_address': 1}"
+                                   options="{&quot;always_reload&quot;: True, &quot;highlight_first_line&quot;: True}"/>
+                        </group>
+
+                    <group string="External labour">
+                        <field name="is_external_labour"/>
+                        <field name="rate" attrs="{'invisible':[('is_external_labour','=', False)]}"/>
+                        <field name="vendor_id" attrs="{'invisible':[('is_external_labour','=', False)]}" options="{'no_create': True}"/>
+                        <field name="working_time_id" attrs="{'invisible':[('is_external_labour','=', False)]}" options="{'no_create': True}"/>
+                    </group>
+                        <group>
+                            <field name="has_bank_loan"/>
+                            <field name="loan_bank_name" attrs="{'invisible': [('has_bank_loan', '=', False)]}"
+                                   options="{'no_create': True}"/>
+                            <field name="loan_bank_amount" attrs="{'invisible': [('has_bank_loan', '=', False)]}"/>
+                            <field name="loan_bank_date" attrs="{'invisible': [('has_bank_loan', '=', False)]}"/>
+                            <field name="loan_bank_note" attrs="{'invisible': [('has_bank_loan', '=', False)]}"/>
+                        </group>
+                    </group>
+                 <!--   <group string="Qualifications">
+                        <field name="qualification_ids" nolabel="1">
+                            <tree editable="bottom">
+                                <field name="name" required="1"/>
+                                <field name="year" required="1"/>
+                                <field name="country_id" required="1" options="{'no_create': True}"/>
+                                <field name="school" required="1"/>
+                                <field name="percent"/>
+                                <field name="grade"/>
+                                <field name="attachment"/>
+                                <field name="note"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group string="Courses">
+                        <field name="course_ids" nolabel="1">
+                            <tree editable="bottom">
+                                <field name="name" required="1"/>
+                                <field name="desc" required="1"/>
+                                <field name="duration"/>
+                                <field name="days_months"/>
+                                <field name="type" required="1"/>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                                <field name="country_id" options="{'no_create': True}"/>
+                                <field name="city_id" options="{'no_create': True}"/>
+                                <field name="attachment"/>
+                                <field name="note"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group string="Employment History">
+                        <field name="employment_ids" nolabel="1">
+                            <tree editable="bottom">
+                                <field name="name" required="1"/>
+                                <field name="country_id" required="1" options="{'no_create': True}"/>
+                                <field name="job" required="1"/>
+                                <field name="date_from" required="1"/>
+                                <field name="date_to" required="1"/>
+                                <field name="duration"/>
+                                <field name="salary"/>
+                                <field name="reference"/>
+                                <field name="phone"/>
+                                <field name="reference_email"/>
+                                <field name="attachment"/>
+                                <field name="note"/>
+                            </tree>
+                        </field>
+                    </group>
+                --></xpath>
+                <xpath expr="//page[@name='personal_information']" position="after">
+                    <page string="Personal Information">
+                        <group>
+                            <group>
+                                <field name="country_id" options="{'no_create': True}"/>
+                                <field name="nationality_type"/>
+                                <field name="city_id" options="{'no_create':True}"
+                                       domain="[['country_id','=',country_id]]"/>
+                                <field name="place_of_birth"/>
+                                <field name="employee_type" required="1"/>
+                                <field name="gender" required="1"/>
+                                <field name="religion" required="1"/>
+                                <field name="marital" required="1"/>
+                                <field name="employee_children" attrs="{'invisible': [('marital', '=', 'single')]}"
+                                       readonly="1"/>
+                                <field name="birthday"/>
+                                <field name="blood_type"/>
+                                <field name="ksa_first_entry"/>
+                                <field name="entry_visa_no"/>
+                                <field name="border_number"/>
+                                <field name="personal_email"/>
+                                <field name="personal_phone_number"/>
+                                <field name="driving_licence_number"/>
+                                <label for="driving_license_expiry_date"/>
+                                <div>
+                                    <field name="driving_license_expiry_date" class="oe_inline"
+                                           placeholder="Driving License Expiry Date "/>
+                                    &#160;&#160;=&#160;&#160;
+                                    <field name="driving_license_expiry_date_hijri" class="oe_inline"
+                                           placeholder="Hijri 'YYYY-MM-DD'"/>
+                                </div>
+
+                                <field name="med_ins_membership_number"/>
+                                <field name="medical_certificate_number"/>
+
+                                <label for="med_ins_issue_date"/>
+                                <div>
+                                    <field name="med_ins_issue_date" class="oe_inline"
+                                           placeholder="Insurance Issue Date"/>
+                                    &#160;&#160;=&#160;&#160;
+                                    <field name="med_ins_issue_date_hijri" class="oe_inline"
+                                           placeholder="Hijri 'YYYY-MM-DD'"/>
+                                </div>
+                                <label for="med_ins_expiry_date"/>
+                                <div>
+                                    <field name="med_ins_expiry_date" class="oe_inline"
+                                           placeholder="Insurance Expiry Date"/>
+                                    &#160;&#160;=&#160;&#160;
+                                    <field name="med_ins_expiry_date_hijri" class="oe_inline"
+                                           placeholder="Hijri 'YYYY-MM-DD'"/>
+                                </div>
+                               <label for="residence_expire_date"/>
+                                <div>
+                                    <field name="residence_expire_date" class="oe_inline"
+                                           placeholder="Residence Expiry Date"/>
+                                    &#160;&#160;=&#160;&#160;
+                                    <field name="residence_expire_date_hijri" class="oe_inline"
+                                           placeholder="Hijri 'YYYY-MM-DD'"/>
+                                </div>
+
+                                <field name="leave_address"/>
+                                <field name="leave_phone"/>
+                                <field name="name_in_passport"/>
+                                    <field name="education_degree"/>
+                                    <field name="graduation_year"/>
+                            </group>
+                            <group col="1">
+                                <group>
+                                    <field name="identification_id"/>
+                                    <label for="iqama_issue_date"/>
+                                    <div>
+                                        <field name="iqama_issue_date" class="oe_inline"
+                                               placeholder="Iqama Issue Date "/>
+                                        &#160;&#160;=&#160;&#160;
+                                        <field name="iqama_issue_date_hijri" class="oe_inline"
+                                               placeholder="Hijri 'YYYY-MM-DD'"/>
+                                    </div>
+                                    <label for="iqama_expiry_date"/>
+                                    <div>
+                                        <field name="iqama_expiry_date" class="oe_inline"
+                                               placeholder="Iqama Expiry Date"/>
+                                        &#160;&#160;=&#160;&#160;
+                                        <field name="iqama_expiry_date_hijri" class="oe_inline"
+                                               placeholder="Hijri 'YYYY-MM-DD'"/>
+                                    </div>
+                                <label for="id_expiry_date"/>
+                                    <div>
+                                        <field name="id_expiry_date" class="oe_inline"
+                                               placeholder="Identification gregorian expiry date"/>
+                                        &#160;&#160;=&#160;&#160;
+                                        <field name="id_expiry_date_hijri" class="oe_inline"
+                                               placeholder="Hijri 'YYYY-MM-DD'"/>
+                                    </div>
+                                    <field name="iqama_issue_place"/>
+                                    <field name="iqama_expiry_days" readonly="1"/>
+                                    <field name="iqama_profession"/>
+                                    <field name="passport_id"/>
+<!--                                    <label for="iqama_expiry_year"/>-->
+<!--                                    <div>-->
+<!--                                        <field name="iqama_expiry_year" group="base.group_no_one" class="oe_inline"/>- -->
+<!--                                        <field name="iqama_expiry_month" group="base.group_no_one" class="oe_inline"/>- -->
+<!--                                        <field name="iqama_expiry_day" group="base.group_no_one" class="oe_inline"/>-->
+<!--                                    </div>-->
+                                    <label for="passport_issue_date"/>
+                                    <div>
+                                        <field name="passport_issue_date" class="oe_inline"
+                                               placeholder="Passport issue date"/>
+                                        &#160;&#160;=&#160;&#160;
+                                        <field name="passport_issue_date_hijri" class="oe_inline"
+                                               placeholder="Hijri 'YYYY-MM-DD'"/>
+                                    </div>
+                                    <label for="passport_expiry_date"/>
+                                    <div>
+                                        <field name="passport_expiry_date" class="oe_inline"
+                                               placeholder="Passport expiry date"/>
+                                        &#160;&#160;=&#160;&#160;
+                                        <field name="passport_expiry_date_hijri" class="oe_inline"
+                                               placeholder="Hijri 'YYYY-MM-DD'"/>
+                                    </div>
+
+                                </group>
+                                <group string="National Address">
+                                    <field name="national_country_id" options="{'no_create': True}"/>
+                                    <field name="national_city_id" options="{'no_create': True}"
+                                           domain="[('country_id','=',country_id)]"/>
+                                    <field name="district"/>
+                                    <field name="street_name"/>
+                                    <field name="building_number"/>
+                                    <field name="postal_code"/>
+                                </group>
+                                <group string="Health Certificate">
+                                    <field name="health_certificate_number" string="Certificate #"/>
+                                      <label for="health_issue_date"/>
+                                <div>
+                                    <field name="health_issue_date" class="oe_inline"
+                                           placeholder="Health Certificate Expiry Date "/>
+                                    &#160;&#160;=&#160;&#160;
+                                    <field name="health_issue_date_hijri" class="oe_inline"
+                                           placeholder="Hijri 'YYYY-MM-DD'"/>
+                                </div>
+                                <label for="health_expiry_date"/>
+                                <div>
+                                    <field name="health_expiry_date" class="oe_inline"
+                                           placeholder="Health Certificate Expiry Date"/>
+                                    &#160;&#160;=&#160;&#160;
+                                    <field name="health_expiry_date_hijri" class="oe_inline"
+                                           placeholder="Hijri 'YYYY-MM-DD'"/>
+                                </div>
+                                </group>
+                                <group string="GOSI Info">
+                                    <field name="gosi_number"/>
+                                    <field name="gosi_join_date"/>
+                                    <field name="gosi_leave_date"/>
+                                </group>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+                <field name="job_id" position="attributes">
+                    <attribute name="required">1</attribute>
+                    <attribute name="options">{'no_create':True}</attribute>
+                </field>
+                <field name="user_id" position="after">
+                    <field name="manager"/>
+                </field>
+            </field>
+        </record>
+        <record id="hr_hr_employee_view_form2_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr_contract.hr_hr_employee_view_form2"/>
+            <field name="arch" type="xml">
+                <field name="manager" position="replace"/>
+            </field>
+        </record>
+        <record id="view_employee_tree_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="/tree" position="replace">
+                    <tree string="Employees" decoration-bf="message_needaction==True">
+                        <field name="employee_number"/>
+                        <field name="name"/>
+                       <!-- <field name="employee_english_name"/>-->
+                        <field name="job_id"/>
+                        <field name="department_id"/>
+                        <field name="manager"/>
+                        <field name="country_id"/>
+                        <field name="identification_id"/>
+                        <field name="iqama_expiry_date"/>
+						<field name="health_expiry_date"/>
+						<field name="passport_expiry_date"/>
+                        <field name="user_id"/>
+                        <field name="message_needaction" invisible="1"/>
+                    </tree>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Inherit HR Employee Kanban View   -->
+        <record model="ir.ui.view" id="hr_kanban_view_employees_inherit">
+            <field name="name">hr.kanban.view.employees.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <div>
+                        <strong>Employee# <field name="employee_number"/></strong>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="hr_company_policy_form" model="ir.ui.view">
+            <field name="name">hr.company.policy.form</field>
+            <field name="model">hr.company.policy</field>
+            <field name="arch" type="xml">
+                <form string="Loans and Advances Request">
+                    <sheet>
+                        <group>
+                            <field name="name" required="1"/>
+                            <field name="days_in_month" required="1"/>
+                            <field name="months_in_year" required="1"/>
+                            <field name="days_in_year"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_hr_company_policy" model="ir.actions.act_window">
+            <field name="name">Company Policy</field>
+            <field name="res_model">hr.company.policy</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="action_department_list" model="ir.actions.act_window">
+            <field name="name">Depatments</field>
+            <field name="res_model">hr.department</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="action_hr_course" model="ir.actions.act_window">
+            <field name="name">Courses</field>
+            <field name="res_model">hr.employee.course</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem id="menu_config_department" name="Departments" groups="hr.group_hr_user"
+                  parent="hr.menu_human_resources_configuration" sequence="10" action="action_department_list"/>
+
+ <!--       <menuitem id="menu_config_jobs" name="Jobs" groups="hr.group_hr_user"
+                  parent="hr.menu_human_resources_configuration" sequence="12" action="hr_recruitment.action_hr_job"/>
+-->
+        <menuitem id="menu_config_courses" name="Courses" groups="hr.group_hr_user"
+                  parent="hr.menu_human_resources_configuration" sequence="12" action="action_hr_course"/>
+
+        <menuitem id="menu_company_policy" name="Company Policy" groups="base.group_no_one"
+                  parent="hr.menu_human_resources_configuration" sequence="6" action="action_hr_company_policy"/>
+
+        <menuitem id="menu_employee_parent" name="Employees" groups="hr.group_hr_user"
+                  parent="hr.menu_hr_root" sequence="1"/>
+        <menuitem id="menu_department_parent" name="Departments" groups="hr.group_hr_user"
+                  parent="hr.menu_hr_root" sequence="4"/>
+
+        <menuitem action="base.action_res_bank_form" id="menu_action_res_bank"
+                  parent="hr.menu_human_resources_configuration" sequence="12"/>
+
+        <menuitem action="resource.action_resource_calendar_form" id="menu_action_employee_resource_calendar"
+                  parent="hr.menu_human_resources_configuration" sequence="13"/>
+
+
+        <record id="action_open_view_employee_list_my" model="ir.actions.server">
+            <field name="state">code</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="hr.model_hr_employee"/>
+            <field name="code">action = env['hr.employee'].open_employees_menu()</field>
+            <field name="condition">True</field>
+            <field name="name">open employees</field>
+        </record>
+
+        <record model="ir.ui.menu" id="hr.menu_open_view_employee_list_my">
+            <field name="sequence" eval="1"/>
+            <field name="action" ref="action_open_view_employee_list_my"/>
+            <field name="parent_id" ref="saudi_hr_employee.menu_employee_parent"/>
+        </record>
+
+        <record model="ir.ui.menu" id="hr.menu_hr_department_tree">
+            <field name="sequence" eval="1"/>
+            <field name="name">Department Dashboard</field>
+            <field name="parent_id" ref="saudi_hr_employee.menu_department_parent"/>
+        </record>
+
+        <record id="action_country" model="ir.actions.act_window">
+            <field name="name">Countries</field>
+            <field name="res_model">res.country</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_country" name="Countries" groups="hr.group_hr_user"
+                  parent="hr.menu_human_resources_configuration" sequence="3" action="action_country"/>
+
+
+        <record id="action_city" model="ir.actions.act_window">
+            <field name="name">Cities</field>
+            <field name="res_model">res.country.state</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_city" name="Cities" groups="hr.group_hr_user"
+                  parent="hr.menu_human_resources_configuration" sequence="3" action="action_city"/>
+
+
+        <!-- Inherit Jop position form View   -->
+        <record model="ir.ui.view" id="view_hr_job_form_inherit">
+            <field name="name">hr.job.form inherit</field>
+            <field name="model">hr.job</field>
+            <field name="inherit_id" ref="hr.view_hr_job_form"/>
+            <field name="arch" type="xml">
+                <!--<group name="employee_data" position="attributes">-->
+                <!--<attribute name='groups'>hr.group_hr_user</attribute>-->
+                <!--</group>-->
+                <div name="button_box" position="attributes">
+                    <attribute name='groups'>hr.group_hr_user</attribute>
+                </div>
+                <header position="attributes">
+                    <attribute name='groups'>hr.group_hr_user</attribute>
+                </header>
+                <xpath expr="//sheet//div[3]" position="replace">
+                    <notebook col="4" name="note_book" groups="hr.group_hr_user">
+                        <page string="Notes" name="notes">
+                            <field name="description"/>
+                        </page>
+                    </notebook>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Employee Relatives -->
+        <record model="ir.ui.view" id="view_employee_relative_form">
+            <field name="name">view_employee_relative_form</field>
+            <field name="model">employee.relative</field>
+            <field name="arch" type="xml">
+                <form string="Employee Relative">
+                    <header>
+
+                        <field name="state" widget="statusbar" clickable="Tr"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box" groups="hr.group_hr_user">
+                            <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                                <field name="active" widget="boolean_button"
+                                       options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
+                            </button>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="employee_id" options="{'no_create': True}"
+                                       readonly="context.get('popup', False)" required="1"/>
+                                <field name="name" required="1"/>
+                                <field name="code" required="1"/>
+                                <field name="gender" required="1"/>
+                                <field name="arabic_name" required="1"/>
+                                <field name="type" required="1"/>
+                                <label for="date_of_birth"/>
+                                <div>
+                                    <field name="date_of_birth" class="oe_inline" placeholder="Date Of Birth"/>
+                                    &#160;&#160;=&#160;&#160;
+                                    <field name="birthday_hijri" class="oe_inline" placeholder="Hijri 'YYYY-MM-DD'"/>
+                                </div>
+                                <field name="current_age"/>
+                            </group>
+                            <group>
+                                <field name="iqama_number"/>
+                                <label for="iqama_issue_date"/>
+                                <div>
+                                    <field name="iqama_issue_date" class="oe_inline" placeholder="Iqama Issue Date "/>
+                                    &#160;&#160;=&#160;&#160;
+                                    <field name="iqama_issue_date_hijri" class="oe_inline"
+                                           placeholder="Hijri 'YYYY-MM-DD'"/>
+                                </div>
+                                <label for="iqama_expiry_date"/>
+                                <div>
+                                    <field name="iqama_expiry_date" class="oe_inline" placeholder="Iqama Expiry Date"/>
+                                    &#160;&#160;=&#160;&#160;
+                                    <field name="iqama_expiry_date_hijri" class="oe_inline"
+                                           placeholder="Hijri 'YYYY-MM-DD'"/>
+                                </div>
+                                <field name="passport_number"/>
+                                <label for="passport_issue_date"/>
+                                <div>
+                                    <field name="passport_issue_date" class="oe_inline"
+                                           placeholder="Passport Expiry Date"/>
+                                    &#160;&#160;=&#160;&#160;
+                                    <field name="passport_issue_date_hijri" class="oe_inline"
+                                           placeholder="Hijri 'YYYY-MM-DD'"/>
+                                </div>
+                                <label for="passport_expiry_date"/>
+                                <div>
+                                    <field name="passport_expiry_date" class="oe_inline"
+                                           placeholder="Passport Expiry Date"/>
+                                    &#160;&#160;=&#160;&#160;
+                                    <field name="passport_expiry_date_hijri" class="oe_inline"
+                                           placeholder="Hijri 'YYYY-MM-DD'"/>
+                                </div>
+                                <field name="name_in_passport"/>
+                            </group>
+                            <group>
+                                <field name="phone"/>
+                                <field name="country_id"/>
+                                <field name="visa_type"/>
+                                <field name="visa_issue_date"/>
+                                <field name="arrival_date"/>
+                                <field name="family_id"/>
+                            </group>
+                            <group>
+                                <field name="travel_visa_number"/>
+                                <field name="exit_before"/>
+                                <field name="visa_period"/>
+                                <field name="journey_date"/>
+                                <field name="return_before"/>
+                                <field name="date_of_return"/>
+                                <field name="journey_period"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Notes">
+                                <field name="notes"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_employee_relative_tree">
+            <field name="name">view_employee_relative_tree</field>
+            <field name="model">employee.relative</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="employee_id"/>
+                    <field name="name"/>
+                    <field name="arabic_name"/>
+                    <field name="type"/>
+                    <field name="date_of_birth"/>
+                    <field name="iqama_number"/>
+                    <field name="iqama_expiry_date"/>
+                    <field name="current_age"/>
+                    <field name="date_of_birth_18" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_employee_relative" model="ir.actions.act_window">
+            <field name="name">Employee Relative</field>
+            <field name="res_model">employee.relative</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!--<field name="context">{'search_default_new_employee':1}</field>-->
+        </record>
+        <menuitem id="menu_employee_relative" name="Employee Relatives" groups="hr.group_hr_user"
+                  parent="menu_employee_parent" sequence="3" action="action_employee_relative"/>
+        <record id="action_employee_archived" model="ir.actions.act_window">
+            <field name="name">Archived Employee</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form,pivot,graph</field>
+            <field name="domain">[('active','=',False)]</field>
+        </record>
+        <menuitem id="menu_employee_archived" name="Archived Employee" groups="hr.group_hr_user"
+                  parent="menu_employee_parent" sequence="2" action="action_employee_archived"/>
+
+        <!--/////////////////////////////  Pivot and Graph ////////////////////////////////////////-->
+        <record id="hr.open_view_employee_list_my" model="ir.actions.act_window">
+            <field name="view_mode">kanban,tree,form,pivot,graph</field>
+            <field name="domain">[('approved_record','=',True)]</field>
+        </record>
+
+        <record id="employee_pivot" model="ir.ui.view">
+            <field name="name">employee.pivot</field>
+            <field name="model">hr.employee</field>
+            <field name="arch" type="xml">
+                <pivot string="Employees" disable_linking="True">
+                    <field name="department_id"/>
+                </pivot>
+            </field>
+        </record>
+
+        <record id="employee_graph" model="ir.ui.view">
+            <field name="name">employee.graph</field>
+            <field name="model">hr.employee</field>
+            <field name="arch" type="xml">
+                <graph string="Employees">
+                    <field name="department_id"/>
+                </graph>
+            </field>
+        </record>
+        <!--//////////////////////////////////////////////////////////////////////////////////////-->
+        <record model="ir.ui.view" id="view_res_bank_form_inherit">
+            <field name="name">view_res_bank_form inherit</field>
+            <field name="model">res.bank</field>
+            <field name="inherit_id" ref="base.view_res_bank_form"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="english_name"/>
+                    <field name="bank_code"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="resource_calendar_form_inherit">
+            <field name="name">resource_calendar_form inherit</field>
+            <field name="model">resource.calendar</field>
+            <field name="inherit_id" ref="resource.resource_calendar_form"/>
+            <field name="arch" type="xml">
+                <form position="replace">
+                    <form string="Working Time">
+                        <header>
+                            <field name="state" widget="statusbar"/>
+                        </header>
+                        <sheet>
+                            <group>
+                                <field name="name" attrs="{'readonly': [('state', '=', 'Approved')]}"/>
+                                <field name="manager" attrs="{'readonly': [('state', '=', 'Approved')]}"/>
+                                <field name="company_id" groups="base.group_multi_company"
+                                       attrs="{'readonly': [('state', '=', 'Approved')]}"/>
+                            </group>
+                            <notebook>
+                                <page name="working_time" string="Working Time">
+                                    <field name="attendance_ids" attrs="{'readonly': [('state', '=', 'Approved')]}"/>
+                                </page>
+                                <page name="leaves" string="Leaves">
+                                    <field name="leave_ids" attrs="{'readonly': [('state', '=', 'Approved')]}"/>
+                                </page>
+                            </notebook>
+
+                        </sheet>
+                    </form>
+                </form>
+            </field>
+        </record>
+
+        <!--<record id="hr_expense.menu_hr_expense_root" model="ir.ui.menu">-->
+        <!--<field name="groups_id" eval="[(4,ref('saudi_hr_employee.group_hr_ceo'))]"/>-->
+        <!--</record>-->
+        <record id="calendar.mail_menu_calendar" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6,0,[ref('hr.group_hr_user')])]"/>
+        </record>
+        <!--<record id="mail.menu_contacts" model="ir.ui.menu">-->
+        <!--<field name="groups_id" eval="[(6,0,[ref('hr.group_hr_user')])]"/>-->
+        <!--</record>-->
+        <!--<record id="website.menu_website" model="ir.ui.menu">-->
+        <!--<field name="groups_id" eval="[(6,0,[ref('hr.group_hr_user')])]"/>-->
+        <!--</record>-->
+
+
+        <record model="ir.cron" id="employee_update_numeric_fields">
+            <field name="name">Employee Module Numerical fields</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="model" eval="'hr.employee'"/>
+            <field name="model_id" ref="hr.model_hr_employee"/>
+            <field name="function" eval="'employee_update_fields'"/>
+            <field name="args" eval="'()'"/>
+        </record>
+
+        <!--Sponsors-->
+
+         <record id="hr_sponsors_form_view" model="ir.ui.view">
+        <field name="name">hr_sponsors_form_view</field>
+        <field name="model">hr.sponsors</field>
+        <field name="arch" type="xml">
+            <form string="HR Sponsors">
+                <group>
+                    <group>
+                        <field name="identification_no"/>
+                    </group>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="hr_sponsors_tree_view" model="ir.ui.view">
+        <field name="name">hr_sponsors_tree_view</field>
+        <field name="model">hr.sponsors</field>
+        <field name="arch" type="xml">
+            <tree string="HR Sponsors">
+                <field name="identification_no"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hr_sponsors_action" model="ir.actions.act_window">
+        <field name="name">Sponsors Detail</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.sponsors</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="hr_sponsors" name="Sponsors Detail" action="hr_sponsors_action" parent="hr.menu_human_resources_configuration" groups="hr.group_hr_manager" sequence="125"/>
+
+        <!--Employee Status-->
+
+        <record id="employee_status_form_view" model="ir.ui.view">
+        <field name="name">employee_status_form_view</field>
+        <field name="model">employee.status</field>
+        <field name="arch" type="xml">
+            <form string="Employee Status">
+                <group>
+                    <group>
+                        <field name="s_no"/>
+                    </group>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="employee_status_action" model="ir.actions.act_window">
+        <field name="name">Employee Status</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">employee.status</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="employee_status" name="Employee Status" action="employee_status_action" parent="hr.menu_human_resources_configuration" groups="hr.group_hr_manager" sequence="120"/>
+
+        <record model="ir.ui.view" id="hr_employee_inherited_search_view">
+            <field name="name">hr.employees.search.view</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_filter"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//field[@name='name']" position="after">
+                    <field name="identification_id" />
+                </xpath>
+                <xpath expr="//field[@name='department_id']" position="before">
+                    <field name="employee_number" />
+                </xpath>
+                <xpath expr="//field[@name='department_id']" position="after">
+                    <field name="employee_status" />
+                </xpath>
+                  <field name="job_id" position="before">
+                    <filter name="iqama_7" string="Iqama will be expired within 7 days"
+                            domain="[('iqama_expire_seven_days', '=', True )]"/>
+                      <filter name="passport_30" string="Passport will be expired within 30 days"
+                            domain="[('passport_expire_thirty_days', '=', True )]"/>
+                      <filter name="health_30" string="Health Certificate will be expired within 30 days"
+                            domain="[('health_expire_thirty_days', '=', True )]"/>
+                </field>
+
+            </field>
+        </record>
+    </data>
+</odoo>

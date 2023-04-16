@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--        Payment Request-->
+        <record model="ir.ui.view" id="payment_request_form">
+            <field name="name">Payment.request.form</field>
+            <field name="model">payment.request</field>
+            <field name="arch" type="xml">
+                <form string="Payment request">
+                    <header>
+                        <button string="Review" name="action_review" type="object" groups="" states="new" class="oe_highlight"/>
+                        <button string="Confirm" name="action_confirm" type="object" groups="" states="reviewed" class="oe_highlight"/>
+                        <button string="Create payment" name="create_payment" type="object" groups="" states="confirmed" class="oe_highlight"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="partner_id" required="1" options="{'no_create': True}"/>
+                                <field name="ref"/>
+                                <field name="date" required="1"/>
+                                <field name="due_date" required="1"/>
+                            </group>
+                            <group>
+                                <field name="invoice_ids" options="{'no_create': True}" domain="[('partner_id','=',partner_id),('type','=','in_invoice'),('state','=','open')]" widget="many2many_tags"/>
+                                <field name="amount" required="1"/>
+                                <field name="create_uid"/>
+                                <field name="create_date"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Payment details">
+                                <group>
+                                    <field name="amount_approved"/>
+                                </group>
+                                <group>
+                                    <field name="payment_detail_ids" nolabel="1" context="{'default_partner_id':partner_id , 'default_ref':ref }">
+                                        <tree>
+                                            <field name="department_id" options="{'no_create': True}"/>
+                                            <field name="responsible_id" options="{'no_create': True}"/>
+                                            <field name="partner_id" options="{'no_create': True}"/>
+                                            <field name="ref"/>
+                                            <field name="amount" sum="Total amount"/>
+                                            <field name="invoice_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                                            <field name="state"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Notes">
+                                <separator string="Notes"/>
+                                <group>
+                                    <field name="note" nolabel="1"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="payment_request_tree">
+            <field name="name">Payment.request.tree</field>
+            <field name="model">payment.request</field>
+            <field name="arch" type="xml">
+                <tree string="Payment request">
+                    <field name="date"/>
+                    <field name="due_date"/>
+                    <field name="amount"/>
+                    <field name="partner_id"/>
+                    <field name="ref"/>
+                    <field name="invoice_ids"/>
+                    <field name="create_uid"/>
+                    <field name="create_date"/>
+                </tree>
+            </field>
+        </record>
+        <record id="payment_request_action" model="ir.actions.act_window">
+            <field name="name">Payment request</field>
+            <field name="res_model">payment.request</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context" eval="{}"/>
+        </record>
+        <menuitem id="payment_request_menu" name="Payment request" parent="account.menu_finance_payables"
+                  action="payment_request_action" sequence="10" groups=""/>
+
+
+        <!--Payment Request details-->
+        <record model="ir.ui.view" id="payment_detail_form">
+            <field name="name">payment.detail.form</field>
+            <field name="model">payment.detail</field>
+            <field name="arch" type="xml">
+                <form string="Payment request details">
+                    <header>
+                        <button string="Review" name="action_review" type="object" groups="" states="new" class="oe_highlight"/>
+                        <button string="Confirm" name="action_confirm" type="object" groups="" states="reviewed" class="oe_highlight"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="open_invoices" type="object" class="oe_stat_button" icon="fa-list-ul">
+                                <field name="invoices_count" string="invoice(s)" widget="statinfo"/>
+                            </button>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="department_id" options="{'no_create': True}" required="1"/>
+                                <field name="responsible_id" options="{'no_create': True}" required="1"/>
+                                <field name="responsible_user_id" options="{'no_create': True}" groups="base.group_no_one"/>
+                            </group>
+                            <group>
+                                <field name="amount"/>
+                                <field name="partner_id" options="{'no_create': True}"/>
+                                <field name="ref"/>
+                                <field name="invoice_ids" options="{'no_create': True}" widget="many2many_tags" domain="[('partner_id','=',partner_id),('type','=','in_invoice'),('state','=','open')]"/>
+                                <field name="date"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Notes">
+                                <separator string="Notes"/>
+                                <field name="note"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="payment_detail_tree">
+            <field name="name">payment.detail.tree</field>
+            <field name="model">payment.detail</field>
+            <field name="arch" type="xml">
+                <tree string="Payment request details">
+                    <field name="department_id" options="{'no_create': True}" required="1"/>
+                    <field name="responsible_id" options="{'no_create': True}" required="1"/>
+                    <field name="responsible_user_id" options="{'no_create': True}" groups="base.group_no_one"/>
+                    <field name="amount"/>
+                    <field name="partner_id" options="{'no_create': True}"/>
+                    <field name="ref"/>
+                    <field name="invoice_ids" options="{'no_create': True}" widget="many2many_tags" domain="[('partner_id','=',partner_id),('type','=','in_invoice'),('state','=','open')]"/>
+                    <field name="date"/>
+                </tree>
+            </field>
+        </record>
+        <record id="payment_detail_action" model="ir.actions.act_window">
+            <field name="name">Payment request details</field>
+            <field name="res_model">payment.detail</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context" eval="{}"/>
+        </record>
+        <menuitem id="payment_detail_menu" name="Payment details" parent="account.menu_finance_payables"
+                  action="payment_detail_action" sequence="11" groups=""/>
+    </data>
+</odoo>

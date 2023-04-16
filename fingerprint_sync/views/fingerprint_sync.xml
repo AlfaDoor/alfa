@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem id="att_config_menu" name="Configuration" parent="hr_attendance.menu_hr_attendance_root" sequence="100"/>
+        <menuitem id="hr_attendance.menu_hr_attendance_settings" name="Setting" parent="att_config_menu"
+        sequence="0" action="hr_attendance.action_hr_attendance_settings" groups="hr_attendance.group_hr_attendance_manager"/>
+
+        <!--TODO V11.0 :Uncomment following tag-->
+        <!--<record id="hr_attendance.menu_hr_attendance_config" model="ir.ui.menu">-->
+            <!--<field name="parent_id" eval="ref('fingerprint_sync.att_config_menu')"/>-->
+            <!--<field name="sequence" eval="1"/>-->
+        <!--</record>-->
+
+
+        <!--Form view-->
+        <record model="ir.ui.view" id="fingerprint_device_form">
+            <field name="name">fingerprint.device form</field>
+            <field name="model">fingerprint.device</field>
+            <field name="arch" type="xml">
+                <form string="Fingerprint device">
+                    <header>
+                        <button string="manual sync data" name="sync" type="object" confirm="Are you sure you want to manual sync ?"/>
+                        <button string="Update users" name="update_users" type="object" confirm="Are you sure you want to update users ?"/>
+                        <button string="Restart device" name="restart" type="object" confirm="Are you sure you want to restart the device ?"/>
+                    </header>
+                    <sheet>
+                        <!--Smart button-->
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" type="object" groups="base.group_no_one" class="oe_stat_button" icon="fa-archive">
+                                <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
+                            </button>
+                            <button type="object" name="get_fingerprint_atts" class="oe_inline oe_stat_button" icon="fa-tasks">
+                                <field name="attendance_count" widget="statinfo" string="Attendances"/>
+                            </button>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="name" required="1"/>
+                                <field name="ip" required="1"/>
+                                <field name="port" required="1"/>
+                            </group>
+                            <group>
+                                <field name="timeout" required="1"/>
+                                <field name="firmware_version" readonly="1"/>
+                                <field name="last_datetime"/>
+                                <button string="Test connection" name="testConn" type="object"/>
+                            </group>
+                        </group>
+                        <notebook col="4">
+                            <page string="Users">
+                                <group string="Users">
+                                    <field name="user_ids" nolabel="1">
+                                        <tree editable="bottom">
+                                            <field name="uid"   string="UID (x)"/>
+                                            <field name="user_id"  />
+                                            <field name="name" />
+                                            <field name="employee_id"/>
+                                            <field name="privilege"  />
+                                            <field name="password" />
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Status Configuration">
+                                <group string="Status Configuration">
+                                    <field name="status_config_ids" nolabel="1">
+                                        <tree editable="bottom">
+                                            <field name="status" required="1"/>
+                                            <field name="action" required="1"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--Tree View-->
+        <record model="ir.ui.view" id="fingerprint_device_tree">
+            <field name="name">fingerprint.device tree</field>
+            <field name="model">fingerprint.device</field>
+            <field name="arch" type="xml">
+                <tree string="Fingerprint device"  decoration-muted="(not active)">
+                    <field name="name"/>
+                    <field name="ip"/>
+                    <field name="port"/>
+                    <field name="timeout"/>
+                    <field name="firmware_version"/>
+                    <field name="last_datetime"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+        <!--Tree View-->
+        <record model="ir.ui.view" id="fingerprint_device_filter">
+            <field name="name">fingerprint.device filter</field>
+            <field name="model">fingerprint.device</field>
+            <field name="arch" type="xml">
+                <search string="Fingerprint device">
+                    <filter string="All" name="all" domain="['|',('active','=',True), ('active', '=', False)]"/>
+                </search>
+            </field>
+        </record>
+        <!--Action-->
+        <record model="ir.actions.act_window" id="fingerprint_device_action">
+            <field name="name">Fingerprint device</field>
+            <field name="res_model">fingerprint.device</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_all': 1}</field>
+        </record>
+        <!--Menu item-->
+        <menuitem
+                id="fingerprint_device_menu"
+                name="Fingerprint device"
+                parent="att_config_menu"
+                action="fingerprint_device_action"
+                sequence="12"/>
+    </data>
+</odoo>

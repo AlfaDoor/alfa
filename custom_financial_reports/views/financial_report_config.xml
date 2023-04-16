@@ -1,0 +1,247 @@
+<odoo>
+    <data>
+
+        <!-- Account Reports Config -->
+        <record id="view_financial_report_config_form" model="ir.ui.view">
+            <field name="name">financial.report.config.form</field>
+            <field name="model">financial.report.config</field>
+            <field name="arch" type="xml">
+                <form string="Account Report Configuration">
+                    <header>
+                        <button name="open_lines" string="Open lines" type="object" groups="base.group_no_one"/>
+                    </header>
+                    <sheet>
+                        <button type="object" name="print_xls" string="Calc"/>
+                        <group>
+                            <group>
+                                <field colspan="4" name="name" required="1"/>
+                                <field name="debit_credit"/>
+                                <field name="type" required="1"/>
+                                <field name="use_analytic_account_in_name" required="1"/>
+                                <field name="orientation" required="1"/>
+                            </group>
+                            <group>
+                                <field name="direction" widget="radio"/>
+                                <div>
+                                    <label for="margin" string="Right margin" attrs="{'invisible':[['direction','!=','ltr']]}"/>
+                                    <label for="margin" string="Left margin" attrs="{'invisible':[['direction','=','rtl']]}"/>
+                                </div>
+                                <field name="margin"/>
+                            </group>
+                        </group>
+                        <group string="Sections">
+                            <field colspan="4" name="line_ids" nolabel="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_financial_report_config_tree" model="ir.ui.view">
+            <field name="name">financial.report.config.tree</field>
+            <field name="model">financial.report.config</field>
+            <field name="arch" type="xml">
+                <tree string="Account Report Configuration">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_financial_report_config_search" model="ir.ui.view">
+            <field name="name">financial.report.config.search</field>
+            <field name="model">financial.report.config</field>
+            <field name="arch" type="xml">
+                <search string="Account Report Configuration">
+                    <field name="name" string="Account Report Configuration"/>
+                    <group expand="0" string="Group By">
+                        <filter name="type" string="Type" context="{'group_by':'type'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record id="action_financial_report_config" model="ir.actions.act_window">
+            <field name="name">Financial Reports Configuration</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">financial.report.config</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!--<field name="search_view_id" ref="view_account_financial_report_search"/>-->
+            <!--<field name="view_id" ref="view_account_financial_report_tree"/>-->
+        </record>
+        <menuitem id="menu_financial_report_config" name="Custom Financial Reports" parent="account.account_management_menu"
+                  action="action_financial_report_config" groups="base.group_no_one"/>
+
+        <record id="view_financial_report_config_line_form" model="ir.ui.view">
+            <field name="name">financial.report.config.line.form</field>
+            <field name="model">financial.report.config.line</field>
+            <field name="arch" type="xml">
+                <form string="Report Config Line">
+                    <sheet>
+                        <group>
+                            <group string="Main Info">
+                                <field name="name"/>
+                                <field name="code"/>
+                                <field name="sequence"/>
+                                <field name="parent_id"/>
+                                <field name="level"/>
+                                <field name="label_top"/>
+                                <field name="label_top_bold" attrs="{'invisible':[['label_top','=', False]]}"/>
+                                <field name="label_top_underline" attrs="{'invisible':[['label_top','=', False]]}"/>
+                                <field name="has_total_line" attrs="{'invisible':[['label_top','=', False]]}"/>
+                                <field name="has_total_end"/>
+                                <field name="total_end_name"/>
+                                <field name="separate_after_section"/>
+                                <field name="distribute"/>
+                            </group>
+                            <group string="Computation">
+                                <field name="formula"/>
+                                <field name="domain"/>
+                                <field name="groupby"/>
+                                <field name="budget_item_ids" widget="many2many_tags"/>
+                                <field name="date_type"/>
+                            </group>
+                        </group>
+                        <group string="Children Lines">
+                            <field name="children_ids" nolabel="1"/>
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_financial_report_config_line_tree" model="ir.ui.view">
+            <field name="name">financial.report.config.line.tree</field>
+            <field name="model">financial.report.config.line</field>
+            <field name="arch" type="xml">
+                <tree string="Report Lines">
+                    <field name="sequence" widget="handle"/>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="level"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_financial_report_config_line_open_tree" model="ir.ui.view">
+            <field name="name">financial.report.config.line.tree</field>
+            <field name="model">financial.report.config.line</field>
+            <field name="arch" type="xml">
+                <tree string="Report Lines">
+                    <field name="sequence" widget="handle"/>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="level"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_custom_report_file" model="ir.ui.view">
+            <field name="name">custom.report.file.form</field>
+            <field name="model">custom.report.file</field>
+            <field name="arch" type="xml">
+                <form string="Excel Report file">
+                    <group>
+                        <field name="excel_file" readonly="1" filename="file_name"/>
+                        <field name="file_name" invisible="1"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record id="action_custom_report_file" model="ir.actions.act_window">
+            <field name="name">Reports Excel</field>
+            <field name="view_id" ref="view_custom_report_file"/>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="res_model">custom.report.file</field>
+            <field name="target">new</field>
+        </record>
+
+        <record id="account_report_standard_view_inherit" model="ir.ui.view">
+            <field name="name">account_report_standard_view_inherit</field>
+            <field name="model">account.report.standard.ledger</field>
+            <field name="inherit_id" ref="account_standard_report.account_report_standard_view"/>
+            <field name="arch" type="xml">
+                <field name="summary" position="after">
+                    <field name="is_comparison" attrs="{'invisible': [('type_ledger', '!=', 'custom')]}"/>
+                    <field name="budget_comparison" attrs="{'invisible': [('type_ledger', '!=', 'custom')]}"/>
+                    <field name="budget_comparison_name" attrs="{'invisible': [('type_ledger', '!=', 'custom'), ('budget_comparison','=',True)]}"/>
+                    <field name="variance_name" attrs="{'invisible': [('type_ledger', '!=', 'custom'), ('budget_comparison','=',True)]}"/>
+                    <field name="original_name" attrs="{'invisible': [('type_ledger', '!=', 'custom')]}"/>
+                </field>
+                <xpath expr="//group" position="after">
+                    <group>
+                        <field name="custom_report" attrs="{'invisible': [('type_ledger', '!=', 'custom')]}" options="{'no_create': True}"/>
+                        <field name="custom_report_type" invisible="1"/>
+                    </group>
+                    <group>
+                        <field name="per_profit_center" attrs="{'invisible': [('type_ledger', '!=', 'custom')]}"/>
+                    </group>
+                </xpath>
+                <field name="date_from" position="replace">
+                    <field name="date_from" attrs="{'readonly': [('type_ledger', '=', 'custom'),('custom_report_type', '=', 'no_date_range')]}"
+                           options="{'no_create': True}"/>
+                </field>
+                <!--<xpath expr="//field[@name='analytic_account_select_ids']/.." position="after">
+                    <group>
+                        <field name="project_ids" widget="many2many_tags" options="{'no_create': True}"
+                               attrs="{'invisible': [('type_ledger', 'not in', ['custom'])]}"/>
+                    </group>
+                </xpath>-->
+                <field name="month_selec" position="after">
+                    <field name="fiscal_year" widget="selection"/>
+                </field>
+                <field name="analytic_account_select_ids" position="attributes">
+                    <attribute name="context">{'view':True}</attribute>
+                </field>
+                <form position="inside">
+                    <notebook>
+                        <page string="Comparison" attrs="{'invisible': [('is_comparison', '!=', True)]}">
+                            <group>
+                                <group>
+                                    <field name="number_of_periods"/>
+                                    <field name="comparison_var"/>
+                                </group>
+                                <group>
+                                    <field name="same_period_last_year"/>
+                                </group>
+                            </group>
+                            <group string="Custom Comparison">
+                                <field name="comparison_line_ids" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="sequence" invisible="1"/>
+                                        <field name="name" required="1"/>
+                                        <field name="date_from"/>
+                                        <field name="date_to"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="view_account_analytic_account_form_inherit_inherit" model="ir.ui.view">
+            <field name="name">account.analytic.account</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="analytic_account.view_account_analytic_account_form_inherit"/>
+            <field name="arch" type="xml">
+                <field name="currency_id" position="after">
+                    <field name="is_profit_center"/>
+                    <field name="is_project"/>
+                </field>
+            </field>
+        </record>
+
+        <!--Budget-->
+        <record id="view_budget_post_form_inherit" model="ir.ui.view">
+            <field name="name">account.budget.post</field>
+            <field name="model">account.budget.post</field>
+            <field name="inherit_id" ref="account_budget.view_budget_post_form"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="type" widget="radio"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</odoo>

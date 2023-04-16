@@ -1,0 +1,394 @@
+<odoo>
+    <data>
+        <report
+            id="report_air_ticket_request"
+            model="air.ticket.request"
+            string="Travel Order"
+            name="saudi_hr_printout.report_air_ticket_request_temp"
+            file="report_return_from_leave"
+            report_type="qweb-pdf"
+            paperformat="paperformat_leave_request"
+                />
+
+        <template id="report_air_ticket_request_temp">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="saudi_hr_printout.reconciliation_layout">
+                        <div class="page">
+                            <style>
+                                .table{
+                                    font-family:FreeSerif;
+                                    font-size:14px;
+                                    font-weight:bold;
+                                }
+                                .table_cell{
+                                    border:.5px solid black !important;
+                                    text-align: center;
+                                }
+                                .gray{
+                                    background-color: #bdd6ee;
+                                }
+                                .rtl{
+                                    direction:rtl;
+                                }
+                                .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+                                    padding: 2px;
+                                }
+                            </style>
+
+                            <h4 t-if="o.state !='approved'" class=" text-center">
+                                Not approved Travel Order
+                            </h4>
+
+                            <table class="table " style="margin-bottom:0;">
+                                <tbody >
+                                    <tr>
+                                        <td colspan="6" class="table_cell gray" style="font-weight:blod;">
+                                            Travel Order
+                                            طلب سفر
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell gray" >
+                                            Employee Name
+                                        </td>
+                                        <td class="table_cell" colspan="2">
+                                            <span t-field="o.employee_id.employee_english_name"/>
+                                        </td>
+                                        <td class="table_cell" colspan="2">
+                                            <span t-field="o.employee_id.name"/>
+                                        </td>
+                                        <td class="table_cell rtl gray">
+                                            اسم الموظف
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell gray" >
+                                            Department
+                                        </td>
+                                        <td class="table_cell" >
+                                            <span t-field="o.employee_id.department_id.name"/>
+                                        </td>
+                                        <td class="table_cell  rtl gray">
+                                            الادارة
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            Position
+                                        </td>
+                                        <td class="table_cell" >
+                                            <span t-field="o.employee_id.job_id.name"/>
+                                        </td>
+                                        <td class="table_cell  rtl gray">
+                                            الوظيفة
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell gray" >
+                                            Branch
+                                        </td>
+                                        <td class="table_cell" >
+                                            <span t-field="o.employee_id.branch_id.name"/>
+                                        </td>
+                                        <td class="table_cell  rtl gray">
+                                            الفرع
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            EMP No
+                                        </td>
+                                        <td class="table_cell" >
+                                            <span t-field="o.employee_id.employee_number"/>
+                                        </td>
+                                        <td class="table_cell  rtl gray">
+                                            رقم الموظف
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell gray" >
+                                            Reason
+                                        </td>
+                                        <td class="table_cell" >
+                                            <span t-field="o.request_reason"/>
+                                        </td>
+                                        <td class="table_cell  rtl gray">
+                                            الغرض من الطلب
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            Req Date
+                                        </td>
+                                        <td class="table_cell" >
+                                            <span t-field="o.create_date" t-field-options='{"format": "d/M/y"}'/>
+                                        </td>
+                                        <td class="table_cell  rtl gray">
+                                            تاريخ الطلب
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell gray" colspan="6">
+                                            ملاحظة : يجب أرفاق صورة جواز السفر، وفي حالة عدم إرفقها، لا تتحمل ادارة الموارد البشرية المسئـولية الناتجة عـن ذلك.
+                                            <br/>
+                                            NOTE: Passport copy must be attached, otherwise the HR Dept. will not be liable for any related
+                                            consequences.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table " style="margin-bottom:0;">
+                                <tbody >
+                                    <tr>
+                                        <td class="table_cell gray" colspan="3" rowspan="2" style="width:30%;">
+                                            Return Date
+                                            تاريخ العودة
+                                        </td>
+                                        <td class="table_cell gray" colspan="3" style="width:40%;">
+                                            Ticket Route
+                                            مسار الرحلة
+                                        </td>
+                                        <td class="table_cell gray"  rowspan="2" style="width:30%;">
+                                            اسم الموظف حسب جواز السفر
+                                            <br/>
+                                            Employee Name based on passport
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell gray" style="width:14%;">
+                                            موعد السفر
+                                            Travel Date
+                                        </td>
+                                        <td class="table_cell gray" style="width:13%;">
+                                            To
+                                            إلى
+                                        </td>
+                                        <td class="table_cell gray" style="width:13%;">
+                                            From
+                                            من
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell" colspan="3">
+                                            <t t-foreach="o.air_ticket_details" t-as="line">
+                                                <t t-if="line.relation == 'Employee' and line.check_box">
+                                                    <span t-field="line.return_date" />
+                                                </t>
+                                            </t>
+                                        </td>
+                                        <td class="table_cell" >
+                                            <t t-foreach="o.air_ticket_details" t-as="line">
+                                                <t t-if="line.relation == 'Employee' and line.check_box">
+                                                    <span t-field="line.departure_date" />
+                                                </t>
+                                            </t>
+                                        </td>
+                                        <td class="table_cell" >
+                                            <t t-foreach="o.air_ticket_details" t-as="line">
+                                                <t t-if="line.relation == 'Employee' and line.check_box">
+                                                    <span t-field="line.return_airport" />
+                                                </t>
+                                            </t>
+                                        </td>
+                                        <td class="table_cell" >
+                                            <t t-foreach="o.air_ticket_details" t-as="line">
+                                                <t t-if="line.relation == 'Employee' and line.check_box">
+                                                    <span t-field="line.departure_airport" />
+                                                </t>
+                                            </t>
+                                        </td>
+                                        <td class="table_cell" >
+                                            <t t-foreach="o.air_ticket_details" t-as="line">
+                                                <t t-if="line.relation == 'Employee' and line.check_box">
+                                                    <span t-field="line.name_in_passport" />
+                                                </t>
+                                            </t>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell gray" colspan="7">
+                                            Dependents Name
+                                            اسماء المرافقين
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell gray" rowspan="2" >
+                                            Return Date
+                                            تاريخ العودة
+                                        </td>
+                                        <td class="table_cell gray" rowspan="2" >
+                                            Age
+                                            العمر
+                                        </td>
+                                        <td class="table_cell gray"  rowspan="2" >
+                                            Date Of Birth
+                                            تاريخ الميلاد
+                                        </td>
+                                        <td class="table_cell gray"  colspan="3" >
+                                            Ticket Route
+                                            مسار الرحلة
+                                        </td>
+                                        <td class="table_cell gray"  rowspan="2" >
+                                            الاسم حسب جواز السفر
+                                            <br/>
+                                            Name - Based On Passport
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell gray" >
+                                            موعد السفر
+                                            Travel Date
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            To
+                                            إلى
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            From
+                                            من
+                                        </td>
+                                    </tr>
+                                    <t t-set="i" t-value="0"/>
+                                    <tr t-foreach="o.air_ticket_details" t-as="line">
+                                        <t t-if="line.relation != 'Employee' and line.check_box">
+                                            <td class="table_cell" >
+                                                <span t-field="line.return_date" />
+                                            </td>
+                                            <td class="table_cell" >
+                                                <span t-field="line.current_age" />
+                                            </td>
+                                            <td class="table_cell" >
+                                                <span t-field="line.date_of_birth" />
+                                            </td>
+                                            <td class="table_cell" >
+                                                <span t-field="line.departure_date" />
+                                            </td>
+                                            <td class="table_cell" >
+                                                <span t-field="line.return_airport" />
+                                            </td>
+                                            <td class="table_cell" >
+                                                <span t-field="line.departure_airport" />
+                                            </td>
+                                            <td class="table_cell" >
+                                                <span t-field="line.name_in_passport" />
+                                            </td>
+                                            <t t-set="i" t-value="i+1"/>
+                                        </t>
+                                    </tr>
+                                    <tr t-foreach="range(0,6-i)" t-as="l">
+                                        <td class="table_cell" >
+                                            <br/>
+                                        </td>
+                                        <td class="table_cell" >
+                                            <br/>
+                                        </td>
+                                        <td class="table_cell" >
+                                            <br/>
+                                        </td>
+                                        <td class="table_cell" >
+                                            <br/>
+                                        </td>
+                                        <td class="table_cell" >
+                                            <br/>
+                                        </td>
+                                        <td class="table_cell" >
+                                            <br/>
+                                        </td>
+                                        <td class="table_cell" >
+                                            <br/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table " style="margin-bottom:0;">
+                                <tbody >
+                                    <tr>
+                                        <td class="table_cell gray" colspan="2" >
+                                            For HR Department Use
+                                        </td>
+                                        <td class="table_cell gray" colspan="2">
+                                            لإستخدام الموارد البشرية
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table " >
+                                <tbody >
+                                    <tr>
+                                        <td class="table_cell gray" colspan="3" >
+                                            HR Specialist
+                                            أخصائى الموارد البشرية
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell gray" >
+                                            Date
+                                            التاريخ
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            Signature
+                                            التوقيع
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            Name
+                                            الاسم
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell " >
+                                           <span t-esc="o.reviewed_on" />
+                                        </td>
+                                        <td class="table_cell " >
+                                            <br/>
+                                        </td>
+                                        <td class="table_cell" >
+                                            <t t-if="o.reviewed_by and o.reviewed_by.employee_ids" >
+                                                <span t-esc="o.reviewed_by.employee_ids[0].employee_english_name" />  /
+                                                <span t-esc="o.reviewed_by.employee_ids[0].name" />
+                                            </t>
+                                        </td>
+                                    </tr>
+
+                                     <tr>
+                                        <td class="table_cell gray" colspan="3" >
+                                            <span style="width:40%">HR Manager Approvals</span>
+                                            <span style="width:40%">
+                                                موافقة مدير الموارد البشرية
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell gray" >
+                                            Date
+                                            التاريخ
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            Signature
+                                            التوقيع
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            Name
+                                            الاسم
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell " >
+                                            <span t-esc="o.confirmed_on" />
+                                        </td>
+                                        <td class="table_cell " >
+                                            <br/>
+                                        </td>
+                                        <td class="table_cell" >
+                                            <t t-if="o.confirmed_by and o.confirmed_by.employee_ids" >
+                                                <span t-esc="o.confirmed_by.employee_ids[0].employee_english_name" />  /
+                                                <span t-esc="o.confirmed_by.employee_ids[0].name" />
+                                            </t>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

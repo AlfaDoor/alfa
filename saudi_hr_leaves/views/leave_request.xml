@@ -1,0 +1,520 @@
+<odoo>
+    <data>
+        <record id="leave_request_form" model="ir.ui.view">
+            <field name="name">leave request form</field>
+            <field name="model">hr.leave</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <form string="Leave Request">
+                    <field name="can_reset" invisible="1"/>
+                    <header>
+                        <button string="Manager Approve" name="action_confirm" states="draft" type="object"
+                                class="oe_highlight"
+                                groups="saudi_hr_employee.group_hr_direct_manager,saudi_hr_employee.group_hr_department_manager,saudi_hr_employee.group_leave_bypass_direct_manager"/>
+                        <button string="Dep Manager Approve" name="action_approve" states="confirm" type="object"
+                                groups="saudi_hr_employee.group_hr_department_manager,saudi_hr_employee.group_leave_bypass_department_manager"
+                                class="oe_highlight"
+                                confirm="Are you sure that you want to final approval this leave allocation?"/>
+                        <button string="Hr Approve" name="action_validate" states="validate1" type="object"
+                                groups="hr.group_hr_manager,saudi_hr_employee.group_leave_hr_approval,saudi_hr_employee.group_leave_hr_approval_for_managers"
+                                class="oe_highlight"/>
+                        <button string="Refuse" name="action_refuse" states="draft,confirm,validate,validate1"
+                                type="object" groups="saudi_hr_employee.group_leave_refuse"
+                                confirm=" Are you sure that this leave allocation was approved by mistake and you want to refuse it? If you accept, the employee leave balance may become negative!! "/>
+                        <button string="Reset to Draft" name="action_draft" type="object"
+                                groups="hr.group_hr_manager,saudi_hr_employee.group_leave_set_draft"
+                                attrs="{'invisible': ['|', ('can_reset', '=', False), ('state', 'not in', ['confirm', 'refuse','validate1'])]}"/>
+
+                        <button string="Re-compute Leave Balance" name="recompute_balance" type="object"/>
+                        <button string="Re-Calculate Number of days" name="onchange_period_custom" type="object"
+                                groups="base.group_no_one"/>
+
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="draft,confirm,validate1,validate,refuse"
+                               statusbar_colors="{&quot;confirm&quot;:&quot;blue&quot;,&quot;validate1&quot;:&quot;blue&quot;,&quot;refuse&quot;:&quot;red&quot;}"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group groups="saudi_hr_employee.group_leave_extend"
+                                   attrs="{'invisible':[('button_extend_invisible','=',True)]}">
+                                <button string="Leave Extend request" name="action_extend_request" type="object"
+                                        class="oe_highlight"
+                                        context="{'employee_id': employee_id,'date_to': date_to,'active_id': id,'popup': True}"/>
+                            </group>
+                            <group attrs="{'invisible':['|','|','|',('holiday_status_type', '!=', 'Annual Leave') ,('state', '!=', 'validate'),('leave_fully_reconciled','=','True'),('reconciliation_method','!=','Stop payslip during leave and use leave reconciliation')]}">
+                                <button string="Reconcile This Leave" name="action_reconcile" type="object"
+                                        class="oe_highlight"
+                                        context="{'employee_id': employee_id,'active_id': id,'popup': True}"/>
+                            </group>
+                            <group>
+                                <button string="Alternative employee approval" name="alternative_approve" type="object"
+                                        class="oe_highlight" groups="base.group_user"
+                                        attrs="{'invisible':['|','|',('show_alternative_employee', '=', False),('state', 'in', ['validate','refuse']),('alternative_approval','=',True) ]}"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="name"
+                                       attrs="{'readonly':['|',('state','!=','draft'),('alternative_approval','=',True)]}"/>
+                                <field name="employee_id" options="{'no_create': True}"
+                                       on_change="onchange_employee(employee_id)" required="1"
+                                       readonly="context.get('popup', False)"
+                                       attrs="{'readonly':['|',('state','!=','draft'),('alternative_approval','=',True)]}"/>
+                                <field name="contract_id"/>
+                                <field name="branch_id" groups="hr.group_hr_user"/>
+                                <field name="department_id" groups="hr.group_hr_user"/>
+                                <field name="job_id" groups="hr.group_hr_user"/>
+                                <field name="gender" groups="hr.group_hr_user"/>
+                                <field name="country_id" groups="hr.group_hr_user"/>
+                                <field name="nationality_type" groups="hr.group_hr_user"/>
+                                <field name="iqama_id" readonly="1" groups="base.group_no_one"/>
+                                <field name="iqama_expiry_date" readonly="1" groups="base.group_no_one"/>
+                                <field name="passport_no" readonly="1" groups="base.group_no_one"/>
+                                <field name="passport_expiry_date" readonly="1" groups="base.group_no_one"/>
+                                <field name="request_reason" required="1"
+                                       attrs="{'readonly':['|',('state','!=','draft'),('alternative_approval','=',True)]}"/>
+                                <field name="annual_leave_policy" readonly="1"
+                                       attrs="{'invisible':[('request_reason','!=','annual')]}"/>
+                                <field name="holiday_status_id" options="{'no_create': True}"
+                                       context="{'employee_id':employee_id}"
+                                       domain="[['state','=','Approved']]"
+                                       attrs="{'readonly':['|','|',('state','!=','draft'),('alternative_approval','=',True),['request_reason','=','annual']]}"/>
+                                <field name="holiday_status_type" invisible="1"/>
+                                <field name="button_extend_invisible" invisible="1"/>
+                                <field name="approved_by" invisible="1"/>
+                                <field name="system_created" invisible="1"/>
+                            </group>
+                            <group>
+                                <label for="date_to" string="Duration"/>
+                                <div>
+                                    <div class="o_row">
+                                        <field name="date_from" required="1" class="oe_inline"
+                                               readonly="context.get('popup', False)" widget="date"
+                                               attrs="{'readonly':['|',('state','!=','draft'),('alternative_approval','=',True)]}"/>
+                                        -
+                                        <field name="date_to" required="1" class="oe_inline" widget="date"
+                                               attrs="{'readonly':['|',('state','!=','draft'),('alternative_approval','=',True)]}"/>
+                                    </div>
+                                    <div class="o_row">
+                                        <field name="date_from_day" class="oe_inline"/>
+                                        <field name="date_to_day" class="oe_inline"/>
+                                    </div>
+                                </div>
+                                <label for="number_of_days" string="Number of days requested"/>
+                                <div>
+                                    <field name="number_of_days" readonly="1" string="Number of days requested"
+                                           class="oe_inline"/>
+                                    <!--<span>&#160; &#160; / &#160; &#160;</span>-->
+                                    <!--<field name="days_label" class="oe_inline"/>-->
+                                </div>
+
+                                <field name="current_balance" attrs="{'invisible':[['request_reason','!=','annual']]}"/>
+                                <field name="remaining_balance"
+                                       attrs="{'invisible':[('request_reason','!=','annual')]}"/>
+                                <label for="last_working_day"/>
+                                <div>
+                                    <field name="last_working_day" readonly="1" class="oe_inline"/>
+                                    ==
+                                    <field name="last_working_week_day" readonly="1" class="oe_inline"/>
+                                </div>
+                                <label for="expected_working_day"/>
+                                <div>
+                                    <field name="expected_working_day" readonly="1" class="oe_inline"/>
+                                    ==
+                                    <field name="expected_working_week_day" readonly="1" class="oe_inline"/>
+                                </div>
+                                <field name="reconciliation_method" required="1"
+                                       attrs="{'readonly': [('reconciliation_method_readonly', '=', True)]}"
+                                       string="Request Salary In Advance"/>
+                                <field name="reconciliation_method_readonly" invisible="1"/>
+                                <field name="return_from_leave" readonly="1"/>
+                                <field name="return_from_leave_date" readonly="1"/>
+                                <field name="allow_minus_value" groups="hr.group_hr_user" invisible="1"
+                                       attrs="{'readonly':[('state', '=', 'validate')]}"/>
+                                <field name="leave_address_required" invisible="1"/>
+                                <field name="leave_address"
+                                       attrs="{'required':[('leave_address_required','=',True)],'readonly':['|',('state','!=','draft'),('alternative_approval','=',True)]}"/>
+                                <field name="leave_phone"
+                                       attrs="{'required':[('leave_address_required','=',True)],'readonly':['|',('state','!=','draft'),('alternative_approval','=',True)]}"/>
+                                <!--<field name="bypass_past_days" groups="hr.group_hr_manager"  attrs="{'readonly':[('state','in',['validate','refuse'])]}"/>-->
+                                <!--<field name="bypass_future_days" groups="hr.group_hr_manager"  attrs="{'readonly':[('state','in',['validate','refuse'])]}"/>-->
+                            </group>
+                            <group string="Alternative Employee">
+                                <field name="alternative_employee_id" options="{'no_create': True}"
+                                       domain="[('department_id','=',department_id), ('id', '!=', employee_id)]"
+                                       attrs="{'invisible':[('alternative_employee','=',False)] ,
+                                       'required':[('is_alternative_employee','=',True),('accept_without_alternative','=',False)] ,
+                                       'readonly':[('accept_without_alternative','=',True)]}"/>
+                                <field name="alternative_approval" groups="base.group_no_one" readonly="1"
+                                       attrs="{'invisible':[('alternative_approval_','=',False)] }"/>
+                                <field name="accept_without_alternative"
+                                       attrs="{'invisible':[('show_alternative_employee','=',False)]}"
+                                       groups="hr.group_hr_user"/>
+                                <field name="skip_basic_return" groups="hr.group_hr_user"/>
+                                <field name="show_alternative_employee" invisible="1"/>
+                                <field name="alternative_employee" invisible="1"/>
+                                <field name="is_alternative_employee" invisible="1"/>
+                                <field name="alternative_approval_" invisible="1"/>
+                                <field name="alternative_employee_days" invisible="1"/>
+                            </group>
+                            <group string="Additional information">
+                                <field name="linked_leave_reconciliation_id" readonly="1" groups="hr.group_hr_user"/>
+                                <field name="early_return_from_leave" readonly="1" groups="hr.group_hr_user"/>
+                                <field name="late_return_from_leave" readonly="1" groups="hr.group_hr_user"/>
+                                <field name="by_eos" readonly="1" groups="hr.group_hr_user"/>
+                            </group>
+                        </group>
+                        <notebook colspan="4">
+                            <page string="Leave history">
+                                <group string="Leave history">
+                                    <field name="holiday_history_ids" nolabel="1"
+                                           context="{'tree_view_ref':'saudi_hr_leaves.view_holiday'}" readonly="1"/>
+                                </group>
+                            </page>
+                            <page string="Visa Information">
+                                <group>
+                                    <field name="visa_no"/>
+                                    <field name="visa_issue_date"/>
+                                    <field name="visa_expiry_date"/>
+                                </group>
+                            </page>
+                            <page string="leave Settings" groups="hr.group_hr_user">
+                                <group>
+                                    <group>
+                                        <field name="holiday_type" on_change="onchange_type(holiday_type)"
+                                               attrs="{'readonly':[('state','!=','draft')]}"
+                                               string="Mode" groups="hr.group_hr_user"
+                                               context="{'employee_id':employee_id}"/>
+                                        <field name="category_id"
+                                               attrs="{'required':[('holiday_type','=','category')], 'readonly': [('state','!=','draft'), ('state','!=','confirm')], 'invisible':[('holiday_type','=','employee')]}"/>
+                                        <field name="leave_extended" readonly="1"/>
+                                        <field name="leave_request_extend_id" readonly="1"/>
+                                        <field name="original_leave_request_id" readonly="1"/>
+                                    </group>
+                                    <group>
+                                        <!--<field name="department_id" groups="hr.group_hr_user" attrs="{'invisible':[('holiday_type','=','category')]}"-->
+                                        <!--readonly="1"-->
+                                        <!--options="{'no_create': True}"/>-->
+                                        <field name="payslip_status" groups="base.group_no_one" widget="toggle_button"/>
+                                    </group>
+                                    <group string="Leave Reconciliation Details"
+                                           attrs="{'invisible':['|','|',['request_reason','!=','annual'],['holiday_status_type','!=','Annual Leave'],['leave_reconciliation_amount','=',0]]}">
+                                        <field name="reconciliation_based_on"/>
+                                        <!--<field name="reconciliation_method" invisible="1"/>-->
+                                    </group>
+                                </group>
+                                <group attrs="{'invisible':['|','|',['request_reason','!=','annual'],['holiday_status_type','!=','Annual Leave'],['leave_reconciliation_amount','=',0]]}">
+                                    <group string="After Trial Period">
+                                        <field name="basic_salary" string="Basic Salary" readonly="1"/>
+                                        <label for="house_allowance_type"/>
+                                        <div>
+                                            <field name="house_allowance_type" class="oe_inline" readonly="1"/>
+                                            -
+                                            <field name="house_allowance" class="oe_inline" readonly="1"/>
+                                            -
+                                            <field name="house_allowance_amount" class="oe_inline" readonly="1"/>
+                                        </div>
+                                        <label for="transportation_allowance_type"/>
+                                        <div>
+                                            <field name="transportation_allowance_type" class="oe_inline" readonly="1"/>
+                                            -
+                                            <field name="transportation_allowance" class="oe_inline" readonly="1"/>
+                                            -
+                                            <field name="transportation_allowance_amount" class="oe_inline"
+                                                   readonly="1"/>
+                                        </div>
+                                        <label for="phone_allowance_type"/>
+                                        <div>
+                                            <field name="phone_allowance_type" class="oe_inline" readonly="1"/>
+                                            -
+                                            <field name="phone_allowance" class="oe_inline" readonly="1"/>
+                                            -
+                                            <field name="phone_allowance_amount" class="oe_inline" readonly="1"/>
+                                        </div>
+                                        <field name="insurance" readonly="1"/>
+                                        <field name="commission" readonly="1"/>
+                                        <field name="other_allowance" readonly="1"/>
+                                        <field name="other_allowance_name" readonly="1"/>
+                                        <field name="total_salary" readonly="1"/>
+                                    </group>
+                                    <group>
+                                        <field name="leave_reconciliation_amount"/>
+                                        <field name="paid_amount" readonly="1"/>
+                                        <field name="remaining_amount" readonly="1"/>
+                                        <field name="leave_fully_reconciled" readonly="1"/>
+                                    </group>
+                                    <group string="Paid Amounts" colspan="2">
+                                        <field name="reconciliation_paid_line_ids" readonly="1" nolabel="1">
+                                            <tree>
+                                                <field name="date"/>
+                                                <field name="amount"/>
+                                                <field name="reconciliation_id"/>
+                                                <field name="eos"/>
+                                                <field name="note"/>
+                                            </tree>
+                                        </field>
+                                    </group>
+                                </group>
+                                <group string="Leave To reconcile" groups="base.group_no_one">
+                                    <field name="leave_days_ids" nolabel="1">
+                                        <tree>
+                                            <field name="employee_id"/>
+                                            <field name="holidays_status_id"/>
+                                            <field name="month"/>
+                                            <field name="year"/>
+                                            <field name="days"/>
+                                            <field name="state"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Attachment">
+                                <group name="Attachment">
+                                    <field name="attachment_ids" nolabel="1"
+                                           attrs="{'readonly':['|',('state','!=','draft'),('alternative_approval','=',True)]}">
+                                        <tree editable="bottom">
+                                            <field name="file" required="1" filename="file_name"/>
+                                            <field name="name" required="1"/>
+                                            <field name="file_name" invisible="1"/>
+                                            <field name="note"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Notes">
+                                <group string="Notes">
+                                    <field name="note" nolabel="1"
+                                           attrs="{'readonly':['|',('state','!=','draft'),('alternative_approval','=',True)]}"/>
+                                </group>
+                                <div groups="saudi_hr_employee.group_hr_direct_manager">
+                                    <separator string="Comment by Manager"/>
+                                    <field name="report_note" placeholder="e.g. Report to the next month..."
+                                           attrs="{'readonly':['|',('state','!=','draft'),('alternative_approval','=',True)]}"/>
+                                </div>
+                            </page>
+                            <page string="Approvals">
+                                <group>
+                                    <field name="create_uid" readonly="1"/>
+                                    <field name="create_date" readonly="1"/>
+                                    <field name="direct_approved_by" readonly="1"/>
+                                    <field name="direct_approved_date" readonly="1"/>
+                                    <field name="department_approved_by" readonly="1"/>
+                                    <field name="department_approved_date" readonly="1"/>
+                                    <field name="hr_approved_by" readonly="1"/>
+                                    <field name="hr_approved_date" readonly="1"/>
+                                    <field name="refused_by" readonly="1"/>
+                                    <field name="refused_date" readonly="1"/>
+                                </group>
+
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_holiday">
+            <field name="name">hr.leave.tree</field>
+            <field name="model">hr.leave</field>
+            <field name="arch" type="xml">
+                <tree decoration-danger="state == 'refuse'" decoration-info="state == ' draft'" string="Leave Requests"
+                      decoration-bf="message_needaction == True">
+                    <field name="employee_id"/>
+                    <field name="holiday_type" string="Mode" groups="base.group_no_one"/>
+                    <field name="name"/>
+                    <field name="holiday_status_id"/>
+                    <field name="date_from" widget="date"/>
+                    <field name="date_to" widget="date"/>
+                    <field name="number_of_days" string="Number of Days" sum="Remaining Days"/>
+
+                    <field name="payslip_status" invisible="1"/>
+                    <field name="leave_reconciliation_amount"/>
+                    <field name="paid_amount"/>
+                    <field name="remaining_amount"/>
+                    <field name="leave_fully_reconciled"/>
+                    <field name="return_from_leave_date"/>
+                    <field name="state"/>
+                    <!--<button name="toggle_payslip_status" field_name="payslip_status" type="object"-->
+                    <!--widget="toggle_button" options='{"active": "Reported in last payslips", "inactive": "To Report in Payslip"}' groups="hr.group_hr_manager"/>-->
+                    <field name="category_id" invisible="1"/>
+                    <field name="department_id" invisible="not context.get('set_visible',False)"/>
+                    <field name="manager_id" invisible="1"/>
+                    <field name="user_id" invisible="1"/>
+                    <field name="message_needaction" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="view_hr_holidays_filter" model="ir.ui.view">
+            <field name="name">hr.leave.filter leave request</field>
+            <field name="model">hr.leave</field>
+            <field name="arch" type="xml">
+                <search string="Search Leave">
+                    <field name="name"/>
+
+                    <filter domain="[('request_reason','=','annual')]" string="Annual Leave" name="annual"/>
+                    <filter domain="[('request_reason','=','non-annual')]" string="Non Annual Leave" name="non_annual"/>
+                    <filter domain="[('nationality_type','=','Native')]" string="Native Leaves" name="native"/>
+                    <filter domain="[('nationality_type','=','Non-native')]" string="Non-Native Leaves"
+                            name="non_native"/>
+
+                    <filter domain="[('state','in',('confirm','validate1'))]" string="To Approve" name="approve"/>
+                    <filter string="Approved Leaves" domain="[('state', '=', 'validate')]" name="validated"/>
+                    <separator/>
+                    <filter name="active_types" string="Active Types" domain="[('holiday_status_id.active', '=', True)]"
+                            help="Filters only on allocations and requests that belong to an holiday type that is 'active' (active field is True)"/>
+                    <separator/>
+                    <filter string="Unread Messages" name="message_needaction"
+                            domain="[('message_needaction','=',True)]"/>
+                    <separator/>
+                    <filter string="My Department Leaves" name="department"
+                            domain="[('department_id.manager_id.user_id', '=', uid)]" help="My Department Leaves"/>
+                    <filter string="My Team Leaves" name="team_leaves"
+                            domain="[('employee_id.parent_id.user_id', '=', uid)]" groups="hr.group_hr_manager"
+                            help="Leaves of Your Team Member"/>
+                    <separator/>
+                    <filter string="To Report in Payslip" name="gray" domain="[('payslip_status', '=', False)]"
+                            groups="hr.group_hr_manager"/>
+                    <separator/>
+                    <filter string="To Do" name="todo"
+                            domain="[('payslip_status', '=', False), ('holiday_status_id.active', '=', True)]"/>
+                    <separator/>
+                    <filter name="year" string="Current" domain="[('holiday_status_id.active', '=', True)]"
+                            help="Active Leaves and Allocations"/>
+                    <separator/>
+                    <filter string="My Requests" name="my_leaves" domain="[('user_id', '=', uid)]"/>
+                    <separator/>
+                    <field name="employee_id"/>
+                    <field name="department_id"/>
+                    <field name="holiday_status_id"/>
+                    <group expand="0" string="Group By">
+                        <filter name="group_name" string="Description" context="{'group_by':'name'}"/>
+                        <filter name="group_employee" string="Employee" context="{'group_by':'employee_id'}"/>
+                        <filter name="group_category" string="Category" context="{'group_by':'category_id'}"/>
+                        <filter name="manager" string="Manager" context="{'group_by':'manager_id'}"/>
+                        <filter name="group_type" string="Type" context="{'group_by':'holiday_status_id'}"/>
+                        <separator/>
+                        <filter name="group_date_from" string="Start Month" context="{'group_by':'date_from'}"/>
+                        <filter string="status" name="group_state" context="{'group_by':'state'}"/>
+                        <filter string="Branch" name="branch_id" context="{'group_by':'branch_id'}"/>
+                        <filter string="Department" name="department_id" context="{'group_by':'department_id'}"/>
+                        <filter string="Job position" name="job_id" context="{'group_by':'job_id'}"/>
+                        <filter string="Nationality" name="country_id" context="{'group_by':'country_id'}"/>
+                        <filter string="Nationality type" name="group_gender"
+                                context="{'group_by':'nationality_type'}"/>
+                        <filter name="group_gender" string="Gender" context="{'group_by':'gender'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="leave_pivot" model="ir.ui.view">
+            <field name="name">Leaves Request pivot</field>
+            <field name="model">hr.leave</field>
+            <field name="arch" type="xml">
+                <pivot string="leaves">
+                </pivot>
+            </field>
+        </record>
+
+        <record id="leave_graph" model="ir.ui.view">
+            <field name="name">Leaves Request graph</field>
+            <field name="model">hr.leave</field>
+            <field name="arch" type="xml">
+                <graph string="Appraisal Analysis" type="pivot" stacked="True">
+                    <field name="employee_id" type="row"/>
+                    <field name="holiday_status_id" type="row"/>
+                    <field name="date_from" type="col"/>
+                    <field name="number_of_days" string="Number Of Days (Positive)" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="hr_holidays.hr_leave_action_new_request">
+            <field name="name">Leaves Request</field>
+            <field name="res_model">hr.leave</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar,activity,pivot,graph</field>
+            <field name="view_id" ref="leave_request_form"/>
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('hr_holidays.hr_leave_view_tree_my')}),
+                (0, 0, {'view_mode': 'calendar', 'view_id': ref('hr_holidays.hr_leave_view_calendar')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('saudi_hr_leaves.leave_request_form')})]"/>
+            <field name="context">{'needaction_menu_ref': ['hr_holidays.menu_open_company_allocation'] }
+            </field>
+            <field name="domain">[]</field>
+            <field name="search_view_id" ref="view_hr_holidays_filter"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a new leave request.
+                </p>
+                <p>
+                    Once you have recorded your leave request, it will be sent
+                    to a manager for validation. Be sure to set the right leave
+                    type (recuperation, legal holidays, sickness) and the exact
+                    number of open days related to your leave.
+                </p>
+            </field>
+        </record>
+
+
+        <!--        <record model="ir.actions.act_window.view" id="action_open_ask_holidays_tree">-->
+        <!--            <field name="sequence" eval="1"/>-->
+        <!--            <field name="view_mode">tree</field>-->
+        <!--            <field name="view_id" ref="saudi_hr_leaves.view_holiday"/>-->
+        <!--            <field name="act_window_id" ref="hr_holidays.hr_leave_action_new_request"/>-->
+        <!--        </record>-->
+
+        <!--        <record model="ir.actions.act_window.view" id="action_open_ask_holidays_form">-->
+        <!--            <field name="sequence" eval="2"/>-->
+        <!--            <field name="view_mode">form</field>-->
+        <!--            <field name="view_id" ref="saudi_hr_leaves.leave_request_form"/>-->
+        <!--            <field name="act_window_id" ref="hr_holidays.hr_leave_action_new_request"/>-->
+        <!--        </record>-->
+
+        <!--        <record model="ir.actions.act_window.view" id="action_open_ask_holidays_calendar">-->
+        <!--            <field name="sequence" eval="3"/>-->
+        <!--            <field name="view_mode">calendar</field>-->
+        <!--            <field name="view_id" ref="hr_holidays.hr_leave_view_calendar"/>-->
+        <!--            <field name="act_window_id" ref="hr_holidays.hr_leave_action_new_request"/>-->
+        <!--        </record>-->
+
+        <!--        <record model="ir.actions.act_window.view" id="action_open_ask_holidays_graph">-->
+        <!--            <field name="sequence" eval="3"/>-->
+        <!--            <field name="view_mode">graph</field>-->
+        <!--            <field name="view_id" ref="saudi_hr_leaves.leave_graph"/>-->
+        <!--            <field name="act_window_id" ref="hr_holidays.hr_leave_action_new_request"/>-->
+        <!--        </record>-->
+
+
+        <record model="ir.actions.act_window" id="leaves_per_months_action">
+            <field name="name">Leaves per months</field>
+            <field name="res_model">leave.month.days</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+        <menuitem id="leaves_per_months_menu" name="Leaves Per Months" parent="hr_holidays.menu_hr_holidays_report"
+                  action="leaves_per_months_action" sequence="15" groups="base.group_erp_manager"/>
+
+        <record model="ir.ui.view" id="leaves_per_months_tree">
+            <field name="name">Leaves per months</field>
+            <field name="model">leave.month.days</field>
+            <field name="arch" type="xml">
+                <tree create="false" delete="false" edit="false">
+                    <field name="employee_id"/>
+                    <field name="holidays_status_id"/>
+                    <field name="month"/>
+                    <field name="year"/>
+                    <field name="days"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>

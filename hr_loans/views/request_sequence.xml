@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data >
+        <!-- Sequences for purchase.order --> 
+        <record id="seq_request_loan" model="ir.sequence">
+            <field name="name">Request Loan</field>
+            <field name="code">loan.advance.request</field>
+            <field name="prefix">LAR</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_deduction_violation_category" model="ir.sequence">
+            <field name="name">Deduction / Violation category</field>
+            <field name="code">deduction.violation.category</field>
+            <field name="prefix"></field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_deduction_violation_type" model="ir.sequence">
+            <field name="name">Deduction / Violation type</field>
+            <field name="code">deduction.violation.type</field>
+            <field name="prefix"></field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_employee_deductions_violations" model="ir.sequence">
+            <field name="name">Employee deductions - violations</field>
+            <field name="code">employee.deductions.violations</field>
+            <field name="prefix"/>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_hr_rewards" model="ir.sequence">
+            <field name="name">Rewards</field>
+            <field name="code">hr.reward.type</field>
+            <field name="prefix"/>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_hr_employee_rewards" model="ir.sequence">
+            <field name="name">employee Rewards</field>
+            <field name="code">hr.employee.rewards</field>
+            <field name="prefix"/>
+            <field name="padding">5</field>
+        </record>
+    </data>
+</odoo>

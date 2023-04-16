@@ -1,0 +1,4 @@
+fingerprint.device
+fingerprint.user
+fingerprint.status.config
+attendance.config

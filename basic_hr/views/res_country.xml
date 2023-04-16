@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--    Inherit Countries View   -->
+        <record model="ir.ui.view" id="view_country_form_base_inherit">
+            <field name="name">res.country.form inherit</field>
+            <field name="model">res.country</field>
+            <field name="inherit_id" ref="base.view_country_form"/>
+            <field name="priority" eval="10"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form" position="replace">
+                    <form>
+                        <sheet>
+                            <field name="image" widget="image" class="oe_avatar"/>;
+                            <group>
+                                <group>
+                                    <field name="arabic_name" required="1"/>
+                                    <field name="name" string="Country English Name"/>
+                                    <field name="currency_id" groups="hr.group_hr_user"/>
+                                    <field name="code"/>
+                                </group>
+                                <group>
+                                    <field name="phone_code"/>
+                                    <field name="vat_label"/>
+                                    <field name="is_saudi"/>
+                                </group>
+                            </group>
+                            <notebook colspan="4" groups="hr.group_hr_user">
+                                <page string="Cities">
+                                    <group string="Cities">
+                                        <field name="state_ids" nolabel="1">
+                                            <tree editable="bottom">
+                                                <field name="arabic_name"/>
+                                                <field name="name" string="State English Name"/>
+                                                <field name="code"/>
+                                                <field name="nearest_airport"/>
+                                                <field name="phone_code"/>
+                                                <field name="is_saudi"/>
+                                                <!--<field name="check_iqama_expiry" groups="hr.group_hr_user"/>-->
+                                                <!--<field name="check_passport_expiry" groups="hr.group_hr_user"/>-->
+                                            </tree>
+                                        </field>
+                                    </group>
+                                </page>
+                                <page string="Advanced Address Formatting">
+                                    <group string="Advanced Address Formatting" groups="base.group_no_one" col="4" colspan="4">
+                                        <field name="address_view_id"/>
+                                        <div colspan="2" class="text-muted">Choose a subview of partners that includes only address fields, to change the way users can input
+                                            addresses.
+                                        </div>
+                                        <field name="address_format" placeholder="Address format..."/>
+                                        <div colspan="2" name="div_address_format" class="text-muted">Change the way addresses are displayed in reports</div>
+                                        <field name="name_position"/>
+                                    </group>
+                                </page>
+                                <page string="Notes">
+                                    <group string="Notes">
+                                        <field name="note" nolabel="1"/>
+                                    </group>
+                                </page>
+                            </notebook>
+                        </sheet>
+                    </form>
+                </xpath>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_country_tree_inherit">
+            <field name="name">res.country.tree inherit</field>
+            <field name="model">res.country</field>
+            <field name="inherit_id" ref="base.view_country_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="replace">
+                    <tree>
+                        <field name="name"/>
+                        <field name="arabic_name"/>
+                    </tree>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+    <data>
+
+        <record id="view_res_country_custom" model="ir.ui.view">
+            <field name="name">view.res.country.custom</field>
+            <field name="model">res.country</field>
+            <field name="inherit_id" ref="base.view_country_form"/>
+            <field name="arch" type="xml">
+                <!--<field name="name" position="replace">-->
+                <!--</field>-->
+                <!--<xpath expr="//field[@name='state_ids']/tree/field[@name='name']" position="replace">-->
+                <!--</xpath>-->
+                <!--<xpath expr="//field[@name='state_ids']/tree" position="inside">-->
+                <!--</xpath>-->
+
+                <!--</field>-->
+                <field name="code" position="after">
+                </field>
+            </field>
+        </record>
+
+        <record id="view_res_country_state_custom" model="ir.ui.view">
+            <field name="name">view.res.country.state.custom</field>
+            <field name="model">res.country.state</field>
+            <field name="inherit_id" ref="base.view_country_state_form"/>
+            <field name="arch" type="xml">
+                <field name="country_id" position="after">
+                    <field name="is_saudi" readonly="1"/>
+                    <field name="nearest_airport" attrs="{'required': [('is_saudi', '!=', True)]}"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</odoo>

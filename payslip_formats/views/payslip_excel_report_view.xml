@@ -1,0 +1,88 @@
+<odoo>
+	<data>
+
+		<record id="view_payslip_bank_report_form" model="ir.ui.view">
+			<field name="name">Bank Payslip Report</field>
+			<field name="model">payslip.bank.report</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+						<button name="generate_xls_report" type="object" string="Generate Report"
+								class="oe_highlight" />
+					</header>
+					<sheet>
+						<group colspan="2" col="2">
+							<group>
+								<field name='month' string="Month" />
+								<label for="duration" string="Duration"/>
+								<div>
+									<field name="date_from" class="oe_inline" />
+									&#160;&#160;-&#160;&#160;
+									<field name="date_to" class="oe_inline"/>
+								</div>
+								<!--<field name='report_type' string="Report Type" />-->
+							</group>
+							<group>
+								<field name='year' string="Year" />
+								<field name='sponsor' string="Sponsor" required='1' widget="many2many_tags" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
+								<field name="name_r" colspan="4" invisible="1" />
+								<field name="report" filename="name_r" colspan="4" />
+							</group>
+						</group>
+						<group>
+							<button name="generate_report_lines" type="object" string="Generate Report Lines"
+									class="oe_highlight" />
+						</group>
+
+						<group>
+							<field name="payslip_report_line_id" nolabel="1">
+								<tree create="false" editable="false" delete="false">
+									<field name="sno" string="SN"/>
+									<field name="employee_iqama" string="Iqama #" />
+									<field name="employee_id" stirng="Emp Name" />
+									<field name="employee_account_no" string="Emp Acc #"/>
+									<field name="bank_code" string="Bank Code"/>
+									<field name="total_amount" string="Total Amount"/>
+									<field name="basic_sal" string="Basic Salary"/>
+									<field name="house_allowance" string="Housing All"/>
+									<field name="other_allowance" string="Other All"/>
+									<field name="deductions" string="Deductions"/>
+									<field name="address" string="Address" />
+									<field name="currency" string="Currency" />
+									<!--<field name="status" string="Status" />
+									<field name="payment_method" string="Payment Method" />
+									<field name="payment_reference" string="Payment Reference" />-->
+								</tree>
+							</field>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record id="view_payslip_bank_report_tree" model="ir.ui.view">
+			<field name="name">Bank Payslip Report</field>
+			<field name="model">payslip.bank.report</field>
+			<field name="arch" type="xml">
+				<tree string="Bank Template Report">
+					<field name='name' string="Report" />
+					<field name='date_from' string="Date From" />
+					<field name='date_to' string="Date To" />
+					<field name='month' string="Month" />
+					<field name='year' string="Year" />
+					<field name='report_type' string="Report Type" />
+				</tree>
+			</field>
+		</record>
+
+		<record id="action_payslip_bank_report" model="ir.actions.act_window">
+			<field name="name">Bank Template Report</field>
+			<field name="res_model">payslip.bank.report</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_id" ref="view_payslip_bank_report_tree" />
+		</record>
+
+		<menuitem id="menu_report_parent" name="Bank Report"  parent="hr_payroll.menu_hr_payroll_root" sequence="80" groups="hr_payroll.group_hr_payroll_manager"/>
+		<menuitem id="menu_bank_report" name="Bank Templates" action="action_payslip_bank_report" parent="payslip_formats.menu_report_parent" sequence="5" />
+	</data>
+</odoo>

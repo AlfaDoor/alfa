@@ -1,0 +1,54 @@
+<odoo>
+    <data>
+
+    <!--    Inherit View   -->
+    <record model="ir.ui.view" id="hr_attendance_view_form_inherit">
+        <field name="name">hr.attendance form inherit</field>
+        <field name="model">hr.attendance</field>
+        <field name="inherit_id" ref="hr_attendance.hr_attendance_view_form"/>
+        <field name="priority" eval="20"/>
+        <field name="arch" type="xml">
+            <field name="check_in" position="replace">
+                <field name="check_in" groups="base.group_no_one"/>
+            </field>
+            <field name="check_out" position="replace">
+                <field name="check_out" groups="base.group_no_one"/>
+                <field name="name"/>
+                <field name="action"/>
+                <field name="action_compute"/>
+                <field name="dayofweek"/>
+            </field>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_attendance_who_inherit">
+        <field name="name">hr.attendance tree inherit</field>
+        <field name="model">hr.attendance</field>
+        <field name="inherit_id" ref="hr_attendance.view_attendance_tree"/>
+        <field name="priority" eval="20"/>
+        <field name="arch" type="xml">
+            <field name="check_in" position="before">
+                <field name="name"/>
+                <field name="action"/>
+                <field name="action_compute"/>
+                <field name="dayofweek"/>
+            </field>
+            <field name="check_in" position="attributes">
+                <attribute name="groups">base.group_no_one</attribute>
+            </field>
+            <field name="check_out" position="attributes">
+                <attribute name="groups">base.group_no_one</attribute>
+            </field>
+        </field>
+    </record>
+    <!-- Check In / Check Out menu-->
+    <menuitem id="hr_attendance.menu_hr_attendance_my_attendances" name="Check In / Check Out"
+              parent="hr_attendance.menu_hr_attendance_manage_attendances" sequence="0"
+              groups="base.group_no_one"
+              action="hr_attendance.hr_attendance_action_my_attendances"/>
+    <!-- Reporting -->
+    <menuitem id="menu_hr_attendance_report_main" name="Reporting" parent="hr_attendance.menu_hr_attendance_root" sequence="60" groups="hr_attendance.group_hr_attendance_user" />
+    <menuitem id="hr_attendance.menu_hr_attendance_report" name="Reporting" parent="menu_hr_attendance_report_main"
+              sequence="30" groups="hr_attendance.group_hr_attendance_user" action="hr_attendance.hr_attendance_action_graph"/>
+
+    </data>
+</odoo>

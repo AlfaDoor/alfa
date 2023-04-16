@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<!--Report wizard-->
+		 <template id="payslip_report_template">
+			 <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div>
+					<h3 class="text-center">Payroll Report of the Employee who did't get salary between this dates</h3>
+                    </div>
+                    <br/>
+                    <div>
+                    <h3 class="text-center"><span t-esc="form.get('start_date')"/> to <span t-esc="form.get('end_date')"/></h3>
+					</div>
+					<br/>
+
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th class="text-center">
+                                    <strong>ID</strong>
+                                </th>
+                                <th class="text-center">
+                                    <strong>Name</strong>
+                                </th>
+                                 <th class="text-center">
+                                    <strong>Department</strong>
+                                </th>
+                                <th class="text-center">
+                                    <strong>Job Position</strong>
+                                </th> <th class="text-center">
+                                    <strong>Sponsor</strong>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="form.get('employee')" t-as="p">
+                                <td class="text-center">
+                                    <span t-esc="p.get('number')"/>
+                                </td>
+                                <td class="text-center">
+                                    <span t-esc="p.get('name')"/>
+                                </td>
+                                <td class="text-center">
+                                    <span t-esc="p.get('department')"/>
+                                </td>
+                                <td class="text-center">
+                                    <span t-esc="p.get('job')"/>
+                                </td>
+                                <td class="text-center">
+                                    <span t-esc="p.get('sponsor')"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </t>
+            </t>
+        </template>
+	</data>
+</odoo>

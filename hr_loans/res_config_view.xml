@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_hr_loans_configuration" model="ir.ui.view">
+            <field name="name">Configure Loans</field>
+            <field name="model">hr.loans.config.settings</field>
+            <field name="arch" type="xml">
+                <form string="Configure Loans" class="oe_form_configuration">
+                    <header>
+                        <button string="Apply" type="object" name="execute" class="oe_highlight"/>
+                        <button string="Cancel" type="object" name="cancel" class="oe_link"/>
+                    </header>
+                    <group string="Loans">
+                        <field name="integrate_with_finance" class="oe_inline"/>
+                        <field name="integrate_traffic_violation" class="oe_inline"/>
+                        <label for="loans_deduction_percentage" />
+                        <div>
+                            <field name="loans_deduction_percentage" class="oe_inline"/>  %
+                        </div>
+                        <label for="violations_deduction_percentage" />
+                        <div>
+                            <field name="violations_deduction_percentage" class="oe_inline"/>  %
+                        </div>
+                        <field name="previous_based_on" required="1"/>
+                        <field name="absence_based_on" required="1"/>
+                        <field name="default_reward_type_id" options="{'no_create':True}"  domain="[('state','=','confirmed')]" />
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_hr_loans_configuration" model="ir.actions.act_window">
+            <field name="name">Configure Loans</field>
+            <field name="res_model">hr.loans.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+            <field name="context">{ }</field>
+        </record>
+
+        <menuitem id="menu_hr_loans_global_settings" name="General Settings" groups="hr.group_hr_manager"
+            parent="menu_loans_general_root" sequence="0" action="action_hr_loans_configuration"/>
+    </data>
+</odoo>

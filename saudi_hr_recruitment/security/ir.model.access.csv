@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_applicant_employment,all applicant.employment,model_applicant_employment,,1,1,1,1
+access_hr_terms_conditions,all hr_terms_conditions,model_hr_terms_conditions,,1,1,1,1
+access_applicant_course,all applicant.course,model_applicant_course,,1,1,1,1

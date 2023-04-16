@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+	<report 
+		id="action_report_tax_invoice"
+		string="Saudi VAT Invoice Report"
+		model="account.invoice"
+		report_type="qweb-pdf"
+		file="e_tax_invoice_saudi_aio.report_tax_invoice"
+		name="e_tax_invoice_saudi_aio.report_tax_invoice"
+		print_report_name="'VAT Invoice -%s' %(object.partner_id.name)"/>
+
+        <record id="paperformat_action_report_tax_invoice" model="report.paperformat">
+            <field name="name">Saudi VAT Invoice Report</field>
+			<field name="default" eval="True" />
+			<field name="format">custom</field>
+			<field name="page_height">0</field>
+			<field name="page_width">0</field>
+			<field name="orientation">Portrait</field>
+			<field name="margin_top">45</field>
+			<field name="margin_bottom">15</field>
+			<field name="margin_left">10</field>
+			<field name="margin_right">10</field>
+			<field name="header_line" eval="False" />
+			<field name="header_spacing">40</field>
+			<field name="dpi">90</field>
+            <field name="report_ids" eval="[(6,0,[ref('e_tax_invoice_saudi_aio.action_report_tax_invoice')])]"/>
+        </record>
+
+	<report 
+		id="action_report_simplified_tax_invoice"
+		string="Simplified VAT Invoice Report"
+		model="account.invoice"
+		report_type="qweb-pdf"
+		file="e_tax_invoice_saudi_aio.report_simplified_tax_invoice"
+		name="e_tax_invoice_saudi_aio.report_simplified_tax_invoice"
+		print_report_name="'Simplified Tax Invoice -%s' %(object.partner_id.name)"/>
+
+        <record id="paperformat_simplified_tax_invoice" model="report.paperformat">
+	       <field name="name">Simplified VAT Invoice Report</field>
+	       <field name="default" eval="True" />
+	       <field name="format">custom</field>
+	       <field name="page_height">0</field>
+		<field name="page_width">0</field>
+		<field name="orientation">Portrait</field>
+		<field name="margin_top">45</field>
+		<field name="margin_bottom">15</field>
+		<field name="margin_left">10</field>
+		<field name="margin_right">10</field>
+		<field name="header_line" eval="False" />
+		<field name="header_spacing">40</field>
+		<field name="dpi">90</field>
+              <field name="report_ids" eval="[(6,0,[ref('e_tax_invoice_saudi_aio.action_report_simplified_tax_invoice')])]"/>
+    </record>
+
+
+	<report 
+			id="action_report_simplified_tax_invoice_pos"
+			string="Saudi VAT Invoice Report"
+			model="pos.order"
+			report_type="qweb-pdf"
+			file="e_tax_invoice_saudi_aio.report_tax_invoice_pos"
+			name="e_tax_invoice_saudi_aio.report_tax_invoice_pos"
+			print_report_name="'Saudi VAT Invoice Report -%s' %(object.partner_id.name)"/>
+
+        <record id="paperformat_simplified_tax_invoice_pos" model="report.paperformat">
+               <field name="name">Saudi VAT Invoice Report</field>
+							<field name="default" eval="True" />
+							<field name="format">custom</field>
+							<field name="page_height">0</field>
+							<field name="page_width">0</field>
+							<field name="orientation">Portrait</field>
+							<field name="margin_top">45</field>
+							<field name="margin_bottom">15</field>
+							<field name="margin_left">10</field>
+							<field name="margin_right">10</field>
+							<field name="header_line" eval="False" />
+							<field name="header_spacing">40</field>
+							<field name="dpi">90</field>
+               <field name="report_ids" eval="[(6,0,[ref('e_tax_invoice_saudi_aio.action_report_simplified_tax_invoice_pos')])]"/>
+        </record>
+
+	<report 
+		id="action_report_sale"
+		string="Saudi VAT Sale Report"
+		model="sale.order"
+		report_type="qweb-pdf"
+		file="e_tax_invoice_saudi_aio.report_tax_sale"
+		name="e_tax_invoice_saudi_aio.report_tax_sale"
+		print_report_name="'VAT Sale -%s' %(object.partner_id.name)"/>
+
+
+        <record id="paperformat_action_report_tax_sale" model="report.paperformat">
+            <field name="name">Saudi VAT Sale Report</field>
+			<field name="default" eval="True" />
+			<field name="format">custom</field>
+			<field name="page_height">0</field>
+			<field name="page_width">0</field>
+			<field name="orientation">Portrait</field>
+			<field name="margin_top">45</field>
+			<field name="margin_bottom">15</field>
+			<field name="margin_left">10</field>
+			<field name="margin_right">10</field>
+			<field name="header_line" eval="False" />
+			<field name="header_spacing">40</field>
+			<field name="dpi">90</field>
+            <field name="report_ids" eval="[(6,0,[ref('e_tax_invoice_saudi_aio.action_report_sale')])]"/>
+        </record>
+
+	<report 
+		id="action_report_purchase"
+		string="Saudi VAT Purchase Report"
+		model="purchase.order"
+		report_type="qweb-pdf"
+		file="e_tax_invoice_saudi_aio.report_tax_purchase"
+		name="e_tax_invoice_saudi_aio.report_tax_purchase"
+		print_report_name="'VAT Purchase -%s' %(object.partner_id.name)"/>
+
+        <record id="paperformat_action_report_tax_purchase" model="report.paperformat">
+            <field name="name">Saudi VAT Purchase Report</field>
+			<field name="default" eval="True" />
+			<field name="format">custom</field>
+			<field name="page_height">0</field>
+			<field name="page_width">0</field>
+			<field name="orientation">Portrait</field>
+			<field name="margin_top">45</field>
+			<field name="margin_bottom">15</field>
+			<field name="margin_left">10</field>
+			<field name="margin_right">10</field>
+			<field name="header_line" eval="False" />
+			<field name="header_spacing">40</field>
+			<field name="dpi">90</field>
+            <field name="report_ids" eval="[(6,0,[ref('e_tax_invoice_saudi_aio.action_report_purchase')])]"/>
+        </record>
+	</data>
+</odoo>

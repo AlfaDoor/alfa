@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="batch_generate_requests" model="ir.ui.view">
+            <field name="name">batch_generate_requests</field>
+            <field name="model">air.ticket.batch.generate.requests</field>
+            <field name="arch" type="xml">
+                <form string="Generate Air Ticket Allowance">
+                    <header>
+                        <button icon="fa-cogs" string="Generate" name="compute_sheet" type="object" class="oe_highlight"  />
+                    </header>
+                    <!--<group>-->
+                        <!--<label colspan="4" nolabel="1" string="This wizard will generate payslips for all selected employee(s) based on the dates and credit note specified on Payslips Run." />-->
+                    <!--</group>-->
+                    <group colspan="4" >
+                        <separator string="Employees" colspan="4"/>
+                        <newline/>
+                        <field name="employees_ids" nolabel="1"/>
+                    </group>
+               </form>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

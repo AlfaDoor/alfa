@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Multi Excuse Approval Wizard -->
+
+        <record id="multi_excuse_form_wizard" model="ir.ui.view">
+            <field name="name">multi.excuse.form.wizard</field>
+            <field name="model">multi.excuse.confirm.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Excuse(s) Multi Confirm">
+                    <p class="oe_grey">
+                        Once draft Excuse(s) are confirmed by HR, you will not be able
+                        to modify them.
+                    </p>
+                    <footer>
+                        <button name="multi_confirm" string="Confirm All" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_excuse_confirm_wizard" model="ir.actions.act_window">
+            <field name="name">Multi Excuse Confirm</field>
+            <field name="res_model">multi.excuse.confirm.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <act_window id="action_excuse_confirm_wizard"
+            multi="True"
+            key2="client_action_multi2"
+            name="Confirm All Excuses"
+            res_model="multi.excuse.confirm.wizard" 
+            src_model="hr.excuse"
+            view_mode="form" 
+            target="new" 
+            view_type="form"/>
+
+
+        <record id="multi_excuse2_form_wizard" model="ir.ui.view">
+            <field name="name">multi.excuse2.form.wizard</field>
+            <field name="model">multi.excuse.draft.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Excuse(s) Multi Reset">
+                    <p class="oe_grey">
+                        Once Excuse(s) are Reseted by HR, you will be able
+                        to modify them.
+                    </p>
+                    <footer>
+                        <button name="multi_draft" string="Reset All" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_excuse_draft_wizard" model="ir.actions.act_window">
+            <field name="name">Multi Excuse Reset</field>
+            <field name="res_model">multi.excuse.draft.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <act_window id="action_excuse_draft_wizard"
+            multi="True"
+            key2="client_action_multi2" 
+            name="Reset All Excuses"
+            res_model="multi.excuse.draft.wizard" 
+            src_model="hr.excuse"
+            view_mode="form" 
+            target="new" 
+            view_type="form"/>
+
+    </data>
+</odoo>

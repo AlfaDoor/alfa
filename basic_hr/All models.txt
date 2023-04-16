@@ -1,0 +1,6 @@
+salary.details
+loan.advance.request
+employee.eos
+applicant.qualification
+applicant.course
+applicant.employment

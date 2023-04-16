@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="assets_backend" name="popup_reminder assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/gts_print_views/static/src/css/views2pdf.css"/>
+                <!-- js -->
+                <script type="text/javascript" src="/gts_print_views/static/src/js/jspdf.min.js"></script>
+                <script type="text/javascript" src="/gts_print_views/static/src/js/autotable.js"></script>
+                <script type="text/javascript" src="/gts_print_views/static/src/js/saveSvgAsPng.js"></script>
+                <script type="text/javascript" src="/gts_print_views/static/src/js/views2pdf.js"></script>
+                <script type="text/javascript" src="/gts_print_views/static/src/js/treeview.js"></script>
+            </xpath>
+        </template>
+    </data>
+</openerp>

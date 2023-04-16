@@ -1,0 +1,3513 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* hr_loans
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.e-20151006\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-11-11 22:52+0000\n"
+"PO-Revision-Date: 2017-11-12 03:47+0300\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: ar_SY\n"
+"X-Generator: Poedit 2.0.4\n"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.confirm_other_action_form
+msgid "), So you must do it manually."
+msgstr "), So you must do it manually."
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.deduction_violation_type_form
+msgid ""
+"<br/>\n"
+"                                    <br/>النسبة المحسومة هي نسبة من الأجر اليومي\n"
+"                                    <br/>\n"
+"                                    Deductions will be calculated based on daily salary"
+msgstr ""
+"<br/>\n"
+"                                    <br/>النسبة المحسومة هي نسبة من الأجر اليومي\n"
+"                                    <br/>\n"
+"                                    Deductions will be calculated based on daily salary"
+
+#. module: hr_loans
+#: model:ir.model,name:hr_loans.model_absence_attaches
+msgid "Absence Attaches"
+msgstr "Absence Attaches"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_deduction_amount
+msgid "Absence Deduction Amount"
+msgstr "مبلغ الخصم الناتج عن الغياب"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_absence_hours
+msgid "Absence Hours"
+msgstr "عدد ساعات الغياب"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_absence_minutes
+msgid "Absence Minutes"
+msgstr "عدد دقائق الغياب"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:917
+#: code:addons/hr_loans/models/hr_loans_.py:1335
+#: model:ir.ui.view,arch_db:hr_loans.view_hr_payslip_loans_form
+#, python-format
+msgid "Absence Report"
+msgstr "تقرير الغياب"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_absence_attaches_absence_id
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_absence_id
+msgid "Absence Sheet"
+msgstr "كشف الغياب"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_absence_date
+msgid "Absence date"
+msgstr "تاريخ الغياب"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_absence_days
+msgid "Absence days"
+msgstr "عدد أيام الغياب"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:878
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_absence_ids
+#: model:ir.ui.view,arch_db:hr_loans.view_hr_payslip_loans_form
+#, python-format
+msgid "Absence deduction report"
+msgstr "تقرير الغياب"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.employee_absence
+msgid "Absence details"
+msgstr "تفاصيل الغياب"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_note
+msgid "Absence notes"
+msgstr "ملاحظات الغياب"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.confirm_other_action_form
+msgid "Accept"
+msgstr "موافق"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_minus_deduction
+msgid "Accept minus deduction value"
+msgstr "السماح بتسجيل خصم عكسى بمبلغ سالب"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_minus_value
+msgid "Accept minus value"
+msgstr "السماح بالمبالغ السالبه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_category_message_needaction
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_message_needaction
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_message_needaction
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_message_needaction
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_message_needaction
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_message_needaction
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_message_needaction
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_message_needaction
+#: model:ir.model.fields,field_description:hr_loans.field_hr_reward_type_message_needaction
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_message_needaction
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_message_needaction
+msgid "Action Needed"
+msgstr "الإجراء المطلوب"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_adjusted_date
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_adjusted_date
+msgid "Adjusted date"
+msgstr "تاريخ بدابة العمل"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:26
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_amount
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_amount
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_amount
+#: model:ir.model.fields,field_description:hr_loans.field_hr_reward_type_amount
+#: model:ir.ui.view,arch_db:hr_loans.hr_employee_rewards_form
+#: model:ir.ui.view,arch_db:hr_loans.hr_reward_type_form
+#, python-format
+msgid "Amount"
+msgstr "المبلغ"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:380
+#, python-format
+msgid "Amount error! Financial approval amount must be greater than zero and less than or equal to the request loan amount."
+msgstr ""
+"خطأ فى المبلغ!\n"
+"موافقة المدير المالى يجب أن تكون أكبر من الصفر وأقل أو تساوى المبلغ الذى قام الموظف بطلبه كسلفه."
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:444
+#, python-format
+msgid "Amount error! Genral Manager approval amount must be greater than zero and less than or equal to the request loan amount."
+msgstr ""
+"خطأ فى المبلغ!\n"
+"موافقة المدير التنفيذي يجب أن تكون أكبر من الصفر وأقل من أو تساوى المبلغ الذى قام الموظف بطلبه كسلفه."
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:367
+#, python-format
+msgid "Amount error! Hr approval amount must be greater than zero and less than or equal to the request loan amount."
+msgstr ""
+"خطأ فى المبلغ!\n"
+"موافقة مدير إدارة الموارد البشريه يجب أن يكون أكبر من الصفر وأقل من أو تساوى المبلغ الذى قام الموظف بطلبه كسلفه."
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:347
+#: code:addons/hr_loans/models/hr_loans_.py:353
+#: code:addons/hr_loans/models/hr_loans_.py:359
+#, python-format
+msgid "Amount error!! You requested an amount greater than the amount allowed based on your company policy"
+msgstr ""
+"برجاء الإنتباه!!\n"
+"مبلغ السلفه المطلوب أكبر من الحد الأقصى الذى تسمح به سياسة الشركه"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.view_hr_loans_configuration
+msgid "Apply"
+msgstr "تنفيذ"
+
+#. module: hr_loans
+#: selection:employee.absence,month:0 selection:employee.absence.line,month:0
+#: selection:loan.advance.request,installment_start_month:0
+#: selection:loan.advance.request,month:0 selection:loan.installment,month:0
+msgid "April"
+msgstr "أبريل"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_reward_type_name
+#: model:ir.ui.view,arch_db:hr_loans.hr_reward_type_form
+msgid "Arabic Description"
+msgstr "الوصف باللغه العربيه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_category_name
+#: model:ir.ui.view,arch_db:hr_loans.deduction_violation_category_form
+msgid "Arabic name"
+msgstr "الإسم باللغه العربيه"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_employee_rewards_form
+msgid "Are You sure that you reviewed  this reward?"
+msgstr "هل أنت متأكد من أنك قمت بمراجعة هذه المكافأه ؟"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_employee_rewards_form
+msgid "Are You sure that you want to confirm this reward?"
+msgstr "هل أنت متأكد من رغبتك فى تأكيد تلك المكافأه؟"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.deduction_violation_type_form
+msgid "Are You sure that you want to set this Deduction / Violation type to new"
+msgstr "هل أنت متأكد من رغبتك فى العوده إلى الحاله تساوى ( جديد )"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.employee_deductions_violations_form
+msgid "Are you sure that you reviewed the date."
+msgstr "هل أنت متأكد من أنك قمت بمراجعة جميع البينات"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.employee_deductions_violations_form
+msgid "Are you sure that you want to Confirm this deduction"
+msgstr "هل أنت متأكد من رغبتك فى تأكيد تسجيل الخصم / المخالفه"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_request_form
+msgid "Are you sure that you want to approve this loan / salary in advance?"
+msgstr "هل أنت متأكد من رغبتك فى تأكيد تلك السلفه / الراتب المقدم؟"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_reward_type_form
+msgid "Are you sure that you want to confirm this reward type"
+msgstr "هل أنت متأكد من رغبتك فى تأكيد هذا النوع من المكافأت ؟"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_request_form
+msgid "Are you sure that you want to refuse this loan / salary in advance."
+msgstr "هل أنت متأكد من رغبتك فى إلغاء طلب السلفه / الراتب المقدم؟"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_employee_rewards_form
+msgid "Are you sure that you want to reverse this Reward?"
+msgstr "هل أنت متأكد من رغبتك فى عكس تأثير تلك المكافأه؟"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_reward_type_form
+msgid "Are you sure that you want to set this Reward type to new?"
+msgstr "هل أنت متأكد من رغبتك فى العوده إلى الحاله تساوى ( جديد )؟"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_request_form
+msgid "Are you sure that you want to set this loan / salary in advance to (New)?"
+msgstr "هل أنت متأكد من رغبتك فى بدء هذه المعامله من جديد ؟"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_attachment_ids
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_attachment_ids
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_attachment_ids
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_attachment_ids
+#: model:ir.model.fields,field_description:hr_loans.field_hr_reward_type_attachment_ids
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_attachment_ids
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_attachment_ids
+#: model:ir.ui.view,arch_db:hr_loans.deduction_violation_type_form
+#: model:ir.ui.view,arch_db:hr_loans.employee_absence
+#: model:ir.ui.view,arch_db:hr_loans.employee_deductions_violations_form
+#: model:ir.ui.view,arch_db:hr_loans.hr_employee_rewards_form
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_request_form
+#: model:ir.ui.view,arch_db:hr_loans.hr_reward_type_form
+#: model:ir.ui.view,arch_db:hr_loans.loan_installment_form
+msgid "Attachments"
+msgstr "المُرفقات"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans2.py:479
+#: model:ir.ui.view,arch_db:hr_loans.confirm_other_action_form
+#, python-format
+msgid "Attention"
+msgstr "برجاء الإنتباه"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.confirm_other_action_form
+msgid ""
+"Attention !!\n"
+"                                <br/>\n"
+"                                Your system could not understand the action which you wrote ("
+msgstr ""
+"Attention !!\n"
+"                                <br/>\n"
+"                                Your system could not understand the action which you wrote ("
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/rewards.py:135
+#, python-format
+msgid ""
+"Attention !!\n"
+"                Based on your configuration, It is not allowed to give the employee an amount which is greater than the maximum allowed amount !!!"
+msgstr ""
+"برجاء الانتباه !! \n"
+"بناءً على سياسة الشركه لا يمكن منح هذا الموظف هذا المبلغ كسلفه لأن المبلغ أكبر من الحد الأقصى المسموح به فى الشركه."
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:640
+#, python-format
+msgid ""
+"Attention !! \n"
+" GM / CEO Approved that this employee will receive ( %s )  we found that total Installment amount not matching the amount approved by CEO. Kindly review your data."
+msgstr ""
+"Attention !! \n"
+" GM / CEO Approved that this employee will receive ( %s )  we found that total Installment amount not matching the amount approved by CEO. Kindly review your data."
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:1279
+#, python-format
+msgid "Attention !!  Absence Hours cannot be minus"
+msgstr ""
+"برجاء الإنتباه !! \n"
+"عدد ساعات الغياب لا يمكن أن تكون رقما سالباً !!"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:1281
+#, python-format
+msgid "Attention !!  Absence Minutes cannot be minus"
+msgstr ""
+"برجاء الإنتباه\n"
+"عدد دقائق الغياب لا يمكن أن تكون رقما سالبا !!"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:1277
+#, python-format
+msgid "Attention !! Absence days cannot be minus"
+msgstr ""
+"برجاء الإنتباه !! \n"
+"عدد أيام الغياب لا يمكن ان تكون رقما سالباً !!"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans2.py:339
+#, python-format
+msgid ""
+"Attention!!\n"
+"            Not allowed to create a deduction with a minus value, Minus value mean that you will give the employee a reward.\n"
+"            If you want to give this employee a special reward, Go to Rewards window.\n"
+"            But, If you want to reverse old deduction, you must open the old deduction transaction and click on (reverse Deduction button)."
+msgstr ""
+"Attention!!\n"
+"            Not allowed to create a deduction with a minus value, Minus value mean that you will give the employee a reward.\n"
+"            If you want to give this employee a special reward, Go to Rewards window.\n"
+"            But, If you want to reverse old deduction, you must open the old deduction transaction and click on (reverse Deduction button)."
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans2.py:332
+#, python-format
+msgid ""
+"Attention!! \n"
+"                The deduction decision which you selected is  ( %s ). It is not logic that the deducted amount is Zero!"
+msgstr ""
+"Attention!! \n"
+"                The deduction decision which you selected is  ( %s ). It is not logic that the deducted amount is Zero!"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans2.py:656
+#, python-format
+msgid ""
+"Attention!! \n"
+"            This employee  ( %s  ) had old loans or deductions or rewards which is not fully paid before confirm this payslip. kindly go to ( other payment /             deduction) tab,  and make sure that you checked (other payments / deduction reviewed)."
+msgstr ""
+"Attention!! \n"
+"            This employee  ( %s  ) had old loans or deductions or rewards which is not fully paid before confirm this payslip. kindly go to ( other payment /             deduction) tab,  and make sure that you checked (other payments / deduction reviewed)."
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans2.py:502
+#, python-format
+msgid ""
+"Attention!! \n"
+"            When you created this deduction, the previous violation was (%s) .. when you confirm this deduction, we found that the previous violation is (%s)            which means that the deduction value may vary due to increasing / decreasing the number of previous violation \n"
+"            To solve this point. you must change the violation which you selected at Violation Type and re-select it again."
+msgstr ""
+"Attention!! \n"
+"            When you created this deduction, the previous violation was (%s) .. when you confirm this deduction, we found that the previous violation is (%s)            which means that the deduction value may vary due to increasing / decreasing the number of previous violation \n"
+"            To solve this point. you must change the violation which you selected at Violation Type and re-select it again."
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/rewards.py:338
+#, python-format
+msgid ""
+"Attention!! \n"
+" This employee  ( %s  ) had old loans or deductions or rewards which is not fully paid ….before confirm this payslip. kindly go to ( other payment / deduction) tab,  and make sure that you checked (other payments / deduction reviewed)."
+msgstr ""
+"Attention!! \n"
+" This employee  ( %s  ) had old loans or deductions or rewards which is not fully paid ….before confirm this payslip. kindly go to ( other payment / deduction) tab,  and make sure that you checked (other payments / deduction reviewed)."
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:975
+#, python-format
+msgid ""
+"Attention!! \n"
+" This employee ( %s  ) had old loans or deductions or rewards which is not fully paid before confirm this payslip. kindly go to ( other payment / deduction) tab,  and make sure that you checked (other payments / deduction reviewed)."
+msgstr ""
+"Attention!! \n"
+" This employee ( %s  ) had old loans or deductions or rewards which is not fully paid before confirm this payslip. kindly go to ( other payment / deduction) tab,  and make sure that you checked (other payments / deduction reviewed)."
+
+#. module: hr_loans
+#: selection:employee.absence,month:0 selection:employee.absence.line,month:0
+#: selection:loan.advance.request,installment_start_month:0
+#: selection:loan.advance.request,month:0 selection:loan.installment,month:0
+msgid "August"
+msgstr "أغسطس"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_request_form
+msgid "Auto Generate Installments"
+msgstr "إنشاء الأقساط"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_auto_deduction
+msgid "Automatic deduction"
+msgstr "خصم تلقائى"
+
+#. module: hr_loans
+#: selection:hr_loans.loan_advance,maximum_amount:0
+msgid "Based On Basic Salary"
+msgstr "بناءُ على الراتب الأساسى"
+
+#. module: hr_loans
+#: selection:hr_loans.loan_advance,maximum_amount:0
+msgid "Based On Total Salary"
+msgstr "بناءُ على الراتب الإجمالى"
+
+#. module: hr_loans
+#: selection:hr.loans.config.settings,default_absence_based_on:0
+msgid "Basic + House"
+msgstr "الراتب الأساسى + بدل السكن"
+
+#. module: hr_loans
+#: selection:hr.loans.config.settings,default_absence_based_on:0
+msgid "Basic + House + Transportation"
+msgstr "الراتب الأساسى + بدل السكن + بدل المواصلات"
+
+#. module: hr_loans
+#: selection:hr.loans.config.settings,default_absence_based_on:0
+msgid "Basic + House + Transportation + Phone"
+msgstr "الراتب الأساسى + بدل السكن + بدل المواصلات + بدل الإتصالات"
+
+#. module: hr_loans
+#: selection:deduction.violation.type,deduction_based_on:0
+#: selection:employee.deductions.violations,deduction_based_on:0
+#: selection:hr.employee.rewards,calc_method:0
+#: selection:hr.loans.config.settings,default_absence_based_on:0
+#: selection:hr.loans.config.settings,default_previous_based_on:0
+#: selection:hr.reward.type,calc_method:0
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_rule_basic
+msgid "Basic Salary"
+msgstr "الراتب الأساسى"
+
+#. module: hr_loans
+#: selection:deduction.violation.type,deduction_based_on:0
+#: selection:employee.deductions.violations,deduction_based_on:0
+#: selection:hr.employee.rewards,calc_method:0
+#: selection:hr.reward.type,calc_method:0
+msgid "Basic Salary + House allowance"
+msgstr "الراتب الأساسى + بدل السكن"
+
+#. module: hr_loans
+#: selection:deduction.violation.type,deduction_based_on:0
+#: selection:employee.deductions.violations,deduction_based_on:0
+#: selection:hr.employee.rewards,calc_method:0
+#: selection:hr.reward.type,calc_method:0
+msgid "Basic Salary + House allowance + transportation"
+msgstr "الراتب الأساسى + بدل السكن + بدل المواصلات"
+
+#. module: hr_loans
+#: selection:deduction.violation.type,deduction_based_on:0
+#: selection:employee.deductions.violations,deduction_based_on:0
+#: selection:hr.employee.rewards,calc_method:0
+#: selection:hr.reward.type,calc_method:0
+msgid "Basic salary + House + transportation + phone"
+msgstr "الراتب الأساسى + بدل السكن + بدل المواصلات + بدل الإتصالات"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.employee_absence_line_search
+msgid "Branch"
+msgstr "الفرع"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_request_form
+msgid "CEO / GM approval"
+msgstr "موافقة المدير التنفيذى"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans2.py:376
+#, python-format
+msgid ""
+"Calculation Error!! \n"
+"                Your system is trying to calculate the deduction amount, unfortunately, your system could not find active contract for the selected employee."
+msgstr ""
+"Calculation Error!! \n"
+"                Your system is trying to calculate the deduction amount, unfortunately, your system could not find active contract for the selected employee."
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans2.py:56
+#, python-format
+msgid "Can not delete while confirmed"
+msgstr "غير مسموح بحذف معامله تم تأكيدها"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:719
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_request_loan
+#, python-format
+msgid "Can request a loan / advance"
+msgstr "يستطيع الموظف طلب سلفه / راتب مقدم"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.view_hr_loans_configuration
+msgid "Cancel"
+msgstr "إلغاء"
+
+#. module: hr_loans
+#: model:ir.model.fields,help:hr_loans.field_hr_loans_config_settings_default_another_loan_before_pay
+msgid "Check to allow overlapping loans / salary in advance."
+msgstr "قم بوضع علامة صح فى حالة الرغبه فى السماح بأكثر من سلفه فى نفس الوقت"
+
+#. module: hr_loans
+#: model:ir.actions.act_window,help:hr_loans.deduction_violation_category_action
+msgid "Click to define a new Deduction / Violation category."
+msgstr "قم بالضغط على إنشاء لإضافة فئة مخالفات جديده"
+
+#. module: hr_loans
+#: model:ir.actions.act_window,help:hr_loans.deduction_violation_type_action
+msgid "Click to define a new Deduction / Violation type."
+msgstr "قم بالضغط على إنشاء لإضافة نوع مخالفة جديده"
+
+#. module: hr_loans
+#: model:ir.actions.act_window,help:hr_loans.hr_employee_rewards_action
+msgid "Click to define a new Employee Rewards."
+msgstr "قم بالضغط على إنشاء لمنح موظف مكافأه"
+
+#. module: hr_loans
+#: model:ir.actions.act_window,help:hr_loans.employee_deductions_violations_action
+msgid "Click to define a new Employee deductions - violations."
+msgstr "قم بالضغط على إنشاء لإضافة نوع مخالفه جديد"
+
+#. module: hr_loans
+#: model:ir.actions.act_window,help:hr_loans.hr_reward_type_action
+msgid "Click to define a new Rewards type."
+msgstr "إضغط لإضافة نوع مكافأت جديد"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:155
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_code
+#: model:ir.model.fields,field_description:hr_loans.field_hr_reward_type_code
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_name
+#, python-format
+msgid "Code"
+msgstr "الكود"
+
+#. module: hr_loans
+#: model:ir.ui.menu,name:hr_loans.menu_loans_config
+msgid "Configuration"
+msgstr "الإعدادات"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:329
+#, python-format
+msgid "Configuration error!! Requested loan amount cannot be zero or negative amount."
+msgstr "خطأ فى الإعدادات .. مبلغ السلفه / الراتب المقدم لا يمكن أن يساوى صفر او يكون رقما سالباً."
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:322
+#, python-format
+msgid "Configuration error!! This employee didn’t have an active contract"
+msgstr "خطأ فى الإعدادات .. لا يوجد عقد نشط لهذا الموظف"
+
+#. module: hr_loans
+#: model:ir.actions.act_window,name:hr_loans.action_hr_loans_configuration
+#: model:ir.ui.view,arch_db:hr_loans.view_hr_loans_configuration
+msgid "Configure Loans"
+msgstr "إعدادات السلف"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.deduction_violation_category_form
+#: model:ir.ui.view,arch_db:hr_loans.deduction_violation_type_form
+#: model:ir.ui.view,arch_db:hr_loans.employee_deductions_violations_form
+#: model:ir.ui.view,arch_db:hr_loans.hr_employee_rewards_form
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_form
+#: model:ir.ui.view,arch_db:hr_loans.hr_reward_type_form
+msgid "Confirm"
+msgstr "تأكيد"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_run_confirmation_date
+msgid "Confirmation Date"
+msgstr "تاريخ التأكيد"
+
+#. module: hr_loans
+#: selection:deduction.violation.category,state:0
+#: selection:deduction.violation.type,state:0
+#: selection:employee.deductions.violations,state:0
+#: selection:hr.employee.rewards,state:0 selection:hr.reward.type,state:0
+#: selection:hr_loans.loan_advance,state:0
+msgid "Confirmed"
+msgstr "تم التأكيد"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_run_confirmed_by
+msgid "Confirmed By"
+msgstr "تم التأكيد بواسطة"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_confirm_uid
+#: model:ir.model.fields,field_description:hr_loans.field_hr_reward_type_confirm_uid
+msgid "Confirmed by"
+msgstr "تم التأكيد بواسطة"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:165
+#: code:addons/hr_loans/models/hr_loans_.py:782
+#: model:ir.model,name:hr_loans.model_hr_contract
+#: model:ir.model.fields,field_description:hr_loans.field_contract_paid_rewards_contract_id
+#: model:ir.model.fields,field_description:hr_loans.field_contract_paid_violation_contract_id
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_contract_id
+#: model:ir.model.fields,field_description:hr_loans.field_hr_contract_loan_payment_contract_id
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_contract_id
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_contract_id
+#, python-format
+msgid "Contract"
+msgstr "العقد"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:166
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_contract_start
+#, python-format
+msgid "Contract Duration"
+msgstr "مدة العقد"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:167
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_contract_end
+#, python-format
+msgid "Contract End"
+msgstr "تاريخ نهاية العقد"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_absence_attaches_create_uid
+#: model:ir.model.fields,field_description:hr_loans.field_confirm_other_action_create_uid
+#: model:ir.model.fields,field_description:hr_loans.field_contract_paid_rewards_create_uid
+#: model:ir.model.fields,field_description:hr_loans.field_contract_paid_violation_create_uid
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_type_attaches_create_uid
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_category_create_uid
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_create_uid
+#: model:ir.model.fields,field_description:hr_loans.field_deductions_violations_attaches_create_uid
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_create_uid
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_create_uid
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_create_uid
+#: model:ir.model.fields,field_description:hr_loans.field_employee_reward_attaches_create_uid
+#: model:ir.model.fields,field_description:hr_loans.field_hr_contract_loan_payment_create_uid
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_create_uid
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_config_settings_create_uid
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_create_uid
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_tag_create_uid
+#: model:ir.model.fields,field_description:hr_loans.field_hr_reward_type_create_uid
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_attaches_create_uid
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_create_uid
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_attaches_create_uid
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_create_uid
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_payment_create_uid
+#: model:ir.model.fields,field_description:hr_loans.field_rewards_type_attaches_create_uid
+msgid "Created by"
+msgstr "أنشئ بواسطة"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_absence_attaches_create_date
+#: model:ir.model.fields,field_description:hr_loans.field_confirm_other_action_create_date
+#: model:ir.model.fields,field_description:hr_loans.field_contract_paid_rewards_create_date
+#: model:ir.model.fields,field_description:hr_loans.field_contract_paid_violation_create_date
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_type_attaches_create_date
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_category_create_date
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_create_date
+#: model:ir.model.fields,field_description:hr_loans.field_deductions_violations_attaches_create_date
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_create_date
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_create_date
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_create_date
+#: model:ir.model.fields,field_description:hr_loans.field_employee_reward_attaches_create_date
+#: model:ir.model.fields,field_description:hr_loans.field_hr_contract_loan_payment_create_date
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_create_date
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_config_settings_create_date
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_create_date
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_tag_create_date
+#: model:ir.model.fields,field_description:hr_loans.field_hr_reward_type_create_date
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_attaches_create_date
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_create_date
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_attaches_create_date
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_create_date
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_payment_create_date
+#: model:ir.model.fields,field_description:hr_loans.field_rewards_type_attaches_create_date
+msgid "Created on"
+msgstr "أنشئ في"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_request_tree
+msgid "Creation Date"
+msgstr "تاريخ الإنشاء"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.loan_installment_search
+msgid "Current month installment"
+msgstr "القسط الشهرى"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:636
+#, python-format
+msgid ""
+"Data Error !! \n"
+" Employee contract end date is ( %s ) it is not allowed to create some installments after contract end date."
+msgstr ""
+"Data Error !! \n"
+" Employee contract end date is ( %s ) it is not allowed to create some installments after contract end date."
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:633
+#, python-format
+msgid ""
+"Data Error !! \n"
+" Employee start working at ( %s )  it is not allowed to create some installments before employee hiring date"
+msgstr ""
+"Data Error !! \n"
+" Employee start working at ( %s )  it is not allowed to create some installments before employee hiring date"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:618
+#, python-format
+msgid ""
+"Data Error !! \n"
+" Expected payment to employee date is ( %s ) It is not logic to start deduction in ( %s / %s )"
+msgstr ""
+"Data Error !! \n"
+" Expected payment to employee date is ( %s ) It is not logic to start deduction in ( %s / %s )"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:611
+#, python-format
+msgid ""
+"Data Error !! \n"
+" It is Not logic that the employee receive loan amount at ( %s ) which is before his request date ( %s )"
+msgstr ""
+"Data Error !! \n"
+" It is Not logic that the employee receive loan amount at ( %s ) which is before his request date ( %s )"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans2.py:349
+#, python-format
+msgid ""
+"Data Error! \n"
+"                The employee start to work at ( %s ), it is not logic to create a deduction before the hiring date!"
+msgstr ""
+"Data Error! \n"
+"                The employee start to work at ( %s ), it is not logic to create a deduction before the hiring date!"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:1196
+#, python-format
+msgid ""
+"Data Error!!\n"
+" For Employee ( %s ),his contract start date is ( %s )his contract end date is ( %s ), It is not logic to make absence deduction on ( %s / %s), deduction month / year is out of contract time scope."
+msgstr ""
+"Data Error!!\n"
+" For Employee ( %s ),his contract start date is ( %s )his contract end date is ( %s ), It is not logic to make absence deduction on ( %s / %s), deduction month / year is out of contract time scope."
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:1190
+#, python-format
+msgid ""
+"Data Error!!\n"
+" For Employee ( %s ),we found that he already have a confirmed payslip on the same month, so you must select another month for deduction."
+msgstr ""
+"Data Error!!\n"
+" For Employee ( %s ),we found that he already have a confirmed payslip on the same month, so you must select another month for deduction."
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/rewards.py:150
+#, python-format
+msgid ""
+"Data Error!!!\n"
+"            the hiring date for this employee is ( %s), and you told your system that the rewarded date is ( %s )\n"
+"            It is not logic to give this employee a rewards before hiring date !!!! "
+msgstr ""
+"Data Error!!!\n"
+"            the hiring date for this employee is ( %s), and you told your system that the rewarded date is ( %s )\n"
+"            It is not logic to give this employee a rewards before hiring date !!!! "
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_employee_rewards_form
+msgid "Data Reviewed"
+msgstr "تمت مراحعة البيانات"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:112
+#, python-format
+msgid "Data error !! Invalid default number of installments.!"
+msgstr "خطأ فى عدد الأقساط. برجاء التأكد من أن عدد الأقساط رقم موجب ولا يحتوى على كسور عشريه."
+
+#. module: hr_loans
+#: model:ir.model.fields,help:hr_loans.field_deduction_violation_category_message_last_post
+#: model:ir.model.fields,help:hr_loans.field_deduction_violation_type_message_last_post
+#: model:ir.model.fields,help:hr_loans.field_employee_absence_line_message_last_post
+#: model:ir.model.fields,help:hr_loans.field_employee_absence_message_last_post
+#: model:ir.model.fields,help:hr_loans.field_employee_deductions_violations_message_last_post
+#: model:ir.model.fields,help:hr_loans.field_hr_employee_rewards_message_last_post
+#: model:ir.model.fields,help:hr_loans.field_hr_loans_loan_advance_message_last_post
+#: model:ir.model.fields,help:hr_loans.field_hr_payslip_message_last_post
+#: model:ir.model.fields,help:hr_loans.field_hr_reward_type_message_last_post
+#: model:ir.model.fields,help:hr_loans.field_loan_advance_request_message_last_post
+#: model:ir.model.fields,help:hr_loans.field_loan_installment_message_last_post
+msgid "Date of the last message posted on the record."
+msgstr "تاريخ آخر رسالة في هذا السجل."
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_days_in_payslip
+msgid "Days included in payslip"
+msgstr "عدد أيام مسير الرواتب"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:1179
+#, python-format
+msgid ""
+"Dear HR ,\n"
+" Not allowed to create empty Absence details, Kindly add some absence lines for employees."
+msgstr ""
+"Dear HR ,\n"
+"غير مسموح بإنشاء كشف غياب فارغ. برجاء إضافة بعض الغيابات للموظفين."
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:956
+#, python-format
+msgid ""
+"Dear Payroll specialist, \n"
+" You are not allowed to delete this payslip because it is automatically created through Salary in advance request, you can refuse this payslip instead of deleting it."
+msgstr ""
+"Dear Payroll specialist, \n"
+"لا يمكن حذف مسير الرواتب لانه تم إنشاؤه تلقائيا بسبب طلب راتب مقدم."
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:817
+#, python-format
+msgid ""
+"Dear Payroll team !! \n"
+" We found that there is some payslips which requires a special review, these payslips contains Loans or Violations or Rewards or Absence deduction which requires a special review, kindly make sure to review all payslip and check the ( Payslip reviewed ) field. "
+msgstr ""
+"Dear Payroll team !! \n"
+"وجدنا أن هناك بعض مسيرات الرواتب التي تحتاج إلى مراجعه خاصه لانها تحتوى على خصومات أو إضافات إلى راتب الموظف. برجاء مراجعة تلك المسيرات ووضع علامة صح على حقل ( تمت مراجعة مسيرات الرواتب)"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.view_hr_payslip_loans_form
+msgid ""
+"Dear Payroll team,<br/>\n"
+"                                    In this Window, your system read employee absence data automatically from ( Employee Absence report) the data appears here for review and you can edit any record. it will affect automatically on the absence timesheet which has been created before. If you confirmed this payslip, data will be read only and you will not be able to change it."
+msgstr ""
+"Dear Payroll team,<br/>\n"
+"من خلال تلك الشاشة سوف يقوم النظام بقراءة بيانات الغياب للموظفين بشكل تلقائى وسوف يقوم بعرضها هنا. تستطيع القيام بتعديل تفاصيل الغياب يدويا هنا وسوف يقوم النظام بتغيير تفاصيل الغياب المسجله على هذا الموظف. بعد تأكيد مسير الرواتب سوف تتحول تلك البيانات إلى قراءة فقط."
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.view_hr_payslip_run_loans_form
+msgid ""
+"Dear Payroll team,<br/>\n"
+"                                We found that the following payslips contains loans or Violations or Rewards or absence deduction, kindly review them one by one before approve this Payslip batches."
+msgstr ""
+"Dear Payroll team,<br/>\n"
+"                                We found that the following payslips contains loans or Violations or Rewards or absence deduction, kindly review them one by one before approve this Payslip batches."
+
+#. module: hr_loans
+#: selection:employee.absence,month:0 selection:employee.absence.line,month:0
+#: selection:loan.advance.request,installment_start_month:0
+#: selection:loan.advance.request,month:0 selection:loan.installment,month:0
+msgid "December"
+msgstr "ديسمبر"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_decision
+msgid "Decision"
+msgstr "القرار"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.confirm_other_action_form
+msgid "Decline"
+msgstr "رفض"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.view_hr_payslip_loans_form
+msgid "Deduct / Pay this month"
+msgstr "خصم / سداد هذا الشهر"
+
+#. module: hr_loans
+#: selection:deduction.violation.type,deduction_type1:0
+#: selection:deduction.violation.type,deduction_type2:0
+#: selection:deduction.violation.type,deduction_type3:0
+#: selection:deduction.violation.type,deduction_type4:0
+#: selection:employee.deductions.violations,decision:0
+msgid "Deduct from employee salary"
+msgstr "يخصم من راتب الموظف"
+
+#. module: hr_loans
+#: selection:deduction.violation.type,deduction_type1:0
+#: selection:deduction.violation.type,deduction_type2:0
+#: selection:deduction.violation.type,deduction_type3:0
+#: selection:deduction.violation.type,deduction_type4:0
+#: selection:employee.deductions.violations,decision:0
+msgid "Deduct from employee salary + other action"
+msgstr "خصم من راتب الموظف + إجراء أخر"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_deduct_this_month_
+msgid "Deduct this month"
+msgstr "يخصم هذا الشهر"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans2.py:634
+#, python-format
+msgid "Deduct this month can not be lees than zero"
+msgstr "مبلغ الخصم هذا الشهر لا يمكن أن يكون أقل من الصفر."
+
+#. module: hr_loans
+#: model:ir.model,name:hr_loans.model_deduction_violation_type
+msgid "Deduction / Violation Types"
+msgstr "أنواع المخالفات / الخصومات"
+
+#. module: hr_loans
+#: model:ir.actions.act_window,name:hr_loans.deduction_violation_category_action
+#: model:ir.model,name:hr_loans.model_deduction_violation_category
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_deduction_categ_id
+#: model:ir.ui.menu,name:hr_loans.deduction_violation_category_menu
+#: model:ir.ui.view,arch_db:hr_loans.deduction_violation_category_form
+#: model:ir.ui.view,arch_db:hr_loans.deduction_violation_category_tree
+msgid "Deduction / Violation category"
+msgstr "فئات المخالفات / الخصومات"
+
+#. module: hr_loans
+#: model:ir.actions.act_window,name:hr_loans.deduction_violation_type_action
+#: model:ir.ui.menu,name:hr_loans.deduction_violation_type_menu
+#: model:ir.ui.view,arch_db:hr_loans.deduction_violation_type_form
+#: model:ir.ui.view,arch_db:hr_loans.deduction_violation_type_tree
+msgid "Deduction / Violation type"
+msgstr "أنواع المخالفات / الخصومات"
+
+#. module: hr_loans
+#: model:ir.ui.menu,name:hr_loans.deduction_violation_config_menu
+msgid "Deduction / violation settings"
+msgstr "إعدادات المخالفات / الخصومات"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_deduction_date
+msgid "Deduction Day"
+msgstr "تاريخ الخصم"
+
+#. module: hr_loans
+#: selection:employee.absence,state:0
+msgid "Deduction Done In Payslip"
+msgstr "تم خصم المبلغ فى مسير الرواتب"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_deduction_reason
+msgid "Deduction Reason"
+msgstr "سبب الخصم"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.employee_deductions_violations_form
+msgid "Deduction Value"
+msgstr "قيمة الخصم"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_deduction_based_on
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_deduction_based_on
+msgid "Deduction based on"
+msgstr "الخصومات بناءُ على"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_deductions_count
+msgid "Deduction count"
+msgstr "عدد الخصومات"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_deduction_date
+msgid "Deduction date"
+msgstr "تاريخ الخصم"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:979
+#, python-format
+msgid "Deduction error!! We found that you are trying to deduct loan amount greater that the remaining loan amount."
+msgstr "غير مسموح بخصم ذلك المبلغ من الموظف لأنه أكبر من الرصيد المتبقى للسلف."
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_deduction_percentage1
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_deduction_percentage2
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_deduction_percentage3
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_deduction_percentage4
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_deduction_percentage
+msgid "Deduction percentage"
+msgstr "نسبة الخصم"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans2.py:217
+#: code:addons/hr_loans/models/hr_loans2.py:219
+#: code:addons/hr_loans/models/hr_loans2.py:221
+#: code:addons/hr_loans/models/hr_loans2.py:223
+#, python-format
+msgid "Deduction percentage can not be zero"
+msgstr "نسبة الخصم لا يمكن أن تكون بصفر"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.employee_deductions_violations_search
+msgid "Deduction reason"
+msgstr "سبب الخصم"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_deduction_reverse_reason
+msgid "Deduction reverse reason"
+msgstr "سبب إلغاء الخصم"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_deduction_type1
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_deduction_type2
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_deduction_type3
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_deduction_type4
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_deduction_type
+#: model:ir.ui.view,arch_db:hr_loans.employee_deductions_violations_form
+msgid "Deduction type"
+msgstr "نوع الخصم"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_deduction_value
+msgid "Deduction value"
+msgstr "مبلغ الخصم"
+
+#. module: hr_loans
+#: model:ir.model,name:hr_loans.model_deduction_type_attaches
+msgid "DeductionType Attaches"
+msgstr "DeductionType Attaches"
+
+#. module: hr_loans
+#: model:ir.ui.menu,name:hr_loans.deductions_menu
+#: model:ir.ui.view,arch_db:hr_loans.loan_view_employee_form
+#: model:ir.ui.view,arch_db:hr_loans.view_hr_payslip_loans_form
+msgid "Deductions"
+msgstr "الخصومات"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_contract_form_loans
+msgid "Deductions - violations"
+msgstr "المخالفات / الخصومات"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_rule_deductions_violations
+msgid "Deductions / Violations"
+msgstr "المخالفات / الخصومات"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.deduction_violation_category_form
+msgid "Deductions related to this category"
+msgstr "المخالفات المتعلقه بتلك المجموعه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_default_installment_number
+msgid "Default Number Of Installment"
+msgstr "عدد الأقساط الإفتراضى لهذا النوع من السلف"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:163
+#: code:addons/hr_loans/models/hr_loans_.py:1365
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_department_id
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_department_id
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_department_id
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_department_id
+#: model:ir.ui.view,arch_db:hr_loans.employee_absence_line_search
+#: model:ir.ui.view,arch_db:hr_loans.employee_deductions_violations_search
+#: model:ir.ui.view,arch_db:hr_loans.loan_installment_search
+#, python-format
+msgid "Department"
+msgstr "الإداره"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_absence_attaches_name
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_type_attaches_name
+#: model:ir.model.fields,field_description:hr_loans.field_deductions_violations_attaches_name
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_name
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_desc
+#: model:ir.model.fields,field_description:hr_loans.field_employee_reward_attaches_name
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_desc
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_attaches_name
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_attaches_name
+#: model:ir.model.fields,field_description:hr_loans.field_rewards_type_attaches_name
+msgid "Description"
+msgstr "الوصف"
+
+#. module: hr_loans
+#: model:ir.model.fields,help:hr_loans.field_hr_loans_loan_advance_maximum_amount
+msgid "Determine maximum amount which is allowed for this loan / advance"
+msgstr "تحديد المبلغ الأقصى المسموح لهذا النوع من السلف"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_absence_attaches_display_name
+#: model:ir.model.fields,field_description:hr_loans.field_confirm_other_action_display_name
+#: model:ir.model.fields,field_description:hr_loans.field_contract_paid_rewards_display_name
+#: model:ir.model.fields,field_description:hr_loans.field_contract_paid_violation_display_name
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_type_attaches_display_name
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_category_display_name
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_display_name
+#: model:ir.model.fields,field_description:hr_loans.field_deductions_violations_attaches_display_name
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_display_name
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_display_name
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_display_name
+#: model:ir.model.fields,field_description:hr_loans.field_employee_reward_attaches_display_name
+#: model:ir.model.fields,field_description:hr_loans.field_hr_contract_loan_payment_display_name
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_display_name
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_config_settings_display_name
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_display_name
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_tag_display_name
+#: model:ir.model.fields,field_description:hr_loans.field_hr_reward_type_display_name
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_attaches_display_name
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_display_name
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_attaches_display_name
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_display_name
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_payment_display_name
+#: model:ir.model.fields,field_description:hr_loans.field_rewards_type_attaches_display_name
+msgid "Display Name"
+msgstr "طريقة العرض"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_request_form
+msgid "Duration"
+msgstr "المدة"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_early_return_from_leave
+msgid "Early Return from leave"
+msgstr "العوده مبكرا من الأجازه"
+
+#. module: hr_loans
+#: model:ir.model,name:hr_loans.model_employee_absence_line
+#: model:ir.model,name:hr_loans.model_hr_loans_loan_advance
+#: model:ir.model,name:hr_loans.model_loan_advance_request
+msgid "Email Thread"
+msgstr "المحادثة البريدية"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:162
+#: code:addons/hr_loans/models/hr_loans_.py:1363
+#: model:ir.model,name:hr_loans.model_hr_employee
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_employee_id
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_employee_id
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_employee_id
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_employee_id
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_employee_id
+#: model:ir.ui.view,arch_db:hr_loans.employee_absence_line_search
+#: model:ir.ui.view,arch_db:hr_loans.employee_deductions_violations_search
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_search
+#: model:ir.ui.view,arch_db:hr_loans.loan_installment_search
+#, python-format
+msgid "Employee"
+msgstr "الموظف"
+
+#. module: hr_loans
+#: model:ir.actions.act_window,name:hr_loans.action_employee_absence
+#: model:ir.model,name:hr_loans.model_employee_absence
+msgid "Employee Absence"
+msgstr "تفاصيل الغياب"
+
+#. module: hr_loans
+#: model:ir.actions.act_window,name:hr_loans.action_employee_absence_line
+#: model:ir.ui.view,arch_db:hr_loans.employee_absence_line_form
+msgid "Employee Absence Report"
+msgstr "تقرير الغياب"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_employee_english_name
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_employee_english_name
+msgid "Employee English Name"
+msgstr "إسم الموظف باللغه الإنجليزيه"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:734
+#, python-format
+msgid "Employee Loans"
+msgstr "سلف الموظف"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_old_employee_deduction_ids
+#: model:ir.ui.view,arch_db:hr_loans.employee_deductions_violations_form
+msgid "Employee Old Deductions"
+msgstr "المخالفات السابقه التي تخص الموظف"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_old_reward_ids
+#: model:ir.ui.view,arch_db:hr_loans.hr_employee_rewards_form
+msgid "Employee Old rewards"
+msgstr "مكافأت الموظف السابقه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_payslip_id
+msgid "Employee Payslip"
+msgstr "مسير رواتب الموظف"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/rewards.py:82
+#: code:addons/hr_loans/models/rewards.py:156
+#: code:addons/hr_loans/models/rewards.py:383
+#: model:ir.actions.act_window,name:hr_loans.hr_employee_rewards_action
+#: model:ir.model,name:hr_loans.model_hr_employee_rewards
+#: model:ir.model.fields,field_description:hr_loans.field_hr_contract_employee_reward_ids
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_rule_employee_rewards
+#: model:ir.ui.menu,name:hr_loans.hr_employee_rewards_menu
+#: model:ir.ui.view,arch_db:hr_loans.hr_contract_form_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_employee_rewards_form
+#: model:ir.ui.view,arch_db:hr_loans.hr_employee_rewards_tree
+#, python-format
+msgid "Employee Rewards"
+msgstr "مكافأت الموظف"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_config_settings_default_absence_based_on
+msgid "Employee absence deduction based on"
+msgstr "يتم خصم المخالفات بناءُ على"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans2.py:38
+#: code:addons/hr_loans/models/hr_loans2.py:362
+#: code:addons/hr_loans/models/hr_loans2.py:718
+#: model:ir.actions.act_window,name:hr_loans.employee_deductions_violations_action
+#: model:ir.model,name:hr_loans.model_employee_deductions_violations
+#: model:ir.model.fields,field_description:hr_loans.field_deductions_violations_attaches_source_id
+#: model:ir.ui.menu,name:hr_loans.employee_deductions_violations_menu
+#: model:ir.ui.view,arch_db:hr_loans.employee_deductions_violations_form
+#: model:ir.ui.view,arch_db:hr_loans.employee_deductions_violations_search
+#: model:ir.ui.view,arch_db:hr_loans.employee_deductions_violations_tree
+#: model:ir.ui.view,arch_db:hr_loans.hr_contract_form_loans
+#, python-format
+msgid "Employee deductions - violations"
+msgstr "المخالفات التي تخص الموظف"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_reward_type_employee_reward_ids
+#: model:ir.ui.view,arch_db:hr_loans.hr_reward_type_form
+msgid "Employee old Rewards"
+msgstr "مكافأت الموظف السابقه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_count
+msgid "Employee rewards"
+msgstr "مكافأت الموظفين"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.employee_absence_line_graph
+#: model:ir.ui.view,arch_db:hr_loans.employee_absence_line_pivot
+#: model:ir.ui.view,arch_db:hr_loans.employee_absence_line_search
+#: model:ir.ui.view,arch_db:hr_loans.employee_absence_line_tree
+#: model:ir.ui.view,arch_db:hr_loans.view_hr_payslip_loans_form
+msgid "Employees Absence Report"
+msgstr "تقرير الغياب"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.employee_absence
+#: model:ir.ui.view,arch_db:hr_loans.employee_absence_tree
+msgid "Employees Absence Timesheet"
+msgstr "تفاصيل الغياب للموظفين"
+
+#. module: hr_loans
+#: model:ir.ui.menu,name:hr_loans.menu_employee_absence_line
+msgid "Employees absence Report"
+msgstr "تقرير الغياب"
+
+#. module: hr_loans
+#: model:ir.ui.menu,name:hr_loans.menu_employee_absence
+msgid "Employees absence Timesheet"
+msgstr "تفاصيل الغياب للموظفين"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans2.py:151
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_employee_deduction_ids
+#: model:ir.ui.view,arch_db:hr_loans.deduction_violation_type_form
+#, python-format
+msgid "Employees deduction history"
+msgstr "الخصومات السابقه على الموظف"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_employee_rewards_form
+#: model:ir.ui.view,arch_db:hr_loans.hr_reward_type_form
+msgid "Employees rewards"
+msgstr "مكافأت الموظفين"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_reward_type_en_name
+#: model:ir.ui.view,arch_db:hr_loans.hr_reward_type_form
+msgid "English Description"
+msgstr "الوصف باللغه الإنجليزيه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_category_english_name
+#: model:ir.ui.view,arch_db:hr_loans.deduction_violation_category_form
+msgid "English name"
+msgstr "الإسم باللغه الإنجليزيه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_excluded_days_leaves
+msgid "Excluded days due to Leaves"
+msgstr "أيام مستبعده نظرا لوجود الموظف في أجازه لا يستحق لها راتب"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_excluded_days_old
+msgid "Excluded days due to old payslip"
+msgstr "أيام مستبعده نظرا لوجود مسيرات رواتب سابقه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_expected_payment
+msgid "Expected Payment To Employee"
+msgstr "التاريخ المتوقع للسداد إلى الموظف"
+
+#. module: hr_loans
+#: selection:employee.absence,month:0 selection:employee.absence.line,month:0
+#: selection:loan.advance.request,installment_start_month:0
+#: selection:loan.advance.request,month:0 selection:loan.installment,month:0
+msgid "February"
+msgstr "فبراير"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_absence_attaches_file
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_type_attaches_file
+#: model:ir.model.fields,field_description:hr_loans.field_deductions_violations_attaches_file
+#: model:ir.model.fields,field_description:hr_loans.field_employee_reward_attaches_file
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_attaches_file
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_attaches_file
+#: model:ir.model.fields,field_description:hr_loans.field_rewards_type_attaches_file
+msgid "File"
+msgstr "الملف"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_run_final_reviewed_by
+msgid "Final Review By"
+msgstr "تمت المراجعه النهائية بواسطة"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_run_final_reviewed_date
+msgid "Final Review Date"
+msgstr "مراجعة البيانات للمره الأخيره"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_request_form
+msgid "Financial  Manager Approve"
+msgstr "موافقة المدير المالي"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:170
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_financial_manager_approval
+#, python-format
+msgid "Financial Manager Approval"
+msgstr "موافقة المدير المالي"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_search
+#: selection:loan.advance.request,state:0 selection:loan.installment,state:0
+msgid "Financial Manager Approve"
+msgstr "موافقة المدير المالي"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.deduction_violation_type_form
+msgid "First time (  أول مرة  )"
+msgstr "First time (  أول مرة  )"
+
+#. module: hr_loans
+#: selection:hr_loans.loan_advance,maximum_amount:0
+msgid "Fixed Amount"
+msgstr "رقم ثابت"
+
+#. module: hr_loans
+#: selection:employee.deductions.violations,deduction_type:0
+msgid "Fixed amount"
+msgstr "رقم ثابت"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_category_message_follower_ids
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_message_follower_ids
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_message_follower_ids
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_message_follower_ids
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_message_follower_ids
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_message_follower_ids
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_message_follower_ids
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_message_follower_ids
+#: model:ir.model.fields,field_description:hr_loans.field_hr_reward_type_message_follower_ids
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_message_follower_ids
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_message_follower_ids
+msgid "Followers"
+msgstr "المتابعون"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_category_message_channel_ids
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_message_channel_ids
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_message_channel_ids
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_message_channel_ids
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_message_channel_ids
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_message_channel_ids
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_message_channel_ids
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_message_channel_ids
+#: model:ir.model.fields,field_description:hr_loans.field_hr_reward_type_message_channel_ids
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_message_channel_ids
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_message_channel_ids
+msgid "Followers (Channels)"
+msgstr "المتابعون ( القنوات )"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_category_message_partner_ids
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_message_partner_ids
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_message_partner_ids
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_message_partner_ids
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_message_partner_ids
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_message_partner_ids
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_message_partner_ids
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_message_partner_ids
+#: model:ir.model.fields,field_description:hr_loans.field_hr_reward_type_message_partner_ids
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_message_partner_ids
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_message_partner_ids
+msgid "Followers (Partners)"
+msgstr "المتابعون ( الأفراد )"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:1223
+#, python-format
+msgid "Forbidden to duplicate"
+msgstr "ممتوع التكرار"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.deduction_violation_type_form
+msgid "Forth time (  رابع مرة  )"
+msgstr "Forth time (  رابع مرة  )"
+
+#. module: hr_loans
+#: selection:hr.employee.rewards,calc_method:0
+#: selection:hr.reward.type,calc_method:0
+msgid "Free annual leave balance"
+msgstr "رصيد أجازات سنوية كمكافأه"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.loan_installment_search
+msgid "Fully Paid"
+msgstr "تم السداد بالكامل"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_search
+#: selection:loan.advance.request,state:0 selection:loan.installment,state:0
+msgid "GM Approve"
+msgstr "موافقة المدير التنفيذى"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:28
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_gm_exceeds
+#, python-format
+msgid "GM Must approve if the amount exceeds"
+msgstr "يجب أن يوافق المدير التنفيذي إذا قام الموظف بطلب سلفه أكبر من"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_gender
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_gender
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_gender
+#: model:ir.ui.view,arch_db:hr_loans.employee_absence_line_search
+#: model:ir.ui.view,arch_db:hr_loans.loan_installment_search
+msgid "Gender"
+msgstr "الجنس"
+
+#. module: hr_loans
+#: model:res.groups,name:hr_loans.group_general_manager
+msgid "General Manager"
+msgstr "المدير التنفيذى"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:171
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_general_manager_approval
+#, python-format
+msgid "General Manager Approval"
+msgstr "موافقة المدير التنفيذى"
+
+#. module: hr_loans
+#: model:ir.ui.menu,name:hr_loans.menu_hr_loans_global_settings
+#: model:ir.ui.menu,name:hr_loans.menu_loans_general_root
+msgid "General Settings"
+msgstr "الإعدادات العامه"
+
+#. module: hr_loans
+#: model:ir.model,name:hr_loans.model_hr_payslip_employees
+msgid "Generate payslips for all selected employees"
+msgstr "إنشاء مسيرات الرواتب للموظفين الذى تم إختيارهم"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_rule_gosi_company_share
+msgid "Gosi Company share"
+msgstr "حصة الشركه من التأمينات الإجتماعيه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_rule_gosi_employee_share
+msgid "Gosi Employee share"
+msgstr "حصة الموظف من التأمينات الإجتماعية"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_rule_gross
+msgid "Gross"
+msgstr "الإجمالى"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.employee_absence_line_search
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_search
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_type_search
+#: model:ir.ui.view,arch_db:hr_loans.loan_installment_search
+msgid "Group By"
+msgstr "تجميع حسب"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.employee_deductions_violations_search
+msgid "Group By..."
+msgstr "تجميع حسب ..."
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:169
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_hr_manager_approval
+#, python-format
+msgid "HR Manager Approval"
+msgstr "موافقة مدير الموارد البشريه"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_search
+#: selection:loan.advance.request,state:0 selection:loan.installment,state:0
+msgid "HR Manager Approve"
+msgstr "موافقة مدير الموارد البشريه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_rule_house_allowance
+msgid "House Allowance"
+msgstr "بدل السكن"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_request_form
+msgid "Hr Manager Approve"
+msgstr "موافقة مدير الموارد البشريه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_absence_attaches_id
+#: model:ir.model.fields,field_description:hr_loans.field_confirm_other_action_id
+#: model:ir.model.fields,field_description:hr_loans.field_contract_paid_rewards_id
+#: model:ir.model.fields,field_description:hr_loans.field_contract_paid_violation_id
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_type_attaches_id
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_category_id
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_id
+#: model:ir.model.fields,field_description:hr_loans.field_deductions_violations_attaches_id
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_id
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_id
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_id
+#: model:ir.model.fields,field_description:hr_loans.field_employee_reward_attaches_id
+#: model:ir.model.fields,field_description:hr_loans.field_hr_contract_loan_payment_id
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_id
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_config_settings_id
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_id
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_tag_id
+#: model:ir.model.fields,field_description:hr_loans.field_hr_reward_type_id
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_attaches_id
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_id
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_attaches_id
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_id
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_payment_id
+#: model:ir.model.fields,field_description:hr_loans.field_rewards_type_attaches_id
+msgid "ID"
+msgstr "الرقم الكودى"
+
+#. module: hr_loans
+#: model:ir.model.fields,help:hr_loans.field_deduction_violation_category_message_unread
+#: model:ir.model.fields,help:hr_loans.field_deduction_violation_type_message_unread
+#: model:ir.model.fields,help:hr_loans.field_employee_absence_line_message_unread
+#: model:ir.model.fields,help:hr_loans.field_employee_absence_message_unread
+#: model:ir.model.fields,help:hr_loans.field_employee_deductions_violations_message_unread
+#: model:ir.model.fields,help:hr_loans.field_hr_employee_rewards_message_unread
+#: model:ir.model.fields,help:hr_loans.field_hr_loans_loan_advance_message_unread
+#: model:ir.model.fields,help:hr_loans.field_hr_payslip_message_unread
+#: model:ir.model.fields,help:hr_loans.field_hr_reward_type_message_unread
+#: model:ir.model.fields,help:hr_loans.field_loan_advance_request_message_unread
+#: model:ir.model.fields,help:hr_loans.field_loan_installment_message_unread
+msgid "If checked new messages require your attention."
+msgstr "إذا حددته، ستتطلب الرسائل الجديدة انتباهك"
+
+#. module: hr_loans
+#: model:ir.model.fields,help:hr_loans.field_deduction_violation_category_message_needaction
+#: model:ir.model.fields,help:hr_loans.field_deduction_violation_type_message_needaction
+#: model:ir.model.fields,help:hr_loans.field_employee_absence_line_message_needaction
+#: model:ir.model.fields,help:hr_loans.field_employee_absence_message_needaction
+#: model:ir.model.fields,help:hr_loans.field_employee_deductions_violations_message_needaction
+#: model:ir.model.fields,help:hr_loans.field_hr_employee_rewards_message_needaction
+#: model:ir.model.fields,help:hr_loans.field_hr_loans_loan_advance_message_needaction
+#: model:ir.model.fields,help:hr_loans.field_hr_payslip_message_needaction
+#: model:ir.model.fields,help:hr_loans.field_hr_reward_type_message_needaction
+#: model:ir.model.fields,help:hr_loans.field_loan_advance_request_message_needaction
+#: model:ir.model.fields,help:hr_loans.field_loan_installment_message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "اذا تم وضع علامة صح. يعنى ذلك ان تلك الرساله مهمه وتحتاج إلى مراجعه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_attaches_installment_id
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_payment_installment_id
+msgid "Installment"
+msgstr "القسط الشهرى"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:1440
+#, python-format
+msgid "Installment Details"
+msgstr "تفاصيل القسط"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_request_form
+msgid "Installments"
+msgstr "الأقساط الشهريه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_installment_ids
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_request_form
+msgid "Installments Details"
+msgstr "تفاصيل الأقساط"
+
+#. module: hr_loans
+#: selection:hr.loans.config.settings,default_loan_reconciliation_method:0
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_is_installment
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_is_installment
+msgid "Installments For Each Loan"
+msgstr "الأقساط لكل سلفه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_config_settings_default_integrate_with_finance
+#: model:ir.model.fields,help:hr_loans.field_hr_loans_config_settings_default_integrate_with_finance
+msgid "Integrate with finance"
+msgstr "الربط مع قسم الماليه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_config_settings_default_integrate_traffic_violation
+#: model:ir.model.fields,help:hr_loans.field_hr_loans_config_settings_default_integrate_traffic_violation
+msgid "Integrate with traffic violation system"
+msgstr "تسجيل المخالفات المروريه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_category_message_is_follower
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_message_is_follower
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_message_is_follower
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_message_is_follower
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_message_is_follower
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_message_is_follower
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_message_is_follower
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_message_is_follower
+#: model:ir.model.fields,field_description:hr_loans.field_hr_reward_type_message_is_follower
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_message_is_follower
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_message_is_follower
+msgid "Is Follower"
+msgstr "هو متابع"
+
+#. module: hr_loans
+#: selection:employee.absence,month:0 selection:employee.absence.line,month:0
+#: selection:loan.advance.request,installment_start_month:0
+#: selection:loan.advance.request,month:0 selection:loan.installment,month:0
+msgid "January"
+msgstr "يناير"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_job_id
+#: model:ir.ui.view,arch_db:hr_loans.employee_absence_line_search
+#: model:ir.ui.view,arch_db:hr_loans.loan_installment_search
+msgid "Job"
+msgstr "الوظيفه"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:164
+#: code:addons/hr_loans/models/hr_loans_.py:1366
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_job_id
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_job_id
+#, python-format
+msgid "Job Title"
+msgstr "المسمى الوظيفي"
+
+#. module: hr_loans
+#: selection:employee.absence,month:0 selection:employee.absence.line,month:0
+#: selection:loan.advance.request,installment_start_month:0
+#: selection:loan.advance.request,month:0 selection:loan.installment,month:0
+msgid "July"
+msgstr "يوليو"
+
+#. module: hr_loans
+#: selection:employee.absence,month:0 selection:employee.absence.line,month:0
+#: selection:loan.advance.request,installment_start_month:0
+#: selection:loan.advance.request,month:0 selection:loan.installment,month:0
+msgid "June"
+msgstr "يونيو"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_category_message_last_post
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_message_last_post
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_message_last_post
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_message_last_post
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_message_last_post
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_message_last_post
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_message_last_post
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_message_last_post
+#: model:ir.model.fields,field_description:hr_loans.field_hr_reward_type_message_last_post
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_message_last_post
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_message_last_post
+msgid "Last Message Date"
+msgstr "تاريخ آخر رسالة"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_absence_attaches___last_update
+#: model:ir.model.fields,field_description:hr_loans.field_confirm_other_action___last_update
+#: model:ir.model.fields,field_description:hr_loans.field_contract_paid_rewards___last_update
+#: model:ir.model.fields,field_description:hr_loans.field_contract_paid_violation___last_update
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_type_attaches___last_update
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_category___last_update
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type___last_update
+#: model:ir.model.fields,field_description:hr_loans.field_deductions_violations_attaches___last_update
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence___last_update
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line___last_update
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations___last_update
+#: model:ir.model.fields,field_description:hr_loans.field_employee_reward_attaches___last_update
+#: model:ir.model.fields,field_description:hr_loans.field_hr_contract_loan_payment___last_update
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards___last_update
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_config_settings___last_update
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance___last_update
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_tag___last_update
+#: model:ir.model.fields,field_description:hr_loans.field_hr_reward_type___last_update
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request___last_update
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_attaches___last_update
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment___last_update
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_attaches___last_update
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_payment___last_update
+#: model:ir.model.fields,field_description:hr_loans.field_rewards_type_attaches___last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_absence_attaches_write_uid
+#: model:ir.model.fields,field_description:hr_loans.field_confirm_other_action_write_uid
+#: model:ir.model.fields,field_description:hr_loans.field_contract_paid_rewards_write_uid
+#: model:ir.model.fields,field_description:hr_loans.field_contract_paid_violation_write_uid
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_type_attaches_write_uid
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_category_write_uid
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_write_uid
+#: model:ir.model.fields,field_description:hr_loans.field_deductions_violations_attaches_write_uid
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_write_uid
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_write_uid
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_write_uid
+#: model:ir.model.fields,field_description:hr_loans.field_employee_reward_attaches_write_uid
+#: model:ir.model.fields,field_description:hr_loans.field_hr_contract_loan_payment_write_uid
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_write_uid
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_config_settings_write_uid
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_tag_write_uid
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_write_uid
+#: model:ir.model.fields,field_description:hr_loans.field_hr_reward_type_write_uid
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_attaches_write_uid
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_write_uid
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_attaches_write_uid
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_payment_write_uid
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_write_uid
+#: model:ir.model.fields,field_description:hr_loans.field_rewards_type_attaches_write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_absence_attaches_write_date
+#: model:ir.model.fields,field_description:hr_loans.field_confirm_other_action_write_date
+#: model:ir.model.fields,field_description:hr_loans.field_contract_paid_rewards_write_date
+#: model:ir.model.fields,field_description:hr_loans.field_contract_paid_violation_write_date
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_type_attaches_write_date
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_category_write_date
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_write_date
+#: model:ir.model.fields,field_description:hr_loans.field_deductions_violations_attaches_write_date
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_write_date
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_write_date
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_write_date
+#: model:ir.model.fields,field_description:hr_loans.field_employee_reward_attaches_write_date
+#: model:ir.model.fields,field_description:hr_loans.field_hr_contract_loan_payment_write_date
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_write_date
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_config_settings_write_date
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_tag_write_date
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_write_date
+#: model:ir.model.fields,field_description:hr_loans.field_hr_reward_type_write_date
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_attaches_write_date
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_write_date
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_attaches_write_date
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_payment_write_date
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_write_date
+#: model:ir.model.fields,field_description:hr_loans.field_rewards_type_attaches_write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_late_return_from_leave
+msgid "Late Return from leave"
+msgstr "عوده متأخرا من الأجازه"
+
+#. module: hr_loans
+#: model:ir.model.fields,help:hr_loans.field_employee_deductions_violations_contract_id
+#: model:ir.model.fields,help:hr_loans.field_hr_employee_rewards_contract_id
+msgid "Latest contract of the employee"
+msgstr "اخر عقد للموظفين"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_lines
+msgid "Lines"
+msgstr "السطور"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_linked_air_ticket_id
+msgid "Linked air ticket"
+msgstr "طلب تذاكر الطيران المرتبط مع تلك السلفه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_linked_exit_rentry_id
+msgid "Linked exit and re-entry request"
+msgstr "طلب الخروج والعوده المرتبط مع تلك السلفه"
+
+#. module: hr_loans
+#: selection:hr_loans.loan_advance,type:0 selection:loan.advance.request,type:0
+msgid "Loan"
+msgstr "سلفه شخصيه"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:51
+#, python-format
+msgid "Loan / Advance Requests"
+msgstr "طلب سلفه / راتب مقدم"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:19
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_type
+#, python-format
+msgid "Loan / Advance Type"
+msgstr "نوع السلفه / الراتب المقدم"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:17
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_name
+#, python-format
+msgid "Loan / advance description"
+msgstr "وصف السلفه / الراتب المقدم"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_search
+msgid "Loan / advance type"
+msgstr "نوع السلفه / الراتب المقدم"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_form
+msgid "Loan / advances Requests"
+msgstr "طلب السلفه / الراتب المقدم"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:253
+#, python-format
+msgid "Loan Amount cannot be equal to zero"
+msgstr "مبلغ السلفه لا يمكن أن يكون صفر !!"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_rule_loan_deducted
+msgid "Loan Deducted"
+msgstr "المبلغ المخصوم من السلف"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:746
+#: model:ir.model.fields,field_description:hr_loans.field_hr_contract_loans
+#, python-format
+msgid "Loan Details"
+msgstr "تفاصيل السلفه"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_search
+#: selection:loan.advance.request,state:0 selection:loan.installment,state:0
+msgid "Loan Fully Paid"
+msgstr "تم سداد السلفه بالكامل"
+
+#. module: hr_loans
+#: model:ir.model,name:hr_loans.model_loan_installment
+msgid "Loan Installment"
+msgstr "أقساط السلفه"
+
+#. module: hr_loans
+#: model:ir.model,name:hr_loans.model_loan_installment_attaches
+msgid "Loan Installment Attaches"
+msgstr "المرفقات"
+
+#. module: hr_loans
+#: model:ir.model,name:hr_loans.model_loan_installment_payment
+msgid "Loan Installment Payment"
+msgstr "سداد الأقساط"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:188
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_loan_remaining
+#, python-format
+msgid "Loan Remaining"
+msgstr "المبلغ المتبقى من السلفه"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:1364
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_loan_request_id
+#: model:ir.ui.view,arch_db:hr_loans.loan_installment_search
+#, python-format
+msgid "Loan Request"
+msgstr "طلب سلفه"
+
+#. module: hr_loans
+#: model:ir.model,name:hr_loans.model_loan_advance_request_attaches
+msgid "Loan Request Attaches"
+msgstr "Loan Request Attaches"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:172
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_paid_amount
+#, python-format
+msgid "Loan paid amount"
+msgstr "المبلغ المسدد من السلفه"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_contract_form_loans
+#: model:ir.ui.view,arch_db:hr_loans.view_hr_loans_configuration
+#: model:ir.ui.view,arch_db:hr_loans.view_hr_payslip_loans_form
+msgid "Loans"
+msgstr "السلف"
+
+#. module: hr_loans
+#: model:ir.ui.menu,name:hr_loans.menu_loans_request_root
+msgid "Loans & salary in advance"
+msgstr "سلفه/ راتب مقدم"
+
+#. module: hr_loans
+#: model:ir.ui.menu,name:hr_loans.menu_loans_config_salary_root
+msgid "Loans & salary in advance configuration"
+msgstr "إعدادات السلف / الرواتب المقدمه"
+
+#. module: hr_loans
+#: model:ir.actions.act_window,name:hr_loans.action_hr_loans_advances
+msgid "Loans / Advances"
+msgstr "السلف / الرواتب المقدمه"
+
+#. module: hr_loans
+#: model:ir.actions.act_window,name:hr_loans.action_hr_loans_advances_requests
+msgid "Loans / Advances Requests"
+msgstr "طلب سلفه / راتب مقدم"
+
+#. module: hr_loans
+#: model:ir.actions.act_window,name:hr_loans.action_hr_loans_advances_tag
+msgid "Loans / Advances Tags"
+msgstr "الوسوم"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.view_hr_payslip_loans_form
+msgid "Loans / Deductions - Violations / Rewards"
+msgstr "السلف / خصومات الغياب / المخالفات / المكافأت"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.loan_view_employee_form
+msgid "Loans / advances"
+msgstr "السلف / الرواتب المقدمه"
+
+#. module: hr_loans
+#: model:ir.ui.menu,name:hr_loans.menu_hr_loans_advances_tags
+msgid "Loans And Advances Tags"
+msgstr "الوسوم"
+
+#. module: hr_loans
+#: model:ir.ui.menu,name:hr_loans.menu_hr_loans_advances
+msgid "Loans And Advances Types"
+msgstr "أنواع السلف / الرواتب المقدمه"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.loan_installment_form
+#: model:ir.ui.view,arch_db:hr_loans.loan_installment_graph
+#: model:ir.ui.view,arch_db:hr_loans.loan_installment_search
+#: model:ir.ui.view,arch_db:hr_loans.loan_installment_tree
+msgid "Loans Installment Details"
+msgstr "تفاصيل الأقساط"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_search
+msgid "Loans Only"
+msgstr "السلف فقط"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_config_settings_default_loan_reconciliation_method
+msgid "Loans Reconciliation Method"
+msgstr "طريقة سداد السلف"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_form
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_search
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_tree
+msgid "Loans and Advances"
+msgstr "السلف / الرواتب المقدمه"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_request_form
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_request_tree
+msgid "Loans and Advances Request"
+msgstr "طلب سلفه / راتب مقدم"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_type_search
+msgid "Loans and Advances Types"
+msgstr "أنواع السلف / الرواتب المقدمه"
+
+#. module: hr_loans
+#: model:ir.ui.menu,name:hr_loans.menu_loans_request
+msgid "Loans and advances request"
+msgstr "طلب سلفه / راتب مقدم"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_loans_count
+msgid "Loans count"
+msgstr "عدد السلف"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_config_settings_default_loans_deduction_percentage
+msgid "Loans monthly deduction percentage from salary"
+msgstr "نسبة المبلغ المخصوم من راتب الموظف لسداد السلف"
+
+#. module: hr_loans
+#: model:ir.model.fields,help:hr_loans.field_hr_loans_config_settings_default_loans_deduction_percentage
+msgid "Loans monthly deduction percentage from salary "
+msgstr "نسبة المبلغ المخصوم من راتب الموظف لسداد المخالفات"
+
+#. module: hr_loans
+#: selection:employee.deductions.violations,deduction_reason:0
+msgid "Manual deduction"
+msgstr "تسجيل خصم يدوياً"
+
+#. module: hr_loans
+#: selection:employee.absence,month:0 selection:employee.absence.line,month:0
+#: selection:loan.advance.request,installment_start_month:0
+#: selection:loan.advance.request,month:0 selection:loan.installment,month:0
+msgid "March"
+msgstr "مارس"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.employee_absence_line_search
+msgid "Marital"
+msgstr "الحاله الإجتماعيه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_marital
+msgid "Marital Status"
+msgstr "الحالة الاجتماعية"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:24
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_maximum_amount
+#, python-format
+msgid "Maximum Amount"
+msgstr "المبلغ الأقصى"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_employee_rewards_form
+#: model:ir.ui.view,arch_db:hr_loans.hr_reward_type_form
+msgid "Maximum number"
+msgstr "الحد الأقصى"
+
+#. module: hr_loans
+#: selection:employee.absence,month:0 selection:employee.absence.line,month:0
+#: selection:loan.advance.request,installment_start_month:0
+#: selection:loan.advance.request,month:0 selection:loan.installment,month:0
+msgid "May"
+msgstr "مايو"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_category_message_ids
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_message_ids
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_message_ids
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_message_ids
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_message_ids
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_message_ids
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_message_ids
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_message_ids
+#: model:ir.model.fields,field_description:hr_loans.field_hr_reward_type_message_ids
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_message_ids
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_message_ids
+msgid "Messages"
+msgstr "الرسائل"
+
+#. module: hr_loans
+#: model:ir.model.fields,help:hr_loans.field_deduction_violation_category_message_ids
+#: model:ir.model.fields,help:hr_loans.field_deduction_violation_type_message_ids
+#: model:ir.model.fields,help:hr_loans.field_employee_absence_line_message_ids
+#: model:ir.model.fields,help:hr_loans.field_employee_absence_message_ids
+#: model:ir.model.fields,help:hr_loans.field_employee_deductions_violations_message_ids
+#: model:ir.model.fields,help:hr_loans.field_hr_employee_rewards_message_ids
+#: model:ir.model.fields,help:hr_loans.field_hr_loans_loan_advance_message_ids
+#: model:ir.model.fields,help:hr_loans.field_hr_payslip_message_ids
+#: model:ir.model.fields,help:hr_loans.field_hr_reward_type_message_ids
+#: model:ir.model.fields,help:hr_loans.field_loan_advance_request_message_ids
+#: model:ir.model.fields,help:hr_loans.field_loan_installment_message_ids
+msgid "Messages and communication history"
+msgstr "الرسائل و سجل التواصل"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_model_name
+msgid "Model name"
+msgstr "إسم الموديل"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:205
+#: code:addons/hr_loans/models/hr_loans_.py:1148
+#: code:addons/hr_loans/models/hr_loans_.py:1385
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_month
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_month
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_month
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_month
+#: model:ir.ui.view,arch_db:hr_loans.employee_absence_line_search
+#: model:ir.ui.view,arch_db:hr_loans.employee_deductions_violations_search
+#: model:ir.ui.view,arch_db:hr_loans.loan_installment_search
+#, python-format
+msgid "Month"
+msgstr "الشهر"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_monthly_installment
+#: model:ir.ui.view,arch_db:hr_loans.loan_installment_search
+msgid "Monthly Installment"
+msgstr "القسط الشهرى"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.view_hr_payslip_loans_form
+msgid "More Details"
+msgstr "تفاصيل أكثر"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.view_hr_payslip_loans_form
+msgid "N/A"
+msgstr "لا ينطبق"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_country_id
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_country_id
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_country_id
+msgid "Nationality"
+msgstr "الجنسيه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_nationality_type
+msgid "Nationality type"
+msgstr "نوع الجنسيه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_rule_net
+msgid "Net"
+msgstr "صافى المبلغ"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_net_absence_deduction
+msgid "Net absence deduction"
+msgstr "صافى خصومات الغياب"
+
+#. module: hr_loans
+#: selection:deduction.violation.category,state:0
+#: selection:deduction.violation.type,state:0
+#: selection:employee.absence,state:0
+#: selection:employee.deductions.violations,state:0
+#: selection:hr.employee.rewards,state:0 selection:hr.reward.type,state:0
+#: selection:hr_loans.loan_advance,state:0
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_search
+#: selection:loan.advance.request,state:0 selection:loan.installment,state:0
+msgid "New"
+msgstr "جديد"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:875
+#: code:addons/hr_loans/models/hr_loans_.py:876
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_loan_next_month_balance
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_loan_next_month_balance_history
+#: model:ir.ui.view,arch_db:hr_loans.view_hr_payslip_loans_form
+#, python-format
+msgid "Next Month Balance"
+msgstr "رصيد الشهر القادم"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_next_month_balance
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_next_month_balance_history
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_reward_next_balance
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_reward_next_balance_history
+msgid "Next Month balance"
+msgstr "رصيد الشهر القادم"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:1217
+#, python-format
+msgid ""
+"Not Allowed \n"
+" We found that there is some confirmed payslip which already linked with this absence timesheet, kindly open this absence timesheet and try to delete the lines which contains data error!"
+msgstr ""
+"Not Allowed \n"
+" We found that there is some confirmed payslip which already linked with this absence timesheet, kindly open this absence timesheet and try to delete the lines which contains data error!"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:1283
+#, python-format
+msgid ""
+"Not Allowed !!\n"
+" For Employee ( %s ) it is not logic that number of absence days & Hours & Minutes is zero. if there is no absence related to this employee, kindly remove him from absence report."
+msgstr ""
+"Not Allowed !!\n"
+" For Employee ( %s ) it is not logic that number of absence days & Hours & Minutes is zero. if there is no absence related to this employee, kindly remove him from absence report."
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:1271
+#, python-format
+msgid ""
+"Not Allowed !!\n"
+" For Employee ( %s ),it is not logic that  Absence date is greater than today date."
+msgstr ""
+"Not Allowed !!\n"
+" For Employee ( %s ),it is not logic that  Absence date is greater than today date."
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:950
+#, python-format
+msgid ""
+"Not Allowed !! \n"
+" For Employee ( %s ), It is not logic that the amount which you will remove from absence deduction is greater that total absence deduction! Kindly review your data!."
+msgstr ""
+"Not Allowed !! \n"
+" For Employee ( %s ), It is not logic that the amount which you will remove from absence deduction is greater that total absence deduction! Kindly review your data!."
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:630
+#, python-format
+msgid ""
+"Not Allowed !! \n"
+" Your installment schedule for this loan request is incorrect, at this month ( %s / %s ) we found that there is a confirmed payslip for the same employee.  ( %s )"
+msgstr ""
+"Not Allowed !! \n"
+" Your installment schedule for this loan request is incorrect, at this month ( %s / %s ) we found that there is a confirmed payslip for the same employee.  ( %s )"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.loan_installment_search
+msgid "Not Paid"
+msgstr "لم يتم السداد"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:814
+#, python-format
+msgid ""
+"Not allowed !! \n"
+" There is no payslips found! What is the data which you confirmed? kindly go to Payslip tab and click on Generate payslips, then select all employees which you want to create Payslip for them. "
+msgstr "لا توجد مسيرات رواتب حتى تقوم بتأكيدها. برجاء الضغط على زرار إنشاء مسيرات الرواتب ثم إختر الموظفين الذين ترغب في إنشاء مسيرات رواتب لهم. بعد ذلك قم بالضغط على زر تأكيد مسيرات الرواتب الجماعيه."
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:1318
+#, python-format
+msgid ""
+"Not allowed !! \n"
+" We found that there is some confirmed payslip which already linked with this absence timesheet, kindly open this absence timesheet and try to delete the lines which contains data error!"
+msgstr ""
+"Not allowed !! \n"
+" We found that there is some confirmed payslip which already linked with this absence timesheet, kindly open this absence timesheet and try to delete the lines which contains data error!"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/rewards.py:75
+#, python-format
+msgid "Not allowed to delete a confirmed Reward type!"
+msgstr "غير مسموح بحذف نوع من أنواع المكافئات بعد ان تمت تأكيد المعامله."
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:78
+#, python-format
+msgid "Not allowed to delete a confirmed loan type !!"
+msgstr "غير مسموح بحذف نوع من أنواع السلف بعد ان تمت تأكيد المعامله."
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans2.py:525
+#, python-format
+msgid "Not allowed to delete a record which is automatically created by the system, try to refuse or set to new."
+msgstr "غير مسموح بحذف أي سجل تم إنشاؤه اليا من النظام .. يمكنك رفض المعامله إذا كانت لديك الصلاحيات المناسبه."
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:1454
+#, python-format
+msgid ""
+"Not allowed!! \n"
+"                Not Allowed to delete Loan Installment witch had paid amount"
+msgstr "غير مسموح بحذف ذلك القسط وذلك لانه توجد مبالغ تم خصمها من الموظف تخص لنفس القسط."
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:505
+#, python-format
+msgid ""
+"Not allowed!! \n"
+"                Not Allowed to delete this loan / advance because it is linked with Air ticket request."
+msgstr "غير مسموح بحذف هذه السلفه وذلك لانه تم انشاؤها اوتوماتيكيا عند طلب تذكره طيران للموظف."
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:508
+#, python-format
+msgid ""
+"Not allowed!! \n"
+"                Not Allowed to delete this loan / advance because it is linked with exit and re-entry request."
+msgstr "غير مسموح بحذف هذه السلفه نظرا لانه تم انشاؤها تلقائيا بسبب طلب خروج وعوده."
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:325
+#, python-format
+msgid "Not allowed!! This employee is not allowed to request for any loans / salary in advance"
+msgstr "غير مسموح لهذا الموظف بطلب سلفه أو راتب مقدم."
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_note
+#: model:ir.ui.view,arch_db:hr_loans.employee_deductions_violations_form
+msgid "Note"
+msgstr "ملاحظه"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:29
+#: code:addons/hr_loans/models/hr_loans_.py:175
+#: code:addons/hr_loans/models/hr_loans_.py:786
+#: model:ir.model.fields,field_description:hr_loans.field_absence_attaches_note
+#: model:ir.model.fields,field_description:hr_loans.field_contract_paid_rewards_note
+#: model:ir.model.fields,field_description:hr_loans.field_contract_paid_violation_note
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_type_attaches_note
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_category_note
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_note
+#: model:ir.model.fields,field_description:hr_loans.field_deductions_violations_attaches_note
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_note
+#: model:ir.model.fields,field_description:hr_loans.field_employee_reward_attaches_note
+#: model:ir.model.fields,field_description:hr_loans.field_hr_contract_loan_payment_notes
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_note
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_notes
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_run_note
+#: model:ir.model.fields,field_description:hr_loans.field_hr_reward_type_note
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_attaches_note
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_notes
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_attaches_note
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_note
+#: model:ir.model.fields,field_description:hr_loans.field_rewards_type_attaches_note
+#: model:ir.ui.view,arch_db:hr_loans.deduction_violation_category_form
+#: model:ir.ui.view,arch_db:hr_loans.deduction_violation_type_form
+#: model:ir.ui.view,arch_db:hr_loans.employee_absence
+#: model:ir.ui.view,arch_db:hr_loans.employee_deductions_violations_form
+#: model:ir.ui.view,arch_db:hr_loans.hr_employee_rewards_form
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_form
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_request_form
+#: model:ir.ui.view,arch_db:hr_loans.hr_reward_type_form
+#: model:ir.ui.view,arch_db:hr_loans.loan_installment_form
+#, python-format
+msgid "Notes"
+msgstr "الملاحظات"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_template1_id
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_template2_id
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_template3_id
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_template4_id
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_template_id
+msgid "Notification letter"
+msgstr "خطاب تحذير "
+
+#. module: hr_loans
+#: selection:employee.absence,month:0 selection:employee.absence.line,month:0
+#: selection:loan.advance.request,installment_start_month:0
+#: selection:loan.advance.request,month:0 selection:loan.installment,month:0
+msgid "November"
+msgstr "نوفمبر"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_count_lines
+msgid "Number Of Employees"
+msgstr "عدد الموظفين"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_installment_number
+msgid "Number Of Installment"
+msgstr "عدد الأقساط"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:231
+#, python-format
+msgid "Number Of Installment cannot be Minus"
+msgstr "عدد الأقساط لا يمكن أن يكون رقما سالباً"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_count_absence
+msgid "Number of Absence Report"
+msgstr "Number of Absence Report"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_category_message_needaction_counter
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_message_needaction_counter
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_message_needaction_counter
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_message_needaction_counter
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_message_needaction_counter
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_message_needaction_counter
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_message_needaction_counter
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_message_needaction_counter
+#: model:ir.model.fields,field_description:hr_loans.field_hr_reward_type_message_needaction_counter
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_message_needaction_counter
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_message_needaction_counter
+msgid "Number of Actions"
+msgstr "عدد الإجراءات"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_leaves_count_float
+msgid "Number of Leaves"
+msgstr "عدد الأجازات"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:27
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_number_of_months
+#, python-format
+msgid "Number of Months"
+msgstr "عدد الشهور"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_number_of_days
+msgid "Number of days"
+msgstr "عدد الأيام"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_installment_number
+#: model:ir.ui.view,arch_db:hr_loans.loan_installment_search
+msgid "Number of installments"
+msgstr "عدد الأقساط"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_count_loan_requests
+msgid "Number of loan/advance requests"
+msgstr "عدد طلبات السلف / الرواتب المقدمه"
+
+#. module: hr_loans
+#: model:ir.model.fields,help:hr_loans.field_deduction_violation_category_message_needaction_counter
+#: model:ir.model.fields,help:hr_loans.field_deduction_violation_type_message_needaction_counter
+#: model:ir.model.fields,help:hr_loans.field_employee_absence_line_message_needaction_counter
+#: model:ir.model.fields,help:hr_loans.field_employee_absence_message_needaction_counter
+#: model:ir.model.fields,help:hr_loans.field_employee_deductions_violations_message_needaction_counter
+#: model:ir.model.fields,help:hr_loans.field_hr_employee_rewards_message_needaction_counter
+#: model:ir.model.fields,help:hr_loans.field_hr_loans_loan_advance_message_needaction_counter
+#: model:ir.model.fields,help:hr_loans.field_hr_payslip_message_needaction_counter
+#: model:ir.model.fields,help:hr_loans.field_hr_reward_type_message_needaction_counter
+#: model:ir.model.fields,help:hr_loans.field_loan_advance_request_message_needaction_counter
+#: model:ir.model.fields,help:hr_loans.field_loan_installment_message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "عدد الرسائل التي تحتاج إلى إجراءات"
+
+#. module: hr_loans
+#: model:ir.model.fields,help:hr_loans.field_deduction_violation_category_message_unread_counter
+#: model:ir.model.fields,help:hr_loans.field_deduction_violation_type_message_unread_counter
+#: model:ir.model.fields,help:hr_loans.field_employee_absence_line_message_unread_counter
+#: model:ir.model.fields,help:hr_loans.field_employee_absence_message_unread_counter
+#: model:ir.model.fields,help:hr_loans.field_employee_deductions_violations_message_unread_counter
+#: model:ir.model.fields,help:hr_loans.field_hr_employee_rewards_message_unread_counter
+#: model:ir.model.fields,help:hr_loans.field_hr_loans_loan_advance_message_unread_counter
+#: model:ir.model.fields,help:hr_loans.field_hr_payslip_message_unread_counter
+#: model:ir.model.fields,help:hr_loans.field_hr_reward_type_message_unread_counter
+#: model:ir.model.fields,help:hr_loans.field_loan_advance_request_message_unread_counter
+#: model:ir.model.fields,help:hr_loans.field_loan_installment_message_unread_counter
+msgid "Number of unread messages"
+msgstr "عدد الرسائل الغير مقروؤه"
+
+#. module: hr_loans
+#: selection:employee.absence,month:0 selection:employee.absence.line,month:0
+#: selection:loan.advance.request,installment_start_month:0
+#: selection:loan.advance.request,month:0 selection:loan.installment,month:0
+msgid "October"
+msgstr "أكتوبر"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:259
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_request_form
+#, python-format
+msgid "Old Loans"
+msgstr "سلف سابقه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_old_deduction_id
+msgid "Old deduction id"
+msgstr "خصومات سابقه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_contract_deduction_violation_ids
+#: model:ir.ui.view,arch_db:hr_loans.employee_deductions_violations_form
+msgid "Old deductions - Violations"
+msgstr "مخالفات سابقه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_old_reward_id
+msgid "Old reward id"
+msgstr "مكافأت سابقه"
+
+#. module: hr_loans
+#: selection:employee.deductions.violations,deduction_reason:0
+msgid "Other"
+msgstr "أخرى"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_rule_other_llowance
+msgid "Other Allowance"
+msgstr "بدلات أخرى"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.view_hr_payslip_loans_form
+msgid "Other Payments / Deductions"
+msgstr "مدفوعات / خصومات أخرى"
+
+#. module: hr_loans
+#: selection:deduction.violation.type,other_action1:0
+#: selection:deduction.violation.type,other_action2:0
+#: selection:deduction.violation.type,other_action3:0
+#: selection:deduction.violation.type,other_action4:0
+#: selection:employee.deductions.violations,other_action:0
+#: model:ir.model.fields,field_description:hr_loans.field_confirm_other_action_action
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_other_action1
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_other_action2
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_other_action3
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_other_action4
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_other_action
+msgid "Other action"
+msgstr "إجراء أخر"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_other_action_desc1
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_other_action_desc2
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_other_action_desc3
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_other_action_desc4
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_action_desc
+msgid "Other action description"
+msgstr "وصف الإجراءات الأخرى"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_paid
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_paid
+#: model:ir.ui.view,arch_db:hr_loans.loan_installment_search
+msgid "Paid"
+msgstr "تم الدفع"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:785
+#: model:ir.model.fields,field_description:hr_loans.field_hr_contract_loan_payment_paid_amount
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_payment_paid
+#, python-format
+msgid "Paid Amount"
+msgstr "المبلغ المسدد"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:750
+#: model:ir.model.fields,field_description:hr_loans.field_hr_contract_paid_amounts
+#: model:ir.ui.view,arch_db:hr_loans.hr_contract_form_loans
+#, python-format
+msgid "Paid Amounts"
+msgstr "المبالغ المسدده"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_contract_paid_amount_ids
+#: model:ir.ui.view,arch_db:hr_loans.hr_contract_form_loans
+msgid "Paid amounts"
+msgstr "المبالغ المسدده"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_patch_reviewed_id
+msgid "Patch Reviewed payslip"
+msgstr "مراجعة جميع مسيرات الرواتب"
+
+#. module: hr_loans
+#: model:ir.model,name:hr_loans.model_hr_payslip
+msgid "Pay Slip"
+msgstr "مسير الرواتب"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_reward_pay_this_month
+msgid "Pay this month"
+msgstr "يدفع هذا الشهر"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:784
+#: model:ir.model.fields,field_description:hr_loans.field_hr_contract_loan_payment_payment_date
+#, python-format
+msgid "Payment Date"
+msgstr "تاريخ السداد"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:783
+#: model:ir.model.fields,field_description:hr_loans.field_hr_contract_loan_payment_ref
+#, python-format
+msgid "Payment Reference"
+msgstr "مرجع الدفع"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_contract_paid_rewards_amount
+#: model:ir.model.fields,field_description:hr_loans.field_contract_paid_violation_amount
+msgid "Payment amount"
+msgstr "مبلغ السداد"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_contract_paid_rewards_date
+#: model:ir.model.fields,field_description:hr_loans.field_contract_paid_violation_date
+msgid "Payment date"
+msgstr "تاريخ السداد"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_payment_ids
+#: model:ir.ui.view,arch_db:hr_loans.loan_installment_form
+msgid "Payment details"
+msgstr "تفاصيل السداد"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_contract_paid_rewards_reference_id
+#: model:ir.model.fields,field_description:hr_loans.field_contract_paid_violation_reference_id
+msgid "Payment reference"
+msgstr "مرجع الدفع"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:902
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_payslip_m2o_id
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_payslip_id
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_payment_payslip_id
+#: model:ir.ui.view,arch_db:hr_loans.employee_absence_line_search
+#, python-format
+msgid "Payslip"
+msgstr "مسير الرواتب"
+
+#. module: hr_loans
+#: model:ir.model,name:hr_loans.model_hr_payslip_run
+msgid "Payslip Batches"
+msgstr "مسيرات الرواتب الجماعيه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_patch_id
+msgid "Payslip batch"
+msgstr "مسيرات الرواتب الجماعيه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_run_payslip_reviewed
+msgid "Payslip reviewed"
+msgstr "تمت مراجعة مسيرات الرواتب"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_run_reviewed_payslip_ids
+#: model:ir.ui.view,arch_db:hr_loans.view_hr_payslip_run_loans_form
+msgid "Payslips To review"
+msgstr "مسيرات الرواتب التي تحتاج إلى مراجعه"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.view_hr_payslip_run_loans_form
+msgid "Payslips which contains Loans / Violations / Rewards"
+msgstr "مسيرات الرواتب التي تحتوى على سلف - مخالفات - غياب - مكافأت"
+
+#. module: hr_loans
+#: selection:hr.loans.config.settings,default_loan_reconciliation_method:0
+msgid "Percentage From Salary"
+msgstr "نسبة من الراتب"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_rule_phone_allowance
+msgid "Phone Allowance"
+msgstr "بدل الإتصالات"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:319
+#, python-format
+msgid "Please Select Employee"
+msgstr "برجاء اختيار الموظف"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_config_settings_default_previous_based_on
+msgid "Previous Percentage Based On"
+msgstr "النسب السابقه بناءً على"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_previous_violations
+msgid "Previous violations"
+msgstr "المخالفات السابقه"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.view_hr_payslip_loans_form
+msgid "Previously paid"
+msgstr "المبالغ المدفوعه سابقا"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_request_form
+msgid "Refuse"
+msgstr "رفض"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_search
+#: selection:loan.advance.request,state:0 selection:loan.installment,state:0
+msgid "Refused"
+msgstr "تم الرفض"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_contract_remaining
+#: model:ir.model.fields,field_description:hr_loans.field_hr_contract_remaining_rewards
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_remaining
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_remaining_
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_remaining_rewards
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_remaining_rewards_
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_remaining
+#: model:ir.ui.view,arch_db:hr_loans.loan_installment_search
+#: model:ir.ui.view,arch_db:hr_loans.view_hr_payslip_loans_form
+msgid "Remaining"
+msgstr "المتبقى"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:753
+#: code:addons/hr_loans/models/hr_loans_.py:873
+#: model:ir.model.fields,field_description:hr_loans.field_hr_contract_remaining_amount
+#, python-format
+msgid "Remaining Amount"
+msgstr "المبلغ المتبقى"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_remaining_loans
+msgid "Remaining Loans"
+msgstr "مبلغ السلف المتبقي"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_rewards_remaining
+msgid "Remaining Rewards"
+msgstr "مبلغ المكافأت المتبقى"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_remaining_deduction
+msgid "Remaining Violations"
+msgstr "مبلغ المخالفات المتبقى"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.view_hr_payslip_loans_form
+msgid "Remove This Amount"
+msgstr "إلغاء هذا المبلغ"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.view_hr_payslip_run_loans_form
+msgid "Remove this amount"
+msgstr "إلغاء هذا المبلغ"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_absence_eduction_remove
+msgid "Remove this amount from absence deduction"
+msgstr "إلغاء هذا المبلغ من الغياب من على الموظف"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:948
+#, python-format
+msgid "Remove this amount from absence deduction Field Can not be minus"
+msgstr "مبلغ الغياب الذى سيتم إلغاؤه من على الموظف يجب أن يكون أكبر من الصفر"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_remove_from_employee
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_reward_remove_amount
+msgid "Remove this amount from employee"
+msgstr "إلغاء هذا المبلغ من الموظف"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans2.py:623
+#, python-format
+msgid "Remove this amount from employee can not be less than zero"
+msgstr "القيمه التي ستقوم بإلغائها من الموظف يجب أن تكون أكبر من الصفر"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/rewards.py:313
+#, python-format
+msgid "Remove this amount from employee should be more than zero "
+msgstr "القيمه التي ستقوم بإلغائها من الموظف يجب أن تكون أكبر من الصفر "
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.view_hr_payslip_run_loans_form
+msgid "Remove this month"
+msgstr "إلغاء هذه القيمه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_attaches_request_id
+msgid "Request"
+msgstr "طلب"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:184
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_request_ids
+#, python-format
+msgid "Requested"
+msgstr "تم الطلب"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:168
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_loan_amount
+#, python-format
+msgid "Requested Loan Amount"
+msgstr "المبلغ المطلوب"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_requested_by
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_search
+msgid "Requested by"
+msgstr "تم الطلب بواسطة"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_employee_rewards_form
+msgid "Reverse Reward"
+msgstr "إلغاء المكافئة"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_reverse_deduction_id
+msgid "Reversed Deduction"
+msgstr "إلغاء العقوبه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_reversed_reward_id
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_source_reward_id
+msgid "Reversed Reward"
+msgstr "إلغاء المكافأه"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/rewards.py:223
+#, python-format
+msgid ""
+"Reversing Rewards Still under development\n"
+"            If you want to do it manually, go to deduction window, and create a deduction with the same amount."
+msgstr "إلغاء المكافأت مازال في مرحلة التطوير .. إذا كنت ترغب في إلغاء تلك المكافأة؛ برجاء الذهاب إلى شاشة الخصومات وإنشاء خصم موازى بنفس القيمه."
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.employee_deductions_violations_form
+msgid "Review"
+msgstr "مراجعة البيانات"
+
+#. module: hr_loans
+#: selection:employee.deductions.violations,state:0
+msgid "Reviewed"
+msgstr "تمت المراجعه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_run_reviewed_by
+msgid "Reviewed By"
+msgstr "تمت المراجعه بواسطة"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_run_reviewed_date
+msgid "Reviewed Date"
+msgstr "تاريخ مراجعة البيانات"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_reward_reverse_reason
+msgid "Reward Reverse Reason"
+msgstr "سبب إلغاء المكافأه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_reward_date
+msgid "Reward date"
+msgstr "تاريخ المكافأه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_contract_reward_paid_amount_ids
+msgid "Reward paid amount"
+msgstr "إجمالى المكافأت المسدده"
+
+#. module: hr_loans
+#: model:ir.model,name:hr_loans.model_hr_reward_type
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_reward_type_id
+msgid "Reward type"
+msgstr "نوع المكافأه"
+
+#. module: hr_loans
+#: model:ir.model,name:hr_loans.model_rewards_type_attaches
+msgid "Reward type Attaches"
+msgstr "Reward type Attaches"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_reward_amount
+msgid "Rewarded amount"
+msgstr "مبلغ المكافأة"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/rewards.py:214
+#, python-format
+msgid "Rewarding a free leave balance still under development"
+msgstr "إعطاء الموظف رصيد أجازه سنويه كمكافأه ما زال تحت التطوير!"
+
+#. module: hr_loans
+#: model:ir.ui.menu,name:hr_loans.rewards_menu
+#: model:ir.ui.view,arch_db:hr_loans.loan_view_employee_form
+#: model:ir.ui.view,arch_db:hr_loans.view_hr_payslip_loans_form
+msgid "Rewards"
+msgstr "مكافئات الموظفين"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_calc_method
+#: model:ir.model.fields,field_description:hr_loans.field_hr_reward_type_calc_method
+msgid "Rewards calculation method"
+msgstr "طريقة حساب المكافأة"
+
+#. module: hr_loans
+#: model:ir.ui.menu,name:hr_loans.rewards_config_menu
+msgid "Rewards settings"
+msgstr "إعدادات مكافئات الموظفين"
+
+#. module: hr_loans
+#: model:ir.actions.act_window,name:hr_loans.hr_reward_type_action
+#: model:ir.ui.menu,name:hr_loans.hr_reward_type_menu
+#: model:ir.ui.view,arch_db:hr_loans.hr_reward_type_form
+#: model:ir.ui.view,arch_db:hr_loans.hr_reward_type_tree
+msgid "Rewards type"
+msgstr "نوع المكافئات"
+
+#. module: hr_loans
+#: selection:hr_loans.loan_advance,type:0 selection:loan.advance.request,type:0
+msgid "Salary In Advance"
+msgstr "راتب مقدم"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:416
+#, python-format
+msgid "Salary Slip of %s for %s-%s"
+msgstr "Salary Slip of %s for %s-%s"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_salary_advance_id
+msgid "Salary in advance request"
+msgstr "طلب راتب مقدم"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.deduction_violation_type_form
+msgid "Second time (  ثاني مرة  )"
+msgstr "Second time (  ثاني مرة  )"
+
+#. module: hr_loans
+#: selection:deduction.violation.type,deduction_type1:0
+#: selection:deduction.violation.type,deduction_type2:0
+#: selection:deduction.violation.type,deduction_type3:0
+#: selection:deduction.violation.type,deduction_type4:0
+#: selection:employee.deductions.violations,decision:0
+msgid "Send notification letter"
+msgstr "إرسال خطاب تحذير"
+
+#. module: hr_loans
+#: selection:employee.absence,month:0 selection:employee.absence.line,month:0
+#: selection:loan.advance.request,installment_start_month:0
+#: selection:loan.advance.request,month:0 selection:loan.installment,month:0
+msgid "September"
+msgstr "سبتمبر"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_form
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_request_form
+msgid "Set To New"
+msgstr "البدء من جديد"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.deduction_violation_type_form
+#: model:ir.ui.view,arch_db:hr_loans.hr_reward_type_form
+msgid "Set to new"
+msgstr "البدء من جديد"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_config_settings_module_installment_menu
+msgid "Show Installment Menu"
+msgstr "إظهار شاشة جدولة الأقساط"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_source_deduction_id
+msgid "Source deduction"
+msgstr "مصدر الخصم"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:214
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_installment_start_month
+#, python-format
+msgid "Start Deduction From - Month"
+msgstr "شهر بداية الخصم"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:215
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_installment_start_year
+#, python-format
+msgid "Start Deduction From - Year"
+msgstr "سنة بداية الخصم"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:237
+#, python-format
+msgid "Start Deduction From - Year cannot be Minus"
+msgstr "سنة بداية الخصم لا يمكن أن تكون رقماً سالباً. !"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_category_state
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_state
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_state
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_state
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_state
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_state
+#: model:ir.model.fields,field_description:hr_loans.field_hr_reward_type_state
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_state
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_state
+#: model:ir.ui.view,arch_db:hr_loans.employee_deductions_violations_search
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_search
+#: model:ir.ui.view,arch_db:hr_loans.loan_installment_search
+msgid "Status"
+msgstr "الحالة"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_category_sub_type_ids
+#: model:ir.ui.view,arch_db:hr_loans.deduction_violation_category_form
+msgid "Sub types"
+msgstr "الأنواع الفرعيه"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:147
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_tag_name
+#, python-format
+msgid "Tag Name"
+msgstr "إسم الوسوم"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:160
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_tag_ids
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_tag_form
+#, python-format
+msgid "Tags"
+msgstr "الوسوم"
+
+#. module: hr_loans
+#: selection:deduction.violation.type,other_action1:0
+#: selection:deduction.violation.type,other_action2:0
+#: selection:deduction.violation.type,other_action3:0
+#: selection:deduction.violation.type,other_action4:0
+#: selection:employee.deductions.violations,other_action:0
+msgid "Termination with rewards"
+msgstr "إنهاء خدمات مع مكافئة نهاية خدمه"
+
+#. module: hr_loans
+#: selection:deduction.violation.type,other_action1:0
+#: selection:deduction.violation.type,other_action2:0
+#: selection:deduction.violation.type,other_action3:0
+#: selection:deduction.violation.type,other_action4:0
+#: selection:employee.deductions.violations,other_action:0
+msgid "Termination without rewards"
+msgstr "إنهاء خدمات بدون مكافئة نهاية خدمه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_config_settings_default_another_loan_before_pay
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_another_loan_before_pay
+msgid "The employee can request another loan before fully pay the old one"
+msgstr "يستطيع الموظف طلب سلفه أخرى قبل سداد كافة السلف السابقه؟"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans2.py:520
+#, python-format
+msgid "There is no active contract for this employee!!"
+msgstr "لا يوجد عقد نشط لهذا الموظف!"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.deduction_violation_type_form
+msgid "Third time (  ثالث مرة  )"
+msgstr "Third time (  ثالث مرة  )"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/rewards.py:142
+#, python-format
+msgid "This Employee didn’t have an active contract?!"
+msgstr "لا يوجد عقد نشط لهذا الموظف !"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.view_hr_payslip_loans_form
+msgid "Total"
+msgstr "الإجمالي"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.view_hr_payslip_loans_form
+msgid "Total Amount"
+msgstr "إجمالي المبلغ"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.view_hr_payslip_loans_form
+msgid "Total Days"
+msgstr "إجمالى أيام الغياب"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.view_hr_payslip_loans_form
+msgid "Total Hours"
+msgstr "إجمالى ساعات الغياب"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:748
+#: code:addons/hr_loans/models/hr_loans_.py:749
+#: code:addons/hr_loans/models/hr_loans_.py:871
+#: model:ir.model.fields,field_description:hr_loans.field_hr_contract_total_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_contract_total_loans_copy
+#, python-format
+msgid "Total Loans"
+msgstr "إجمالى السلف"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.view_hr_payslip_loans_form
+msgid "Total Minutes"
+msgstr "إجمالى دقائق الغياب"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:751
+#: code:addons/hr_loans/models/hr_loans_.py:752
+#: model:ir.model.fields,field_description:hr_loans.field_hr_contract_loans_total_paid_amount
+#: model:ir.model.fields,field_description:hr_loans.field_hr_contract_total_paid_amount_copy
+#, python-format
+msgid "Total Paid Amount"
+msgstr "إجمالى المبالغ المسدده"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_total_rewards
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_total_rewards_
+msgid "Total Rewards"
+msgstr "إجمالى المكافئات"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_total_absence
+msgid "Total absence deduction"
+msgstr "إجمالى خصومات الغياب"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_total_excluded_days
+msgid "Total days Excluded"
+msgstr "إجمالى عدد الأيام المستبعده"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_contract_total_deduction_amount
+#: model:ir.model.fields,field_description:hr_loans.field_hr_contract_total_deduction_amount_
+msgid "Total deduction amount"
+msgstr "إجمالى مبلغ الخصومات"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_rule_total_deductions
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_total_deduction
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_total_deduction_
+msgid "Total deductions"
+msgstr "إجمالى الخصومات"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:872
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_total_paid
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_total_paid_
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_total_reward_paid
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_total_reward_paid_
+#, python-format
+msgid "Total paid"
+msgstr "إجمالى المبلغ المسدد"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_contract_reward_total_paid_amount
+#: model:ir.model.fields,field_description:hr_loans.field_hr_contract_reward_total_paid_amount_copy
+#: model:ir.model.fields,field_description:hr_loans.field_hr_contract_total_paid_amount
+#: model:ir.model.fields,field_description:hr_loans.field_hr_contract_total_paid_amount_
+msgid "Total paid amount"
+msgstr "إجمالى المبالغ المسدده"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_contract_total_rewards
+#: model:ir.model.fields,field_description:hr_loans.field_hr_contract_total_rewards_copy
+msgid "Total rewards"
+msgstr "إجمالي المكافئات"
+
+#. module: hr_loans
+#: selection:deduction.violation.type,deduction_based_on:0
+#: selection:employee.deductions.violations,deduction_based_on:0
+#: selection:hr.employee.rewards,calc_method:0
+#: selection:hr.loans.config.settings,default_absence_based_on:0
+#: selection:hr.loans.config.settings,default_previous_based_on:0
+#: selection:hr.reward.type,calc_method:0
+msgid "Total salary"
+msgstr "الراتب الإجمالى"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_rule_transportation_allowance
+msgid "Transportation Allowance"
+msgstr "بدل المواصلات"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:159
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_type
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_search
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_type_search
+#: model:ir.ui.view,arch_db:hr_loans.view_hr_payslip_loans_form
+#, python-format
+msgid "Type"
+msgstr "النوع"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:458
+#, python-format
+msgid "Under development"
+msgstr "في مرحلة التطوير !"
+
+#. module: hr_loans
+#: selection:hr_loans.loan_advance,maximum_amount:0
+msgid "Unlimited"
+msgstr "غير محدد"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_category_message_unread
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_message_unread
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_message_unread
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_message_unread
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_message_unread
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_message_unread
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_message_unread
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_message_unread
+#: model:ir.model.fields,field_description:hr_loans.field_hr_reward_type_message_unread
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_message_unread
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_message_unread
+msgid "Unread Messages"
+msgstr "رسائل غير مقروءة"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_category_message_unread_counter
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_message_unread_counter
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_message_unread_counter
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_message_unread_counter
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_message_unread_counter
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_message_unread_counter
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_message_unread_counter
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_message_unread_counter
+#: model:ir.model.fields,field_description:hr_loans.field_hr_reward_type_message_unread_counter
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_message_unread_counter
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "عداد الرسائل الغير مقروؤه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_for_air_ticket
+msgid "Used for Air tickets"
+msgstr "يتم إستخدامها في تذاكر الطيران"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans2.py:660
+#, python-format
+msgid ""
+"Validation Error!\n"
+"                It seems that you deducted an amount bigger than the employee deduction balance. kindly review your data."
+msgstr ""
+"خطأ في البيانات \n"
+"يبدو لنا أنك قمت بخصم مبلغ أكبر من الخصومات المستحقه على الموظف. برجاء مراجعة البيانات."
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/rewards.py:341
+#, python-format
+msgid ""
+"Validation Error! \n"
+"                It seems that you Paid an amount bigger than the employee rewards balance. kindly review your data."
+msgstr ""
+"خطأ في البيانات \n"
+"يبدو لنا أنك قمت بدفع مبلغ أكبر من قيمة المكافأت المستحقه للموظف. برجاء مراجعة المكافئات مره أخرى."
+
+#. module: hr_loans
+#: selection:deduction.violation.type,deduction_type1:0
+#: selection:deduction.violation.type,deduction_type2:0
+#: selection:deduction.violation.type,deduction_type3:0
+#: selection:deduction.violation.type,deduction_type4:0
+#: selection:employee.deductions.violations,decision:0
+msgid "Verbal warning"
+msgstr "تحذير شفهى"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_request_form
+#: model:ir.ui.view,arch_db:hr_loans.view_hr_payslip_run_loans_form
+msgid "View Details"
+msgstr "إظهار التفاصيل"
+
+#. module: hr_loans
+#: selection:employee.deductions.violations,deduction_reason:0
+msgid "Violation"
+msgstr "المخالفه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_deduction_violation_category_id
+msgid "Violation - deduction category"
+msgstr "فئة المخالفه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_name
+#: model:ir.ui.view,arch_db:hr_loans.deduction_violation_type_form
+msgid "Violation / deduction Arabic Description"
+msgstr "وصف المخالفه باللغه العربيه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_english_name
+#: model:ir.ui.view,arch_db:hr_loans.deduction_violation_type_form
+msgid "Violation / deduction English Description"
+msgstr "وصف المخالفه باللغه الانجليزيه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_violation_type_id
+msgid "Violation Type"
+msgstr "نوع المخالفه"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_config_settings_default_violations_deduction_percentage
+#: model:ir.model.fields,help:hr_loans.field_hr_loans_config_settings_default_violations_deduction_percentage
+msgid "Violations monthly deduction percentage from salary"
+msgstr "نسبة خصم الخصومات من الراتب"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_category_website_message_ids
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_website_message_ids
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_website_message_ids
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_website_message_ids
+#: model:ir.model.fields,field_description:hr_loans.field_employee_deductions_violations_website_message_ids
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_website_message_ids
+#: model:ir.model.fields,field_description:hr_loans.field_hr_loans_loan_advance_website_message_ids
+#: model:ir.model.fields,field_description:hr_loans.field_hr_payslip_website_message_ids
+#: model:ir.model.fields,field_description:hr_loans.field_hr_reward_type_website_message_ids
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_website_message_ids
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_website_message_ids
+msgid "Website Messages"
+msgstr "رسائل الموقع"
+
+#. module: hr_loans
+#: model:ir.model.fields,help:hr_loans.field_deduction_violation_category_website_message_ids
+#: model:ir.model.fields,help:hr_loans.field_deduction_violation_type_website_message_ids
+#: model:ir.model.fields,help:hr_loans.field_employee_absence_line_website_message_ids
+#: model:ir.model.fields,help:hr_loans.field_employee_absence_website_message_ids
+#: model:ir.model.fields,help:hr_loans.field_employee_deductions_violations_website_message_ids
+#: model:ir.model.fields,help:hr_loans.field_hr_employee_rewards_website_message_ids
+#: model:ir.model.fields,help:hr_loans.field_hr_loans_loan_advance_website_message_ids
+#: model:ir.model.fields,help:hr_loans.field_hr_payslip_website_message_ids
+#: model:ir.model.fields,help:hr_loans.field_hr_reward_type_website_message_ids
+#: model:ir.model.fields,help:hr_loans.field_loan_advance_request_website_message_ids
+#: model:ir.model.fields,help:hr_loans.field_loan_installment_website_message_ids
+msgid "Website communication history"
+msgstr "سجل تواصل الموقع"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:1252
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_month
+#, python-format
+msgid "Will be deducted on"
+msgstr "سوف يتم الخصم فى"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:206
+#: code:addons/hr_loans/models/hr_loans_.py:1149
+#: code:addons/hr_loans/models/hr_loans_.py:1386
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_year
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_year
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_year
+#: model:ir.model.fields,field_description:hr_loans.field_loan_installment_year
+#: model:ir.ui.view,arch_db:hr_loans.employee_absence_line_search
+#: model:ir.ui.view,arch_db:hr_loans.loan_installment_search
+#, python-format
+msgid "Year"
+msgstr "السنة"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:239
+#, python-format
+msgid "Year cannot be Minus"
+msgstr "السنوات لا يمكن ان تكون قيمه سالبه"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:843
+#, python-format
+msgid "You must select employee(s) to generate payslip(s)."
+msgstr "يجب إختيار موظف واحد على الأقل لإنشاء مسيرات الرواتب الجماعية."
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans2.py:505
+#, python-format
+msgid "Your system could not find E-mail address for the employee which you selected. Kindly go to Employee window and write the             employee email at Work Email field."
+msgstr "لم يستطع النظام الوصول إلى البريد الالكترنى الخاص بالموظف. برجاء الذهاب إلى شاشة الموظف وإدخال البريد الالكترونى للعمل."
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_absence_line_branch_id
+msgid "branch"
+msgstr "الفرع"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans2.py:234
+#, python-format
+msgid "can not delete while confirmed"
+msgstr "غير مسموج بالحذف لأنه تم تأكيد تلك المعامله بواسطة الإداره"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_category_code
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_violation_type_code
+msgid "code"
+msgstr "الكود"
+
+#. module: hr_loans
+#: model:ir.model,name:hr_loans.model_confirm_other_action
+msgid "confirm.other.action"
+msgstr "confirm.other.action"
+
+#. module: hr_loans
+#: model:ir.model,name:hr_loans.model_contract_paid_rewards
+msgid "contract.paid.rewards"
+msgstr "contract.paid.rewards"
+
+#. module: hr_loans
+#: model:ir.model,name:hr_loans.model_contract_paid_violation
+msgid "contract.paid.violation"
+msgstr "contract.paid.violation"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_request_form
+msgid "creation date"
+msgstr "تاريخ الانشاء"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_deduction_type_attaches_type_id
+msgid "deduction violation type"
+msgstr "نوع المخالفة"
+
+#. module: hr_loans
+#: model:ir.model,name:hr_loans.model_deductions_violations_attaches
+msgid "deductions violations Attaches"
+msgstr "deductions violations Attaches"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_loans_advances_request_form
+msgid "e.g. Part Time"
+msgstr "على سبيل المثال دوام جزئي"
+
+#. module: hr_loans
+#: model:ir.model,name:hr_loans.model_employee_reward_attaches
+msgid "employee Reward Attaches"
+msgstr "employee Reward Attaches"
+
+#. module: hr_loans
+#: selection:hr.employee.rewards,calc_method:0
+#: selection:hr.reward.type,calc_method:0
+msgid "fixed amount"
+msgstr "رقم ثابت"
+
+#. module: hr_loans
+#: model:ir.model,name:hr_loans.model_hr_contract_loan_payment
+msgid "hr.contract.loan.payment"
+msgstr "hr.contract.loan.payment"
+
+#. module: hr_loans
+#: model:ir.model,name:hr_loans.model_hr_loans_config_settings
+msgid "hr.loans.config.settings"
+msgstr "hr.loans.config.settings"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_employee_reward_attaches_source_id
+#: model:ir.model.fields,field_description:hr_loans.field_rewards_type_attaches_source_id
+msgid "hr.reward.type"
+msgstr "hr.reward.type"
+
+#. module: hr_loans
+#: model:ir.model,name:hr_loans.model_hr_loans_loan_advance_tag
+msgid "hr_loans.loan_advance_tag"
+msgstr "hr_loans.loan_advance_tag"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:161
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_date
+#, python-format
+msgid "loan / advance date"
+msgstr "تاريخ طلب السلفه / الراتب المقدم"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:156
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_reason
+#, python-format
+msgid "loan / advance reason"
+msgstr "سبب السلفه / الراتب المقدم"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:157
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_loan_type
+#, python-format
+msgid "loan / advance type"
+msgstr "سلفة / راتب مقدم"
+
+#. module: hr_loans
+#: model:ir.model.fields,field_description:hr_loans.field_hr_employee_rewards_maximum_numbers
+#: model:ir.model.fields,field_description:hr_loans.field_hr_reward_type_maximum_numbers
+msgid "maximum amount"
+msgstr "الحد الأقصى"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.confirm_other_action_form
+msgid "or"
+msgstr "أو"
+
+#. module: hr_loans
+#: selection:employee.deductions.violations,deduction_type:0
+msgid "percentage"
+msgstr "نسبة مئوية"
+
+#. module: hr_loans
+#: model:ir.model.fields,help:hr_loans.field_hr_loans_config_settings_default_previous_based_on
+msgid "previous percentage based on"
+msgstr "النسب السابقه تحسب بناءً على"
+
+#. module: hr_loans
+#: code:addons/hr_loans/models/hr_loans_.py:173
+#: model:ir.model.fields,field_description:hr_loans.field_loan_advance_request_remaining_amount
+#, python-format
+msgid "remaining amount"
+msgstr "المبلغ المتبقى"
+
+#. module: hr_loans
+#: selection:hr.employee.rewards,state:0
+msgid "reviewed"
+msgstr "تمت المراجعه"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.employee_deductions_violations_search
+msgid "violation type"
+msgstr "نوع المخالفه"
+
+#. module: hr_loans
+#: model:ir.ui.view,arch_db:hr_loans.hr_employee_rewards_form
+#: model:ir.ui.view,arch_db:hr_loans.hr_reward_type_form
+msgid "المكافئات تحسب بناءً على نسبة من الأجر اليومي Rewards will be calculated based on daily salary"
+msgstr "المكافئات تحسب بناءً على نسبة من الأجر اليومي Rewards will be calculated based on daily salary"

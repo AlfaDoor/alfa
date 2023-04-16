@@ -1,0 +1,85 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="product_template_kanban_custom_view">
+            <field name="name">Product Template Kanban Custom</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_kanban_view"/>
+            <field name="arch" type="xml">
+                <field name="lst_price" position="after">
+                    <field name="qty_warning_out_stock"/>
+                    <field name="qty_available" />
+                </field>
+                <xpath expr="//div[@class='oe_kanban_details']" position='attributes'>
+                    <attribute name="style">width:64% !important;float:left;padding-left:0;</attribute>
+                </xpath>
+                <xpath expr="//div[@class='oe_kanban_details']" position='after'>    
+                    <t t-if="record.qty_available.value &lt;= 10">
+                        <div class="o_kanban_image">
+                            <img src="/general_customization/static/src/img/out_stock.png" class="o_kanban_image"/> 
+                        </div>
+                    </t>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="product_template_search_form_view_custom" model="ir.ui.view">
+            <field name="name">product.template.search.custom.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_search_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position='after'>
+                    <field name='out_of_stock' />
+                </xpath>
+                <filter name="filter_to_sell" position="after">
+                    <filter name="real_out_of_stock_available" string="Out of Stock" domain="[('qty_available','&lt;',10)]"/>
+                </filter>
+            </field>
+        </record>
+
+        <record id="product_category_view_sit_tree123" model="ir.ui.view">
+        <field name="name">category.product.view.12</field>
+        <field name="model">product.category</field>
+        <field name="inherit_id" ref="product.product_category_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='first']" position="after">
+                <group col="2">
+                    <field name="reference_code" class="oe_inline"/>
+                </group>
+            </xpath>
+        </field>
+         </record>
+
+        <record id="multi_reference_internal_form_wizard" model="ir.ui.view">
+            <field name="name">internal.reference.gen.wizard</field>
+            <field name="model">multi.internal.reference.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Internal Reference Generation">
+                    <footer>
+                        <button name="multi_internal_ref" string="Generate" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_multi_internal_ref_wizard" model="ir.actions.act_window">
+            <field name="name">Multi Reference Generate</field>
+            <field name="res_model">multi.internal.reference.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <act_window id="action_multiple_internal_reference"
+            multi="True"
+            key2="client_action_multi2"
+            name="Generate Internal Reference"
+            res_model="multi.internal.reference.wizard"
+            src_model="product.template"
+            view_mode="form"
+            target="new"
+            view_type="form"/>
+    </data>
+</odoo>

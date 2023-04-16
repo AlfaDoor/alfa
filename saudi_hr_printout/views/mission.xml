@@ -1,0 +1,250 @@
+<odoo>
+    <data>
+        <report
+            id="report_mission"
+            model="hr.mission"
+            string="Permission During Working Day Request"
+            name="saudi_hr_printout.report_mission_temp"
+            file="report_mission"
+            report_type="qweb-pdf"
+                />
+
+        <template id="report_mission_temp">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="saudi_hr_printout.reconciliation_layout">
+                        <div class="page">
+                            <style>
+                                .table{
+                                    font-family:FreeSerif;
+                                    font-size:16px;
+                                    font-weight:bold;
+                                }
+                                .table_cell{
+                                    border:.5px solid black !important;
+                                    text-align: center;
+                                }
+                                .gray{
+                                    background-color: #bdd6ee;
+                                }
+                                .rtl{
+                                    direction:rtl;
+                                }
+                                .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+                                    padding: 5px;
+                                }
+                            </style>
+
+                            <!--<h4 t-if="o.state !='approved'" class=" text-center">-->
+                                <!--Not approved Travel Order-->
+                            <!--</h4>-->
+
+                            <table class="table " style="margin-bottom:0;">
+                                <tbody >
+                                    <tr>
+                                        <td colspan="6" class="table_cell gray" style="font-weight:blod;">
+                                            Permission During Working Day Request
+                                            طلب خروج أثناء الدوام الرسمي
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell gray" >
+                                            Employee Name
+                                        </td>
+                                        <td class="table_cell" colspan="2">
+                                            <span t-field="o.employee_id.employee_english_name"/>
+                                        </td>
+                                        <td class="table_cell" colspan="2">
+                                            <span t-field="o.employee_id.name"/>
+                                        </td>
+                                        <td class="table_cell rtl gray">
+                                            اسم الموظف
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell gray" >
+                                            Department
+                                        </td>
+                                        <td class="table_cell" >
+                                            <span t-field="o.employee_id.department_id.name"/>
+                                        </td>
+                                        <td class="table_cell  rtl gray">
+                                            الادارة
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            Position
+                                        </td>
+                                        <td class="table_cell" >
+                                            <span t-field="o.employee_id.job_id.name"/>
+                                        </td>
+                                        <td class="table_cell  rtl gray">
+                                            الوظيفة
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell gray" >
+                                            Branch
+                                        </td>
+                                        <td class="table_cell" >
+                                            <span t-field="o.employee_id.branch_id.name"/>
+                                        </td>
+                                        <td class="table_cell  rtl gray">
+                                            الفرع
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            EMP No
+                                        </td>
+                                        <td class="table_cell" >
+                                            <span t-field="o.employee_id.employee_number"/>
+                                        </td>
+                                        <td class="table_cell  rtl gray">
+                                            رقم الموظف
+                                        </td>
+                                    </tr>
+                                    <tr  >
+                                        <td class="table_cell gray" >
+                                            Returning Time
+                                        </td>
+                                        <td class="table_cell" >
+                                            <span t-field="o.end_hour" />
+                                        </td>
+                                        <td class="table_cell  rtl gray">
+                                            الوقت المتوقع للعودة
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            Leaving Time
+                                        </td>
+                                        <td class="table_cell" >
+                                            <span t-field="o.start_hour" />
+                                        </td>
+                                        <td class="table_cell  rtl gray">
+                                            وقت الخروج
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table " style="margin-bottom:0;">
+                                <tbody >
+                                    <tr>
+                                        <td class="table_cell gray" >
+                                            <div class="row">
+                                                <div class="col-xs-6 text-left">
+                                                    ‫‪Leaving‬‬ ‫‪Justifications‬‬
+                                                </div>
+                                                <div class="col-xs-6 text-right rtl">
+                                                    مبررات طلب الخروج
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell" height="40px">
+                                            <span t-field="o.name" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+                            <table class="table " >
+                                <tbody >
+                                    <tr>
+                                        <td class="table_cell gray" >
+                                            Date
+                                            التاريخ
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            Signature
+                                            التوقيع
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            Employee Name
+                                            اسم الموظف
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell " >
+                                           <!--<span t-esc="o.reviewed_on" />-->
+                                        </td>
+                                        <td class="table_cell " >
+                                            <br/>
+                                        </td>
+                                        <td class="table_cell" >
+                                            <span t-esc="o.employee_id.name" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell gray" colspan="3" >
+                                            Direct Manager
+                                             الرئيس المباشر
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell gray" >
+                                            Date
+                                            التاريخ
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            Signature
+                                            التوقيع
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            Name
+                                            الاسم
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell " >
+                                           <!--<span t-esc="o.reviewed_on" />-->
+                                        </td>
+                                        <td class="table_cell " >
+                                            <br/>
+                                        </td>
+                                        <td class="table_cell" >
+                                            <span t-esc="o.employee_id.parent_id.name" />
+                                        </td>
+                                    </tr>
+
+                                     <tr>
+                                        <td class="table_cell gray" colspan="3" >
+                                            <span style="width:40%">Human Resources Department</span>
+                                            <span style="width:40%">
+                                                ادارة الموارد البشرية
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell gray" >
+                                            Date
+                                            التاريخ
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            Signature
+                                            التوقيع
+                                        </td>
+                                        <td class="table_cell gray" >
+                                            Name
+                                            الاسم
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table_cell " >
+                                            <!--<span t-esc="o.confirmed_on" />-->
+                                        </td>
+                                        <td class="table_cell " >
+                                            <br/>
+                                        </td>
+                                        <td class="table_cell" >
+                                            <span t-esc="o.hr_approved_by.name" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,272 @@
+<odoo>
+    <data>
+        <report
+                id="action_print_delivery_slip"
+                string="Delivery Slip Document"
+                model="stock.picking"
+                report_type="qweb-pdf"
+                name="alfa_customizations.report_delivery_slip_custom_sit"
+                file="alfa_customizations.report_delivery_slip_custom_sit"
+        />
+        <template id="general_header_diff">
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id" />
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company" />
+            </t>
+            <t t-call="alfa_customizations.packing_header_diff" />
+            <t t-raw="0" />
+            <t t-call="alfa_customizations.custom_layout_footer" />
+
+        </template>
+
+
+        <template id="report_delivery_slip_custom_sit">
+            <t t-call="web.html_container">
+                <t t-call="web.basic_layout">
+                    <!--<t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)" />-->
+                    <t t-as="o" t-foreach="docs">
+                        <t t-call="alfa_customizations.general_header_diff">
+                            <div class="page">
+                                <t t-set="all_total_qty" t-value="0"/>
+                                <style>
+                                    .table1{
+                                    table-layout: fixed;
+                                    width:540px;
+                                    height:125px;
+                                    border:1px solid black;}
+                                </style>
+                                <div class="clearfix">
+                                    <div class="row">
+                                        <div style="position:relative; left:20px" align="center">
+                                            <table class="table1">
+                                                <tr t-if="o.company_id">
+                                                    <td ><strong>&#160;&#160;Company Name:</strong></td>
+                                                    <td style="font-weight:bold;" class="text-right">
+                                                        <span t-field="o.company_id.name"/>&#160;&#160;
+                                                    </td>
+                                                </tr>
+                                                <tr t-if="o.company_id">
+                                                    <td ><strong>&#160;&#160;Address:</strong></td>
+                                                    <td style="font-weight:bold;" class="text-right">
+                                                        <span t-field="o.company_id.street"/>, &#160;<span t-field="o.company_id.city"/>&#160;&#160;
+                                                    </td>
+                                                </tr>
+                                                <tr t-if="o.company_id">
+                                                    <td ><strong>&#160;&#160;Phone:</strong></td>
+                                                    <td style="font-weight:bold;" class="text-right">
+                                                        <span t-field="o.company_id.phone"/>&#160;&#160;
+                                                    </td>
+                                                </tr>
+                                                <tr t-if="o.scheduled_date">
+                                                    <td class="text-left"><strong>&#160;&#160;Schedule Date:</strong></td>
+                                                    <td style="font-weight:bold;" class="text-right">
+                                                        <span t-field="o.scheduled_date"/>&#160;&#160;
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+
+                                        <div style = "position:relative; left:100px" align="center">
+                                            <t t-if="o.partner_id">
+                                                <table class="table1">
+                                                    <tr t-if="o.partner_id">
+                                                        <td class="text-left"><strong>&#160;&#160;Name:</strong></td>
+                                                        <td style="font-weight:bold;" class="text-right"><span t-esc="o.partner_id.name"/>
+                                                            &#160;&#160;
+                                                        </td>
+                                                    </tr>
+                                                    <tr t-if="o.partner_id">
+                                                        <td class="text-left"><strong>&#160;&#160;Address:</strong></td>
+                                                        <td style="font-weight:bold;" class="text-right">
+                                                            <span t-esc="o.partner_id.street"/>,&#160;<span t-esc="o.partner_id.city"/>&#160;&#160;
+                                                        </td>
+                                                    </tr>
+                                                    <tr t-if="o.partner_id">
+                                                        <td class="text-left"><strong>&#160;&#160;Phone:</strong></td>
+                                                        <td style="font-weight:bold;" class="text-right">
+                                                            <span t-esc="o.partner_id.phone" />&#160;&#160;
+                                                        </td>
+                                                    </tr>
+                                                    <tr t-if="o.partner_id">
+                                                        <td class="text-left"><strong>&#160;&#160;VAT Number:</strong></td>
+                                                        <td style="font-weight:bold;" class="text-right">
+                                                            <span t-esc="o.partner_id.vat" />&#160;&#160;
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </t>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <h2>
+                                    <span t-field="o.name"/>
+                                </h2>
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th t-if="o.origin"><strong>Order</strong></th>
+                                            <th name="td_sched_date_h">
+                                                <strong>Date</strong>
+                                            </th>
+                                            <th t-if="o.location_id"><strong>Source Location</strong></th>
+                                            <th t-if="o.location_dest_id"><strong>Destination Location</strong></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="font-weight:bold;" t-if="o.origin">
+                                                <span t-field="o.origin"/>
+                                            </td>
+                                            <td style="font-weight:bold;" name="td_sched_date">
+                                                <t t-if="o.state == 'done'">
+                                                    <span t-field="o.date_done"/>
+                                                </t>
+                                                <t t-if="o.state != 'done'">
+                                                    <span t-field="o.scheduled_date"/>
+                                                </t>
+                                            </td>
+                                            <td style="font-weight:bold;" t-if="o.location_id">
+                                                <span t-field="o.location_id.name"/>
+                                            </td>
+                                            <td style="font-weight:bold;" t-if="o.location_dest_id">
+                                                <span t-field="o.location_dest_id.name"/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-sm mt48" t-if="o.state!='done'">
+                                    <thead>
+                                        <tr>
+                                            <th><strong>Product</strong></th>
+                                            <th><strong>Barcode</strong></th>
+                                            <!--<th><strong>Price</strong></th>-->
+                                            <th><strong>Quantity</strong></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-set="lines" t-value="o.move_lines.filtered(lambda x: x.product_uom_qty)"/>
+
+                                        <tr t-foreach="lines" t-as="move">
+                                            <t t-set="all_total_qty" t-value="all_total_qty+move.product_uom_qty"/>
+                                            <td style="font-weight:bold;">
+                                                <span t-field="move.product_id"/>
+                                                <p t-if="o.picking_type_code == 'outgoing'">
+                                                    <span t-field="move.product_id.sudo().description_pickingout"/>
+                                                </p>
+                                                <p t-if="o.picking_type_code == 'incoming'">
+                                                    <span t-field="move.product_id.sudo().description_pickingin"/>
+                                                </p>
+                                            </td>
+                                            <td style="font-weight:bold;"><span t-field="move.product_id.barcode"/></td>
+                                            <!--<td style="font-weight:bold;"><span t-field="move.product_id.lst_price"/></td>-->
+                                            <td style="font-weight:bold;">
+                                                <span t-field="move.product_uom_qty"/>
+                                                <span t-field="move.product_uom"/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-sm mt48" t-if="o.move_line_ids and o.state=='done'">
+                                    <t t-set="has_serial_number" t-value="o.move_line_ids.mapped('lot_id')" />
+                                    <thead>
+                                        <tr>
+                                            <th><strong>Product</strong></th>
+                                            <th name="lot_serial" t-if="has_serial_number" groups="stock.group_lot_on_delivery_slip">
+                                                Lot/Serial Number
+                                            </th>
+                                            <th><strong>Barcode</strong></th>
+                                            <!--<th><strong>Price</strong></th>-->
+                                            <th><strong>Quantity</strong></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr t-foreach="o.move_line_ids" t-as="move_line">
+                                            <t t-set="all_total_qty" t-value="all_total_qty+move_line.qty_done"/>
+                                            <td style="font-weight:bold;">
+                                                <span t-field="move_line.product_id"/>
+                                                <p t-if="o.picking_type_code == 'outgoing'">
+                                                    <span t-field="move_line.product_id.sudo().description_pickingout"/>
+                                                </p>
+                                                <p t-if="o.picking_type_code == 'incoming'">
+                                                    <span t-field="move_line.product_id.sudo().description_pickingin"/>
+                                                </p>
+                                            </td>
+                                            <td style="font-weight:bold;" t-if="has_serial_number and move_line.lot_name" groups="stock.group_lot_on_delivery_slip">
+                                                <span t-field="move_line.lot_name"/>
+                                            </td>
+                                            <td style="font-weight:bold;" t-elif="has_serial_number" groups="stock.group_lot_on_delivery_slip">
+                                                <span t-field="move_line.lot_id.name"/>
+                                            </td>
+                                            <td style="font-weight:bold;"><span t-field="move_line.product_id.barcode"/></td>
+                                            <!--<td style="font-weight:bold;"><span t-field="move_line.product_id.lst_price"/></td>-->
+                                            <td style="font-weight:bold;" class="text-center">
+                                                <span t-field="move_line.qty_done"/>
+                                                <span t-field="move_line.product_uom_id"/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="text-right">
+                                    <strong><span class="text-right" >Total Quantity = </span><span class="text-right"  t-esc="all_total_qty" t-options='{"widget": "float", "precision": 2}'/></strong><br/>
+                                </div>
+                                <p>
+                                    <t t-if="o.backorder_ids and o.backorder_ids.filtered(lambda x: x.state not in ('done', 'cancel'))">
+                                        All items couldn't be shipped, the remaining ones will be shipped as soon as they become available.
+                                    </t>
+                                </p>
+
+                            </div>
+                        </t>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+
+        <!--Custom Header-->
+
+        <template id="packing_header_diff">
+            <div class="header">
+                <t t-if="o.company_id.id == 2">
+                    <div class="row">
+                        <div class="col-3 mb4">
+                            <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 75px;" alt="Logo"/>
+                        </div>
+                        <div class="col-9 text-right" style="margin-top:22px;" t-field="company.report_header" name="moto"/>
+                        <div t-if="company.logo or company.report_header" class="row zero_min_height">
+                            <div class="col-12">
+                                <div style="border-bottom: 1px solid black;"/>
+                            </div>
+                        </div>
+                        <div class="col-6" style="position:relative; left:30px" name="company_address">
+                            <div style="font-weight:bold" t-field="company.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}"/>
+                        </div>
+                    </div>
+                </t>
+            </div>
+        </template>
+        <template id="custom_layout_footer">
+                <div class="footer o_standard_footer">
+            <div class="text-center" style="border-top: 1px solid black;">
+                <ul class="list-inline mb4">
+                    <li t-if="company.phone" class="list-inline-item">Phone: <span t-field="company.phone"/></li>
+                    <li t-if="company.email" class="list-inline-item">Email: <span t-field="company.email"/></li>
+                    <li t-if="company.website" class="list-inline-item">Web: <span t-field="company.website"/></li>
+                    <li t-if="company.vat" class="list-inline-item"><t t-esc="(company.country_id.vat_label or 'Tax ID').replace(' ','\N{NO-BREAK SPACE}')"/>: <span t-esc="company.vat.replace(' ','\N{NO-BREAK SPACE}')"/></li>
+                </ul>
+
+                <div name="financial_infos">
+                    <span t-field="company.report_footer"/>
+                </div>
+
+                <div t-if="report_type == 'pdf'" class="text-muted">
+                    Page: <span class="page"/> / <span class="topage"/>
+                </div>
+            </div>
+        </div>
+        </template>
+    </data>
+</odoo>

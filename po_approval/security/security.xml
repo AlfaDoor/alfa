@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record model="ir.module.category" id="module_purchase_order_approval">
+        <field name="name">Purchase Approval</field>
+    </record>
+    <record id="purchase_order_confirmation" model="res.groups">
+        <field name="name">Confirm Purchase Order</field>
+        <field name="category_id" ref="po_approval.module_purchase_order_approval"/>
+    </record>
+</odoo>

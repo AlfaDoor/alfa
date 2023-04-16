@@ -1,0 +1,276 @@
+<odoo>
+	<data>
+		<record id="rfp_form_view_ga" model="ir.ui.view">
+            <field name="name">purchase.order.form</field>
+            <field name="model">purchase.order</field>
+            <field name="arch" type="xml">
+                <form string="Purchase Order">
+                <header>
+                    <button name="print_quotation" string="Print" type="object" states="draft" class="oe_highlight" groups="base.group_user"/>
+                    <button name="print_quotation" string="Print" type="object" states="sent" groups="base.group_user"/>
+                    <button name="submit_quotation" string="Submit" type="object" states="draft" class="oe_highlight" groups="base.group_user"/>
+                    <button name="button_change_state_to_draft" states="reject" string="Set as Draft" type="object" />
+                    <button name="button_cancel" states="draft,submit" string="Cancel" type="object" />
+                    <button name="button_change_state_to_confirm" states="submit" string="Confirm" type="object" />
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submit,purchase,cancel" readonly="1"/>
+                    <!-- <button name="print_quotation" string="Print" type="object" states="draft" class="oe_highlight" groups="base.group_user"/>
+                    <button name="button_confirm" type="object" states="sent" string="Confirm Order" class="oe_highlight" id="bid_confirm"/>
+                    <button name="print_quotation" string="Print" type="object" states="sent" groups="base.group_user"/>
+                    <button name="button_confirm" type="object" states="approval4" string="Confirm Order" id="draft_confirm" />
+                    <button name="button_approval_one" states="draft" class="oe_highlight" string="First Approval" type="object" groups="purchase_request.allow_approve_1"/>
+                    <button name="button_approval_two" states="approval1" class="oe_highlight" string="Second Approval" type="object" groups="purchase_request.allow_approve_2"/>
+                    <button name="button_approval_three" states="approval2" class="oe_highlight" string="Third Approval" type="object" groups="purchase_request.allow_approve_3"/>
+                    <button name="button_approval_four" states="approval3" class="oe_highlight" string="Fourth Approval" type="object" groups="purchase_request.allow_approve_4"/>
+                    <button name="button_cancel" states="draft,to approve,sent,purchase" string="Cancel" type="object" />
+                    <field name="state" widget="statusbar" statusbar_visible="draft,approval1,approval2,approval3,approval4,purchase" readonly="1"/> -->
+                    <!-- <button name="print_quotation" string="Print" type="object" states="draft" class="oe_highlight" groups="base.group_user"/>
+                    <button name="print_quotation" string="Print" type="object" states="sent" groups="base.group_user"/>
+                    <button name="submit_quotation" string="Submit" type="object" states="draft" class="oe_highlight" groups="base.group_user"/>
+                    <button name="button_change_state_to_confirm" type="object" states="sent,submit" string="Confirm Order" class="oe_highlight" id="bid_confirm"/>
+                    <button name="button_approval_one" states="purchase" class="oe_highlight" string="First Approval" type="object" groups="purchase_request.allow_approve_1"/>
+                    <button name="button_approval_two" states="approval1" class="oe_highlight" string="Second Approval" type="object" groups="purchase_request.allow_approve_2"/>
+                    <button name="button_approval_three" states="approval2" class="oe_highlight" string="Third Approval" type="object" groups="purchase_request.allow_approve_3"/>
+                    <button name="button_approval_four" states="approval3" class="oe_highlight" string="Fourth Approval" type="object" groups="purchase_request.allow_approve_4"/>
+                    <button name="button_confirm" states="approval4" string="Confirm" type="object" /> -->
+                    <!-- <button name="button_change_state_to_rejected" states="approval1,approval2,approval3,approval4" string="Reject" type="object" /> -->
+<!--                     <button name="%(wizard_request_reject_reason)d" states="purchase,approval1,approval2,approval3,approval4"
+                        string="Reject" type="action"
+                        groups="purchase_request.group_purchase_request_manager" />
+                    <button name="button_change_state_to_draft" states="reject" string="Set as Draft" type="object" />
+                    <button name="button_cancel" states="draft,submit,sent,purchase,approval1,approval2,approval3,approval4" string="Cancel" type="object" />
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submit,purchase,approval1,approval2,approval3,approval4,done,reject,cancel" readonly="1"/> -->
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button type="object"  name="action_view_invoice"
+                            class="oe_stat_button"
+                            icon="fa-pencil-square-o" attrs="{'invisible':['|', ('invoice_count', '=', 0), ('state', 'in', ('draft','sent','to approve'))]}">
+                            <field name="invoice_count" widget="statinfo" string="Vendor Bills"/>
+                            <field name='invoice_ids' invisible="1"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <span class="o_form_label" attrs="{'invisible': [('state','not in',('draft','sent'))]}">Request for Quotation </span>
+                        <span class="o_form_label" attrs="{'invisible': [('state','in',('draft','sent'))]}">Purchase Order </span>
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="partner_id" widget="res_partner_many2one" context="{'search_default_supplier':1, 'default_supplier':1, 'default_customer':0, 'show_vat': True}" domain="[('supplier','=',True)]"
+                                placeholder="Name, TIN, Email, or Reference"
+                            />
+                            <field name="partner_ref"/>
+                            <field name="currency_id" groups="base.group_multi_currency" force_save="1"/>
+                        </group>
+                        <group>
+                            <field name="date_order"/>
+                            <field name="origin" attrs="{'invisible': [('origin','=',False)]}"/>
+                            <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                            <field name="purchase_req_reference" string="PR Reference"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Products">
+                            <field name="order_line" attrs="{'readonly': [('state', 'in', ('done', 'cancel'))]}">
+                                 <tree string="Purchase Order Lines" editable="bottom">
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="state" invisible="1"/>
+                                    <field name="product_type" invisible="1"/>
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="product_id" attrs="{'readonly': [('state', 'in', ('purchase', 'to approve','done', 'cancel'))]}" context="{'partner_id':parent.partner_id, 'quantity':product_qty,'uom':product_uom, 'company_id': parent.company_id}" force_save="1"/>
+                                    <field name="name"/>
+                                    <field name="date_planned"/>
+                                    <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                                    <field name="account_analytic_id" context="{'default_partner_id':parent.partner_id}" groups="analytic.group_analytic_accounting"/>
+                                    <field name="analytic_tag_ids" groups="analytic.group_analytic_tags" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                                    <field name="product_qty"/>
+                                    <field name="qty_received" attrs="{'column_invisible': [('parent.state', 'not in', ('purchase', 'done'))]}"/>
+                                    <field name="qty_invoiced" attrs="{'column_invisible': [('parent.state', 'not in', ('purchase', 'done'))]}"/>
+                                    <field name="product_uom" groups="uom.group_uom" attrs="{'readonly': [('state', 'in', ('purchase', 'done', 'cancel'))]}" force_save="1"/>
+                                    <field name="price_unit"/>
+                                    <field name="taxes_id" widget="many2many_tags" domain="[('type_tax_use','=','purchase')]" context="{'default_type_tax_use': 'purchase', 'search_view_ref': 'account.account_tax_view_search'}" options="{'no_create': True}"/>
+                                    <field name="price_subtotal" widget="monetary"/>
+                                </tree>
+                                <form string="Purchase Order Line">
+                                    <sheet>
+                                        <field name="state" invisible="1"/>
+                                        <group>
+                                            <group>
+                                                <field name="product_id"
+                                                       context="{'partner_id': parent.partner_id}"/>
+                                                <label for="product_qty"/>
+                                                <div>
+                                                    <field name="product_qty" class="oe_inline"/>
+                                                    <span class="oe_inline">&#160;</span>
+                                                    <field name="product_uom" groups="uom.group_uom" class="oe_inline"/>
+                                                </div>
+                                                <field name="price_unit"/>
+                                            </group>
+                                            <group>
+                                                <field name="taxes_id" widget="many2many_tags" domain="[('type_tax_use', '=', 'purchase')]" options="{'no_create': True}"/>
+                                                <field name="date_planned" widget="date"/>
+                                                <field name="account_analytic_id" colspan="2" groups="analytic.group_analytic_accounting"/>
+                                                <field name="analytic_tag_ids" groups="analytic.group_analytic_accounting" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                                                <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                                            </group>
+                                        </group>
+                                        <notebook>
+                                        <page string="Notes">
+                                            <field name="name"/>
+                                        </page>
+                                        <page string="Invoices and Incoming Shipments">
+                                            <field name="invoice_lines"/>
+                                        </page>
+                                        </notebook>
+                                    </sheet>
+                                </form>
+                            </field>
+                            <group class="oe_subtotal_footer oe_right">
+                                <field name="amount_untaxed" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                <field name="amount_tax" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                <div class="oe_subtotal_footer_separator oe_inline">
+                                    <label for="amount_total"/>
+                                </div>
+                                <field name="amount_total" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            </group>
+                            <field name="notes" class="oe_inline" placeholder="Define your terms and conditions ..."/>
+                            <div class="oe_clear"/>
+                        </page>
+                        <page string="Other Information" name="purchase_delivery_invoice">
+                            <group>
+                                <group>
+                                    <label for="date_planned"/>
+                                    <div>
+                                        <field name="date_planned" attrs="{'readonly': [('state', 'not in', ('draft', 'sent'))]}"/>
+                                        <button name="action_set_date_planned" type="object"
+                                            states="draft,sent"
+                                            string="Set date to all order lines"
+                                            help="This changes the scheduled date of all order lines to the given date"
+                                            class="fa fa-calendar o_icon_button oe_edit_only"/>
+                                    </div>
+                                </group>
+                                <group>
+                                    <field name="user_id"/>
+                                    <field name="invoice_status"/>
+                                    <field name="payment_term_id" options="{'no_open': True, 'no_create': True}" attrs="{'readonly': ['|', ('invoice_status','=', 'invoiced'), ('state', '=', 'done')]}"/>
+                                    <field name="fiscal_position_id" options="{'no_create': True}" attrs="{'readonly': ['|', ('invoice_status','=', 'invoiced'), ('state', '=', 'done')]}"/>
+                                    <field name="date_approve" groups="base.group_no_one"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+                </form>
+            </field>
+        </record>
+
+
+		<record id="rfp_tree_view_ga" model="ir.ui.view">
+            <field name="name">purchase.order.tree</field>
+            <field name="model">purchase.order</field>
+            <field name="arch" type="xml">
+                <tree decoration-bf="message_unread==True" decoration-muted="state=='cancel'" decoration-info="state in ('wait','confirmed')" string="Purchase Order">
+                    <field name="message_unread" invisible="1"/>
+                    <field name="name" string="Reference"/>
+                    <field name="date_order" />
+                    <field name="partner_id"/>
+                    <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                    <field name="date_planned" invisible="context.get('quotation_only', False)"/>
+                    <field name="purchase_req_reference" string="PR Reference"/>
+                    <field name="user_id"/>
+                    <field name="amount_untaxed" sum="Total Untaxed amount" string="Untaxed" widget="monetary"/>
+                    <field name="amount_total" sum="Total amount" widget="monetary"/>
+                    <field name="currency_id" invisible="1"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="rfp_search_view" model="ir.ui.view">
+            <field name="name">request.purchase.view</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="before">
+                    <field name="purchase_req_reference" string="PR Reference"/>
+                </xpath>
+                <xpath expr="//filter[@name='representative']" position="after">
+                    <filter string="PR Ref" name="purchase_req_reference" domain="[]" context="{'group_by':'purchase_req_reference'}"/>
+                </xpath>
+            </field>
+        </record>
+
+		<!-- Action for Registration -->
+
+		<record model="ir.actions.act_window"
+			id="action_request_for_purchase">
+			<field name="name">Request for Purchase</field>
+			<field name="res_model">purchase.order</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[('is_req_for_purchase','=',True)]</field>
+		</record>
+
+		<record model="ir.actions.act_window.view"
+			id="action_rfp_tree_view">
+			<field eval="1" name="sequence" />
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="purchase_request.rfp_tree_view_ga" />
+			<field name="act_window_id" ref="action_request_for_purchase" />
+		</record>
+
+		<record model="ir.actions.act_window.view"
+			id="act_rfp_form_view">
+			<field eval="1" name="sequence" />
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="purchase_request.rfp_form_view_ga" />
+			<field name="act_window_id" ref="action_request_for_purchase" />
+		</record>
+
+		<menuitem id="menu_request_for_purchase" parent="purchase.menu_procurement_management"
+			name="Request for Purchase" groups="purchase.group_purchase_manager,purchase.group_purchase_user" action="action_request_for_purchase" sequence="3" />
+
+         <record id="purchase_order_inherit_view" model="ir.ui.view">
+            <field name="name">purchase.order.inherit.view</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="replace">
+                    <header>
+
+                    <button name="print_quotation" string="Print" type="object" states="draft" class="oe_highlight" groups="base.group_user"/>
+                    <button name="print_quotation" string="Print" type="object" states="sent" groups="base.group_user"/>
+                    <button name="submit_quotation" string="Submit" type="object" states="draft" class="oe_highlight" groups="base.group_user"/>
+                    
+                    <button name="action_rfq_send" states="submit" string="Send by Email" type="object" context="{'send_rfq':True}" class="oe_highlight"/>
+                    
+                    <button name="action_rfq_send" states="sent" string="Re-Send by Email" type="object" context="{'send_rfq':True}"/>
+
+                    <button name="button_change_state_to_confirm" type="object" states="sent,submit" string="Confirm Order" class="oe_highlight" id="bid_confirm"/>
+                    <button name="button_approval_one" states="purchase" class="oe_highlight" string="PM Approval" type="object" groups="purchase_request.allow_approve_1"/>
+                    <button name="button_approval_two" states="approval1" class="oe_highlight" string="DPD-OP Approval" type="object" groups="purchase_request.allow_approve_2"/>
+                    <button name="button_approval_three" states="approval2" class="oe_highlight" string="FD Approval" type="object" groups="purchase_request.allow_approve_3"/>
+                    <button name="button_approval_four" states="approval3" class="oe_highlight" string="PD Approval" type="object" groups="purchase_request.allow_approve_4"/>
+                    <button name="button_confirm" states="approval4" string="Confirm" type="object" />
+                    <button name="%(wizard_request_reject_reason)d" states="purchase,approval1,approval2,approval3"
+                        string="Reject" type="action"
+                        groups="purchase_request.group_purchase_request_manager" />
+                    <button name="button_change_state_to_draft" states="reject" string="Set as Draft" type="object" />
+                    <button name="button_cancel" states="draft,submit,sent,purchase,approval1,approval2,approval3,approval4,reject" string="Cancel" type="object" />
+                        <field name="state" widget="statusbar" statusbar_visible="draft,submit,sent,purchase,approval1,approval2,approval3,approval4,done,reject,cancel" readonly="1"/>
+                    </header>
+                </xpath>
+            </field>
+        </record>
+
+        <menuitem action="account.action_payment_term_form"
+            id="menu_action_payment_term_form_in_purchase" parent="purchase.menu_purchase_config" sequence="10"/>
+	</data>
+</odoo>
